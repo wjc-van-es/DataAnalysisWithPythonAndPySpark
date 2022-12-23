@@ -1,0 +1,149 @@
+We already got pyspark working on linux-laptop with our Anaconda dasci environment and sdkman Java installation,
+ however, we checked out Appendix B of Data Analysis with Python and PySpark to see any additional info.
+
+■ Install Java (Spark is written in Scala, which runs on the Java Virtual Machine, or JVM).
+■ Install Spark.
+■ Install Python 3 and IPython.
+■ Launch a PySpark shell using IPython.
+■ (Optional) Install Jupyter and use it with PySpark.
+    ---
+We checked out all SDKMan java Installations to see if upgrades were in order
+(we choose to use several Java versions from temurin)
+
+willem@linux-laptop:~$ sdk list java | grep "tem"
+ Temurin       |     | 19.0.1       | tem     |            | 19.0.1-tem
+               |     | 18.0.2       | tem     | local only | 18.0.2-tem
+               |     | 17.0.5       | tem     |            | 17.0.5-tem
+               |     | 17.0.4       | tem     | local only | 17.0.4-tem
+               | >>> | 11.0.17      | tem     | installed  | 11.0.17-tem
+               |     | 11.0.16      | tem     | local only | 11.0.16-tem
+               |     | 8.0.352      | tem     |            | 8.0.352-tem
+               |     | 8.0.345      | tem     |            | 8.0.345-tem
+               |     | 8.0.332      | tem     | local only | 8.0.332-tem
+Omit Identifier to install default version 17.0.5-tem:
+    $ sdk install java 17.0.5-tem
+From this list we choose to install the new 19.0.1-tem
+17.0.5-tem, and 8.0.352-tem.
+Then to uninstall older versions of the major 8 and 17 (indicated by local only, meaning no longer available for
+installation, but already installed) and keep the 18.0.2-tem as this short term release will not be updated anymore as
+Java 19 has become available.
+willem@linux-laptop:~$ sdk install java 19.0.1-tem
+willem@linux-laptop:~$ sdk install java 8.0.352-tem
+willem@linux-laptop:~$ sdk uninstall java 8.0.332-tem
+willem@linux-laptop:~$ sdk uninstall java 11.0.16-tem
+willem@linux-laptop:~$ sdk uninstall java 17.0.4-tem
+willem@linux-laptop:~$ sdk list java | grep "tem"
+ Temurin       |     | 19.0.1       | tem     | installed  | 19.0.1-tem
+               |     | 18.0.2       | tem     | local only | 18.0.2-tem
+               |     | 17.0.5       | tem     | installed  | 17.0.5-tem
+               | >>> | 11.0.17      | tem     | installed  | 11.0.17-tem
+               |     | 8.0.352      | tem     | installed  | 8.0.352-tem
+               |     | 8.0.345      | tem     |            | 8.0.345-tem
+Omit Identifier to install default version 17.0.5-tem:
+    $ sdk install java 17.0.5-tem
+    ---
+Then we checked if JAVA_HOME environment variable was set:
+willem@linux-laptop:~$ echo $JAVA_HOME
+/home/willem/.sdkman/candidates/java/current
+It points to the designated default version which we choose to be the 11.0.17 version.
+    ---
+We installed the latest available spark version
+willem@linux-laptop:~$ sdk install spark
+willem@linux-laptop:~$ sdk list spark
+willem@linux-laptop:~$ sdk list spark | cat
+================================================================================
+Available Spark Versions
+================================================================================
+ > * 3.3.1               2.4.2               1.4.1
+     3.3.0               2.4.1
+     3.2.2               2.4.0
+     3.2.1               2.3.3
+     3.2.0               2.3.2
+     3.1.2               2.3.1
+     3.1.1               2.3.0
+     3.0.2               2.2.1
+     3.0.1               2.2.0
+     3.0.0               2.1.3
+     2.4.7               2.1.2
+     2.4.6               2.1.1
+     2.4.5               2.0.2
+     2.4.4               1.6.3
+     2.4.3               1.5.2
+
+================================================================================
++ - local version
+* - installed
+> - currently in use
+================================================================================
+willem@linux-laptop:~$
+    ---
+We followed the following configuration hint:
+If you are using Spark 3.0+ with Java 11+, you need to input some additional configuration to seamlessly work with Python.
+To do so, we need to create a spark-defaults.conf file under the $SPARK_HOME/conf directory. When reaching this direc-
+tory, there should be a spark-defaults.conf.template file already there, along with some other files. Make a copy of 
+spark-defaults.conf.template, and name it spark-defaults.conf. Inside this file, include the following:
+
+spark.driver.extraJavaOptions="-Dio.netty.tryReflectionSetAccessible=true"
+spark.executor.extraJavaOptions="-Dio.netty.tryReflectionSetAccessible=true"
+
+This will prevent the pesky java.lang.UnsupportedOperationException: sun.misc.Unsafe or 
+java.nio.DirectByteBuffer.(long, int) not available error that happens when you try to pass data between Spark and 
+Python (chapter 8 onward).
+    ---
+We checked for the SPARK_HOME environment variable and found it still needed to be declared
+willem@linux-laptop:~$ echo $SPARK_HOME
+
+willem@linux-laptop:~$ echo $HOME
+/home/willem
+willem@linux-laptop:~$ echo 'export SPARK_HOME="$HOME/.sdkman/candidates/spark/3.3.1"' >> ~/.bashrc
+willem@linux-laptop:~$ echo 'export PATH="$PATH:$HOME/.sdkman/candidates/spark/3.3.1/bin"' >> ~/.bashrc
+    ---
+For the linux installation the appendix B suggested to use pip, but we had already installed Anaconda and had an
+environment configured with pandas, matplotlib, jupyter notebook and pyspark.
+As Anaconda was recommended for the Windows installation and Anaconda offers more flexibility and in general higher
+performance we decided to stick with it. However, we did check for updates
+
+willem@linux-laptop:~$ conda activate dasci
+(dasci) willem@linux-laptop:~$ conda list -n dasci
+Within PyCharm we can see which libraries have more recent versions. It is best to limit the updates to the larger
+dependencies, some small transient dependency library can sometimes be updated, but it will lead to compatibility issues
+So we ended up with the following updates:
+(dasci) willem@linux-laptop:~$ conda update -n dasci python
+(dasci) willem@linux-laptop:~$ conda update -n dasci pyspark
+(dasci) willem@linux-laptop:~$ conda update -n dasci matplotlib
+willem@linux-laptop:~$ conda update -n base -c defaults conda
+
+When we checked for environment variables that is known within the dasci conda environment we saw the ones set in
+.bashrc are not seen in dasci
+
+willem@linux-laptop:~$ conda activate dasci
+(dasci) willem@linux-laptop:~$ conda env config vars list
+BANK_ROOT_DIR = /XXXX/XXX/XXXX/
+MY_IBAN = NLXXINGB000XXXXXXX
+(dasci) willem@linux-laptop:~$ conda env config vars set JAVA_HOME=/home/willem/.sdkman/candidates/java/current
+To make your changes take effect please reactivate your environment
+(dasci) willem@linux-laptop:~$ conda activate dasci
+(dasci) willem@linux-laptop:~$ conda env config vars list
+BANK_ROOT_DIR = /XXXX/XXX/XXXX/
+MY_IBAN = NLXXINGB000XXXXXXX
+JAVA_HOME = /home/willem/.sdkman/candidates/java/current
+(dasci) willem@linux-laptop:~$ conda env config vars set SPARK_HOME=/home/willem/.sdkman/candidates/spark/3.3.1
+To make your changes take effect please reactivate your environment
+(dasci) willem@linux-laptop:~$ conda activate dasci
+(dasci) willem@linux-laptop:~$ conda env config vars list
+BANK_ROOT_DIR = /XXXX/XXX/XXXX/
+MY_IBAN = NLXXINGB000XXXXXXX
+JAVA_HOME = /home/willem/.sdkman/candidates/java/current
+SPARK_HOME = /home/willem/.sdkman/candidates/spark/3.3.1
+(dasci) willem@linux-laptop:~$ conda env config vars set PATH=/home/willem/.sdkman/candidates/spark/3.3.1/bin:$PATH
+To make your changes take effect please reactivate your environment
+(dasci) willem@linux-laptop:~$ conda activate dasci
+(dasci) willem@linux-laptop:~$ conda env config vars list
+BANK_ROOT_DIR = /XXXX/XXX/XXXX/
+MY_IBAN = NLXXINGB000XXXXXXX
+JAVA_HOME = /home/willem/.sdkman/candidates/java/current
+SPARK_HOME = /home/willem/.sdkman/candidates/spark/3.3.1
+PATH = /home/willem/.sdkman/candidates/spark/3.3.1/bin:/home/willem/anaconda3/envs/dasci/bin:/home/willem/anaconda3/condabin:/home/willem/.sdkman/candidates/java/current/bin:/home/willem/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/willem/.local/share/JetBrains/Toolbox/scripts
+(dasci) willem@linux-laptop:~$
+
+

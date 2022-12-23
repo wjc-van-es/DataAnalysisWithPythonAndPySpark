@@ -1,6 +1,9 @@
 # We don't want the PDF to take useless space
 *.pdf
 
+# ignore PyCharm
+.idea/
+
 # Mac-specific useless files
 .DS_Store
 
@@ -26,9 +29,11 @@ data/broadcast_logs/BroadcastLogs_2018_Q3_M8.CSV
 scribbles.*
 
 # Data files from Chapter 7 that are too big to be git-ted. Better to download them using the script
+data/
 /data/backblaze/*.zip
 /data/backblaze/d*
 
 # References for chapters and appendixes
 chapter_reference.txt
 appendix_reference.txt
+code/Ch02/results_single_partition.csv/

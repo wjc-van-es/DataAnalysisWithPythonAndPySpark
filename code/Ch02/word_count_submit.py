@@ -21,4 +21,4 @@ results = (
 )
 
 results.orderBy("count", ascending=False).show(10)
-results.coalesce(1).write.csv("./results_single_partition.csv")
+results.coalesce(1).write.mode('overwrite').csv("./results_single_partition.csv")

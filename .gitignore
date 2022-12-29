@@ -36,4 +36,5 @@ data/
 # References for chapters and appendixes
 chapter_reference.txt
 appendix_reference.txt
-code/Ch02/results_single_partition.csv/
+*.csv/
+*.csv

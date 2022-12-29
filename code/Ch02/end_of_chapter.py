@@ -11,7 +11,7 @@
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import col, split, explode, lower, regexp_extract
 
-spark = SparkSession.builder.getOrCreate()
+spark = SparkSession.builder.appName("Chapter 2 example").getOrCreate()
 
 book = spark.read.text("../../data/gutenberg_books/1342-0.txt")
 

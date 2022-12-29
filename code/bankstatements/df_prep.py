@@ -16,14 +16,14 @@ def produce_df_for_year(year):
     """
     path = create_path_from_year(year)
     app_name = f"Analyzing bank statements {path}"
-    spark = SparkSession \
-        .builder \
-        .appName(app_name) \
-        .getOrCreate()
-    raw_df = spark.read \
-        .format("csv") \
-        .option("header", "true") \
-        .load(path)
+    spark = (SparkSession
+             .builder
+             .appName(app_name)
+             .getOrCreate())
+    raw_df = (spark.read
+              .format("csv")
+              .option("header", "true")
+              .load(path))
 
     return create_bedrag_column(raw_df)
 
@@ -54,18 +54,22 @@ def create_bedrag_column(in_def):
     cleans up the pyspark dataframe by adding a 'Bedrag' column of type double with a negative value
     when the column 'Af Bij' contains the value 'Af'.
     The columns 'Af Bij' and the column Bedrag (EUR) are then dropped
-    :param in_def: the dataframe that needs the clean up
+    :param in_def: the dataframe that needs the cleanup
     :return: the restructured pyspark dataframe
     """
 
-    # replace comma with period as decimal division symbol and change type to double
-    df_1 = in_def.withColumn('Bedrag (EUR)', regexp_replace('Bedrag (EUR)', ',', '.')) \
-        .withColumn("Bedrag (EUR)", col("Bedrag (EUR)").cast("double"))
+    in_def.printSchema()
 
-    df_2 = df_1.withColumn('Bedrag', when(col('Af Bij') == 'Af', -1 * col('Bedrag (EUR)')) \
-        .otherwise(col('Bedrag (EUR)'))) \
-        .drop(col('Af Bij')) \
-        .drop(col('Bedrag (EUR)'))
+    # replace comma with period as decimal division symbol and change type to double
+    df_1 = (in_def
+            .withColumn('Bedrag (EUR)', regexp_replace('Bedrag (EUR)', ',', '.'))
+            .withColumn("Bedrag (EUR)", col("Bedrag (EUR)").cast("double")))
+
+    df_2 = (df_1
+            .withColumn('Bedrag', when(col('Af Bij') == 'Af', -1 * col('Bedrag (EUR)'))
+                        .otherwise(col('Bedrag (EUR)')))
+            .drop(col('Af Bij'))
+            .drop(col('Bedrag (EUR)')))
 
     return df_2
 
@@ -78,11 +82,12 @@ def sum_per_tegenrekening(in_df):
     :param in_df: the prepared dataframe from the bank_statements csv
     :return: dataframe with aggregated data
     """
-    return in_df.groupBy('Tegenrekening', 'Naam / Omschrijving') \
-        .agg({'Bedrag': 'sum'}) \
-        .withColumn("Totaal", ps_round(col("sum(Bedrag)"), 2)) \
-        .drop(col("sum(Bedrag)")) \
-        .orderBy("Totaal")
+    return (in_df.groupBy('Tegenrekening', 'Naam / Omschrijving')
+            .agg({'Bedrag': 'sum'})
+            .withColumn("Totaal", ps_round(col("sum(Bedrag)"), 2))
+            .drop(col("sum(Bedrag)"))
+            .orderBy("Totaal"))
+
 
 def main(args):
     year = 2020
@@ -90,6 +95,16 @@ def main(args):
         print(f"args = {args}")
         year = args[0]
     print(create_path_from_year(year))
+    df = produce_df_for_year(year)
+    df.show(5)
+    df2 = sum_per_tegenrekening(df)
+    df2.printSchema()
+    df2.show(25)
+    df2.coalesce(1)\
+        .write\
+        .option('header', True)\
+        .mode('overwrite')\
+        .csv(f"./sum_per_account_for_{year}.csv")
 
 
 if __name__ == '__main__':

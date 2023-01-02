@@ -9,8 +9,10 @@ spark = SparkSession.builder.getOrCreate()
 spark.sparkContext.setLogLevel("WARN")
 
 DIRECTORY = "../../data/broadcast_logs"
-logs = (
-    spark.read.csv(
+logs = (spark
+    .read
+    .option('encoding', 'IBM860')
+    .csv(
         os.path.join(DIRECTORY, "BroadcastLogs_2018_Q3_M8_sample.CSV"),
         sep="|",
         header=True,
@@ -28,11 +30,15 @@ logs = (
     )
 )
 
-log_identifier = spark.read.csv(
-    os.path.join(DIRECTORY, "ReferenceTables/LogIdentifier.csv"),
-    sep="|",
-    header=True,
-    inferSchema=True,
+log_identifier = (spark
+    .read
+    .option('encoding', 'IBM860')
+    .csv(
+        os.path.join(DIRECTORY, "ReferenceTables/LogIdentifier.csv"),
+        sep="|",
+        header=True,
+        inferSchema=True,
+    )
 )
 
 cd_category = spark.read.csv(
@@ -70,25 +76,26 @@ full_log.printSchema()
 # that we can give a customized name with the alias() method
 # here we embellished listing 5.11 with a 'mean duration' as second aggregation column
 commercials = ['COM', 'PRC', 'PGI', 'PRO', 'LOC', 'SPO', 'MER', 'SOL']
-duration_agg = (full_log
-     .groupby("ProgramClassCD", "ProgramClass_Description")
-     .agg(F.sum("duration_seconds").alias("duration_total"),
-          F.round(F.mean("duration_seconds"), scale=0).cast('int').alias("mean duration"))
-     .withColumn('commercial', F.trim(F.col('ProgramClassCD')).isin(commercials))
-     .withColumn('commercial_duration', F.when(F.col('commercial'), F.col('duration_total')).otherwise(0))
-     .orderBy("duration_total", ascending=False)
-)
-duration_agg.show(100, False)
-(
-    duration_agg
-    .groupby('commercial')
-    .agg(F.sum('commercial_duration').alias('total_commercial_duration'),
-         F.sum('duration_total').alias('total_duration')).show(truncate=False)
-)
-(
-    duration_agg
-    .agg(F.sum('commercial_duration').alias('total_commercial_duration'),
-         F.sum('duration_total').alias('total_duration')).show(truncate=False)
+
+answer = (
+    full_log.groupby("LogIdentifierID")
+    .agg(
+        F.sum(
+            F.when(
+                F.trim(F.col('ProgramClassCD')).isin(commercials),
+                F.col('duration_seconds')
+            ).otherwise(0)
+        ).alias('duration_commercial'),
+        F.sum("duration_seconds").alias("duration_total"),
+    )
+    .withColumn(
+        "commercial_ratio", F.col(
+            'duration_commercial') / F.col('duration_total')
+    )
+    .orderBy('commercial_ratio', ascending=False)
 )
 
+answer.printSchema()
+print(f"total number of records in answer data frame is  {answer.count()}")
+answer.show(1000, truncate=False)
 

@@ -20,24 +20,24 @@ spark.sparkContext.setLogLevel("WARN")
 # Reading all the relevant data sources
 ###############################################################################
 
-DIRECTORY = "./data/Ch03"
+DIRECTORY = "../../data/broadcast_logs"
 
-logs = spark.read.csv(
-    os.path.join(DIRECTORY, "BroadcastLogs_2018_Q3_M8.CSV"),
+logs = spark.read.option('encoding', 'IBM860').csv(
+    os.path.join(DIRECTORY, "BroadcastLogs_2018_Q3_M8_sample.CSV"),
     sep="|",
     header=True,
     inferSchema=True,
 )
 
-log_identifier = spark.read.csv(
-    "./data/Ch03/ReferenceTables/LogIdentifier.csv",
+log_identifier = spark.read.option('encoding', 'IBM860').csv(
+    os.path.join(DIRECTORY, "ReferenceTables/LogIdentifier.csv"),
     sep="|",
     header=True,
     inferSchema=True,
 )
 
-cd_category = spark.read.csv(
-    "./data/Ch03/ReferenceTables/CD_Category.csv",
+cd_category = spark.read.option('encoding', 'IBM860').csv(
+    os.path.join(DIRECTORY, "ReferenceTables/CD_Category.csv"),
     sep="|",
     header=True,
     inferSchema=True,
@@ -48,7 +48,7 @@ cd_category = spark.read.csv(
 )
 
 cd_program_class = spark.read.csv(
-    "./data/Ch03/ReferenceTables/CD_ProgramClass.csv",
+    os.path.join(DIRECTORY, "ReferenceTables/CD_ProgramClass.csv"),
     sep="|",
     header=True,
     inferSchema=True,
@@ -81,7 +81,7 @@ full_log = logs_and_channels.join(cd_category, "CategoryID", how="left").join(
     cd_program_class, "ProgramClassID", how="left"
 )
 
-full_log.groupby("LogIdentifierID").agg(
+answer = full_log.groupby("LogIdentifierID").agg(
     F.sum(
         F.when(
             F.trim(F.col("ProgramClassCD")).isin(
@@ -95,6 +95,8 @@ full_log.groupby("LogIdentifierID").agg(
     "commercial_ratio", F.col("duration_commercial") / F.col("duration_total")
 ).orderBy(
     "commercial_ratio", ascending=False
-).show(
-    1000, False
-)
+).fillna(0)
+
+answer.printSchema()
+print(f"total number of records in answer data frame is  {answer.count()}")
+answer.show(1000, truncate=False)

@@ -1,0 +1,180 @@
+We wanted to test whether we could update our conda dasci environment on @willem-Latitude-5590 to match the one on
+ willem@linux-laptop
+
+ First in a terminal update the sdkman installations of Java, Scala and Spark:
+ $ sdk update
+ willem@willem-Latitude-5590:~/.sdkman/candidates/java/current$ sdk list java | grep tem
+ Temurin       |     | 19.0.2       | tem     |            | 19.0.2-tem
+               |     | 19.0.1       | tem     |            | 19.0.1-tem
+               |     | 17.0.6       | tem     |            | 17.0.6-tem
+               |     | 17.0.5       | tem     |            | 17.0.5-tem
+               |     | 17.0.3       | tem     | local only | 17.0.3-tem
+               |     | 11.0.18      | tem     |            | 11.0.18-tem
+               |     | 11.0.17      | tem     |            | 11.0.17-tem
+               |     | 11.0.14      | tem     | local only | 11.0.14-tem
+               |     | 8.0.362      | tem     |            | 8.0.362-tem
+               |     | 8.0.352      | tem     |            | 8.0.352-tem
+               |     | 8.0.345      | tem     |            | 8.0.345-tem
+               | >>> | 8.0.322      | tem     | local only | 8.0.322-tem
+Omit Identifier to install default version 17.0.6-tem:
+    $ sdk install java 17.0.6-tem
+willem@willem-Latitude-5590:~/.sdkman/candidates/java/current$ sdk install java 11.0.18-tem
+willem@willem-Latitude-5590:~/.sdkman/candidates/java/current$ sdk install java 17.0.6-tem
+willem@willem-Latitude-5590:~/.sdkman/candidates/java/current$ sdk install java 8.0.362-tem
+willem@willem-Latitude-5590:~/.sdkman/candidates/java/current$ java -version
+openjdk version "1.8.0_362"
+OpenJDK Runtime Environment (Temurin)(build 1.8.0_362-b09)
+OpenJDK 64-Bit Server VM (Temurin)(build 25.362-b09, mixed mode)
+willem@willem-Latitude-5590:~/.sdkman/candidates/java/current$ sdk uninstall java 8.0.322-tem
+
+Uninstalling java 8.0.322-tem...
+willem@willem-Latitude-5590:~/.sdkman/candidates/java/current$ sdk uninstall java 17.0.3-tem
+
+Uninstalling java 17.0.3-tem...
+willem@willem-Latitude-5590:~/.sdkman/candidates/java/current$ sdk uninstall java 11.0.14-tem
+
+Uninstalling java 11.0.14-tem...
+willem@willem-Latitude-5590:~/.sdkman/candidates/java/current$ sdk list java | grep tem
+ Temurin       |     | 19.0.2       | tem     |            | 19.0.2-tem
+               |     | 19.0.1       | tem     |            | 19.0.1-tem
+               |     | 17.0.6       | tem     | installed  | 17.0.6-tem
+               |     | 17.0.5       | tem     |            | 17.0.5-tem
+               |     | 11.0.18      | tem     | installed  | 11.0.18-tem
+               |     | 11.0.17      | tem     |            | 11.0.17-tem
+               | >>> | 8.0.362      | tem     | installed  | 8.0.362-tem
+               |     | 8.0.352      | tem     |            | 8.0.352-tem
+               |     | 8.0.345      | tem     |            | 8.0.345-tem
+Omit Identifier to install default version 17.0.6-tem:
+    $ sdk install java 17.0.6-tem
+willem@willem-Latitude-5590:~/.sdkman/candidates/java/current$ sdk install scala
+willem@willem-Latitude-5590:~/.sdkman/candidates/java/current$ sdk install spark
+willem@willem-Latitude-5590:~/.sdkman/candidates/java/current$ sdk uninstall spark 3.2.0
+willem@willem-Latitude-5590:~/.sdkman/candidates/java/current$ sdk uninstall scala 2.12.15
+default installation are now:
+Java: 8.0.362-tem
+Scala: scala 3.2.1
+Spark: spark 3.3.1
+willem@willem-Latitude-5590:~/.sdkman/candidates/java/current$ echo $JAVA_HOME
+/home/willem/.sdkman/candidates/java/current
+willem@willem-Latitude-5590:~/.sdkman/candidates/java/current$ echo $SPARK_HOME
+/home/willem/.sdkman/candidates/spark/current
+willem@willem-Latitude-5590:~/.sdkman/candidates/java/current$ echo $PATH
+/home/willem/.sdkman/candidates/spark/current/bin:/home/willem/.sdkman/candidates/scala/current/bin:/home/willem/.sdkman/candidates/java/current/bin:/home/willem/.sdkman/candidates/groovy/current/bin:/home/willem/.sdkman/candidates/gradle/current/bin:/home/willem/anaconda3/condabin:/home/willem/.local/bin:/home/willem/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+So all environment variables are present in a terminal. No new modifications to ~/.bashrc are necessary.
+========================================================================================================================
+Now, we want to update the dasci environment with the dasci_environment_20221223.yml yaml from willem@linux-laptop.
+willem@willem-Latitude-5590:~$ conda info --envs
+# conda environments:
+#
+base                  *  /home/willem/anaconda3
+CorePython               /home/willem/anaconda3/envs/CorePython
+dasci                    /home/willem/anaconda3/envs/dasci
+
+willem@willem-Latitude-5590:~$ conda activate base
+(base) willem@willem-Latitude-5590:~$ python --version
+Python 3.8.13
+(base) willem@willem-Latitude-5590:~$ conda update python
+(base) willem@willem-Latitude-5590:~/resources/git/DataAnalysisWithPythonAndPySpark$ conda update conda
+Collecting package metadata (current_repodata.json): done
+Solving environment: done
+
+# All requested packages already installed.
+
+(base) willem@willem-Latitude-5590:~/resources/git/DataAnalysisWithPythonAndPySpark$ conda update anaconda
+Collecting package metadata (current_repodata.json): done
+Solving environment: done
+
+# All requested packages already installed.
+
+(base) willem@willem-Latitude-5590:~/resources/git/DataAnalysisWithPythonAndPySpark$ conda activate dasci
+WARNING: overwriting environment variables set in the machine
+overwriting variable {'BANK_ROOT_DIR', 'MY_IBAN'}
+(dasci) willem@willem-Latitude-5590:~/resources/git/DataAnalysisWithPythonAndPySpark$ echo $JAVA_HOME
+/home/willem/.sdkman/candidates/java/current
+(dasci) willem@willem-Latitude-5590:~/resources/git/DataAnalysisWithPythonAndPySpark$ echo $SPARK_HOME
+/home/willem/.sdkman/candidates/spark/current
+(dasci) willem@willem-Latitude-5590:~/resources/git/DataAnalysisWithPythonAndPySpark$ echo $PATH
+/home/willem/anaconda3/envs/dasci/bin:/home/willem/anaconda3/bin:/home/willem/anaconda3/bin:/home/willem/anaconda3/bin:/home/willem/anaconda3/bin:/home/willem/anaconda3/bin:/home/willem/anaconda3/bin:/home/willem/.sdkman/candidates/spark/current/bin:/home/willem/.sdkman/candidates/scala/current/bin:/home/willem/.sdkman/candidates/java/current/bin:/home/willem/.sdkman/candidates/groovy/current/bin:/home/willem/.sdkman/candidates/gradle/current/bin:/home/willem/anaconda3/condabin:/home/willem/.local/bin:/home/willem/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+(dasci) willem@willem-Latitude-5590:~/resources/git/DataAnalysisWithPythonAndPySpark$ conda env update --file dasci_environment_20230123_willem-Latitude-5590.yml --prune
+This took long to reconcile differences, moreover, we realized we had wrong environment vars in the yaml.
+(dasci) willem@willem-Latitude-5590:~/resources/git/DataAnalysisWithPythonAndPySpark$ conda activate base
+(base) willem@willem-Latitude-5590:~/resources/git/DataAnalysisWithPythonAndPySpark$ conda env remove -n dasci
+(base) willem@willem-Latitude-5590:~/resources/git/DataAnalysisWithPythonAndPySpark$ conda env create -f dasci_environment_20230123_willem-Latitude-5590.yml
+This also took some time to reconcile.
+------------------------------------------------------------------------------------------------------------------------
+TIP 1:
+when you create a yaml file from your conda environment, with versions, but without OS specific build info (that we had used):
+use the conda env export with the --no-builds option this is better to share with other computers with other OS (versions)
+(dasci) willem@willem-Latitude-5590:~/resources/git/DataAnalysisWithPythonAndPySpark$ conda env export --no-builds >> dasci_environment_20230123_updated_willem-Latitude-5590.yml
+see https://stackoverflow.com/questions/41274007/anaconda-export-environment-file
+
+TIP 2:
+If you don't want to specify specific packages, just use:
+conda update --all
+see https://stackoverflow.com/questions/38972052/anaconda-update-all-possible-packages
+
+TIP 3:
+update conda and anaconda always from the base env
+conda update conda
+conda update anaconda
+
+TIP 4:
+in a yaml file some or all packages could be pinned to a certain version and then an update command will be ignored for
+these pinned packages, examples for pinned packages:
+numpy 1.7.*
+scipy ==0.14.2
+see https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-pkgs.html#preventing-packages-from-updating-pinning
+
+To force an update you must add the options --no-pin option to an update command, e.g.:
+conda update numpy --no-pin
+or
+conda update all --no-pin
+We see an our yaml files two packages for example:
+  - pyspark=3.3.1
+  - python=3.10.8
+Single = signs (and no build info) so these should not be pinned
+we used to have build info, which impedes sharing info with other computers:
+  - pyspark=3.2.1=py310h06a4308_0
+  - python=3.10.8=h7a1cb2a_1
+TIP 5:
+after each update we need to reactivate the environment, e.g.:
+(dasci) $ conda activate dasci
+
+TIP 6:
+we missed environment variables within conda when we ran ./code/bankstatements/pyspark_test.py
+we therefore did again an update with a yaml file with fixed environment variables, but if we only need to edit
+env vars this command suffices:
+to check:
+(dasci) $ conda env config vars list
+to set a new one called my_var:
+(dasci) $ conda env config vars set my_var=value
+
+
+TIP 7:
+use the option --prune with conda update if a yaml file has less dependencies than are currently installed:
+conda env update --file local.yml --prune
+see:
+https://stackoverflow.com/questions/42352841/how-to-update-an-existing-conda-environment-with-a-yml-file
+
+------------------------------------------------------------------------------------------------------------------------
+Current situation:
+I can run the python files from a terminal, because there the environment variables are available:
+(dasci) willem@willem-Latitude-5590:~/resources/git/DataAnalysisWithPythonAndPySpark$ ./code/bankstatements/pyspark_test.py
+
+The same is true for PySpark scripts:
+(dasci) willem@willem-Latitude-5590:~/resources/git/DataAnalysisWithPythonAndPySpark/code/Ch06$ spark-submit ./create_tabular_df_with_def_schema.py
+
+But running this within PyCharm won't work
+now pyspark_test.py won't see the environment variables like $JAVA_HOME and $SPARK_HOME
+when I run pyspark_test.py I don't see the environment variables set in ~/.bashrc as well as in the conda dasci environment.
+
+Restarting PyCharm leads to reindexation and now the environment variables are found and PySpark scripts can be run
+within the IDE's run menu.
+
+Differences in configurations between (dasci) willem@willem-Latitude-5590: and willem@linux-laptop are:
+the updates of Java and Spark by sdkman:
+Java 8.0.362-tem vs Java 11.0.17-tem (The use of Java 8 on willem@willem-Latitude-5590 reduces the number of
+security warnings)
+
+Spark 3.3.1 on both computers
+The dasci environment see dasci_environment_20230123_updated_willem-Latitude-5590.yml

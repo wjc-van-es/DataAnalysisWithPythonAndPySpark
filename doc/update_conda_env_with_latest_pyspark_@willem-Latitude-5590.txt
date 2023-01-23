@@ -178,3 +178,20 @@ security warnings)
 
 Spark 3.3.1 on both computers
 The dasci environment see dasci_environment_20230123_updated_willem-Latitude-5590.yml
+
+    ---
+    As we still use Java 8 on willem@willem-Latitude-5590 we didn't do the recipe below
+    However, do this when we change to Java 11 on this computer:
+We followed the following configuration hint:
+If you are using Spark 3.0+ with Java 11+, you need to input some additional configuration to seamlessly work with Python.
+To do so, we need to create a spark-defaults.conf file under the $SPARK_HOME/conf directory. When reaching this direc-
+tory, there should be a spark-defaults.conf.template file already there, along with some other files. Make a copy of
+spark-defaults.conf.template, and name it spark-defaults.conf. Inside this file, include the following:
+
+spark.driver.extraJavaOptions="-Dio.netty.tryReflectionSetAccessible=true"
+spark.executor.extraJavaOptions="-Dio.netty.tryReflectionSetAccessible=true"
+
+This will prevent the pesky java.lang.UnsupportedOperationException: sun.misc.Unsafe or
+java.nio.DirectByteBuffer.(long, int) not available error that happens when you try to pass data between Spark and
+Python (chapter 8 onward).
+    ---

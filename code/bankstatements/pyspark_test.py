@@ -40,10 +40,10 @@ def create_path_from_year(year):
     :param year:
     :return:
     """
-    iban = str(os.getenv("MY_IBAN"))  # set in the conda dasci env can only be read when run in terminal not in pyspark
+    iban = str(os.getenv("MY_IBAN")).strip() # set in the conda dasci env can only be read when run in terminal not in pyspark
     print(iban)
     root_dir = os.getenv(
-        "BANK_ROOT_DIR")  # set in the conda dasci env can only be read when run in terminal not in pyspark
+        "BANK_ROOT_DIR").strip()  # set in the conda dasci env can only be read when run in terminal not in pyspark
     file_name = f"{iban}_01-01-{year}_31-12-{year}.csv"
     path = f"{root_dir}{file_name}"
     print(path)

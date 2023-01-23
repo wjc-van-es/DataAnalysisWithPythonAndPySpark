@@ -200,9 +200,9 @@ dependencies:
 # echo $JAVA_HOME, $SPARK_HOME and $PATH already show the right locations
 # probably due to the sdkman install process.
 variables:
-  BANK_ROOT_DIR: /home/willem/Documents/zakelijk/financieel/ING/transacties
+  BANK_ROOT_DIR: /xxx/xxxx/xxx/
   JAVA_HOME: /home/willem/.sdkman/candidates/java/current
-  MY_IBAN: NL79INGB0004951418
+  MY_IBAN: NLXXINGB000XXXXXXX
   SPARK_HOME: /home/willem/.sdkman/candidates/spark/3.3.1
   PATH: /home/willem/.sdkman/candidates/spark/3.3.1/bin:/home/willem/anaconda3/envs/dasci/bin:/home/willem/anaconda3/condabin:/home/willem/.sdkman/candidates/java/current/bin:/home/willem/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/willem/.local/share/JetBrains/Toolbox/scripts
 

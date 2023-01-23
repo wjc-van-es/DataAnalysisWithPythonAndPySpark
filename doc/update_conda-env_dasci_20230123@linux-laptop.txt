@@ -1,0 +1,386 @@
+WARNING: overwriting environment variables set in the machine
+overwriting variable {'PATH', 'JAVA_HOME', 'SPARK_HOME'}
+(dasci) willem@linux-laptop:~/git/DataAnalysisWithPythonAndPySpark/code/Ch06$ conda activate base
+WARNING: overwriting environment variables set in the machine
+overwriting variable {'JAVA_HOME'}
+(base) willem@linux-laptop:~/git/DataAnalysisWithPythonAndPySpark/code/Ch06$ conda update conda
+Retrieving notices: ...working... done
+Collecting package metadata (current_repodata.json): done
+Solving environment: done
+
+## Package Plan ##
+
+  environment location: /home/willem/anaconda3
+
+  added / updated specs:
+    - conda
+
+
+The following packages will be downloaded:
+
+    package                    |            build
+    ---------------------------|-----------------
+    conda-package-handling-2.0.2|   py39h06a4308_0         267 KB
+    conda-package-streaming-0.7.0|   py39h06a4308_0          26 KB
+    conda-repo-cli-1.0.27      |   py39h06a4308_0         114 KB
+    zstandard-0.18.0           |   py39h5eee18b_0         434 KB
+    ------------------------------------------------------------
+                                           Total:         841 KB
+
+The following NEW packages will be INSTALLED:
+
+  conda-package-str~ pkgs/main/linux-64::conda-package-streaming-0.7.0-py39h06a4308_0
+  zstandard          pkgs/main/linux-64::zstandard-0.18.0-py39h5eee18b_0
+
+The following packages will be UPDATED:
+
+  conda-package-han~                   1.9.0-py39h5eee18b_1 --> 2.0.2-py39h06a4308_0
+  conda-repo-cli                      1.0.24-py39h06a4308_0 --> 1.0.27-py39h06a4308_0
+
+
+Proceed ([y]/n)? y
+
+
+Downloading and Extracting Packages
+
+Preparing transaction: done
+Verifying transaction: done
+Executing transaction: done
+(base) willem@linux-laptop:~/git/DataAnalysisWithPythonAndPySpark/code/Ch06$ conda update anaconda
+Collecting package metadata (current_repodata.json): done
+Solving environment: done
+
+## Package Plan ##
+
+  environment location: /home/willem/anaconda3
+
+  added / updated specs:
+    - anaconda
+
+
+The following packages will be downloaded:
+
+    package                    |            build
+    ---------------------------|-----------------
+    _anaconda_depends-2022.10  |           py39_2          67 KB
+    anaconda-custom            |           py39_1           3 KB
+    attrs-22.1.0               |   py39h06a4308_0          85 KB
+    babel-2.11.0               |   py39h06a4308_0         6.8 MB
+    botocore-1.27.59           |   py39h06a4308_0         5.7 MB
+    ca-certificates-2023.01.10 |       h06a4308_0         120 KB
+    certifi-2022.12.7          |   py39h06a4308_0         150 KB
+    colorama-0.4.6             |   py39h06a4308_0          31 KB
+    colorcet-3.0.1             |   py39h06a4308_0         1.9 MB
+    comm-0.1.2                 |   py39h06a4308_0          13 KB
+    contourpy-1.0.5            |   py39hdb19cb5_0         204 KB
+    cryptography-38.0.4        |   py39h9ce1e76_0         1.4 MB
+    curl-7.87.0                |       h5eee18b_0          88 KB
+    cython-0.29.28             |   py39h295c915_0         2.0 MB
+    cytoolz-0.12.0             |   py39h5eee18b_0         373 KB
+    dask-2022.2.1              |     pyhd3eb1b0_0           5 KB
+    dask-core-2022.2.1         |     pyhd3eb1b0_0         747 KB
+    datashader-0.14.3          |   py39h06a4308_0        16.8 MB
+    dill-0.3.6                 |   py39h06a4308_0         166 KB
+    distributed-2022.2.1       |     pyhd3eb1b0_0         659 KB
+    filelock-3.9.0             |   py39h06a4308_0          18 KB
+    fsspec-2022.11.0           |   py39h06a4308_0         222 KB
+    gensim-4.2.0               |   py39h6a678d5_0        18.3 MB
+    greenlet-2.0.1             |   py39h6a678d5_0         192 KB
+    holoviews-1.15.3           |   py39h06a4308_0         4.3 MB
+    hvplot-0.8.2               |   py39h06a4308_0         3.1 MB
+    idna-3.4                   |   py39h06a4308_0          93 KB
+    intake-0.6.6               |   py39h06a4308_0         201 KB
+    ipykernel-6.19.2           |   py39hb070fc8_0         218 KB
+    joblib-1.1.1               |   py39h06a4308_0         382 KB
+    jupyter_client-7.4.8       |   py39h06a4308_0         205 KB
+    jupyter_console-6.4.4      |   py39h06a4308_0          43 KB
+    jupyter_core-5.1.1         |   py39h06a4308_0          89 KB
+    jupyter_server-1.23.4      |   py39h06a4308_0         382 KB
+    jupyterlab-3.5.2           |   py39h06a4308_0         4.2 MB
+    kiwisolver-1.4.4           |   py39h6a678d5_0          76 KB
+    krb5-1.19.4                |       h568e23c_0         1.3 MB
+    libcurl-7.87.0             |       h91b91d3_0         373 KB
+    liblief-0.12.3             |       h6a678d5_0         1.9 MB
+    libllvm11-11.1.0           |       h9e868ea_6        24.1 MB
+    libtiff-4.5.0              |       hecacb30_0         528 KB
+    llvmlite-0.39.1            |   py39he621ea3_0         2.0 MB
+    markdown-3.4.1             |   py39h06a4308_0         132 KB
+    matplotlib-3.6.2           |   py39h06a4308_0           8 KB
+    matplotlib-base-3.6.2      |   py39h945d387_0         6.5 MB
+    nbclassic-0.4.8            |   py39h06a4308_0         5.8 MB
+    nbformat-5.7.0             |   py39h06a4308_0         133 KB
+    nest-asyncio-1.5.6         |   py39h06a4308_0          14 KB
+    notebook-6.5.2             |   py39h06a4308_0         511 KB
+    notebook-shim-0.2.2        |   py39h06a4308_0          22 KB
+    numba-0.56.4               |   py39h417a72b_0         4.0 MB
+    numexpr-2.8.4              |   py39he184ba9_0         133 KB
+    numpy-1.23.5               |   py39h14f4228_0          10 KB
+    numpy-base-1.23.5          |   py39h31eccc5_0         6.7 MB
+    numpydoc-1.5.0             |   py39h06a4308_0          90 KB
+    packaging-22.0             |   py39h06a4308_0          68 KB
+    panel-0.14.2               |   py39h06a4308_0        12.5 MB
+    param-1.12.3               |   py39h06a4308_0         148 KB
+    patchelf-0.15.0            |       h6a678d5_0          97 KB
+    pillow-9.3.0               |   py39hace64e9_1         725 KB
+    pip-22.3.1                 |   py39h06a4308_0         2.7 MB
+    pkginfo-1.8.3              |   py39h06a4308_0          45 KB
+    prompt-toolkit-3.0.36      |   py39h06a4308_0         574 KB
+    prompt_toolkit-3.0.36      |       hd3eb1b0_0           5 KB
+    py-lief-0.12.3             |   py39h6a678d5_0         1.4 MB
+    pycosat-0.6.4              |   py39h5eee18b_0          84 KB
+    pytables-3.7.0             |   py39hf19a122_1         1.6 MB
+    python-snappy-0.6.1        |   py39h6a678d5_0          31 KB
+    pytz-2022.7                |   py39h06a4308_0         210 KB
+    pywavelets-1.4.1           |   py39h5eee18b_0         3.6 MB
+    pyyaml-6.0                 |   py39h5eee18b_1         185 KB
+    qstylizer-0.2.2            |   py39h06a4308_0          29 KB
+    qtawesome-1.2.2            |   py39h06a4308_0         1.6 MB
+    ruamel_yaml-0.17.21        |   py39h5eee18b_0         187 KB
+    scikit-image-0.19.3        |   py39h6a678d5_1        10.5 MB
+    scipy-1.9.3                |   py39h14f4228_0        22.2 MB
+    seaborn-0.12.2             |   py39h06a4308_0         482 KB
+    setuptools-65.6.3          |   py39h06a4308_0         1.1 MB
+    soupsieve-2.3.2.post1      |   py39h06a4308_0          65 KB
+    sqlite-3.40.1              |       h5082296_0         1.2 MB
+    sympy-1.11.1               |   py39h06a4308_0        11.7 MB
+    tbb-2021.6.0               |       hdb19cb5_1         1.6 MB
+    tbb4py-2021.6.0            |   py39hdb19cb5_1         233 KB
+    terminado-0.17.1           |   py39h06a4308_0          31 KB
+    tinycss2-1.2.1             |   py39h06a4308_0          39 KB
+    toolz-0.12.0               |   py39h06a4308_0         105 KB
+    tornado-6.2                |   py39h5eee18b_0         590 KB
+    traitlets-5.7.1            |   py39h06a4308_0         200 KB
+    typing-extensions-4.4.0    |   py39h06a4308_0           8 KB
+    typing_extensions-4.4.0    |   py39h06a4308_0          46 KB
+    urllib3-1.26.14            |   py39h06a4308_0         196 KB
+    xarray-2022.11.0           |   py39h06a4308_0         1.6 MB
+    xz-5.2.10                  |       h5eee18b_1         429 KB
+    zipp-3.11.0                |   py39h06a4308_0          19 KB
+    ------------------------------------------------------------
+                                           Total:       201.6 MB
+
+The following NEW packages will be INSTALLED:
+
+  _anaconda_depends  pkgs/main/linux-64::_anaconda_depends-2022.10-py39_2
+  comm               pkgs/main/linux-64::comm-0.1.2-py39h06a4308_0
+  contourpy          pkgs/main/linux-64::contourpy-1.0.5-py39hdb19cb5_0
+  flit-core          pkgs/main/noarch::flit-core-3.6.0-pyhd3eb1b0_0
+  notebook-shim      pkgs/main/linux-64::notebook-shim-0.2.2-py39h06a4308_0
+  tinycss2           pkgs/main/linux-64::tinycss2-1.2.1-py39h06a4308_0
+
+The following packages will be REMOVED:
+
+  anaconda-project-0.11.1-py39h06a4308_0
+  conda-pack-0.6.0-pyhd3eb1b0_0
+  lz4-3.1.3-py39h27cfd23_0
+  tinycss-0.4-pyhd3eb1b0_1002
+
+The following packages will be UPDATED:
+
+  attrs              pkgs/main/noarch::attrs-21.4.0-pyhd3e~ --> pkgs/main/linux-64::attrs-22.1.0-py39h06a4308_0
+  babel              pkgs/main/noarch::babel-2.9.1-pyhd3eb~ --> pkgs/main/linux-64::babel-2.11.0-py39h06a4308_0
+  botocore                           1.27.28-py39h06a4308_0 --> 1.27.59-py39h06a4308_0
+  ca-certificates                     2022.07.19-h06a4308_0 --> 2023.01.10-h06a4308_0
+  certifi                          2022.9.14-py39h06a4308_0 --> 2022.12.7-py39h06a4308_0
+  colorama                             0.4.5-py39h06a4308_0 --> 0.4.6-py39h06a4308_0
+  colorcet                             3.0.0-py39h06a4308_0 --> 3.0.1-py39h06a4308_0
+  cryptography                        37.0.1-py39h9ce1e76_0 --> 38.0.4-py39h9ce1e76_0
+  curl                                    7.84.0-h5eee18b_0 --> 7.87.0-h5eee18b_0
+  cytoolz                             0.11.0-py39h27cfd23_0 --> 0.12.0-py39h5eee18b_0
+  datashader                          0.14.1-py39h06a4308_0 --> 0.14.3-py39h06a4308_0
+  dill               pkgs/main/noarch::dill-0.3.4-pyhd3eb1~ --> pkgs/main/linux-64::dill-0.3.6-py39h06a4308_0
+  filelock           pkgs/main/noarch::filelock-3.6.0-pyhd~ --> pkgs/main/linux-64::filelock-3.9.0-py39h06a4308_0
+  fontconfig                              2.13.1-h6c09931_0 --> 2.14.1-h52c9d5c_1
+  freetype                                2.11.0-h70c0345_0 --> 2.12.1-h4a9f257_0
+  fsspec                            2022.7.1-py39h06a4308_0 --> 2022.11.0-py39h06a4308_0
+  gensim                               4.1.2-py39h295c915_0 --> 4.2.0-py39h6a678d5_0
+  greenlet                             1.1.1-py39h295c915_0 --> 2.0.1-py39h6a678d5_0
+  holoviews                           1.15.0-py39h06a4308_0 --> 1.15.3-py39h06a4308_0
+  hvplot                               0.8.0-py39h06a4308_0 --> 0.8.2-py39h06a4308_0
+  idna               pkgs/main/noarch::idna-3.3-pyhd3eb1b0~ --> pkgs/main/linux-64::idna-3.4-py39h06a4308_0
+  intake             pkgs/main/noarch::intake-0.6.5-pyhd3e~ --> pkgs/main/linux-64::intake-0.6.6-py39h06a4308_0
+  ipykernel                           6.15.2-py39h06a4308_0 --> 6.19.2-py39hb070fc8_0
+  joblib             pkgs/main/noarch::joblib-1.1.0-pyhd3e~ --> pkgs/main/linux-64::joblib-1.1.1-py39h06a4308_0
+  jupyter_client                       7.3.4-py39h06a4308_0 --> 7.4.8-py39h06a4308_0
+  jupyter_console    pkgs/main/noarch::jupyter_console-6.4~ --> pkgs/main/linux-64::jupyter_console-6.4.4-py39h06a4308_0
+  jupyter_core                        4.11.1-py39h06a4308_0 --> 5.1.1-py39h06a4308_0
+  jupyter_server                      1.18.1-py39h06a4308_0 --> 1.23.4-py39h06a4308_0
+  jupyterlab                           3.4.4-py39h06a4308_0 --> 3.5.2-py39h06a4308_0
+  kiwisolver                           1.4.2-py39h295c915_0 --> 1.4.4-py39h6a678d5_0
+  krb5                                    1.19.2-hac12032_0 --> 1.19.4-h568e23c_0
+  libcurl                                 7.84.0-h91b91d3_0 --> 7.87.0-h91b91d3_0
+  libedit                           3.1.20210910-h7f8727e_0 --> 3.1.20221030-h5eee18b_0
+  liblief                                 0.11.5-h295c915_1 --> 0.12.3-h6a678d5_0
+  libllvm11                               11.1.0-h9e868ea_5 --> 11.1.0-h9e868ea_6
+  libtiff                                  4.4.0-hecacb30_0 --> 4.5.0-hecacb30_0
+  libuuid                                  1.0.3-h7f8727e_2 --> 1.41.5-h5eee18b_0
+  libwebp                                  1.2.2-h55f646e_0 --> 1.2.4-h11a3e52_0
+  libwebp-base                             1.2.2-h7f8727e_0 --> 1.2.4-h5eee18b_0
+  llvmlite                            0.38.0-py39h4ff587b_0 --> 0.39.1-py39he621ea3_0
+  lz4-c                                    1.9.3-h295c915_1 --> 1.9.4-h6a678d5_0
+  markdown                             3.3.4-py39h06a4308_0 --> 3.4.1-py39h06a4308_0
+  matplotlib                           3.5.2-py39h06a4308_0 --> 3.6.2-py39h06a4308_0
+  matplotlib-base                      3.5.2-py39hf590b9c_0 --> 3.6.2-py39h945d387_0
+  nbclassic          pkgs/main/noarch::nbclassic-0.3.5-pyh~ --> pkgs/main/linux-64::nbclassic-0.4.8-py39h06a4308_0
+  nbformat                             5.5.0-py39h06a4308_0 --> 5.7.0-py39h06a4308_0
+  nest-asyncio                         1.5.5-py39h06a4308_0 --> 1.5.6-py39h06a4308_0
+  notebook                            6.4.12-py39h06a4308_0 --> 6.5.2-py39h06a4308_0
+  numba                               0.55.1-py39h51133e4_0 --> 0.56.4-py39h417a72b_0
+  numexpr                              2.8.3-py39h807cd23_0 --> 2.8.4-py39he184ba9_0
+  numpy                               1.21.5-py39h6c91a56_3 --> 1.23.5-py39h14f4228_0
+  numpy-base                          1.21.5-py39ha15fc14_3 --> 1.23.5-py39h31eccc5_0
+  numpydoc                             1.4.0-py39h06a4308_0 --> 1.5.0-py39h06a4308_0
+  openssl                                 1.1.1q-h7f8727e_0 --> 1.1.1s-h7f8727e_0
+  packaging          pkgs/main/noarch::packaging-21.3-pyhd~ --> pkgs/main/linux-64::packaging-22.0-py39h06a4308_0
+  panel                               0.13.1-py39h06a4308_0 --> 0.14.2-py39h06a4308_0
+  param              pkgs/main/noarch::param-1.12.0-pyhd3e~ --> pkgs/main/linux-64::param-1.12.3-py39h06a4308_0
+  patchelf                                  0.13-h295c915_0 --> 0.15.0-h6a678d5_0
+  pillow                               9.2.0-py39hace64e9_1 --> 9.3.0-py39hace64e9_1
+  pip                                 22.2.2-py39h06a4308_0 --> 22.3.1-py39h06a4308_0
+  pkginfo            pkgs/main/noarch::pkginfo-1.8.2-pyhd3~ --> pkgs/main/linux-64::pkginfo-1.8.3-py39h06a4308_0
+  prompt-toolkit     pkgs/main/noarch::prompt-toolkit-3.0.~ --> pkgs/main/linux-64::prompt-toolkit-3.0.36-py39h06a4308_0
+  prompt_toolkit                          3.0.20-hd3eb1b0_0 --> 3.0.36-hd3eb1b0_0
+  py-lief                             0.11.5-py39h295c915_1 --> 0.12.3-py39h6a678d5_0
+  pycosat                              0.6.3-py39h27cfd23_0 --> 0.6.4-py39h5eee18b_0
+  pytables                             3.6.1-py39h77479fe_1 --> 3.7.0-py39hf19a122_1
+  python-snappy                        0.6.0-py39h2531618_3 --> 0.6.1-py39h6a678d5_0
+  pytz                                2022.1-py39h06a4308_0 --> 2022.7-py39h06a4308_0
+  pywavelets                           1.3.0-py39h7f8727e_0 --> 1.4.1-py39h5eee18b_0
+  qstylizer          pkgs/main/noarch::qstylizer-0.1.10-py~ --> pkgs/main/linux-64::qstylizer-0.2.2-py39h06a4308_0
+  qtawesome          pkgs/main/noarch::qtawesome-1.0.3-pyh~ --> pkgs/main/linux-64::qtawesome-1.2.2-py39h06a4308_0
+  readline                                 8.1.2-h7f8727e_1 --> 8.2-h5eee18b_0
+  ruamel_yaml                       0.15.100-py39h27cfd23_0 --> 0.17.21-py39h5eee18b_0
+  scikit-image                        0.19.2-py39h51133e4_0 --> 0.19.3-py39h6a678d5_1
+  scipy                                1.9.1-py39h14f4228_0 --> 1.9.3-py39h14f4228_0
+  seaborn            pkgs/main/noarch::seaborn-0.11.2-pyhd~ --> pkgs/main/linux-64::seaborn-0.12.2-py39h06a4308_0
+  setuptools                          63.4.1-py39h06a4308_0 --> 65.6.3-py39h06a4308_0
+  soupsieve          pkgs/main/noarch::soupsieve-2.3.1-pyh~ --> pkgs/main/linux-64::soupsieve-2.3.2.post1-py39h06a4308_0
+  sqlite                                  3.39.3-h5082296_0 --> 3.40.1-h5082296_0
+  sympy                               1.10.1-py39h06a4308_0 --> 1.11.1-py39h06a4308_0
+  tbb                                   2021.6.0-hdb19cb5_0 --> 2021.6.0-hdb19cb5_1
+  tbb4py                            2021.6.0-py39hdb19cb5_0 --> 2021.6.0-py39hdb19cb5_1
+  terminado                           0.13.1-py39h06a4308_0 --> 0.17.1-py39h06a4308_0
+  toolz              pkgs/main/noarch::toolz-0.11.2-pyhd3e~ --> pkgs/main/linux-64::toolz-0.12.0-py39h06a4308_0
+  tornado                                6.1-py39h27cfd23_0 --> 6.2-py39h5eee18b_0
+  traitlets          pkgs/main/noarch::traitlets-5.1.1-pyh~ --> pkgs/main/linux-64::traitlets-5.7.1-py39h06a4308_0
+  typing-extensions                    4.3.0-py39h06a4308_0 --> 4.4.0-py39h06a4308_0
+  typing_extensions                    4.3.0-py39h06a4308_0 --> 4.4.0-py39h06a4308_0
+  tzdata                                   2022c-h04d1e81_0 --> 2022g-h04d1e81_0
+  urllib3                            1.26.11-py39h06a4308_0 --> 1.26.14-py39h06a4308_0
+  xarray             pkgs/main/noarch::xarray-0.20.1-pyhd3~ --> pkgs/main/linux-64::xarray-2022.11.0-py39h06a4308_0
+  xz                                       5.2.6-h5eee18b_0 --> 5.2.10-h5eee18b_1
+  zipp                                 3.8.0-py39h06a4308_0 --> 3.11.0-py39h06a4308_0
+  zlib                                    1.2.12-h5eee18b_3 --> 1.2.13-h5eee18b_0
+
+The following packages will be SUPERSEDED by a higher-priority channel:
+
+  dask               pkgs/main/linux-64::dask-2022.7.0-py3~ --> pkgs/main/noarch::dask-2022.2.1-pyhd3eb1b0_0
+  dask-core          pkgs/main/linux-64::dask-core-2022.7.~ --> pkgs/main/noarch::dask-core-2022.2.1-pyhd3eb1b0_0
+  distributed        pkgs/main/linux-64::distributed-2022.~ --> pkgs/main/noarch::distributed-2022.2.1-pyhd3eb1b0_0
+
+The following packages will be DOWNGRADED:
+
+  anaconda                                   2022.10-py39_0 --> custom-py39_1
+  cython                             0.29.32-py39h6a678d5_0 --> 0.29.28-py39h295c915_0
+  pyyaml                                 6.0-py39h7f8727e_1 --> 6.0-py39h5eee18b_1
+
+
+Proceed ([y]/n)? y
+
+
+Downloading and Extracting Packages
+
+Preparing transaction: done
+Verifying transaction: done
+Executing transaction: done
+(base) willem@linux-laptop:~/git/DataAnalysisWithPythonAndPySpark/code/Ch06$ conda activate dasci
+WARNING: overwriting environment variables set in the machine
+overwriting variable {'PATH', 'MY_IBAN', 'BANK_ROOT_DIR', 'JAVA_HOME', 'SPARK_HOME'}
+(dasci) willem@linux-laptop:~/git/DataAnalysisWithPythonAndPySpark/code/Ch06$ conda update --all --no-pin
+Collecting package metadata (current_repodata.json): done
+Solving environment: done
+
+## Package Plan ##
+
+  environment location: /home/willem/anaconda3/envs/dasci
+
+
+The following packages will be downloaded:
+
+    package                    |            build
+    ---------------------------|-----------------
+    comm-0.1.2                 |  py310h06a4308_0          13 KB
+    ipykernel-6.19.2           |  py310h2f386ee_0         220 KB
+    jupyter_core-5.1.1         |  py310h06a4308_0          90 KB
+    kiwisolver-1.4.4           |  py310h6a678d5_0          76 KB
+    nb_conda_kernels-2.3.1     |  py310h06a4308_0          28 KB
+    nbclassic-0.4.8            |  py310h06a4308_0         5.8 MB
+    nest-asyncio-1.5.6         |  py310h06a4308_0          14 KB
+    notebook-6.5.2             |  py310h06a4308_0         514 KB
+    numpy-1.23.5               |  py310hd5efca6_0          10 KB
+    numpy-base-1.23.5          |  py310h8e6c178_0         6.7 MB
+    pip-22.3.1                 |  py310h06a4308_0         2.8 MB
+    platformdirs-2.5.2         |  py310h06a4308_0          23 KB
+    prompt-toolkit-3.0.36      |  py310h06a4308_0         592 KB
+    python-3.10.9              |       h7a1cb2a_0        26.8 MB
+    setuptools-65.6.3          |  py310h06a4308_0         1.2 MB
+    ------------------------------------------------------------
+                                           Total:        44.8 MB
+
+The following NEW packages will be INSTALLED:
+
+  comm               pkgs/main/linux-64::comm-0.1.2-py310h06a4308_0
+  platformdirs       pkgs/main/linux-64::platformdirs-2.5.2-py310h06a4308_0
+
+The following packages will be UPDATED:
+
+  ca-certificates                     2022.10.11-h06a4308_0 --> 2023.01.10-h06a4308_0
+  ipykernel                          6.15.2-py310h06a4308_0 --> 6.19.2-py310h2f386ee_0
+  jupyter_core                       4.11.2-py310h06a4308_0 --> 5.1.1-py310h06a4308_0
+  kiwisolver                          1.4.2-py310h295c915_0 --> 1.4.4-py310h6a678d5_0
+  krb5                                    1.19.2-hac12032_0 --> 1.19.4-h568e23c_0
+  libcurl                                 7.86.0-h91b91d3_0 --> 7.87.0-h91b91d3_0
+  libtiff                                  4.4.0-hecacb30_2 --> 4.5.0-hecacb30_0
+  nbclassic          conda-forge/noarch::nbclassic-0.4.5-p~ --> pkgs/main/linux-64::nbclassic-0.4.8-py310h06a4308_0
+  nest-asyncio                        1.5.5-py310h06a4308_0 --> 1.5.6-py310h06a4308_0
+  notebook           conda-forge/noarch::notebook-6.5.1-py~ --> pkgs/main/linux-64::notebook-6.5.2-py310h06a4308_0
+  numpy                              1.23.4-py310hd5efca6_0 --> 1.23.5-py310hd5efca6_0
+  numpy-base                         1.23.4-py310h8e6c178_0 --> 1.23.5-py310h8e6c178_0
+  pip                                22.2.2-py310h06a4308_0 --> 22.3.1-py310h06a4308_0
+  prompt-toolkit     pkgs/main/noarch::prompt-toolkit-3.0.~ --> pkgs/main/linux-64::prompt-toolkit-3.0.36-py310h06a4308_0
+  python                                  3.10.8-h7a1cb2a_1 --> 3.10.9-h7a1cb2a_0
+  setuptools                         65.5.0-py310h06a4308_0 --> 65.6.3-py310h06a4308_0
+  sqlite                                  3.40.0-h5082296_0 --> 3.40.1-h5082296_0
+  xz                                       5.2.8-h5eee18b_0 --> 5.2.10-h5eee18b_1
+
+The following packages will be SUPERSEDED by a higher-priority channel:
+
+  nb_conda_kernels   conda-forge::nb_conda_kernels-2.3.1-p~ --> pkgs/main::nb_conda_kernels-2.3.1-py310h06a4308_0
+
+
+Proceed ([y]/n)? y
+
+
+Downloading and Extracting Packages
+
+Preparing transaction: done
+Verifying transaction: done
+Executing transaction: - Disabling nb_conda_kernels...
+CONDA_PREFIX: /home/willem/anaconda3/envs/dasci
+Status: disabled
+                                                                                                                                                                                                                                      - Enabling nb_conda_kernels...
+CONDA_PREFIX: /home/willem/anaconda3/envs/dasci
+Status: enabled
+                                                                                                                                                                                                                                      done
+(dasci) willem@linux-laptop:~/git/DataAnalysisWithPythonAndPySpark/code/Ch06$ conda activate dasci
+(dasci) willem@linux-laptop:~/git/DataAnalysisWithPythonAndPySpark/code/Ch06$ conda env export --no-builds >> dasci_environment_20230123_updated_linux-laptop.yml
+(dasci) willem@linux-laptop:~/git/DataAnalysisWithPythonAndPySpark/code/Ch06$ conda env export --no-builds >> ../../dasci_environment_20230123_updated_linux-laptop.yml
+(dasci) willem@linux-laptop:~/git/DataAnalysisWithPythonAndPySpark/code/Ch06$ conda update --all --no-pin
+Collecting package metadata (current_repodata.json): done
+Solving environment: done
+
+# All requested packages already installed.
+
+(dasci) willem@linux-laptop:~/git/DataAnalysisWithPythonAndPySpark/code/Ch06$
+
+

@@ -1,0 +1,180 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "episodes": {
+      "type": "array",
+      "items": [
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer"
+            },
+            "url": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            },
+            "season": {
+              "type": "integer"
+            },
+            "number": {
+              "type": "integer"
+            },
+            "airdate": {
+              "type": "string"
+            },
+            "airtime": {
+              "type": "string"
+            },
+            "airstamp": {
+              "type": "string"
+            },
+            "runtime": {
+              "type": "integer"
+            },
+            "image": {
+              "type": "object",
+              "properties": {
+                "medium": {
+                  "type": "string"
+                },
+                "original": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "medium",
+                "original"
+              ]
+            },
+            "summary": {
+              "type": "string"
+            },
+            "_links": {
+              "type": "object",
+              "properties": {
+                "self": {
+                  "type": "object",
+                  "properties": {
+                    "href": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "href"
+                  ]
+                }
+              },
+              "required": [
+                "self"
+              ]
+            }
+          },
+          "required": [
+            "id",
+            "url",
+            "name",
+            "season",
+            "number",
+            "airdate",
+            "airtime",
+            "airstamp",
+            "runtime",
+            "image",
+            "summary",
+            "_links"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer"
+            },
+            "url": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            },
+            "season": {
+              "type": "integer"
+            },
+            "number": {
+              "type": "integer"
+            },
+            "airdate": {
+              "type": "string"
+            },
+            "airtime": {
+              "type": "string"
+            },
+            "airstamp": {
+              "type": "string"
+            },
+            "runtime": {
+              "type": "integer"
+            },
+            "image": {
+              "type": "object",
+              "properties": {
+                "medium": {
+                  "type": "string"
+                },
+                "original": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "medium",
+                "original"
+              ]
+            },
+            "summary": {
+              "type": "string"
+            },
+            "_links": {
+              "type": "object",
+              "properties": {
+                "self": {
+                  "type": "object",
+                  "properties": {
+                    "href": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "href"
+                  ]
+                }
+              },
+              "required": [
+                "self"
+              ]
+            }
+          },
+          "required": [
+            "id",
+            "url",
+            "name",
+            "season",
+            "number",
+            "airdate",
+            "airtime",
+            "airstamp",
+            "runtime",
+            "image",
+            "summary",
+            "_links"
+          ]
+        }
+      ]
+    }
+  },
+  "required": [
+    "episodes"
+  ]
+}

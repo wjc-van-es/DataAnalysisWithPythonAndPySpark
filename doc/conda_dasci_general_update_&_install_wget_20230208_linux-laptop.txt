@@ -1,0 +1,292 @@
+WARNING: overwriting environment variables set in the machine
+overwriting variable {'JAVA_HOME', 'PATH', 'SPARK_HOME'}
+(dasci) willem@linux-laptop:~/git/DataAnalysisWithPythonAndPySpark/code/Ch06$ history | grep conda
+  631  conda list | grep jupyter
+  637  conda list
+  645  cd resources/SoftwareInstall/anaconda/
+  647  chmod 744 Anaconda3-2022.10-Linux-x86_64.sh
+  649  sha256sum Anaconda3-2022.10-Linux-x86_64.sh
+  650  bash ./Anaconda3-2022.10-Linux-x86_64.sh
+  651  conda config --set auto_activate_base false
+  653  conda config --set auto_activate_base false
+  654  conda deactivate
+  655  cat ~/.bashrc | grep conda
+  657  conda activate base
+  658  conda list
+  661  conda deactivate
+  666  cd ~/anaconda3/envs/
+  681  conda activate dasci
+  684  conda env export > environment-dasci-linux-laptop-exported-after-matplotlib.yml
+  686  conda env export > environment-base-exported.yml
+  687  conda create --name dasci python
+  688  conda deactivate
+  689  conda activate dasci
+  690  conda env export > environment-dasci-exported-fresh.yml
+  691  conda install -n dasci pyspark
+  692  conda env export > environment-dasci-linux-laptop-exported-after-pyspark.yml
+  693  conda install -n dasci -c conda-forge notebook
+  694  conda env export > environment-dasci-linux-laptop-exported-after-notebook.yml
+  695  conda install -n dasci -c conda-forge nb_conda_kernels
+  696  conda env export > environment-dasci-linux-laptop-exported-after-nb_conda_kernels.yml
+  697  conda install -n dasci -c conda-forge jupyter_contrib_nbextensions
+  698  conda env export > environment-dasci-linux-laptop-exported-after-jupyter_contrib_nbextensions.yml
+  699  conda install -n dasci pip
+  700  conda env export > environment-dasci-linux-laptop-exported-after-pip.yml
+  703  conda env config vars set BANK_ROOT_DIR="/home/willem/Documents/zakelijk/financieel/ING/transacties/"
+  704  conda activate dasci
+  706  conda env config vars set MY_IBAN="NL79INGB0004951418"
+  707  conda activate dasci
+  714  conda activate dasci
+  734  conda list -n dasci >> dasci_environment_20221223.yml
+  735  conda env export
+  736  conda env export >> dasci_environment_20221223.yml
+  739  conda activate dasci
+  742  conda activate dasci
+  743  conda env config vars list
+  745  conda env config vars list
+  746  conda activate dasci
+  747  conda env config vars list
+  750  conda env config vars list
+  752  conda activate dasci
+  753  conda env config vars list
+  755  conda activate dasci
+  756  conda env config vars list
+  758  conda activate dasci
+  759  conda env config vars list
+  760  conda activate dasci
+  761  conda env config vars list
+  763  conda env config vars list
+  764  conda env config vars set JAVA_HOME=/home/willem/.sdkman/candidates/java/current
+  765  conda activate dasci
+  766  conda env config vars list
+  767  conda env config vars set JAVA_HOME=/home/willem/.sdkman/candidates/java/current
+  768  conda activate dasci
+  769  conda env config vars list
+  770  conda env config vars set SPARK_HOME=/home/willem/.sdkman/candidates/home/willem/.sdkman/candidates/spark/3.3.1
+  771  conda activate dasci
+  772  conda env config vars list
+  773  conda env config vars set PATH=$PATH:/home/willem/.sdkman/candidates/home/willem/.sdkman/candidates/spark/3.3.1/bin
+  774  conda activate dasci
+  775  conda env config vars unset my_var -n test-env
+  776  conda env config vars set PATH=/home/willem/anaconda3/envs/dasci/bin:/home/willem/anaconda3/condabin:/home/willem/.sdkman/candidates/java/current/bin:/home/willem/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/willem/.local/share/JetBrains/Toolbox/scripts
+  777  conda activate dasci
+  778  conda env config vars list
+  779  conda env config vars set SPARK_HOME=/home/willem/.sdkman/candidates/spark/3.3.1
+  780  conda activate dasci
+  781  conda env config vars set PATH=$PATH:/home/willem/.sdkman/candidates/spark/3.3.1/bin
+  782  conda activate dasci
+  783  conda env config vars list
+  784  conda env config vars set PATH=/home/willem/.sdkman/candidates/spark/3.3.1/bin:/home/willem/anaconda3/envs/dasci/bin:/home/willem/anaconda3/condabin:/home/willem/.sdkman/candidates/java/current/bin:/home/willem/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/willem/.local/share/JetBrains/Toolbox/scripts
+  785  conda activate dasci
+  786  conda env config vars list
+  790  conda update -n base -c defaults conda
+  815  conda activate dasci
+  816  conda list -n dasci
+  817  conda update -n dasci -c defaults conda
+  818  conda update -n dasci -c defaults conda-forge
+  819  conda update
+  820  conda update -n dasci python
+  821  conda update -n dasci pyspark
+  822  conda update -n dasci matplotlib
+  855  conda activate base
+  856  conda update conda
+  857  conda update anaconda
+  858  conda activate dasci
+  859  conda update --all --no-pin
+  860  conda activate dasci
+  861  conda env export --no-builds >> dasci_environment_20230123_updated_linux-laptop.yml
+  862  conda env export --no-builds >> ../../dasci_environment_20230123_updated_linux-laptop.yml
+  863  conda update --all --no-pin
+  865  conda env config vars list
+  867  conda env config vars list
+  868  history | grep conda
+(dasci) willem@linux-laptop:~/git/DataAnalysisWithPythonAndPySpark/code/Ch06$ conda update anaconda
+Retrieving notices: ...working... done
+
+PackageNotInstalledError: Package is not installed in prefix.
+  prefix: /home/willem/anaconda3/envs/dasci
+  package name: anaconda
+
+
+(dasci) willem@linux-laptop:~/git/DataAnalysisWithPythonAndPySpark/code/Ch06$ conda activate base
+WARNING: overwriting environment variables set in the machine
+overwriting variable {'JAVA_HOME'}
+(base) willem@linux-laptop:~/git/DataAnalysisWithPythonAndPySpark/code/Ch06$ conda update anaconda
+Collecting package metadata (current_repodata.json): done
+Solving environment: done
+
+## Package Plan ##
+
+  environment location: /home/willem/anaconda3
+
+  added / updated specs:
+    - anaconda
+
+
+The following packages will be downloaded:
+
+    package                    |            build
+    ---------------------------|-----------------
+    arrow-1.2.3                |   py39h06a4308_0         143 KB
+    blosc-1.21.3               |       h6a678d5_0          63 KB
+    cfitsio-3.470              |       hf0d0db6_6         814 KB
+    conda-23.1.0               |   py39h06a4308_0         942 KB
+    gensim-4.3.0               |   py39h6a678d5_0        21.8 MB
+    giflib-5.2.1               |       h5eee18b_1          75 KB
+    hdf5-1.10.6                |       hb1b8bf9_0         3.7 MB
+    jupyterlab-3.5.3           |   py39h06a4308_0         4.4 MB
+    libarchive-3.6.2           |       hab531cd_0         892 KB
+    libgfortran-ng-7.5.0       |      ha8ba4b0_17          22 KB
+    libgfortran4-7.5.0         |      ha8ba4b0_17         995 KB
+    libtiff-4.5.0              |       h6a678d5_1         524 KB
+    mpich-3.3.2                |       hc856adb_0         3.8 MB
+    ncurses-6.4                |       h6a678d5_0         914 KB
+    patchelf-0.17.2            |       h6a678d5_0          98 KB
+    pathspec-0.10.3            |   py39h06a4308_0          48 KB
+    patsy-0.5.3                |   py39h06a4308_0         282 KB
+    pillow-9.3.0               |   py39h6a678d5_2         732 KB
+    pyct-0.5.0                 |   py39h06a4308_0          30 KB
+    pydocstyle-6.3.0           |   py39h06a4308_0          71 KB
+    rtree-1.0.1                |   py39h06a4308_0          49 KB
+    scipy-1.7.3                |   py39hc147768_0        16.9 MB
+    statsmodels-0.13.5         |   py39h7deecbd_0        10.2 MB
+    ------------------------------------------------------------
+                                           Total:        67.3 MB
+
+The following NEW packages will be INSTALLED:
+
+  libgfortran4       pkgs/main/linux-64::libgfortran4-7.5.0-ha8ba4b0_17
+
+The following packages will be REMOVED:
+
+  fftw-3.3.9-h27cfd23_1
+  libgfortran5-11.2.0-h1234567_1
+
+The following packages will be UPDATED:
+
+  arrow              pkgs/main/noarch::arrow-1.2.2-pyhd3eb~ --> pkgs/main/linux-64::arrow-1.2.3-py39h06a4308_0
+  blosc                                   1.21.0-h4ff587b_1 --> 1.21.3-h6a678d5_0
+  conda                              22.11.1-py39h06a4308_4 --> 23.1.0-py39h06a4308_0
+  cython                             0.29.28-py39h295c915_0 --> 0.29.32-py39h6a678d5_0
+  gensim                               4.2.0-py39h6a678d5_0 --> 4.3.0-py39h6a678d5_0
+  giflib                                   5.2.1-h7b6447c_0 --> 5.2.1-h5eee18b_1
+  jupyterlab                           3.5.2-py39h06a4308_0 --> 3.5.3-py39h06a4308_0
+  libarchive                               3.6.1-hab531cd_0 --> 3.6.2-hab531cd_0
+  libtiff                                  4.5.0-hecacb30_0 --> 4.5.0-h6a678d5_1
+  ncurses                                    6.3-h5eee18b_3 --> 6.4-h6a678d5_0
+  patchelf                                0.15.0-h6a678d5_0 --> 0.17.2-h6a678d5_0
+  pathspec                             0.9.0-py39h06a4308_0 --> 0.10.3-py39h06a4308_0
+  patsy                                0.5.2-py39h06a4308_1 --> 0.5.3-py39h06a4308_0
+  pillow                               9.3.0-py39hace64e9_1 --> 9.3.0-py39h6a678d5_2
+  pyct                                 0.4.8-py39h06a4308_1 --> 0.5.0-py39h06a4308_0
+  pydocstyle         pkgs/main/noarch::pydocstyle-6.1.1-py~ --> pkgs/main/linux-64::pydocstyle-6.3.0-py39h06a4308_0
+  rtree                                0.9.7-py39h06a4308_1 --> 1.0.1-py39h06a4308_0
+  statsmodels                         0.13.2-py39h7f8727e_0 --> 0.13.5-py39h7deecbd_0
+
+The following packages will be DOWNGRADED:
+
+  cfitsio                                  3.470-h5893167_7 --> 3.470-hf0d0db6_6
+  hdf5                                    1.10.6-h3ffc7dd_1 --> 1.10.6-hb1b8bf9_0
+  libgfortran-ng                          11.2.0-h00389a5_1 --> 7.5.0-ha8ba4b0_17
+  mpich                                    3.3.2-external_0 --> 3.3.2-hc856adb_0
+  numpy                               1.23.5-py39h14f4228_0 --> 1.21.5-py39h6c91a56_3
+  numpy-base                          1.23.5-py39h31eccc5_0 --> 1.21.5-py39ha15fc14_3
+  scipy                                1.9.3-py39h14f4228_0 --> 1.7.3-py39hc147768_0
+
+
+Proceed ([y]/n)? y
+
+
+Downloading and Extracting Packages
+
+Preparing transaction: done
+Verifying transaction: done
+Executing transaction: done
+(base) willem@linux-laptop:~/git/DataAnalysisWithPythonAndPySpark/code/Ch06$ conda update conda
+Collecting package metadata (current_repodata.json): done
+Solving environment: done
+
+# All requested packages already installed.
+
+(base) willem@linux-laptop:~/git/DataAnalysisWithPythonAndPySpark/code/Ch06$ conda activate dasci
+WARNING: overwriting environment variables set in the machine
+overwriting variable {'PATH'}
+(dasci) willem@linux-laptop:~/git/DataAnalysisWithPythonAndPySpark/code/Ch06$ conda update conda
+
+PackageNotInstalledError: Package is not installed in prefix.
+  prefix: /home/willem/anaconda3/envs/dasci
+  package name: conda
+
+
+(dasci) willem@linux-laptop:~/git/DataAnalysisWithPythonAndPySpark/code/Ch06$ conda update --all --no-pin
+Collecting package metadata (current_repodata.json): done
+Solving environment: done
+
+## Package Plan ##
+
+  environment location: /home/willem/anaconda3/envs/dasci
+
+
+The following packages will be downloaded:
+
+    package                    |            build
+    ---------------------------|-----------------
+    grpc-cpp-1.46.1            |       h33aed49_1         4.2 MB
+    ipython-8.8.0              |  py310h06a4308_0         1.1 MB
+    libprotobuf-3.20.3         |       he621ea3_0         2.4 MB
+    pillow-9.3.0               |  py310h6a678d5_2         736 KB
+    ------------------------------------------------------------
+                                           Total:         8.4 MB
+
+The following packages will be UPDATED:
+
+  giflib                                   5.2.1-h7b6447c_0 --> 5.2.1-h5eee18b_1
+  grpc-cpp                                1.46.1-h33aed49_0 --> 1.46.1-h33aed49_1
+  ipython                             8.7.0-py310h06a4308_0 --> 8.8.0-py310h06a4308_0
+  libprotobuf                             3.20.1-h4ff587b_0 --> 3.20.3-he621ea3_0
+  libtiff                                  4.5.0-hecacb30_0 --> 4.5.0-h6a678d5_1
+  ncurses                                    6.3-h5eee18b_3 --> 6.4-h6a678d5_0
+  pillow                              9.3.0-py310hace64e9_1 --> 9.3.0-py310h6a678d5_2
+
+
+Proceed ([y]/n)? y
+
+
+Downloading and Extracting Packages
+
+Preparing transaction: done
+Verifying transaction: done
+Executing transaction: done
+(dasci) willem@linux-laptop:~/git/DataAnalysisWithPythonAndPySpark/code/Ch06$ conda env export > environment-dasci-20230207_update_--all.yml
+(dasci) willem@linux-laptop:~/git/DataAnalysisWithPythonAndPySpark/code/Ch06$ conda install -n dasci wget
+Collecting package metadata (current_repodata.json): done
+Solving environment: done
+
+## Package Plan ##
+
+  environment location: /home/willem/anaconda3/envs/dasci
+
+  added / updated specs:
+    - wget
+
+
+The following NEW packages will be INSTALLED:
+
+  libidn2            pkgs/main/linux-64::libidn2-2.3.2-h7f8727e_0
+  libunistring       pkgs/main/linux-64::libunistring-0.9.10-h27cfd23_0
+  wget               pkgs/main/linux-64::wget-1.21.3-h0b77cf5_0
+
+
+Proceed ([y]/n)? y
+
+
+Downloading and Extracting Packages
+
+Preparing transaction: done
+Verifying transaction: done
+Executing transaction: done
+(dasci) willem@linux-laptop:~/git/DataAnalysisWithPythonAndPySpark/code/Ch06$ conda env export > environment-dasci-20230207_install_wget.yml
+(dasci) willem@linux-laptop:~/git/DataAnalysisWithPythonAndPySpark/code/Ch06$ cd ../..
+(dasci) willem@linux-laptop:~/git/DataAnalysisWithPythonAndPySpark$ conda env export --no-builds  > environment-dasci-20230207_install_wget_linux-laptop.yml
+(dasci) willem@linux-laptop:~/git/DataAnalysisWithPythonAndPySpark$
+

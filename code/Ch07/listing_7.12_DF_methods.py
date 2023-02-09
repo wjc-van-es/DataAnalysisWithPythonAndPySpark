@@ -72,6 +72,7 @@ data = [
     spark.read.csv(os.path.join(data_dir, file), header=True, schema=schema, mode='PERMISSIVE')
     for file in all_files
 ]
+
 # the last file, 2019-12-31.csv, represents the 365th day of the year, which has a 0-based index of 364.
 # data[364].printSchema()
 # data[364].show(5, truncate=False)
@@ -83,30 +84,108 @@ data = [
 # source: https://walkenho.github.io/merging-multiple-dataframes-in-pyspark/
 merged_df = reduce(DataFrame.unionAll, data).dropna()
 
-# The actual listing 7.8 combined with listing 7.9
-# In SQL syntax
-merged_df.createOrReplaceTempView("backblaze_stats_2019")
+# or use PySpark's DataFrame methods to do the same
+drive_days = merged_df.groupby(F.col("model")).agg(
+    F.count(F.col("*")).alias("drive_days")
+)
 
-spark.sql(
-    '''
-    select
-        model,
-        min(capacity_bytes / pow(1024, 3)) min_GB,
-        max(capacity_bytes/ pow(1024, 3)) max_GB
-    from backblaze_stats_2019
-    group by 1
-    having min_GB != max_GB
-    order by 3 desc
-    '''
-).show(5, truncate=False)
+# or use PySpark's DataFrame methods to do the same
+failures = (
+    merged_df.where(F.col("failure") == 1)
+    .groupby(F.col("model"))
+    .agg(F.count(F.col("*")).alias("failures"))
+)
 
-# or the same in PySpark DataFrame method syntax
+# alternative using the methods from PySpark's DataFrame object
+joined = drive_days.join(failures, on="model", how="left")
+joined.show(5, truncate=False)
+
 # merged_df.groupby(F.col("model")).agg(
 #     F.min(F.col("capacity_bytes") / F.pow(F.lit(1024), 3)).alias("min_GB"),
 #     F.max(F.col("capacity_bytes") / F.pow(F.lit(1024), 3)).alias("max_GB"),
 # ).where(F.col("min_GB") != F.col("max_GB")).orderBy(F.col("max_GB"), ascending=False).show(5)
 # merged_df.show(truncate=False)
 
+# common_columns = list(
+#     reduce(lambda x, y: x.intersection(y), [set(df.columns) for df in data])
+# )
+#
+# assert set(["model", "capacity_bytes", "date", "failure"]).issubset(
+#     set(common_columns)
+# )
+#
+# full_data = reduce(
+#     lambda x, y: x.select(common_columns).union(y.select(common_columns)), data
+# )
+# # end::ch07-code-final-ingestion[]
+#
+# # tag::ch07-code-final-processing[]
+# full_data = full_data.selectExpr(
+#     "model", "capacity_bytes / pow(1024, 3) capacity_GB", "date", "failure"
+# )
+# full_data.printSchema()
+# full_data.createOrReplaceTempView("full_data")
+# try:
+#     spark.sql(
+#         '''
+#         select model
+#         from full_data
+#         where failure = 1
+#         '''
+#     ).show(5)
+# except AnalysisException as e:
+#     print(e)
+#
+# drive_days = full_data.groupby("model", "capacity_GB").agg(
+#     F.count("*").alias("drive_days")
+# )
+#
+# failures = (
+#     full_data.where("failure = 1")
+#     .groupby("model", "capacity_GB")
+#     .agg(F.count("*").alias("failures"))
+# )
+#
+# failures.printSchema()
+# failures.show()
+#
+# summarized_data = (
+#     drive_days.join(failures, on=["model", "capacity_GB"], how="left")
+#     .fillna(0.0, ["failures"])
+#     .selectExpr("model", "capacity_GB", "failures / drive_days failure_rate")
+#     .cache()
+# )
+#
+# summarized_data.printSchema()
+# summarized_data.show()
+# # end::ch07-code-final-processing[]
+#
+#
+# # tag::ch07-code-final-function[]
+#
+#
+# def most_reliable_drive_for_capacity(data, capacity_GB=2048, precision=0.25, top_n=3):
+#     """Returns the top 3 drives for a given approximate capacity.
+#
+#     Given a capacity in GB and a precision as a decimal number, we keep the N
+#     drives where:
+#
+#     - the capacity is between (capacity * 1/(1+precision)), capacity * (1+precision)
+#     - the failure rate is the lowest
+#
+#     """
+#     capacity_min = capacity_GB / (1 + precision)
+#     capacity_max = capacity_GB * (1 + precision)
+#
+#     answer = (
+#         data.where(f"capacity_GB between {capacity_min} and {capacity_max}")  # <1>
+#         .orderBy("failure_rate", "capacity_GB", ascending=[True, False])
+#         .limit(top_n)  # <2>
+#     )
+#
+#     return answer
+# end::ch07-code-final-function[]
+# most_reliable_drive_for_capacity(full_data)
 
 if __name__ == "__main__":
     pass

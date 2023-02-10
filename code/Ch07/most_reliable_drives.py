@@ -11,25 +11,46 @@
 #
 ###############################################################################
 # tag::ch07-code-final-ingestion[]
+from pyspark.sql.utils import AnalysisException
+from dateutil import rrule
+from datetime import datetime
 from functools import reduce
-
+import os
+import pprint
 import pyspark.sql.functions as F
 from pyspark.sql import SparkSession
 
 spark = SparkSession.builder.getOrCreate()
 
-DATA_DIRECTORY = "../../data/Ch07/"
+data_dir = "../../data/Ch07/"
 
-DATA_FILES = [
-    "drive_stats_2019_Q1",
-    "data_Q2_2019",
-    "data_Q3_2019",
-    "data_Q4_2019",
-]
+
+start_date = '2019-01-01'
+end_date = '2019-01-31'
+# loading the whole year gives stack overflow
+# end_date = '2019-12-31'
+
+
+# list comprehension based on
+# https://stackoverflow.com/questions/11317378/how-to-get-all-dates-month-day-and-year-between-two-dates-in-python
+# to get a list of strings representing all file names, one for each day of the year 2019
+all_files = [f"{dt.strftime('%Y-%m-%d')}.csv" for dt in rrule.rrule(rrule.DAILY,
+                                                                    dtstart=datetime.strptime(start_date, '%Y-%m-%d'),
+                                                                    until=datetime.strptime(end_date, '%Y-%m-%d'))]
+
+pprint.pprint(all_files)
+
+# DATA_FILES = [
+#     "drive_stats_2019_Q1",
+#     "data_Q2_2019",
+#     "data_Q3_2019",
+#     "data_Q4_2019",
+# ]
+#
 
 data = [
-    spark.read.csv(DATA_DIRECTORY + file, header=True, inferSchema=True)
-    for file in DATA_FILES
+    spark.read.csv(os.path.join(data_dir, file), header=True, inferSchema=True)
+    for file in all_files
 ]
 
 common_columns = list(
@@ -49,6 +70,18 @@ full_data = reduce(
 full_data = full_data.selectExpr(
     "model", "capacity_bytes / pow(1024, 3) capacity_GB", "date", "failure"
 )
+full_data.printSchema()
+full_data.createOrReplaceTempView("full_data")
+try:
+    spark.sql(
+        '''
+        select model
+        from full_data 
+        where failure = 1
+        '''
+    ).show(5)
+except AnalysisException as e:
+    print(e)
 
 drive_days = full_data.groupby("model", "capacity_GB").agg(
     F.count("*").alias("drive_days")
@@ -60,16 +93,23 @@ failures = (
     .agg(F.count("*").alias("failures"))
 )
 
+failures.printSchema()
+failures.show()
+
 summarized_data = (
     drive_days.join(failures, on=["model", "capacity_GB"], how="left")
     .fillna(0.0, ["failures"])
     .selectExpr("model", "capacity_GB", "failures / drive_days failure_rate")
     .cache()
 )
+
+summarized_data.printSchema()
+summarized_data.show()
 # end::ch07-code-final-processing[]
 
 
 # tag::ch07-code-final-function[]
+
 
 def most_reliable_drive_for_capacity(data, capacity_GB=2048, precision=0.25, top_n=3):
     """Returns the top 3 drives for a given approximate capacity.
@@ -92,7 +132,7 @@ def most_reliable_drive_for_capacity(data, capacity_GB=2048, precision=0.25, top
 
     return answer
 # end::ch07-code-final-function[]
-
+# most_reliable_drive_for_capacity(full_data)
 
 if __name__ == "__main__":
     pass

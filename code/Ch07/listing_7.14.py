@@ -72,7 +72,6 @@ data = [
     spark.read.csv(os.path.join(data_dir, file), header=True, schema=schema, mode='PERMISSIVE')
     for file in all_files
 ]
-
 # the last file, 2019-12-31.csv, represents the 365th day of the year, which has a 0-based index of 364.
 # data[364].printSchema()
 # data[364].show(5, truncate=False)
@@ -84,20 +83,46 @@ data = [
 # source: https://walkenho.github.io/merging-multiple-dataframes-in-pyspark/
 merged_df = reduce(DataFrame.unionAll, data).dropna()
 
-# or use PySpark's DataFrame methods to do the same
-drive_days = merged_df.groupby(F.col("model")).agg(
-    F.count(F.col("*")).alias("drive_days")
+# The actual listing 7.8 combined with listing 7.9
+# The SQL way takes pretty long
+merged_df.createOrReplaceTempView("backblaze_stats_2019")
+
+
+print("""
+      List tables in catalog after executing a SQL statements:
+       We expect now only expect backblaze_stats_2019 that was
+       created with the DataFrame's createOrReplaceTempView() method.
+      """)
+pprint.pprint(spark.catalog.listTables('default'))
+
+# Example of two common table expressions or CTE using the WITH keyword to define temporary tables, whose aliases can be
+# targeted in the following query and that will be dropped after query execution has finished.
+joined = spark.sql(
+    """
+    WITH drive_days AS (
+        SELECT 
+            model, 
+            count(*) AS drive_days
+        FROM backblaze_stats_2019
+        GROUP BY model),
+    failures AS (
+        SELECT 
+            model, 
+            count(*) AS failures
+        FROM backblaze_stats_2019
+        WHERE failure = 1
+        GROUP BY model)
+    
+    select
+        drive_days.model,
+        drive_days,
+        failures
+    from drive_days
+    left join failures
+    on drive_days.model = failures.model
+    """
 )
 
-# or use PySpark's DataFrame methods to do the same
-failures = (
-    merged_df.where(F.col("failure") == 1)
-    .groupby(F.col("model"))
-    .agg(F.count(F.col("*")).alias("failures"))
-)
-
-# alternative using the methods from PySpark's DataFrame object
-joined = drive_days.join(failures, on="model", how="left")
 joined.show(5, truncate=False)
 
 if __name__ == "__main__":

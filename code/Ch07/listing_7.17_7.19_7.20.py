@@ -81,33 +81,59 @@ data = [
 # merging all 365 dataframes in the list data with functools reduce and DataFrame.unionAll, provided all dataframes
 # share the same schema and have the columns in the same order
 # source: https://walkenho.github.io/merging-multiple-dataframes-in-pyspark/
-# documentation of the reduce function see: https://docs.python.org/3/library/functools.html#functools.reduce
 merged_df = reduce(DataFrame.unionAll, data).dropna()
 
-# The actual listing 7.8 combined with listing 7.9
-# In SQL syntax
-merged_df.createOrReplaceTempView("backblaze_stats_2019")
 
-spark.sql(
-    '''
-    select
-        model,
-        min(capacity_bytes / pow(1024, 3)) min_GB,
-        max(capacity_bytes/ pow(1024, 3)) max_GB
-    from backblaze_stats_2019
-    group by 1
-    having min_GB != max_GB
-    order by 3 desc
-    '''
-).show(5, truncate=False)
+def failure_rate(drive_stats):
+    # selecting necessary columns and converting capacity in GB units
+    # the selectExpr method accepts SQL operators and functions for the conversion of the capacity unit
+    full_data = drive_stats.selectExpr('model', 'capacity_bytes / pow(1024, 3) capacity_GB', 'date', 'failure')
 
-# or the same in PySpark DataFrame method syntax
-# merged_df.groupby(F.col("model")).agg(
-#     F.min(F.col("capacity_bytes") / F.pow(F.lit(1024), 3)).alias("min_GB"),
-#     F.max(F.col("capacity_bytes") / F.pow(F.lit(1024), 3)).alias("max_GB"),
-# ).where(F.col("min_GB") != F.col("max_GB")).orderBy(F.col("max_GB"), ascending=False).show(5)
-# merged_df.show(truncate=False)
+    drive_days = full_data.groupby(F.col('model'), F.col('capacity_GB')).agg(
+        F.count(F.col('*')).alias('drive_days')
+    )
 
+    failures = (
+        full_data.where(F.col('failure') == 1)
+        .groupby(F.col('model'), F.col('capacity_GB'))
+        .agg(F.count(F.col('*')).alias('failures'))
+    )
+
+    summarized_data = (
+        drive_days.join(failures, on=['model', 'capacity_GB'], how='left')
+        .fillna(0.0, ['failures'])
+        .selectExpr('model', 'capacity_GB', 'failures / drive_days as failure_rate')
+        .cache()
+    )
+    return summarized_data
+
+
+def most_reliable_drive_for_capacity(failure_rate_df, capacity_GB=2048, precision=0.25, top_n=3):
+    """Returns the top 3 drives for a given approximate capacity.
+
+    Given a capacity in GB and a precision as a decimal number, we keep the N
+    drives where:
+
+    - the capacity is between (capacity * 1/(1+precision)), capacity * (1+precision)
+    - the failure rate is the lowest
+
+    """
+    capacity_min = capacity_GB / (1 + precision)
+    capacity_max = capacity_GB * (1 + precision)
+
+    answer = (
+        failure_rate_df.where(f"capacity_GB between {capacity_min} and {capacity_max}")  # <1>
+        .orderBy("failure_rate", "capacity_GB", ascending=[True, False])
+        .limit(top_n)  # <2>
+    )
+
+    return answer
+# end::ch07-code-final-function[]
+
+
+results = most_reliable_drive_for_capacity(failure_rate(merged_df), capacity_GB=11176.0)
+results.show(truncate=False)
+results.coalesce(1).write.csv("./most_reliable_drives_11176GB.csv")
 
 if __name__ == "__main__":
     pass

@@ -200,9 +200,10 @@ dependencies:
       - pyqt5-sip==12.11.0
 variables:
   BANK_ROOT_DIR: /xxx/xxxx/xxx/
-  JAVA_HOME: /home/willem/.sdkman/candidates/java/current
+  JAVA_HOME: $SDKMAN_CANDIDATES_DIR/java/current
   MY_IBAN: NLXXINGB000XXXXXXX
-  SPARK_HOME: /home/willem/.sdkman/candidates/spark/current
-  PATH: $JAVA_HOME/bin:/home/willem/anaconda3/envs/dasci/bin:/home/willem/anaconda3/condabin:$SPARK_HOME/bin:/home/willem/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/willem/.local/share/JetBrains/Toolbox/scripts
+  SPARK_HOME: $SDKMAN_CANDIDATES_DIR/spark/current
+  # PATH: $JAVA_HOME/bin:/home/willem/anaconda3/envs/dasci/bin:/home/willem/anaconda3/condabin:$SPARK_HOME/bin:/home/willem/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/willem/.local/share/JetBrains/Toolbox/scripts
+  PATH: /home/willem/anaconda3/envs/dasci/bin:/home/willem/anaconda3/condabin:$JAVA_HOME/bin:$SPARK_HOME/bin:/home/willem/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/willem/.local/share/JetBrains/Toolbox/scripts
 
   prefix: /home/willem/anaconda3/envs/dasci

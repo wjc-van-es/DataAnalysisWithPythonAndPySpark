@@ -1,0 +1,51 @@
+
+
+we basically repeated https://github.com/wjc-van-es/da-pyspark-examples/blob/master/readme.md
+Based on https://towardsdatascience.com/how-to-set-up-anaconda-and-jupyter-notebook-the-right-way-de3b7623ea4a
+However, we skipped conda install -n dasci pip for the time being.
+We can always add this when it becomes necessary.
+
+/home/willem/Documents/sysAdmin-Ubuntu-willem-Latitude-5590/Python/ds311-env-creation_session.txt contains the session
+
+Testing revealed that in ds311 environment the JAVA_HOME and SPARK_HOME as established by SDKman are available
+and their corresponding bin/ dirs are present in the PATH variable.
+
+Testing with code/Ch07/more_periodic_table.py and with the jupyter notebook analysing multiple years of bank statements
+both work.
+
+The main difference with the @linux-laptop dasci environment was that in that conda environment we had to
+explicitly define JAVA_HOME and SPARK_HOME and PATH, because SPARK_HOME stuff wasn't visible.
+
+Maybe we should compare ~/.bashrc files, especially the order of instructions. The working config @willem-Latitude-5590
+These are the last statements:
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+# WASN'T NECESSARY
+# export JAVA_HOME="$SDKMAN_DIR/candidates/java/current"
+# export SPARK_HOME="$SDKMAN_DIR/candidates/spark/current"
+# export PATH="$JAVA_HOME/bin:$SPARK_HOME/bin:$PATH"
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/willem/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/willem/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/willem/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/willem/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+So take note of the order (first the SDKMan then the conda setup) Perhaps this can be reestablished by running
+conda init
+after a major update.
+
+Other links
+https://spark.apache.org/docs/latest/api/python/getting_started/install.html
+https://docs.conda.io/projects/conda/en/latest/_downloads/843d9e0198f2a193a3484886fa28163c/conda-cheatsheet.pdf

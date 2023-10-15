@@ -133,7 +133,7 @@ def most_reliable_drive_for_capacity(failure_rate_df, capacity_GB=2048, precisio
 
 results = most_reliable_drive_for_capacity(failure_rate(merged_df), capacity_GB=11176.0)
 results.show(truncate=False)
-results.coalesce(1).write.csv("./most_reliable_drives_11176GB.csv")
+results.coalesce(1).write.mode("overwrite").csv("./most_reliable_drives_11176GB.csv")
 
 if __name__ == "__main__":
     pass

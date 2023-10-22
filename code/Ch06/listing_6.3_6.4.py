@@ -29,7 +29,10 @@ df_sil_val = spark.read.json(os.path.join(data_dir, 'shows-silicon-valley.json')
 print(f"total number of records in df_sil_val data frame is  {df_sil_val.count()}")
 
 df_sil_val.printSchema()
+print(f"all column names derived from the top level attributes of the JSON file df_sil_val.columns:\n"
+      f"{df_sil_val.columns}\n")
 
+print("The one record view of our data frame df_sil_val with df_sil_val.show():")
 df_sil_val.show()
 
 # now we read all 3 json files into one dataframe

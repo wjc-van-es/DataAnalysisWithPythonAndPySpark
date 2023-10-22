@@ -21,7 +21,8 @@ data_dir = "../../data/shows"
 # However, if we set the optional multiline parameter to True it will be able to load the multiline document, which now
 # follow the adapted PySpark rule of
 # "one JSON document, one file, one (df) record"
-df_shows = spark.read.json(os.path.join(data_dir, 'shows-silicon-valley.json'), multiLine=True)
+# df_shows = spark.read.json(os.path.join(data_dir, 'shows-silicon-valley.json'), multiLine=True)
+df_shows = spark.read.json(os.path.join(data_dir, '493-ds9.json'), multiLine=True)
 
 # you have one record, where each column is a field on the highest level under the document root
 # hence these columns can have simple values when the corresponding field is a simple scalar type or
@@ -37,7 +38,11 @@ shows_clean = df_shows.withColumn(
 
 shows_clean.printSchema()
 
-# explode the episodes column, which contains struct items
+# the episodes column of the shows_clean data frame is of type array[struct] an array that contains struct items, all
+# contained in single cell
+# when we explode the shows_clean.'episodes' column into a new column of a new data episodes.'episodes' then this
+# will result in a data frame episodes with a single column episodes of type struct where all items in the
+# array are now separate rows of the new data frame
 episodes = shows_clean.select(F.explode(F.col('episodes')).alias('episodes'))
 episodes.printSchema()
 
@@ -56,4 +61,4 @@ tabular_episodes = (episodes
 tabular_episodes.printSchema()
 print(f"total number of records in tabular_episodes data frame is  {tabular_episodes.count()}")
 tabular_episodes.show(truncate=False)
-tabular_episodes.coalesce(1).write.mode('overwrite').csv("./episodes.csv", sep='|', quote=None)
+tabular_episodes.coalesce(1).write.mode('overwrite').csv("./493-ds9-episodes.csv", sep='|', quote=None)

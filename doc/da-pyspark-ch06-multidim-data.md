@@ -109,3 +109,111 @@ datatypes are usually simple scalars, like an integer, float, calendar date, tex
 
 ### 6.1.2 Going bigger: Reading JSON data in PySpark
 
+- To read a json file into a dataframe you use the `pyspark.sql.DataFrameReader.json` function.
+  - The only mandatory argument will be a str, list of RDD representing the path, list of paths or RDD of strings storing
+    JSON content.
+  - The default rule is *one JSON document, one line, one record*
+    - a JSON file may contain only one record, stored in a single line.
+  - When we want to read JSON files with a more easy to read multiline representation of a single record (which implies
+    the JSON file will only hold a single record) we can use the `multiLine=True` argument.
+    - This will change the rule to *one JSON document, one file, one record*
+    - With the `multiLine=True` argument you can also use the glob pattern (using a * to refer to multiple files), 
+      give the path to a directory and specify multiple JSON files in the path with `*.json` to ingest them as
+      separate records into a singe data frame. Take care, however, that these multiple JSON files adhere to the same
+      structure (the same schema can be inferred)
+- See [https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrameReader.json.html#pyspark.sql.DataFrameReader.json](https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrameReader.json.html#pyspark.sql.DataFrameReader.json)
+- For all optional parameters see
+  [https://spark.apache.org/docs/latest/sql-data-sources-json.html#data-source-option](https://spark.apache.org/docs/latest/sql-data-sources-json.html#data-source-option)
+- For an example see [../code/Ch06/listing_6.3_6.4.py](../code/Ch06/listing_6.3_6.4.py)
+
+## 6.2 Breaking the second dimension with complex data types
+
+- The hierarchical structure of a JSON document can be squeezed into the two-dimensional, tabular structure of a Spark
+  data frame by letting the cells contain more than a single, scalar value.
+- Instead, a cell may have a complex type that may contain a lot of other types.
+  - these types are not complex in the Python sense of holding images, video or audio footage,
+  - rather in Spark complex type is a synonym for container or compound type.
+- The Spark complex types are
+  - array
+  - map
+  - struct
+- We will learn how to relate JSON object and array structures to the Spark complex types
+- All the top level attributes become columns in the data frame with their key or name given to the column name
+
+### 6.2.1 When you have more than one value: The array
+- The PySpark array container type loosely compares to a Python list
+  - as they both are _sequences_, they contain their elements in a deliberate order
+- The main difference is that in PySpark arrays are always containers of values _of the same type_
+  - although it is good practice to keep Python lists homogeneous as well (and use tuples to store heterogeneous elements)
+    Python does not enforce this homogeneousness
+  - PySpark will not raise an error if you try to read an array-type column with multiple types. Instead, it will 
+    simply default to the lowest common denominator, usually the string. This way, you don’t lose any data, but you
+    will get a surprise later if your code expects an array of another type.
+
+#### Extracting elements from an array
+- The data frame `df` has a column named `'genres'` of type array, and we wish to select only its first element
+  assume this import statement: `import pyspark.sql.functions as F`
+  
+  | name           | code of `df.select()` parameters |
+  |----------------|----------------------------------|
+  | dot and index  | `df.genres[0]`                   |
+  | col and index  | `F.col("genres")[0]`             |
+  | dot and method | `df.genres.getItem(0)`           |
+  | col and method | `F.col("genres").getItem(0)`     |
+- In PySpark arrays you cannot use slicing with the brackets like with a Python list, so this:  ~~`df.genres[0:9]`~~ 
+  cannot be done.
+- PySpark is a thin layer of veneer over Spark (Java / Scala), which provides a consistent API across languages. This
+  makes it less integrated with core Python capabilities.
+
+### 6.2.2 The map type: Keys and values within a column
+- a PySpark `map` is like a Python `dictionary`, but
+  - all keys must be of the same type and cannot be `null`
+  - all values must be of the same type and can be `null`
+- Maps are less common as column type than `array`; reading a JSON document won't yield columns of type `map`, because
+  JSON objects are not enforced to comply to the same type keys and same type values rule.
+- with the `map_from_arrays()` function you can create a `map` typed column from two `array` type columns
+
+## 6.3 The struct: Nesting columns within columns
+- Like a JSON object
+  - the key or name of each pair is a string,
+  - the value of each pair can be of a different type.
+- The number of fields and their names are fixed (i.e. known ahead of {run}time),
+  - unlike arrays and maps, which have a free, variable size of elements (albeit of the same type)
+- Conceptually it is convenient to think of a struct column type as a column that contains a data frame within each of
+  its cells.
+- Structs can contain fields that are of different type including `array` and `struct` type. Also, arrays can contain
+  elements of type `struct`. 
+  - Hence, nesting `struct` type fields and array elements we can create a deep hierarchy of data
+
+### 6.3.1 Navigating structs as if they were nested columns
+- we can refer to fields within a struct, the same way we can refer to columns of a data frame with dot notation
+- so promoting the episodes `array[struct]` field within the `_embedded` `struct` column as new separate column whilst
+  discarding the `_embedded` column goes as follows:
+  ```python
+  import pyspark.sql.functions as F
+  ...
+  shows_clean = shows.withColumn(
+     "episodes", F.col("_embedded.episodes")
+  ).drop("_embedded")
+  ```
+- We can select a single string field from a `array[struct]` type column (an array of struct type elements) to create a
+  column from this that will be of type `array[string]`.
+- In our example we have a column named 'episodes' of type `array[struct]` and one string typed field is named 'name'
+  ```python
+  episodes_name = shows_clean.select(F.col("episodes.name"))
+  episodes_name.printSchema()
+  
+  # root
+  # |-- name: array (nullable = true)
+  # |    | -- element: string (containsNull = true)
+  ```
+- we could go on exploding this resulting column to go from a data frame with a single record holding an `array[string]`
+  type column to a multi-record data frame with `string` type column, which has a record for each element in the
+  previous array, in a single nested statement this would become:
+  ```python
+  episode_names = shows_clean.select(F.explode(F.col('episodes.name')).alias('name'))
+  ```
+- see for a more involved example 
+  [../code/Ch06/listing_6.14_6.15_create_tabular_episodes.py](../code/Ch06/listing_6.14_6.15_create_tabular_episodes.py)
+
+## 6.4 Building and using the data frame schema

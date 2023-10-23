@@ -1,4 +1,7 @@
+import glob
 import os
+from pprint import pprint
+
 from pyspark.sql import SparkSession
 import pyspark.sql.functions as F
 
@@ -9,7 +12,7 @@ spark.sparkContext.setLogLevel("WARN")
 data_dir = "../../data/shows"
 
 
-def create_primary_df(dir_path, file_name):
+def create_df(file_path):
     # The original json document was a single line and this is the PySpark default rule of:
     # "One JSON document, one line, one (df) record",
     # where multiple JSON docs / df records can fit in one file
@@ -23,24 +26,20 @@ def create_primary_df(dir_path, file_name):
     # However, if we set the optional multiline parameter to True it will be able to load the multiline document, which now
     # follow the adapted PySpark rule of
     # "one JSON document, one file, one (df) record"
-    df_shows = spark.read.json(os.path.join(dir_path, file_name), multiLine=True)
+    df_show = spark.read.json(file_path, multiLine=True)
 
     # you have one record, where each column is a field on the highest level under the document root
     # hence these columns can have simple values when the corresponding field is a simple scalar type or
     # a hierarchy of nested dataframes when the corresponding field is an object or array (which may in turn contain
     # objects or arrays)
-    print(f"total number of records in df_shows data frame is  {df_shows.count()}")
-    df_shows.printSchema()
-    df_shows.show()
-    return df_shows
+    print(f"total number of records in df_shows data frame is  {df_show.count()}")
+    # df_show.printSchema()
+    # df_show.show()
+    return df_show
 
 
-def split_show_records(df_shows):
-    print(df_shows.count())
-    df_shows.printSchema()
-    df_single_show_dict = {row['name']: spark.createDataFrame(row, df_shows.schema.fields()) for row in df_shows.collect()}
-    print(df_single_show_dict)
-    return df_single_show_dict
+def create_files_list(dir_path, file_name_pattern):
+    return glob.glob(os.path.join(dir_path, file_name_pattern))
 
 
 def create_tabular_from_shows(df_shows):
@@ -50,9 +49,12 @@ def create_tabular_from_shows(df_shows):
 
     shows_clean.printSchema()
 
+    name = shows_clean.select('name').collect()[0][0]
+    print(f"df name = {name}")
     # show_name = shows_clean.
     # explode the episodes column, which contains struct items
-    episodes = shows_clean.select(F.explode(F.col('episodes')).alias('episodes'))
+    episodes = (shows_clean.select(F.explode(F.col('episodes')).alias('episodes'))
+                .withColumn('show', F.lit(name)))
     episodes.printSchema()
 
     print(f"total number of records in episodes data frame is  {episodes.count()}")
@@ -60,6 +62,7 @@ def create_tabular_from_shows(df_shows):
     # Now take all attributes of interest from the episodes column struct and put them in separate columns, then drop
     # the episodes column
     tabular_episodes = (episodes
+                        .withColumn('show', F.col('show'))
                         .withColumn('season', F.col('episodes.season'))
                         .withColumn('number', F.col('episodes.number'))
                         .withColumn('name', F.col('episodes.name'))
@@ -72,14 +75,14 @@ def create_tabular_from_shows(df_shows):
     return tabular_episodes
 
 
-df_temp = create_primary_df(data_dir, "*.json")
-df_shows_dict = split_show_records(df_temp)
-for key, df in df_shows_dict:
-    cleaned_up_df = create_tabular_from_shows(df)
-    print(f"total number of records in tabular_episodes data frame for {key} is  {cleaned_up_df.count()}")
-    name = key.replace(' ', '_')
-    # tabular_episodes.show(truncate=False)
-    cleaned_up_df.coalesce(1).write.mode('overwrite').csv(f"./{name}.csv", sep='|', quote=None)
+data_files_list = create_files_list(data_dir, "*.json")
+
+
+for file in data_files_list:
+    cleaned_up_df = create_tabular_from_shows(create_df(file))
+    show_name = cleaned_up_df.select('show').collect()[0][0].replace(" ", "_")
+    pprint(show_name)
+    cleaned_up_df.coalesce(1).write.mode('overwrite').csv(f"./{show_name}.csv", sep='|', quote=None)
 
 if __name__ == "__main__":
     pass

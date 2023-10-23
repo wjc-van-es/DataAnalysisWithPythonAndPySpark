@@ -217,3 +217,127 @@ datatypes are usually simple scalars, like an integer, float, calendar date, tex
   [../code/Ch06/listing_6.14_6.15_create_tabular_episodes.py](../code/Ch06/listing_6.14_6.15_create_tabular_episodes.py)
 
 ## 6.4 Building and using the data frame schema
+Up until this point we have used the schema that Spark infers for us from the data it has ingested into a data frame.
+It is also possible, however, to define a schema that our ingested data should adhere to. 
+One advantage over Spark inferred schemas is performance: as Spark needs to read the data twice to infer its schema
+- once to infer the schema and
+- once more to read the data itself
+
+As we can think of a struct column as a data frame nested inside that column, we can think of any data frame as a
+single struct entity with its columns as top-level fields of the implicit struct called 'root'.
+
+There are two syntaxes to create a schema in Spark:
+- an explicit, programmatic one (reviewed in the next section)
+- a DDL-style schema covered in chapter 7.
+
+You often would provide a **reduced schema**, which means you only define a subset of all the available fields. 
+PySpark will only read the fields you have defines, which means
+- a further reduction of processing time
+- usually a much simpler subset of the entire datastructure, making the resulting data frame easier to manipulate.
+
+### 6.4.1 Using Spark types as the base blocks of a schema
+- all types derive from the `pyspark.sql.types` module, which can be imported as `import pyspark.sql.types as T` where
+  the capital `T` is commonly used by convention
+- The module contains a lot of types:
+  - Simple value types that usually have a constructor without any arguments
+    - `T.DateType()`
+    - `T.StringType()`
+    - `T.LongType()`
+    - `T.DecimalType(precision, scale)`
+  - Complex types
+    - The `ArrayType`, where you also have to specify the type of its elements as constructor parameter, e.g. 
+      - `T.ArrayType(T.StringType())` or 
+      - `T.ArrayType(T.DateType())`
+    - The `MapType`, where you specify the types of its keys and values as cosntructor parameters. e.g.
+      - `T.MapType(T.StringType(), T.LongType())`
+    - The `T.StructType()`, to define the data frame root and any nested structs
+      - This constructor takes a list of `T.StructFields()`, whose constructor in turn takes
+        - a name and type argument
+        - an optional nullable key parameter, which defaults to `True`
+        - an optional `metadata` key parameter of type `dict`
+
+#### A summary example of the definition of a reduced schema
+To see all this in a code example of the definition of a reduced schema of show data ingested from the _TVMaze REST API_
+e.g. [https://api.tvmaze.com/singlesearch/shows?q=%22Star%20Trek:%20Deep%20Space%20Nine%22&embed=episodes](https://api.tvmaze.com/singlesearch/shows?q=%22Star%20Trek:%20Deep%20Space%20Nine%22&embed=episodes)
+```python
+import pyspark.sql.types as T
+
+# a reduced schema of the episode struct, containing only the fields of interest
+# applied later as the element-type of a nested array (see the reduced_show_schema variable below)
+episode_schema = T.StructType(
+    [
+        T.StructField("airdate", T.DateType()),
+        T.StructField("id", T.StringType()),
+        T.StructField("name", T.StringType()),
+        T.StructField("number", T.LongType()),
+        T.StructField("season", T.LongType()),
+    ]
+)
+
+# a reduced schema definition applied to the ingested data,
+# corresponding to the top-level (root) of the resulting data frame,
+# only containing the fields (columns) we are interested in
+reduced_show_schema = T.StructType(
+    [
+        T.StructField("id", T.StringType()),
+        T.StructField("name", T.StringType()),
+        T.StructField(
+            "_embedded",
+            T.StructType(
+                [
+                    T.StructField(
+                        # here we apply the StructType defined earlier and assigned to episode_schema variable to become
+                        # the type of the elements of the array
+                        "episodes", T.ArrayType(episode_schema) 
+                    )
+                ]
+            )
+        )
+    ]
+)
+
+```
+### 6.4.2 Reading a JSON document with a strict schema in place
+- With the `pyspark.sql.DataFrameReader.json` function available from the `DataFrameReader` attribute in 
+  `pyspark.sql.SparkSession.read` we can read a json document
+- See [https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrameReader.json.html#pyspark.sql.DataFrameReader.json](https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrameReader.json.html#pyspark.sql.DataFrameReader.json)
+  - With the optional keyword parameter `schema` we can specify the schema we defined ourselves
+  - With the keyword parameter `mode='FAILFAST'` set the `SateFrameReader` will throw an Exception as soon as it 
+    encounters a part of the document that is incompatible with the schema we declared.
+  - We also set the optional keyword parameter `multiline=True`
+- For all optional parameters see
+  [https://spark.apache.org/docs/latest/sql-data-sources-json.html#data-source-option](https://spark.apache.org/docs/latest/sql-data-sources-json.html#data-source-option)
+```python
+import os
+from pyspark.sql import SparkSession
+
+spark = SparkSession.builder.appName("Chapter 6 example").getOrCreate()
+spark.sparkContext.setLogLevel("WARN")
+data_dir = "../../data/shows"
+df_sil_val = spark.read.json(os.path.join(data_dir, 'shows-silicon-valley.json'), multiLine=True,
+                             schema=reduced_show_schema, mode='FAILFAST')
+```
+See for a complete example [../code/Ch06/listing_6.17_6.18_6.19.py](../code/Ch06/listing_6.17_6.18_6.19.py)
+here we have defined a whole schema to use for the show data, and we use `pyspark.sql.types.DateType` and
+`pyspark.sql.types.TimestampType` assuming the fields comply to the ISO-8601 standard.
+If the formatting deviates from this standard you need to pass the right format as pattern to `dateFormat` or 
+`timestampFormat` [https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html)
+
+When you try to parse a JSON document with fields missing you will still be good when these fields are optional, as
+they are by default. If you substitute a `LongType` for a field that is suposed to be a `StringType`, like the 'summary'
+field, there is a type mismatch, and you will get an Exception:
+`org.apache.spark.SparkException: [MALFORMED_RECORD_IN_PARSING] Malformed records are detected in record parsing: [null].`
+If you scroll down the long stacktrace you will find more descriptive information
+`Caused by: org.apache.spark.SparkRuntimeException: [CANNOT_PARSE_JSON_FIELD] Cannot parse the field name 'summary' and 
+the value <p>Attending an elaborate launch party, Richard and his computer programmer friends - Big Head, Dinesh and 
+Gilfoyle - dream of making it big. Instead, they're living in the communal Hacker Hostel owned by former programmer 
+Erlich, who gets to claim ten percent of anything they invent there. When it becomes clear that Richard has developed a 
+powerful compression algorithm for his website, Pied Piper, he finds himself courted by Gavin Belson, his egomaniacal 
+corporate boss, who offers a $10 million buyout by his firm, Hooli. But Richard holds back when well-known investor 
+Peter Gregory makes a counteroffer.</p> of the JSON token type VALUE_STRING to target Spark data type "BIGINT".`
+
+[../code/Ch06/exo_6.7.py](../code/Ch06/exo_6.7.py)
+
+### 6.4.3 Going full circle: Specifying your schemas in JSON
+
+## 6.5 Putting it all together: Reducing duplicate data with complex data types

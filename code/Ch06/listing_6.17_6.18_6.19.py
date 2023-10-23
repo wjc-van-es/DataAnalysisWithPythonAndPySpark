@@ -24,8 +24,8 @@ episode_image_schema = T.StructType(
 episode_schema = T.StructType(
     [
         T.StructField("_links", episode_links_schema),
-        T.StructField("airdate", T.DateType()),
-        T.StructField("airstamp", T.TimestampType()),
+        T.StructField("airdate", T.DateType()), # The ingested data conforms ISO-8601
+        T.StructField("airstamp", T.TimestampType()), # The ingested data conforms ISO-8601
         T.StructField("airtime", T.StringType()),
         T.StructField("id", T.StringType()),
         T.StructField("image", episode_image_schema),
@@ -84,7 +84,8 @@ print(f"total number of records in df_sil_val data frame is  {df_sil_val.count()
 df_sil_val.printSchema()
 # df_sil_val.show()
 
+# Testing ISO-8601 compliance of both columns
 for column in ["airdate", "airstamp"]:
     df_sil_val.select(f"_embedded.episodes.{column}").select(
-        F.explode(column)
+        F.explode(column).alias(f"column {column}")
     ).show(5)

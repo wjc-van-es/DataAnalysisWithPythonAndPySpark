@@ -116,6 +116,27 @@ configuration for SPARK_HOME should be used in every situation.
 - `conda update -n ds311 --all --no-pin` yielded no possible new updates
 - `conda update -n base --all --no-pin` yielded 4 new packages, 2 updates and 2 downgrades
 
+## WARNING: OS environment variables not visible when running a python file insight PyCharm
+### ISSUE
+On Thursday, 26-10-2023, we noticed that all OS environment variables set by conda and SDKman in `~/.bashrc` weren´t
+visible when running any python file within PyCharm. We were still able to run PySpark, however, we would like our 
+settings to be the same as on the command line where we run our Jupyter Notebooks, also with PySpark.
+This can be tested by running [../code/bankstatements/df_prep.py](../code/bankstatements/df_prep.py) and checking the 
+subset of environment variables, that should contain `JAVA_HOME` and `SPARK_HOME` and the `PATH` variable should contain
+`JAVA_HOME/bin` and `SPARK_HOME/bin` (with both `JAVA_HOME` and `SPARK_HOME` already evaluated to their respective
+values). We noticed that these were missing ending up with a very short PATH variable.
+
+### SOLUTION
+We found the solution in editing the so called .desktop file for PyCharm and change the `Exec` property from
+`Exec= "/absolute/path/to/pycharm.sh" %u` to
+`Exec=/bin/bash -i -c "/absolute/path/to/pycharm.sh" %u`
+This file could be found at `~/.local/share/applications/PyCharm Community 2023.2.3`
+- source: [https://stackoverflow.com/questions/45696203/intellij-idea-global-environment-variable-configuration](https://stackoverflow.com/questions/45696203/intellij-idea-global-environment-variable-configuration)
+- general .desktop info: [https://www.baeldung.com/linux/desktop-entry-files](https://www.baeldung.com/linux/desktop-entry-files)
+#### Things to take into consideration
+- This only works for a linux installation (just maybe also for MacOS, provided )
+- **This should be set again after every PyCharm update, so do NOT forget**
+
 ## references
 - The whole session is saved to 
   [ds311-conda-env-creation-+-conda-update-session.txt](../../../Documents/sysAdmin-linux-laptop/Python/ds311-conda-env-creation-+-conda-update-session.txt)

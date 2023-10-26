@@ -80,7 +80,7 @@ data_files_list = create_files_list(data_dir, "*.json")
 
 for file in data_files_list:
     cleaned_up_df = create_tabular_from_shows(create_df(file))
-    show_name = cleaned_up_df.select('show').collect()[0][0].replace(" ", "_")
+    show_name = cleaned_up_df.select('show').collect()[0][0].replace(" ", "_").replace(":", "-")
     pprint(show_name)
     cleaned_up_df.coalesce(1).write.mode('overwrite').csv(f"./{show_name}.csv", sep='|', quote=None)
 

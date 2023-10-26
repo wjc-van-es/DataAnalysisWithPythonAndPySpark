@@ -34,15 +34,25 @@ df_sil_val.printSchema()
 
 df_sil_val.show()
 
-df_episodes = (df_sil_val.select(
-                        F.col("_embedded.episodes")
-                    ).alias('episodes')
+# The pyspark.sql.functions.explode("_embedded.episodes") on the field that is of type array[struct]
+# will create separate records in the resulting data frame for all the array items putting each struct value in the
+# new "episode (struct type)" column.
+# Besides, in each record the show name value has been copied into the new show_name column of each separate record
+df_exploded_episodes = (df_sil_val.select(F.col("name").alias("show_name"),
+                        F.explode("_embedded.episodes").alias("episode")
+                    )
 )
 
-df_episodes.show(truncate=False)
+df_exploded_episodes.printSchema()
+df_exploded_episodes.show(truncate=False)
 
-pprint.pprint(df_episodes.schema.jsonValue())
-pprint.pprint(df_episodes.schema.json())
+# We could go further by putting the struct fields we are interested in into separate scalar columns
+df_tabular_episodes = df_exploded_episodes.select("show_name",
+                                                  F.col("episode.season").alias("season"),
+                                                  F.col("episode.number").alias("episode_number"),
+                                                  F.col("episode.airdate").alias("episode_airdate"),
+                                                  F.col("episode.name").alias("episode_name"),
+                                                  F.col("episode.summary").alias("episode_summary"))
 
-pprint.pprint(df_episodes.select(F.col('episodes.summary')).alias('summary').schema.jsonValue())
-pprint.pprint(df_episodes.select(F.col('episodes.summary')).alias('summary').schema.json())
+df_tabular_episodes.printSchema()
+df_tabular_episodes.show(truncate=False)

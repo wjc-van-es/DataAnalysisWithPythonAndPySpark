@@ -329,15 +329,52 @@ field, there is a type mismatch, and you will get an Exception:
 `org.apache.spark.SparkException: [MALFORMED_RECORD_IN_PARSING] Malformed records are detected in record parsing: [null].`
 If you scroll down the long stacktrace you will find more descriptive information
 `Caused by: org.apache.spark.SparkRuntimeException: [CANNOT_PARSE_JSON_FIELD] Cannot parse the field name 'summary' and 
-the value <p>Attending an elaborate launch party, Richard and his computer programmer friends - Big Head, Dinesh and 
-Gilfoyle - dream of making it big. Instead, they're living in the communal Hacker Hostel owned by former programmer 
-Erlich, who gets to claim ten percent of anything they invent there. When it becomes clear that Richard has developed a 
-powerful compression algorithm for his website, Pied Piper, he finds himself courted by Gavin Belson, his egomaniacal 
-corporate boss, who offers a $10 million buyout by his firm, Hooli. But Richard holds back when well-known investor 
-Peter Gregory makes a counteroffer.</p> of the JSON token type VALUE_STRING to target Spark data type "BIGINT".`
+the value <p>...</p> of the JSON token type VALUE_STRING to target Spark data type "BIGINT".`
 
 [../code/Ch06/exo_6.7.py](../code/Ch06/exo_6.7.py)
 
 ### 6.4.3 Going full circle: Specifying your schemas in JSON
 
 ## 6.5 Putting it all together: Reducing duplicate data with complex data types
+
+### Normalized data to avoid duplication
+When we create a data frame from reading an hierarchical JSON file, like the tv shows from the TVMaze API we have the
+episodes embedded.
+Each record in the data frame will be a show, which contains an `_embedded` column, which contains a list of episodes.
+The `_embedded` is just clutter we can discard, and we can create a new `episodes` column of type `array[struct]` from
+`_embedded.episodes` directly.
+The cardinality of the relationship is `show - episode` is `1 - n` and the relationship is normalized by having episodes
+embedded as a column with a tabular structure on its own (you can think of it as a data frame within the episodes
+column).
+In relational databases these normalizations take the form of two tables `show` and `episode`, where the `episode` table
+contains a foreign key column whose value points to a primary key of a particular record in the `show` table.
+In this way all episode records that have the same foreign key value belong to one record in the `show` table that has
+that same value for its primary key column. In this way you need an inner join between these two tables when you need
+to combine data from shows and their episodes.
+
+So in Spark you can do normalize data in both ways (at least for 1 -n cardinality)
+
+| only simple scalar types                          | complex hierarchical types (with tabular structure) |
+|---------------------------------------------------|-----------------------------------------------------|
+| multiple data frames connected with keys (PK, FK) | columns with complex types                          |
+|                                                   |                                                     |
+
+### denormalized data for an easy to read tabular overview
+We can create a joined data frame or view of scalar typed columns, which have both advantages and disadvantages
+
+| advantages               | disadvantages                                                  |
+|--------------------------|----------------------------------------------------------------|
+| easily readable overview | duplicate data makes writing operations more error-prone       |
+|                          | it is harder to know what each record represent exactly        |
+|                          | that makes it hard for some fields to see where they belong to |
+|                          |                                                                |
+
+In general normalized data is optimized for writing, since we have no duplications and clearly know to what entity a
+field belongs to.
+denormalized data is easier to read, because you don´t need joins to accomplish it.
+
+In all cases of data processing we try to converge to a single tabular structure (data frame) to summarize the data
+that is relevant to our query. However, if we need to avoid duplication and preserve relationship information in a 
+single data frame then we must use the complex data types for some of its columns.
+
+### 6.5.1 Getting to the “just right” data frame: Explode and collect

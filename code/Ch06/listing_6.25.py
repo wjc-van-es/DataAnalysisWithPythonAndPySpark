@@ -34,15 +34,19 @@ df_sil_val.printSchema()
 
 df_sil_val.show()
 
-df_episodes = (df_sil_val.select(
-                        F.col("_embedded.episodes")
-                    ).alias('episodes')
+# We build a map from two arrays, the first would provide the keys and the second the values
+
+df_episode_ids_names = df_sil_val.select(
+    F.map_from_arrays(F.col("_embedded.episodes.id"),
+                      F.col("_embedded.episodes.name")).alias("col_episode_id_name")
+    )
+
+df_episode_ids_names.printSchema()
+df_episode_ids_names.show(truncate=False)
+
+df_expl_episode_ids_names = df_episode_ids_names.select(
+    F.posexplode("col_episode_id_name").alias("position", "id", "name")
 )
 
-df_episodes.show(truncate=False)
-
-pprint.pprint(df_episodes.schema.jsonValue())
-pprint.pprint(df_episodes.schema.json())
-
-pprint.pprint(df_episodes.select(F.col('episodes.summary')).alias('summary').schema.jsonValue())
-pprint.pprint(df_episodes.select(F.col('episodes.summary')).alias('summary').schema.json())
+df_expl_episode_ids_names.printSchema()
+df_expl_episode_ids_names.show(truncate=False)

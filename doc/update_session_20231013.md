@@ -110,13 +110,13 @@ Setting spark 3.4.0 as default.
 (dasci) willem@linux-laptop:~/git/DataAnalysisWithPythonAndPySpark$ printenv PATH
 /home/willem/.sdkman/candidates/spark/3.3.1/bin:/home/willem/anaconda3/envs/dasci/bin:/home/willem/anaconda3/condabin:/home/willem/.sdkman/candidates/java/current/bin:/home/willem/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/willem/.local/share/JetBrains/Toolbox/scripts
 
-(dasci) willem@linux-laptop:~/git/DataAnalysisWithPythonAndPySpark/code/Ch07$ printenv SPARK_HOME
+(dasci) willem@linux-laptop:~/git/DataAnalysisWithPythonAndPySpark/src/Ch07$ printenv SPARK_HOME
 /home/willem/.sdkman/candidates/spark/3.3.1
-(dasci) willem@linux-laptop:~/git/DataAnalysisWithPythonAndPySpark/code/Ch07$ printenv JAVA_HOME
+(dasci) willem@linux-laptop:~/git/DataAnalysisWithPythonAndPySpark/src/Ch07$ printenv JAVA_HOME
 /home/willem/.sdkman/candidates/java/current
-(dasci) willem@linux-laptop:~/git/DataAnalysisWithPythonAndPySpark/code/Ch07$ printenv PATH
+(dasci) willem@linux-laptop:~/git/DataAnalysisWithPythonAndPySpark/src/Ch07$ printenv PATH
 /home/willem/.sdkman/candidates/spark/3.3.1/bin:/home/willem/anaconda3/envs/dasci/bin:/home/willem/anaconda3/condabin:/home/willem/.sdkman/candidates/java/current/bin:/home/willem/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/willem/.local/share/JetBrains/Toolbox/scripts
-(dasci) willem@linux-laptop:~/git/DataAnalysisWithPythonAndPySpark/code/Ch07$ cd ~/.sdkman/candidates/spark/
+(dasci) willem@linux-laptop:~/git/DataAnalysisWithPythonAndPySpark/src/Ch07$ cd ~/.sdkman/candidates/spark/
 (dasci) willem@linux-laptop:~/.sdkman/candidates/spark$ ls -la
 total 16
 drwxrwxr-x  4 willem willem 4096 okt 13 21:02 .

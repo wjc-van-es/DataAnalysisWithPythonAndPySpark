@@ -121,7 +121,7 @@ configuration for SPARK_HOME should be used in every situation.
 On Thursday, 26-10-2023, we noticed that all OS environment variables set by conda and SDKman in `~/.bashrc` weren´t
 visible when running any python file within PyCharm. We were still able to run PySpark, however, we would like our 
 settings to be the same as on the command line where we run our Jupyter Notebooks, also with PySpark.
-This can be tested by running [../code/bankstatements/df_prep.py](../code/bankstatements/df_prep.py) and checking the 
+This can be tested by running [../src/bankstatements/df_prep.py](../src/bankstatements/df_prep.py) and checking the 
 subset of environment variables, that should contain `JAVA_HOME` and `SPARK_HOME` and the `PATH` variable should contain
 `JAVA_HOME/bin` and `SPARK_HOME/bin` (with both `JAVA_HOME` and `SPARK_HOME` already evaluated to their respective
 values). We noticed that these were missing ending up with a very short PATH variable.

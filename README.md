@@ -66,7 +66,7 @@ execution.
 Hence, we change the relative path to a data resource from
 `./data/$specific_data_dir` to `../../data/$specific_data_dir`.
 
-e.g. in [code/Ch04/checkpoint.py](code/Ch04/checkpoint.py)
+e.g. in [src/Ch04/checkpoint.py](src/Ch04/checkpoint.py)
 ```python
 DIRECTORY = "../../data/broadcast_logs"
 ```
@@ -78,8 +78,8 @@ DIRECTORY = "./data/broadcast_logs"
 and whenever we want to execute a `*.py` file from the bash terminal, we go into the directory, which contains the
 python file, e.g.:
 ```bash
-~/git/DataAnalysisWithPythonAndPySpark$ cd code/Ch04
-~/git/DataAnalysisWithPythonAndPySpark/code/Ch04$ spark-submit ./checkpoint.py
+~/git/DataAnalysisWithPythonAndPySpark$ cd src/Ch04
+~/git/DataAnalysisWithPythonAndPySpark/src/Ch04$ spark-submit ./checkpoint.py
 ```
 
 ---

@@ -124,7 +124,7 @@ datatypes are usually simple scalars, like an integer, float, calendar date, tex
 - See [https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrameReader.json.html#pyspark.sql.DataFrameReader.json](https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrameReader.json.html#pyspark.sql.DataFrameReader.json)
 - For all optional parameters see
   [https://spark.apache.org/docs/latest/sql-data-sources-json.html#data-source-option](https://spark.apache.org/docs/latest/sql-data-sources-json.html#data-source-option)
-- For an example see [../code/Ch06/listing_6.3_6.4.py](../code/Ch06/listing_6.3_6.4.py)
+- For an example see [../src/Ch06/listing_6.3_6.4.py](../src/Ch06/listing_6.3_6.4.py)
 
 ## 6.2 Breaking the second dimension with complex data types
 
@@ -214,7 +214,7 @@ datatypes are usually simple scalars, like an integer, float, calendar date, tex
   episode_names = shows_clean.select(F.explode(F.col('episodes.name')).alias('name'))
   ```
 - see for a more involved example 
-  [../code/Ch06/listing_6.14_6.15_create_tabular_episodes.py](../code/Ch06/listing_6.14_6.15_create_tabular_episodes.py)
+  [../src/Ch06/listing_6.14_6.15_create_tabular_episodes.py](../src/Ch06/listing_6.14_6.15_create_tabular_episodes.py)
 
 ## 6.4 Building and using the data frame schema
 Up until this point we have used the schema that Spark infers for us from the data it has ingested into a data frame.
@@ -317,7 +317,7 @@ data_dir = "../../data/shows"
 df_sil_val = spark.read.json(os.path.join(data_dir, 'shows-silicon-valley.json'), multiLine=True,
                              schema=reduced_show_schema, mode='FAILFAST')
 ```
-See for a complete example [../code/Ch06/listing_6.17_6.18_6.19.py](../code/Ch06/listing_6.17_6.18_6.19.py)
+See for a complete example [../src/Ch06/listing_6.17_6.18_6.19.py](../src/Ch06/listing_6.17_6.18_6.19.py)
 here we have defined a whole schema to use for the show data, and we use `pyspark.sql.types.DateType` and
 `pyspark.sql.types.TimestampType` assuming the fields comply to the ISO-8601 standard.
 If the formatting deviates from this standard you need to pass the right format as pattern to `dateFormat` or 
@@ -331,7 +331,7 @@ If you scroll down the long stacktrace you will find more descriptive informatio
 `Caused by: org.apache.spark.SparkRuntimeException: [CANNOT_PARSE_JSON_FIELD] Cannot parse the field name 'summary' and 
 the value <p>...</p> of the JSON token type VALUE_STRING to target Spark data type "BIGINT".`
 
-[../code/Ch06/exo_6.7.py](../code/Ch06/exo_6.7.py)
+[../src/Ch06/exo_6.7.py](../src/Ch06/exo_6.7.py)
 
 ### 6.4.3 Going full circle: Specifying your schemas in JSON
 

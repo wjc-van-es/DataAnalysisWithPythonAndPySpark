@@ -51,7 +51,7 @@ h1,h2,h3,h4,h5 {
   - `ci.print_environment()` and
   - `ci.check_path()` respectively
 - e.g.
-  - [../src/Ch06/listing_6.24.py](../src/Ch06/listing_6.24.py)
+  - [../src/Ch06/listing_6.24_6.26.py](../src/Ch06/listing_6.24_6.26.py)
   - [../src/Ch06/listing_6.25.py](../src/Ch06/listing_6.25.py)
   - [../src/bankstatements/df_prep.py](../src/bankstatements/df_prep.py)
   - [../src/bankstatements/pyspark_test.py](../src/bankstatements/pyspark_test.py)
@@ -68,11 +68,11 @@ If we try to run it in a commandline terminal we also need to set the PYTHONPATH
 to the directory we marked as the _Sources Root_ `~/git/DataAnalysisWithPythonAndPySpark/src`. This may be done
 as relative path 
 ```bash
-(ds311) willem@linux-laptop:~/git/DataAnalysisWithPythonAndPySpark/src/Ch06$ PYTHONPATH=../ python listing_6.24.py
+(ds311) willem@linux-laptop:~/git/DataAnalysisWithPythonAndPySpark/src/Ch06$ PYTHONPATH=../ python listing_6.24_6.26.py
 ```
 or as absolute path
 ```bash
-(ds311) willem@linux-laptop:~/git/DataAnalysisWithPythonAndPySpark/src/Ch06$ PYTHONPATH=~/git/DataAnalysisWithPythonAndPySpark/src/ python listing_6.24.py
+(ds311) willem@linux-laptop:~/git/DataAnalysisWithPythonAndPySpark/src/Ch06$ PYTHONPATH=~/git/DataAnalysisWithPythonAndPySpark/src/ python listing_6.24_6.26.py
 ```
 
 ## References

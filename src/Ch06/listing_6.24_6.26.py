@@ -46,9 +46,10 @@ df_exploded_episodes = (df_sil_val.select(F.col("name").alias("show_name"),
                         F.explode("_embedded.episodes").alias("episode")
                     )
 )
-
+print("schema of df_exploded_episodes:")
 df_exploded_episodes.printSchema()
-df_exploded_episodes.show(truncate=False)
+print("records of df_exploded_episodes:")
+df_exploded_episodes.show(truncate=False, n=5)
 
 # We could go further by putting the struct fields we are interested in into separate scalar columns
 df_tabular_episodes = df_exploded_episodes.select("show_name",
@@ -57,6 +58,15 @@ df_tabular_episodes = df_exploded_episodes.select("show_name",
                                                   F.col("episode.airdate").alias("episode_airdate"),
                                                   F.col("episode.name").alias("episode_name"),
                                                   F.col("episode.summary").alias("episode_summary"))
-
+print("schema of df_tabular_episodes:")
 df_tabular_episodes.printSchema()
-df_tabular_episodes.show(truncate=False)
+print("records of df_tabular_episodes:")
+df_tabular_episodes.show(truncate=False, n=5)
+
+# Or collecting the episode column of df_exploded_episodes back to an array grouping by "show_name"
+df_collected = df_exploded_episodes.groupby("show_name").agg(F.collect_list("episode").alias("episodes"))
+print(f"df_collected has {df_collected.count()} records and its schema is:")
+df_collected.printSchema()
+print("records of df_collected:")
+df_collected.show(truncate=False, n=5)
+

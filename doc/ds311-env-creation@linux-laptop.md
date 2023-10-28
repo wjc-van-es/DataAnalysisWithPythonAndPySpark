@@ -45,17 +45,18 @@ We installed Anaconda on willem-Latitude-5590 and created an environment that wo
 
 We had some difficulties on linux-laptop in the past with finding all the environment variables and SDKman installed
 and managed Apache Spark in particular. We solved this by forcefully setting the SPARK_HOME and PATH in `~/.bashrc`
-and again `PATH` in conda's `dasci` environment. This has made the configuration brittle and unresponsive to management
-by SDKMan.
+and again `PATH` in conda's `dasci` environment. The reason for this last modification was to make `$JAVA_HOME/bin`
+and `$SARK_HOME/bin` visible when running scripts inside the PySpark IDE environment.
+This `PATH` modification in the conda environment made the configuration brittle and unresponsive to management
+by SDKMan. We have a much better solution now see the section below:
+- [IMPORTANT NOTE](#important-note-better-way-to-make-os-environment-variables-visible-when-running-a-python-file-inside-pycharm-ide)
 
-Maybe we could have solved this by a timely `source ~/.bashrc` after an installation changed it or a timely
-`conda activate dasci` after something changed in its package configuration. 
-
-Whatever the case, we now see on willem-Latitude-5590 that the JAVA_HOME, SPARK_HOME and PATH work fine within the 
+Whatever the case, we saw on willem-Latitude-5590 that the JAVA_HOME, SPARK_HOME and PATH work fine within the 
 `ds311` conda environment and that SDKMan management of Java and Spark installed versions also works fine and guarantees
-for per session runtime flexibility.
+for per session runtime flexibility. At least for scripts and `jupyter notebook` sessions launched from a terminal
+where the `ds311` conda environment is activated.
 
-The difference between the willem-Latitude-5590 and linux-laptop `~/.bshrc` is that the latter has 3 additional 
+The difference between the willem-Latitude-5590 and linux-laptop `~/.bshrc` is that the latter had 3 additional 
 statements:
 
 ```bash
@@ -66,8 +67,11 @@ export SPARK_HOME="$HOME/.sdkman/candidates/spark/3.3.1"
 export PATH="$PATH:$HOME/.sdkman/candidates/spark/3.3.1/bin"
 
 ```
-we should remove the last two statements and trust that the SDKMan's flexible `$HOME/.sdkman/candidates/spark/current`
-configuration for SPARK_HOME should be used in every situation.
+we have removed the last two statements and trust that the SDKMan's flexible `$HOME/.sdkman/candidates/spark/current`
+configuration for `$SPARK_HOME` will be used when running from a commandline terminal.
+Again to make these `~/.bshrc` based configuration also visible in a PyCharm script run / debug session see the section
+below: [IMPORTANT NOTE](#important-note-better-way-to-make-os-environment-variables-visible-when-running-a-python-file-inside-pycharm-ide)
+
 
 ## Steps
 - removing `SPARK_HOME` and `PATH` export statements from `~/.bashrc`
@@ -116,26 +120,29 @@ configuration for SPARK_HOME should be used in every situation.
 - `conda update -n ds311 --all --no-pin` yielded no possible new updates
 - `conda update -n base --all --no-pin` yielded 4 new packages, 2 updates and 2 downgrades
 
-## WARNING: OS environment variables not visible when running a python file insight PyCharm
+## IMPORTANT NOTE: better way to make OS environment variables visible when running a python file inside PyCharm IDE
 ### ISSUE
-On Thursday, 26-10-2023, we noticed that all OS environment variables set by conda and SDKman in `~/.bashrc` weren´t
-visible when running any python file within PyCharm. We were still able to run PySpark, however, we would like our 
-settings to be the same as on the command line where we run our Jupyter Notebooks, also with PySpark.
+On Thursday, 26-10-2023, we noticed that all OS environment variables set by conda and SDKman in `~/.bashrc` weren't
+visible when running any python file within the PyCharm IDE environment. We didn't notice this at first, because we were
+still able to run PySpark, however, the performance seemed slower, especially noticeable for 
+[../src/Ch07/most_reliable_drives.py](../src/Ch07/most_reliable_drives.py). Moreover, we would like our settings to be
+the same as on the command line where we run our Jupyter Notebooks, also with PySpark.
 This can be tested by running [../src/bankstatements/df_prep.py](../src/bankstatements/df_prep.py) and checking the 
 subset of environment variables, that should contain `JAVA_HOME` and `SPARK_HOME` and the `PATH` variable should contain
-`JAVA_HOME/bin` and `SPARK_HOME/bin` (with both `JAVA_HOME` and `SPARK_HOME` already evaluated to their respective
+`$JAVA_HOME/bin` and `$SPARK_HOME/bin` (with both `$JAVA_HOME` and `$SPARK_HOME` already evaluated to their respective
 values). We noticed that these were missing ending up with a very short PATH variable.
 
 ### SOLUTION
-We found the solution in editing the so called .desktop file for PyCharm and change the `Exec` property from
+We found the solution in editing the so called _.desktop file_ for PyCharm and change the `Exec` property from
 `Exec= "/absolute/path/to/pycharm.sh" %u` to
 `Exec=/bin/bash -i -c "/absolute/path/to/pycharm.sh" %u`
 This file could be found at `~/.local/share/applications/PyCharm Community 2023.2.3`
 - source: [https://stackoverflow.com/questions/45696203/intellij-idea-global-environment-variable-configuration](https://stackoverflow.com/questions/45696203/intellij-idea-global-environment-variable-configuration)
-- general .desktop info: [https://www.baeldung.com/linux/desktop-entry-files](https://www.baeldung.com/linux/desktop-entry-files)
+- general _.desktop_ info: [https://www.baeldung.com/linux/desktop-entry-files](https://www.baeldung.com/linux/desktop-entry-files)
 #### Things to take into consideration
-- This only works for a linux installation (just maybe also for MacOS, provided )
-- **This should be set again after every PyCharm update, so do NOT forget**
+- This only works for a linux installation (just maybe also for MacOS, provided we adapt to the shell in used bash or 
+  ZShell)
+- **This should probably be set again or at least checked after every PyCharm update, so do NOT forget**
 
 ## references
 - The whole session is saved to 

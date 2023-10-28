@@ -378,3 +378,47 @@ that is relevant to our query. However, if we need to avoid duplication and pres
 single data frame then we must use the complex data types for some of its columns.
 
 ### 6.5.1 Getting to the “just right” data frame: Explode and collect
+
+#### Expanding cells containing an array or map into multiple rows with 
+#### `pyspark.sql.functions.explode` & `pyspark.sql.functions.posexplode`, respectively
+- e.g. for exploding a single record column of type `array[struct]`
+  - [../src/Ch06/listing_6.24_6.26.py](../src/Ch06/listing_6.24_6.26.py) at line 45
+  - for each `struct` item in the cell of the column of type `array[struct]` a new record is created 
+  - the values of all other selected columns will be copied into each new record
+- e.g. for exploding a single record column of type `map[key: Long, value: string]`
+  - [../src/Ch06/listing_6.25.py](../src/Ch06/listing_6.25.py)
+  - for each `map` item in the cell a new record is created with 3 new columns are created:
+    - the first containing the position of the map entry
+    - the second the key of the map
+    - the third the value of the map
+  - the values of all other selected columns will be copied into each new record
+- with these two methods null values are skipped. Use `explode_outer()` and `posexplode_outer()` if you want records for
+  null values to be included.
+
+#### Aggregating records into single records whilst changing the column type into a collection type with
+#### `pyspark.sql.functions.collect_list` & `pyspark.sql.functions.collect_set`
+- `collect_list()` returns one array element per column record
+- `collect_set()` returns one array element per _distinct_ column record.
+- e.g. for aggregating episode records back to a single cell with its column type from `struct` back to `array[struct]`
+  - The last part of [../src/Ch06/listing_6.24_6.26.py](../src/Ch06/listing_6.24_6.26.py) at line 67
+- You can not collect an exploded map directly, however,
+  - you can pass multiple `collect_list()` calls as arguments of `agg()`
+  - then you can apply `map_from_arrays()`
+
+### 6.5.2 Building your own hierarchies: Struct as a function
+
+#### With `pyspark.sql.functions.struct` you can assemble a struct type column from multiple other columns as parameters
+- similar to `select()` where you specify all columns you want to end up in the resulting data frame as separate
+  arguments
+
+```python
+import pyspark.sql.functions as F
+
+df_with_struct_column_info = shows.select(
+    F.struct(
+        F.col("status"), # using the content of the existing column status
+        F.col("weight"), # using the content of the existing column weight
+        F.lit(True).alias("has_watched") # adding a literal value to indicate that I've watched the show
+    ).alias("info") # creating the struct column named "info"
+)
+```

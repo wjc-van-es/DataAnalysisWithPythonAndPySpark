@@ -133,12 +133,20 @@ subset of environment variables, that should contain `JAVA_HOME` and `SPARK_HOME
 values). We noticed that these were missing ending up with a very short PATH variable.
 
 ### SOLUTION
-We found the solution in editing the so called _.desktop file_ for PyCharm and change the `Exec` property from
-`Exec= "/absolute/path/to/pycharm.sh" %u` to
-`Exec=/bin/bash -i -c "/absolute/path/to/pycharm.sh" %u`
-This file could be found at `~/.local/share/applications/PyCharm Community 2023.2.3`
+We found the solution in editing the so called _.desktop file_ for PyCharm and change the `Exec` property by inserting
+`/bin/bash -i -c ` in front of the existing value.
+
+#### Steps
+1. Open the file `~/.local/share/applications/PyCharm Community 2023.2.3` in gedit text editor.
+1. Change `Exec= "/absolute/path/to/pycharm.sh" %u` to
+  `Exec=/bin/bash -i -c "/absolute/path/to/pycharm.sh" %u`
+1. Save the file _and_ close the text editor (or the change will not be effectuated)
+1. Restart PyCharm (this may be done with an already existing menu item or a launch button on the panel)
+
+#### references
 - source: [https://stackoverflow.com/questions/45696203/intellij-idea-global-environment-variable-configuration](https://stackoverflow.com/questions/45696203/intellij-idea-global-environment-variable-configuration)
 - general _.desktop_ info: [https://www.baeldung.com/linux/desktop-entry-files](https://www.baeldung.com/linux/desktop-entry-files)
+
 #### Things to take into consideration
 - This only works for a linux installation (just maybe also for MacOS, provided we adapt to the shell in used bash or 
   ZShell)

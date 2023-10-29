@@ -61,4 +61,5 @@ tabular_episodes = (episodes
 tabular_episodes.printSchema()
 print(f"total number of records in tabular_episodes data frame is  {tabular_episodes.count()}")
 tabular_episodes.show(truncate=False)
-tabular_episodes.coalesce(1).write.mode('overwrite').csv("./493-ds9-episodes.csv", sep='|', quote=None)
+(tabular_episodes.coalesce(1).write.mode('overwrite')
+    .csv("./493-ds9-episodes.csv", sep='|', header=True, quote=None))

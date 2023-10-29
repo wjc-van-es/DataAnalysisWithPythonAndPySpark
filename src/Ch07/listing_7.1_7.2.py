@@ -20,6 +20,10 @@ elements = (spark
 elements.printSchema()
 elements.where(F.col("phase") == "liq").groupby("period").count().show()
 
+
+# This will throw an AnalysisException as will be printed:
+# [TABLE_OR_VIEW_NOT_FOUND] The table or view `elements` cannot be found.
+# Verify the spelling and correctness of the schema and catalog.
 try:
     spark.sql(
         "select period, count(*) from elements "
@@ -27,3 +31,7 @@ try:
     ).show(5)
 except AnalysisException as e:
     print(e)
+
+# See the next listing_7.3_7.4.py to solve the problem:
+# create a temporary view "elements" from the data frame elements
+# elements.createOrReplaceTempView("elements")

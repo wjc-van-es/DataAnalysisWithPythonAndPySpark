@@ -35,10 +35,11 @@ elements.createOrReplaceTempView("elements")
 
 print('elements ordered by Era, Year, AtomicNumber')
 try:
-    spark.sql(
+    df_pt_in_order_of_discovery =  spark.sql(
         '''
         select 
             AtomicNumber, 
+            Symbol,
             Element, 
             Period, 
             Group, 
@@ -54,28 +55,35 @@ try:
         from elements 
         order by Era, Year, AtomicNumber
         '''
-    ).show(118, truncate=False)
+    )
+    df_pt_in_order_of_discovery.show(10, truncate=False)
+    df_pt_in_order_of_discovery.coalesce(1).write.mode("overwrite").csv("./elements_in_order_of_discovery.csv",
+                                                                        sep='|', header=True, quote=None)
 except AnalysisException as e:
     print(e)
 
 print('elements ordered by Group NULLS LAST, AtomicNumber')
 try:
-    spark.sql(
+    df_pt_in_order_of_group= spark.sql(
         '''
         select 
-            AtomicNumber, 
+            AtomicNumber,
+            Symbol, 
             Element, 
             Period, 
             Group, 
             Type,
-            Discoverer,
-            Year
+            NumberofValence,
+            NumberofShells
         from elements 
         order by              
             Group NULLS LAST, --https://spark.apache.org/docs/latest/sql-ref-syntax-qry-select-orderby.html
             AtomicNumber
         '''
-    ).show(118, truncate=False)
+    )
+    df_pt_in_order_of_group.show(20, truncate=False)
+    df_pt_in_order_of_group.coalesce(1).write.mode("overwrite").csv("./elements_in_order_of_group.csv",
+                                                                        sep='|', header=True, quote=None)
 except AnalysisException as e:
     print(e)
 # print(spark.catalog.listColumns('elements', 'None',))

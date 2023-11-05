@@ -144,12 +144,14 @@ spark.sql(
 #     .agg(F.count(F.col("*")).alias("failures"))
 # )
 
-print("""
+print(f"""
       List tables in catalog after executing a SQL statements:\n
         'CREATE OR REPLACE TEMP VIEW drive_days ...' &\n
         'CREATE OR REPLACE TEMP VIEW failures ...'\n
         We expect both drive_days and failures to be in the list besides the backblaze_stats_2019 that was
         created with the DataFrame's createOrReplaceTempView() method. \n
+        spark.catalog.listTables('default'):\n
+        {spark.catalog.listTables('default')}
         """)
 pprint.pprint(spark.catalog.listTables('default'))
 

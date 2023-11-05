@@ -119,7 +119,16 @@ below: [IMPORTANT NOTE](#important-note-better-way-to-make-os-environment-variab
 - `conda env export --no-builds > ds311_env_linux-laptop_no-builds_after-update_--all.yml`
 - `conda update -n ds311 --all --no-pin` yielded no possible new updates
 - `conda update -n base --all --no-pin` yielded 4 new packages, 2 updates and 2 downgrades
-
+## Adding `wget` to the `ds311` conda environment
+- we need this package in [../src/Ch07/download_backblaze_data.py](../src/Ch07/download_backblaze_data.py)
+- In a terminal with conda's `ds311` environment activated (here for willem-latitude-5590):
+  ```bash
+  (ds311) $ conda install wget
+  (ds311) $ conda env export > ds311_env_willem_Lattitude-5590_after_wget_install.yml
+  ```
+- In PyCharm do File > Invalidate caches ... so the wget package addition to ds311 becomes visible within the chosen 
+  Python Interpreter of the PyCharm project
+  
 ## IMPORTANT NOTE: better way to make OS environment variables visible when running a python file inside PyCharm IDE
 ### ISSUE
 On Thursday, 26-10-2023, we noticed that all OS environment variables set by conda and SDKman in `~/.bashrc` weren't

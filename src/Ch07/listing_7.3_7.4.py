@@ -36,31 +36,33 @@ elements = (spark
 elements.printSchema()
 elements.where(F.col("phase") == "liq").groupby("period").count().show()
 
+table_name = 'elements'
+
 # To be able to use a SQL query on the tabular data in data frame elements, we need to create a temporary view 
 # "elements" from it
-elements.createOrReplaceTempView('elements')
-print(f"After calling elements.createOrReplaceTempView('elements'):\n"
-      f"spark.catalog.currentDatabase(): {spark.catalog.currentDatabase()}\n"
-      f"spark.catalog.listTables('default'): {spark.catalog.listTables('default')}")
+elements.createOrReplaceTempView(table_name)
+print(f"After calling elements.createOrReplaceTempView('{table_name}'):\n"
+      f"spark.catalog.currentCatalog() returns {spark.catalog.currentCatalog()}\n"
+      f"spark.catalog.currentDatabase() returns {spark.catalog.currentDatabase()}\n"
+      f"With the current database name being 'default' we want a list of its (temporary) tables with:\n"
+      f"spark.catalog.listTables('default') returns:\n{spark.catalog.listTables('default')}")
 
 try:
     spark.sql(
-        '''
+        f'''
         select period, count(*) 
-        from elements 
+        from {table_name} 
         where phase="liq" 
         group by period
         '''
     ).show(5)
 except AnalysisException as e:
     print(e)
-print(f"spark.catalog.currentDatabase() returns {spark.catalog.currentDatabase()}")
-print(f"With the current database name being 'default' we want a list of its (temporary) tables with:\n"
-      f"spark.catalog.listTables('default') returns:\n{spark.catalog.listTables('default')}")
 
-# print(spark.catalog.listColumns('elements', 'None',))
+
+# print(spark.catalog.listColumns('elements', 'spark_catalog',))
 
 # drop the temporary view when you are done.
-spark.catalog.dropTempView("elements")
-print(f"List tables in catalog after calling spark.catalog.dropTempView('elements'): "
+spark.catalog.dropTempView(table_name)
+print(f"List tables in catalog after calling spark.catalog.dropTempView(table_name): "
       f"{spark.catalog.listTables('default')}")

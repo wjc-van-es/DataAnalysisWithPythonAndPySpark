@@ -21,8 +21,8 @@
 ###############################################################################
 
 import sys
-import wget
 
+import wget
 
 DATASETS_FULL = [
     "https://f001.backblazeb2.com/file/Backblaze-Hard-Drive-Data/data_Q1_2019.zip",

@@ -58,12 +58,34 @@ query on a data frame named elements and expect that there is a view or table av
 However, Spark SQL does not have visibility over the variables Python assigns, and you get `AnalysisException` thrown in
 this first attempt.
 
-Therefore, we need to register a data frame, before it can be queried via SQL. The data frame method 
-`createOrReplaceTempView('view_name')` will create a view named `'view_name'` that will be a reference to the data of
-the data frame that can be used as reference in any SQL's `from view_name` clause. This `'view_name'` can be the same as
-the data frame Python variable name, but this isn't required.
+Therefore, we need to register a data frame, before it can be queried via SQL. 
+- The data frame method `createOrReplaceTempView('view_name')` will create a view named `'view_name'` that will be a 
+  reference to the data of the data frame that can be used as reference in any SQL's `from` clause. 
+  This `'view_name'` can be the same as the data frame Python variable name, but this isn't required.
+- Now we can perform a SQL query with the `sql()` method of `pyspark.sql.SparkSession` where we refer to the registered
+  `view_name`
+- we can also check metadata from the `pyspark.sql.Catalog` typed `catalog` field of our current 
+  `pyspark.sql.SparkSession` like
+  - `spark.catalog.currentDatabase()`
+  - `spark.catalog.listTables('default')` where `'default'` is the name returned by the previous call.
+
+#### Summary code
 ```python
 # elements is a data frame created by reading a csv file containing all elements from the periodic table 
 elements.createOrReplaceTempView('elements')
+print(f"After calling elements.createOrReplaceTempView('elements'):\n"
+      f"spark.catalog.currentDatabase() returns {spark.catalog.currentDatabase()}\n"
+      f"With the current database name being 'default' we want a list of its (temporary) tables with:\n"
+      f"spark.catalog.listTables('default') returns:\n{spark.catalog.listTables('default')}")
+spark.sql(
+    '''
+    select period, count(*) 
+    from elements 
+    where phase="liq" 
+    group by period
+    '''
+).show(5)
 ```
-See [../src/Ch07/listing_7.3_7.4.py](../src/Ch07/listing_7.3_7.4.py)
+See for the full code example: [../src/Ch07/listing_7.3_7.4.py](../src/Ch07/listing_7.3_7.4.py)
+
+## 7.3 SQL and PySpark

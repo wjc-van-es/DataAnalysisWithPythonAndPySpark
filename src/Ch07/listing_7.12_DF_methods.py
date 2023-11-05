@@ -11,16 +11,18 @@
 #
 ###############################################################################
 # tag::ch07-src-final-ingestion[]
-from pyspark.sql.utils import AnalysisException
 from dateutil import rrule
 from datetime import datetime
 from functools import reduce
 import os
-import pprint
 import pyspark.sql.types as T
 import pyspark.sql.functions as F
 from pyspark.sql import DataFrame
 from pyspark.sql import SparkSession
+import project_utils.config_info as ci
+
+ci.print_environment()
+ci.check_path()
 
 spark = (SparkSession.builder
                  .appName("Chapter 7 example")
@@ -51,6 +53,7 @@ all_files = [f"{dt.strftime('%Y-%m-%d')}.csv" for dt in rrule.rrule(rrule.DAILY,
                                                                     dtstart=datetime.strptime(start_date, '%Y-%m-%d'),
                                                                     until=datetime.strptime(end_date, '%Y-%m-%d'))]
 
+print(f"The number of files should be 365 for each day of the year 2019: {len(all_files)}")
 # pprint.pprint(all_files)
 
 # alternative approach do not infer schema, but impose our own with only the fields we will investigate and are
@@ -73,6 +76,7 @@ data = [
     for file in all_files
 ]
 
+print(f"we now have a list of 365 separate data frames {len(data)}, type(data[0]) = {type(data[0])}")
 # the last file, 2019-12-31.csv, represents the 365th day of the year, which has a 0-based index of 364.
 # data[364].printSchema()
 # data[364].show(5, truncate=False)
@@ -83,6 +87,9 @@ data = [
 # share the same schema and have the columns in the same order
 # source: https://walkenho.github.io/merging-multiple-dataframes-in-pyspark/
 merged_df = reduce(DataFrame.unionAll, data).dropna()
+
+print(f"We now have a merged data frame with this number of rows: {merged_df.count()}")
+merged_df.show(5, truncate=False)
 
 # or use PySpark's DataFrame methods to do the same
 drive_days = merged_df.groupby(F.col("model")).agg(
@@ -99,6 +106,8 @@ failures = (
 # alternative using the methods from PySpark's DataFrame object
 joined = drive_days.join(failures, on="model", how="left")
 joined.show(5, truncate=False)
+
+spark.stop()
 
 if __name__ == "__main__":
     pass

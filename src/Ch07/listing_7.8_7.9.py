@@ -11,16 +11,17 @@
 #
 ###############################################################################
 # tag::ch07-src-final-ingestion[]
-from pyspark.sql.utils import AnalysisException
 from dateutil import rrule
 from datetime import datetime
 from functools import reduce
 import os
-import pprint
 import pyspark.sql.types as T
-import pyspark.sql.functions as F
 from pyspark.sql import DataFrame
 from pyspark.sql import SparkSession
+import project_utils.config_info as ci
+
+ci.print_environment()
+ci.check_path()
 
 spark = (SparkSession.builder
                  .appName("Chapter 7 example")
@@ -43,6 +44,7 @@ end_date = '2019-12-31'
 # loading the whole year gives stack overflow
 # end_date = '2019-12-31'
 
+table_name = 'backblaze_stats_2019'
 
 # list comprehension based on
 # https://stackoverflow.com/questions/11317378/how-to-get-all-dates-month-day-and-year-between-two-dates-in-python
@@ -51,7 +53,7 @@ all_files = [f"{dt.strftime('%Y-%m-%d')}.csv" for dt in rrule.rrule(rrule.DAILY,
                                                                     dtstart=datetime.strptime(start_date, '%Y-%m-%d'),
                                                                     until=datetime.strptime(end_date, '%Y-%m-%d'))]
 
-# pprint.pprint(all_files)
+print(f"The number of files should be 365 for each day of the year 2019: {len(all_files)}")
 
 # alternative approach do not infer schema, but impose our own with only the fields we will investigate and are
 # present in all the files, this will enhance performance and hopefully prevent out of memory errors
@@ -72,6 +74,8 @@ data = [
     spark.read.csv(os.path.join(data_dir, file), header=True, schema=schema, mode='PERMISSIVE')
     for file in all_files
 ]
+
+print(f"we now have a list of 365 separate data frames {len(data)}, type(data[0]) = {type(data[0])}")
 # the last file, 2019-12-31.csv, represents the 365th day of the year, which has a 0-based index of 364.
 # data[364].printSchema()
 # data[364].show(5, truncate=False)
@@ -82,19 +86,23 @@ data = [
 # share the same schema and have the columns in the same order
 # source: https://walkenho.github.io/merging-multiple-dataframes-in-pyspark/
 # documentation of the reduce function see: https://docs.python.org/3/library/functools.html#functools.reduce
+# THIS IS THE MOST EXPENSIVE OPERATION
 merged_df = reduce(DataFrame.unionAll, data).dropna()
+
+print(f"We now have a merged data frame with this number of rows: {merged_df.count()}")
+merged_df.show(5, truncate=False)
 
 # The actual listing 7.8 combined with listing 7.9
 # In SQL syntax
-merged_df.createOrReplaceTempView("backblaze_stats_2019")
+merged_df.createOrReplaceTempView(table_name)
 
 spark.sql(
-    '''
+    f'''
     select
         model,
         min(capacity_bytes / pow(1024, 3)) min_GB,
         max(capacity_bytes/ pow(1024, 3)) max_GB
-    from backblaze_stats_2019
+    from {table_name}
     group by 1
     having min_GB != max_GB
     order by 3 desc
@@ -108,6 +116,8 @@ spark.sql(
 # ).where(F.col("min_GB") != F.col("max_GB")).orderBy(F.col("max_GB"), ascending=False).show(5)
 # merged_df.show(truncate=False)
 
+spark.catalog.dropTempView(table_name)
+spark.stop()
 
 if __name__ == "__main__":
     pass

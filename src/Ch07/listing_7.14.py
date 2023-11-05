@@ -11,16 +11,18 @@
 #
 ###############################################################################
 # tag::ch07-src-final-ingestion[]
-from pyspark.sql.utils import AnalysisException
 from dateutil import rrule
 from datetime import datetime
 from functools import reduce
 import os
 import pprint
 import pyspark.sql.types as T
-import pyspark.sql.functions as F
 from pyspark.sql import DataFrame
 from pyspark.sql import SparkSession
+import project_utils.config_info as ci
+
+ci.print_environment()
+ci.check_path()
 
 spark = (SparkSession.builder
                  .appName("Chapter 7 example")
@@ -43,6 +45,7 @@ end_date = '2019-12-31'
 # loading the whole year gives stack overflow
 # end_date = '2019-12-31'
 
+table_name = 'backblaze_stats_2019'
 
 # list comprehension based on
 # https://stackoverflow.com/questions/11317378/how-to-get-all-dates-month-day-and-year-between-two-dates-in-python
@@ -51,6 +54,7 @@ all_files = [f"{dt.strftime('%Y-%m-%d')}.csv" for dt in rrule.rrule(rrule.DAILY,
                                                                     dtstart=datetime.strptime(start_date, '%Y-%m-%d'),
                                                                     until=datetime.strptime(end_date, '%Y-%m-%d'))]
 
+print(f"The number of files should be 365 for each day of the year 2019: {len(all_files)}")
 # pprint.pprint(all_files)
 
 # alternative approach do not infer schema, but impose our own with only the fields we will investigate and are
@@ -72,6 +76,8 @@ data = [
     spark.read.csv(os.path.join(data_dir, file), header=True, schema=schema, mode='PERMISSIVE')
     for file in all_files
 ]
+
+print(f"we now have a list of 365 separate data frames {len(data)}, type(data[0]) = {type(data[0])}")
 # the last file, 2019-12-31.csv, represents the 365th day of the year, which has a 0-based index of 364.
 # data[364].printSchema()
 # data[364].show(5, truncate=False)
@@ -83,9 +89,12 @@ data = [
 # source: https://walkenho.github.io/merging-multiple-dataframes-in-pyspark/
 merged_df = reduce(DataFrame.unionAll, data).dropna()
 
+print(f"We now have a merged data frame with this number of rows: {merged_df.count()}")
+merged_df.show(5, truncate=False)
+
 # The actual listing 7.8 combined with listing 7.9
 # The SQL way takes pretty long
-merged_df.createOrReplaceTempView("backblaze_stats_2019")
+merged_df.createOrReplaceTempView(table_name)
 
 
 print("""
@@ -98,7 +107,7 @@ pprint.pprint(spark.catalog.listTables('default'))
 # Example of two common table expressions or CTE using the WITH keyword to define temporary tables, whose aliases can be
 # targeted in the following query and that will be dropped after query execution has finished.
 joined = spark.sql(
-    """
+   f"""
     WITH drive_days AS (
         SELECT 
             model, 
@@ -109,7 +118,7 @@ joined = spark.sql(
         SELECT 
             model, 
             count(*) AS failures
-        FROM backblaze_stats_2019
+        FROM {table_name}
         WHERE failure = 1
         GROUP BY model)
     
@@ -124,6 +133,9 @@ joined = spark.sql(
 )
 
 joined.show(5, truncate=False)
+
+spark.catalog.dropTempView(table_name)
+spark.stop()
 
 if __name__ == "__main__":
     pass

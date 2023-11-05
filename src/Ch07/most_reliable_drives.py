@@ -70,18 +70,18 @@ full_data = reduce(
 full_data = full_data.selectExpr(
     "model", "capacity_bytes / pow(1024, 3) capacity_GB", "date", "failure"
 )
-full_data.printSchema()
-full_data.createOrReplaceTempView("full_data")
-try:
-    spark.sql(
-        '''
-        select model
-        from full_data 
-        where failure = 1
-        '''
-    ).show(5)
-except AnalysisException as e:
-    print(e)
+# full_data.printSchema()
+# full_data.createOrReplaceTempView("full_data")
+# try:
+#     spark.sql(
+#         '''
+#         select model
+#         from full_data
+#         where failure = 1
+#         '''
+#     ).show(5)
+# except AnalysisException as e:
+#     print(e)
 
 drive_days = full_data.groupby("model", "capacity_GB").agg(
     F.count("*").alias("drive_days")
@@ -131,8 +131,13 @@ def most_reliable_drive_for_capacity(data, capacity_GB=2048, precision=0.25, top
     )
 
     return answer
+
+
 # end::ch07-src-final-function[]
 # most_reliable_drive_for_capacity(full_data)
+results = most_reliable_drive_for_capacity(summarized_data, capacity_GB=11176.0, top_n=25)
+results.show(truncate=False)
+
 
 if __name__ == "__main__":
     pass

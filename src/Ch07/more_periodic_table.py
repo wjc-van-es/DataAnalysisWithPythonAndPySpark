@@ -2,6 +2,11 @@ import pyspark.sql.functions as F
 import os
 from pyspark.sql import SparkSession
 from pyspark.sql.utils import AnalysisException
+import project_utils.config_info as ci
+
+ci.print_environment()
+ci.check_path()
+
 
 # To prevent the warning:
 # WARN package: Truncated the string representation of a plan since it was too large. This behavior can be adjusted by

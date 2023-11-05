@@ -110,9 +110,9 @@ See for the full code example: [../src/Ch07/listing_7.3_7.4.py](../src/Ch07/list
 
 ### 7.4.3 Filtering after grouping using having
 #### Using `having` in SQL and `where()` in PySpark
-- **In SQL**, the `GROUB BY` clause should always come after the `WHERE` clause, therefore to add filtering conditions
+- **In SQL**, the `GROUP BY` clause should always come after the `WHERE` clause, therefore to add filtering conditions
   that need to be **applied to aggregate fields** cannot be added to the `WHERE` clause, but to a separate `HAVING` 
-  clause that comes after the `GROUB BY` clause. Thus, `HAVING` can be thought of as a `WHERE` clause especially for 
+  clause that comes after the `GROUP BY` clause. Thus, `HAVING` can be thought of as a `WHERE` clause especially for 
   aggregate columns.
 - **In PySpark**, there is _**no** need for a separate `having()` data frame method_, as each method simple returns a
   new data frame. Therefore, in Python code, simply use the `where()` data frame method whenever you should have used

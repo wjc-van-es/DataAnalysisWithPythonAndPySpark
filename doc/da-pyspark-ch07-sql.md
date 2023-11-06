@@ -192,7 +192,68 @@ print(f"There are {drive_days_over_180_000.count()} models with over 180_000 dri
 ```
 
 ### 7.4.5 Adding data to our table using UNION and JOIN
+We deviate from the path chosen in the book by reading all the csv files, which each represent 1 day of the year into
+a data frame and so creating a list of 365 data frames. Then we need a way to combine these into a single data frame
+containing all the data of a complete year.
+[https://walkenho.github.io/merging-multiple-dataframes-in-pyspark/](https://walkenho.github.io/merging-multiple-dataframes-in-pyspark/)
+explains how this can be done by  
+- combining `pyspark.sql.Dataframe.unionAll()` 
+- with `functools.reduce()`
 
+#### Notes about `pyspark.sql.Dataframe.unionAll()` and `pyspark.sql.Dataframe.union()`
+- `pyspark.sql.Dataframe.unionAll()` is typically used as `this_df.unionAll(other_df)`, which will return a new 
+   data frame containing the union of rows in the this_df and other_df DataFrame objects.
+- `pyspark.sql.Dataframe.union()` is an alias doing the exact same thing, which is confusing when you compare it to
+  the respective SQL commands of the same name, which differ slightly in their behavior
+  - the SQL command `UNION` automatically removes duplicate records, whilst `UNION ALL` does _NOT_
+  - therefore `pyspark.sql.Dataframe.unionAll()` is more accurately descriptive as it behaves like SQL command 
+    `UNION ALL` in keeping any duplicate records.
+  - combine `unionAll()` with `distinct()` if you do want to remove duplicate records
+- `pyspark.sql.Dataframe.unionAll()` does not re-sort columns, so when you apply the procedure described above, so make 
+  sure that your dataframes have the same order of columns. We did this by applying our own schema as argument on the
+  spark.read.csv() function call
+- `pyspark.sql.Dataframe.unionAll()` can only union 2 data frames, that's where `functools.reduce()` comes in
+- [https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.unionAll.html#pyspark.sql.DataFrame.unionAll](https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.unionAll.html#pyspark.sql.DataFrame.unionAll)
+
+#### Notes about `functools.reduce()`
+This function takes two arguments
+- the first is a function
+- the second is an iterable on whose elements the function can be performed
+
+Or described with a bit more precision these steps are applied:
+1. Apply a function (or callable) to the first two items in an iterable and generate a partial result.
+1. Use that partial result, together with the third item in the iterable, to generate another partial result.
+1. Repeat the process until the iterable is exhausted and then return a single cumulative value.
+
+For a simple example of how this can be used:
+[../src/Ch07/simple_reduce_example.py](../src/Ch07/simple_reduce_example.py)
+
+See also [https://realpython.com/python-reduce-function/](https://realpython.com/python-reduce-function/)
+
+#### Combining both `functools.reduce()` with `pyspark.sql.Dataframe.unionAll()` 
+We see this at work in most of our listings of chapter 7 that involve the memory drives reliability investigation, e.g.
+[../src/Ch07/listing_7.10.py](../src/Ch07/listing_7.10.py)
+
+A code fragment with the most relevant bit:
+```python
+from functools import reduce
+from pyspark.sql import DataFrame
+...
+# a list of 365 dataframes
+# all_files is a list containing all file names
+# schema is a predefined schema to force compliance of all data frames to have the same columns of the same type 
+# in the same order
+# the schema is also a subset of only the columns we're interested in to optimize the process
+data = [
+    spark.read.csv(os.path.join(data_dir, file), header=True, schema=schema, mode='PERMISSIVE')
+    for file in all_files
+]
+
+merged_df = reduce(DataFrame.unionAll, data).dropna()
+```
+#### Joins
+See also section 5.1 for all theory of joining tabular structures with the PySpark methods in 7.4.5 we see a short
+example of joins in SQL syntax.
 
 ### 7.4.6 Organizing your SQL code better through subqueries and common table expressions
 

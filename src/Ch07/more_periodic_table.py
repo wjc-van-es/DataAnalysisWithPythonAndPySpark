@@ -99,3 +99,6 @@ print(f"List tables in catalog before calling spark.catalog.dropTempView('elemen
 spark.catalog.dropTempView("elements")
 print(f"List tables in catalog after calling spark.catalog.dropTempView('elements'): "
       f"{spark.catalog.listTables('default')}")
+
+if __name__ == "__main__":
+    pass

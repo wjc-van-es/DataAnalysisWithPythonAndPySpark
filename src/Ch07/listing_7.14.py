@@ -112,7 +112,7 @@ joined = spark.sql(
         SELECT 
             model, 
             count(*) AS drive_days
-        FROM backblaze_stats_2019
+        FROM {table_name}
         GROUP BY model),
     failures AS (
         SELECT 

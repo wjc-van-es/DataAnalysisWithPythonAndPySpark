@@ -256,4 +256,105 @@ See also section 5.1 for all theory of joining tabular structures with the PySpa
 example of joins in SQL syntax.
 
 ### 7.4.6 Organizing your SQL code better through subqueries and common table expressions
+#### Subqueries 
+Subqueries are a way to express a view that remains local to (and temporary for the duration of) your query and helps
+to divide up the complexity in easy to understand parts. 
+- Subqueries can be aliased like normal tables in the `FROM` clause and these aliases can be used in other parts of the
+  query, e.g.
+  - within a `SELECT` clause to refer to some of its columns
+  - within a `WHERE` clause again to refer to some of its columns to use in a condition
 
+e.g. the query below
+```sql
+SELECT
+    failures.model,                         -- using the subquery alias
+    failures / drive_days AS failure_rate   -- using the column aliases
+FROM (
+    SELECT
+        model,
+        count(*) AS drive_days              -- column with the same alias name as the subquery it belongs to
+    FROM drive_stats
+    GROUP BY model) AS drive_days           -- first subquery with alias
+INNER JOIN (
+    SELECT
+      model,
+      count(*) AS failures                  -- column with the same alias name as the subquery it belongs to
+    FROM drive_stats
+    WHERE failure = 1
+    GROUP BY model) AS failures             -- second subquery with alias
+ON
+    drive_days.model = failures.model       -- using the subquery aliases
+ORDER BY failure_rate desc  
+```
+#### Common table expressions (CTEs)
+- When the number and / or size of subqueries increase the main query runs the risk of becoming too complex and more
+  difficult to read.
+-  In a CTE we take the subqueries out of the main query and define them as a kind of variables before the main `SELECT`
+   starting with the keyword `WITH` an alias and the corresponding subquery between parentheses, more CTEs are separated
+  by a comma.
+- You can consider them temporary `CREATE` statements of views that are dropped when the main query has finished 
+  execution.
+
+e.g. [../src/Ch07/listing_7.14.py](../src/Ch07/listing_7.14.py) and the query below
+```sql
+WITH drive_days AS (
+        SELECT 
+            model, 
+            count(*) AS drive_days
+        FROM drive_stats
+        GROUP BY model),
+    failures AS (
+        SELECT 
+            model, 
+            count(*) AS failures
+        FROM drive_stats
+        WHERE failure = 1
+        GROUP BY model)
+    
+    SELECT
+        drive_days.model,
+        drive_days,
+        failures
+    FROM drive_days
+    INNER JOIN failures
+    ON drive_days.model = failures.model
+    ORDER BY failures DESC
+```
+In PySpark Python code the equivalent would be defining data frames as local variables of a function definition, which
+would limit their scope to function execution time.
+e.g. [../src/Ch07/listing_7.15.py](../src/Ch07/listing_7.15.py) and the listing below
+```python
+import pyspark.sql.functions as F
+...
+def failure_rate(drive_stats):
+    drive_days = drive_stats.groupby(F.col('model')).agg(
+        F.count(F.col('*')).alias('drive_days')
+    )
+
+    failures = (
+        drive_stats.where(F.col('failure') == 1)
+        .groupby(F.col('model'))
+        .agg(F.count(F.col('*')).alias('failures'))
+    )
+
+    answer = (
+        drive_days.join(failures, on='model', how='left')
+        .withColumn('failure_rate', F.col('failures') / F.col('drive_days'))
+        .orderBy(F.col('failure_rate').desc())
+    )
+    return answer
+```
+### 7.4.7 A quick summary of PySpark vs. SQL syntax
+- Spark borrowed a lot of the vocabulary from SQL, which makes it familiar for those already familiar with SQL
+- The main difference in the order of operations
+  - PySpark is free about the order in which operations are performed as most `pyspark.sql.Dataframe` methods
+    result in a new data frame. This enables method chaining, which makes our data transformation code very
+    readable.
+  - SQL has a rigid order of clauses:
+    - first the operation, e.g. `SELECT`
+    - second the target, e.g. `FROM`, `INNER JOIN`
+    - third the condition, e.g. `WHERE`, `GROUP BY`, `HAVING`, `ORDER BY`
+
+## 7.5 Simplifying our code: Blending SQL and Python
+There are a few PySpark `pyspark.sql.Dataframe` methods that can take strings with SQL syntax fragments as an argument. 
+This will prove to be very useful. 

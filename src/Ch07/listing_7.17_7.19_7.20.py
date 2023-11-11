@@ -105,7 +105,8 @@ def failure_rate(drive_stats):
     failures = (
         full_data.where(F.col('failure') == 1)
         .groupby(F.col('model'), F.col('capacity_GB'))
-        .agg(F.count(F.col('*')).alias('failures'))
+        # .agg(F.count(F.col('*')).alias('failures'))
+        .agg(F.expr('count(*) as failures')) # The same aggregation as the commented line above but with expr()
     )
 
     summarized_data = (

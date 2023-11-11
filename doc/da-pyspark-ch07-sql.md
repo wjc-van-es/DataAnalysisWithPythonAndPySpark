@@ -356,5 +356,75 @@ def failure_rate(drive_stats):
     - third the condition, e.g. `WHERE`, `GROUP BY`, `HAVING`, `ORDER BY`
 
 ## 7.5 Simplifying our code: Blending SQL and Python
-There are a few PySpark `pyspark.sql.Dataframe` methods that can take strings with SQL syntax fragments as an argument. 
-This will prove to be very useful. 
+There are two PySpark `pyspark.sql.Dataframe` methods and one `pyspark.sql.functions` function that can take strings 
+with SQL syntax fragments as an argument.
+1. `selectExpr()` is the same as `select()` except it accepts SQL-style operations as string argument
+2. `where()` / `filter()` both do exactly the same, specifying a condition on which to filter resulting records. 
+   But the name `where()` more closely resembles the corresponding SQL `WHERE` clause (that performs the same function).
+3. `F.expr()`  wraps a SQL-style expression into a column. This can be used combined with 
+   `F.col()` to modify a column, but also as the argument of `agg()` to specify the application of aggregate functions
+   on columns in SQL syntax.
+
+These three can help to simplify the syntax for complex filtering and selection. See them being applied in the code
+fragment below.
+
+```python
+import pyspark.sql.functions as F
+
+# example of a selectExpr() to choose columns in a SQL manner, also being able to use functions available in SQL
+full_data = full_data.selectExpr(
+    "model", "capacity_bytes / pow(1024, 3) capacity_GB", "date", "failure"
+)
+
+drive_days = full_data.groupby("model", "capacity_GB").agg(
+    F.count("*").alias("drive_days")
+)
+
+failures = (
+    full_data.where("failure = 1")      # example of simple where()
+    .groupby("model", "capacity_GB")
+    .agg(F.expr("count(*) failures"))   # example of F.expr() as agg() argument
+)
+
+summarized_data = (
+    drive_days.join(failures, on=["model", "capacity_GB"], how="left")
+    .fillna(0.0, ["failures"])
+    .selectExpr("model", "capacity_GB", "failures / drive_days failure_rate") # another use of (selectExpr)
+    .cache()
+)
+
+```
+
+A powerful combination of Python and SQL is using f string interpolation in conjunction with SQL's `between`
+```python
+def most_reliable_drive_for_capacity(failure_rate_df, capacity_GB=2048, precision=0.25, top_n=3):
+    """Returns the top 3 drives for a given approximate capacity.
+
+    Given a capacity in GB and a precision as a decimal number, we keep the N
+    drives where:
+
+    - the capacity is between (capacity * 1/(1+precision)), capacity * (1+precision)
+    - the failure rate is the lowest
+
+    """
+    capacity_min = capacity_GB / (1 + precision)
+    capacity_max = capacity_GB * (1 + precision)
+
+    answer = (
+        failure_rate_df.where(f"capacity_GB between {capacity_min} and {capacity_max}")  # <1>
+        .orderBy("failure_rate", "capacity_GB", ascending=[True, False])
+        .limit(top_n)  # <2>
+    )
+
+    return answer
+```
+The full example is listed as [../src/Ch07/listing_7.17_7.19_7.20.py](../src/Ch07/listing_7.17_7.19_7.20.py)
+
+
+---
+
+
+### NOTE
+Always be very wary of user-provided input: Sanitize the inputs to avoid potential SQL injection attacks
+
+___

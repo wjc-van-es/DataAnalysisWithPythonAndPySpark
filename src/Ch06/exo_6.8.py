@@ -1,7 +1,7 @@
 from pyspark.sql import SparkSession
 import pyspark.sql.types as T
 import pyspark.sql.functions as F
-import pprint
+from pprint import pprint
 
 spark = SparkSession.builder.appName("Chapter 6 example").getOrCreate()
 
@@ -19,4 +19,4 @@ map_exo6_8 = (df_exo6_8
               )
 map_exo6_8.printSchema()
 map_exo6_8.show(truncate=False)
-pprint.pprint(map_exo6_8)
+pprint(map_exo6_8)

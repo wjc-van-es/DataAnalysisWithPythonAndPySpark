@@ -160,7 +160,13 @@ We found the solution in editing the so called _.desktop file_ for PyCharm and c
 - This only works for a linux installation (just maybe also for MacOS, provided we adapt to the shell in used bash or 
   ZShell)
 - **This should probably be set again or at least checked after every PyCharm update, so do NOT forget**
-
+- Here are references about when IDEA Toolbox (re)generate the shell scripts
+- [https://intellij-support.jetbrains.com/hc/en-us/community/posts/205816809-Fixed-broken-desktop-entry-launcher-for-PyCharm-in-Ubuntu](https://intellij-support.jetbrains.com/hc/en-us/community/posts/205816809-Fixed-broken-desktop-entry-launcher-for-PyCharm-in-Ubuntu)
+- [https://youtrack.jetbrains.com/issue/TBX-3351/When-does-toolbox-generate-shell-script](https://youtrack.jetbrains.com/issue/TBX-3351/When-does-toolbox-generate-shell-script)
+- [https://timdeschryver.dev/blog/enable-shell-scripts-for-the-jetbrains-toolbox-app](https://timdeschryver.dev/blog/enable-shell-scripts-for-the-jetbrains-toolbox-app)
+```bash
+"/home/willem/.local/share/JetBrains/Toolbox/apps/pycharm-community/bin/pycharm.sh" %u
+```
 ## references
 - The whole session is saved to 
   [ds311-conda-env-creation-+-conda-update-session.txt](../../../Documents/sysAdmin-linux-laptop/Python/ds311-conda-env-creation-+-conda-update-session.txt)

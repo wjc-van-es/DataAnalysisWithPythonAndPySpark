@@ -46,7 +46,7 @@ We installed Anaconda on willem-Latitude-5590 and created an environment that wo
 We had some difficulties on linux-laptop in the past with finding all the environment variables and SDKman installed
 and managed Apache Spark in particular. We solved this by forcefully setting the SPARK_HOME and PATH in `~/.bashrc`
 and again `PATH` in conda's `dasci` environment. The reason for this last modification was to make `$JAVA_HOME/bin`
-and `$SARK_HOME/bin` visible when running scripts inside the PySpark IDE environment.
+and `$SPARK_HOME/bin` visible when running scripts inside the PySpark IDE environment.
 This `PATH` modification in the conda environment made the configuration brittle and unresponsive to management
 by SDKMan. We have a much better solution now see the section below:
 - [IMPORTANT NOTE](#important-note-better-way-to-make-os-environment-variables-visible-when-running-a-python-file-inside-pycharm-ide)
@@ -109,7 +109,7 @@ below: [IMPORTANT NOTE](#important-note-better-way-to-make-os-environment-variab
 - Installing matplotlib with `conda install -n ds311 matplotlib`
 - we refreshed the environment with `conda activate ds311`
 - conda env export --no-builds > ds311_env_linux-laptop_no-builds.yml
-- See if any updates are possible already with `conda update -n ds311 all`, most important change:
+- See if any updates are possible already with `conda update -n ds311 --all`, most important change:
   ```bash
   The following packages will be SUPERSEDED by a higher-priority channel:
 
@@ -128,7 +128,19 @@ below: [IMPORTANT NOTE](#important-note-better-way-to-make-os-environment-variab
   ```
 - In PyCharm do File > Invalidate caches ... so the wget package addition to ds311 becomes visible within the chosen 
   Python Interpreter of the PyCharm project
-  
+ 
+## Installing extra libraries to ds311 environment necessary for _Practical Statistics for Data Scientists_
+### First tested on willem-Latitude-5590
+- We needed a few extra libraries to run the python code examples, and we had an `environment.yml` file
+  see [https://github.com/wjc-van-es/practical-statistics-for-data-scientists/blob/master/environment.yml](https://github.com/wjc-van-es/practical-statistics-for-data-scientists/blob/master/environment.yml)
+- So instead of executing several separated `conda install` commands on the existing ds311
+  - e.g. `conda install -n ds311 scipy`
+- we used `(ds311) willem@willem-Latitude-5590:~/git/practical-statistics-for-data-scientists$ conda env update -n ds311 -f environment.yml`
+  - (beware of the right directory containing the `environment.yml`)
+  - There is no danger of uninstallation of the libraries not present in `environment.yml` as long as you don't include
+    `--prune` as this would uninstall all dependencies not present in the yaml file.
+    - see [https://stackoverflow.com/questions/42352841/how-to-update-an-existing-conda-environment-with-a-yml-file](https://stackoverflow.com/questions/42352841/how-to-update-an-existing-conda-environment-with-a-yml-file)
+ 
 ## IMPORTANT NOTE: better way to make OS environment variables visible when running a python file inside PyCharm IDE
 ### ISSUE
 On Thursday, 26-10-2023, we noticed that all OS environment variables set by conda and SDKman in `~/.bashrc` weren't
@@ -174,3 +186,5 @@ We found the solution in editing the so called _.desktop file_ for PyCharm and c
 - [https://towardsdatascience.com/how-to-set-up-anaconda-and-jupyter-notebook-the-right-way-de3b7623ea4a](https://towardsdatascience.com/how-to-set-up-anaconda-and-jupyter-notebook-the-right-way-de3b7623ea4a)
 - [https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html)
 - [https://docs.conda.io/projects/conda/en/latest/user-guide/cheatsheet.html](https://docs.conda.io/projects/conda/en/latest/user-guide/cheatsheet.html)
+- [https://www.anaconda.com/blog/keeping-anaconda-date](https://www.anaconda.com/blog/keeping-anaconda-date)
+- [https://stackoverflow.com/questions/42352841/how-to-update-an-existing-conda-environment-with-a-yml-file](https://stackoverflow.com/questions/42352841/how-to-update-an-existing-conda-environment-with-a-yml-file)

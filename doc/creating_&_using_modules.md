@@ -66,11 +66,12 @@ a directory marked as _Sources Root_, which is `~/git/DataAnalysisWithPythonAndP
 ### On the commandline
 If we try to run it in a commandline terminal we also need to set the PYTHONPATH environment variable
 to the directory we marked as the _Sources Root_ `~/git/DataAnalysisWithPythonAndPySpark/src`. This may be done
-as relative path 
+as relative path, e.g.
 ```bash
 (ds311) willem@linux-laptop:~/git/DataAnalysisWithPythonAndPySpark/src/Ch06$ PYTHONPATH=../ python listing_6.24_6.26.py
+(ds311) willem@willem-Latitude-5590:~/git/DataAnalysisWithPythonAndPySpark/src/Ch07$ PYTHONPATH=../ ./more_periodic_table.py
 ```
-or as absolute path
+or as absolute path, e.g.
 ```bash
 (ds311) willem@linux-laptop:~/git/DataAnalysisWithPythonAndPySpark/src/Ch06$ PYTHONPATH=~/git/DataAnalysisWithPythonAndPySpark/src/ python listing_6.24_6.26.py
 ```
@@ -79,5 +80,6 @@ or as absolute path
 - [https://stackoverflow.com/questions/2349991/how-do-i-import-other-python-files](https://stackoverflow.com/questions/2349991/how-do-i-import-other-python-files)
 - [https://stackoverflow.com/questions/28705029/pycharm-error-no-module-when-trying-to-import-own-module-python-script](https://stackoverflow.com/questions/28705029/pycharm-error-no-module-when-trying-to-import-own-module-python-script)
 - [https://stackoverflow.com/questions/4580101/python-add-pythonpath-during-command-line-module-run](https://stackoverflow.com/questions/4580101/python-add-pythonpath-during-command-line-module-run)
+- [https://towardsdatascience.com/how-to-fix-modulenotfounderror-and-importerror-248ce5b69b1c](https://towardsdatascience.com/how-to-fix-modulenotfounderror-and-importerror-248ce5b69b1c)
 - [https://docs.python.org/3/using/cmdline.html](https://docs.python.org/3/using/cmdline.html)
 - [https://docs.python.org/3/tutorial/modules.html](https://docs.python.org/3/tutorial/modules.html)

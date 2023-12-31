@@ -1,8 +1,19 @@
+#!/usr/bin/env python
+
+import sys
 import pyspark.sql.functions as F
 import os
 from pyspark.sql import SparkSession
 from pyspark.sql.utils import AnalysisException
 import project_utils.config_info as ci
+
+# We have to add the src dir to the sys.path to be able to import the project_utils module
+# when run from the command line
+from pathlib import Path
+src_dir = Path(__file__).parents[1]
+print(src_dir)
+# sys.path.append(src_dir)
+# sys.path.append(src_dir / 'project_utils')
 
 ci.print_environment()
 ci.check_path()

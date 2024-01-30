@@ -36,6 +36,15 @@ h1,h2,h3,h4,h5 {
 
 # Recreation of the conda ds311 environment on linux-laptop
 
+---
+
+## NOTE: periodical update of a conda environment
+1. update the python version (this would stay within 3.11) with `conda update -n ds311 python --no-pin`
+2. update all other packages (in relation to the new python version) with `conda update -n ds311 --all --no-pin`
+3. register the state of the environment with `conda env export --no-builds > ds311_env_willem-latitude-5590_no-builds_after-updates-240130.yml`
+
+---
+
 ## Context
 We installed Anaconda on willem-Latitude-5590 and created an environment that would be an upgrade from the old dasci
 - python 3.11

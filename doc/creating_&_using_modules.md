@@ -90,7 +90,8 @@ ci.check_path()
 - For environment variables created in `~/.bashrc` to be visible within the jupyter notebook the declarations
   `export ENV_NAME="value"` should be made after the conda initialize statements for them to be visible within
   a jupyter notebook.
-- For a python script executed from the commandline (the previous section) this wasn't necessary
+- For a python script executed from the commandline (the previous section) this exact location of the placement wasn't
+  necessary
 - [https://stackoverflow.com/questions/68572852/import-local-modules-in-jupyter-notebook](https://stackoverflow.com/questions/68572852/import-local-modules-in-jupyter-notebook)
 
 ## References

@@ -2,11 +2,20 @@
 import os
 import sys
 from pyspark.sql import SparkSession
-import project_utils.config_info as ci
+# import project_utils.config_info as ci # works as well
+from project_utils import config_info as ci
 
 """
 This script is to check whether pyspark is available.
 We should be able to launch it when the conda ds311 environment is activated
+Also $MY_IBAN and $BANK_ROOT_DIR should be set as environment variables
+This can be done in ~/.bashrc with
+~$ gedit .bashrc
+~$ source .bashrc
+If you run this from the commandline set PYTHONPATH to the src/ dir to be able to find the module
+project_utils.config_info that you can find direct under the src/ dir
+(ds311) willem@willem-Latitude-5590:~/git/DataAnalysisWithPythonAndPySpark/src/bankstatements$ PYTHONPATH=../ python pyspark_test.py 2023
+
 """
 
 
@@ -21,7 +30,7 @@ def create_path_from_year(year):
     root_dir = os.getenv(
         "BANK_ROOT_DIR").strip()  # set in the conda dasci env can only be read when run in terminal not in pyspark
     file_name = f"{iban}_01-01-{year}_31-12-{year}.csv"
-    path = f"{root_dir}{file_name}"
+    path = os.path.join(root_dir, file_name)
     print(path)
     return path
 

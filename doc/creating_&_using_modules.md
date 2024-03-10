@@ -46,7 +46,9 @@ h1,h2,h3,h4,h5 {
 - To be able to run everything inside PyCharm `~/git/DataAnalysisWithPythonAndPySpark/src` is marked as _Sources Root_
 
 ## Importing the `project_utils.config_info` module in another python script file
-- add `import project_utils.config_info as ci` at the top of the python script file with any other import statements
+- add at the top of the python script file either 
+  - `import project_utils.config_info as ci` or 
+  - `from project_utils import config_info as ci`
 - Now you can both its available functions with
   - `ci.print_environment()` and
   - `ci.check_path()` respectively
@@ -75,6 +77,21 @@ or as absolute path, e.g.
 ```bash
 (ds311) willem@linux-laptop:~/git/DataAnalysisWithPythonAndPySpark/src/Ch06$ PYTHONPATH=~/git/DataAnalysisWithPythonAndPySpark/src/ python listing_6.24_6.26.py
 ```
+
+### In a jupyter notebook
+```python
+import sys
+sys.path.append("/home/willem/git/DataAnalysisWithPythonAndPySpark/src/")
+from project_utils import config_info as ci
+
+ci.print_environment()
+ci.check_path()
+```
+- For environment variables created in `~/.bashrc` to be visible within the jupyter notebook the declarations
+  `export ENV_NAME="value"` should be made after the conda initialize statements for them to be visible within
+  a jupyter notebook.
+- For a python script executed from the commandline (the previous section) this wasn't necessary
+- [https://stackoverflow.com/questions/68572852/import-local-modules-in-jupyter-notebook](https://stackoverflow.com/questions/68572852/import-local-modules-in-jupyter-notebook)
 
 ## References
 - [https://stackoverflow.com/questions/2349991/how-do-i-import-other-python-files](https://stackoverflow.com/questions/2349991/how-do-i-import-other-python-files)

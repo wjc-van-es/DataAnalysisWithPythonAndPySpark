@@ -7,7 +7,7 @@ import sys
 def print_environment():
     # We made an iterable stream of environment variables filtered by filtertuple
     # Only vars with a key that contain any of the fragments in filtertuple are included
-    filtertuple = ("CONDA", "SPARK", "PYTHON", "JAVA", "PATH", "IBAN", "ROOT_DIR")
+    filtertuple = ("CONDA", "SPARK", "PYTHON", "JAVA", "PATH", "IBAN", "ROOT_DIR", "_PW")
     stream = (item for item in os.environ.items() if any(fragment in item[0] for fragment in filtertuple))
     # print(stream)
     # pprint(f"All environment variables whose names contain any of these fragments: {filtertuple}")

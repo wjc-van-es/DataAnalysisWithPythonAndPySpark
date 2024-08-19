@@ -48,7 +48,7 @@ def create_path_from_year(year):
     if root_dir is None:
         raise ValueError(f"Value of environment variable '{env_root_dir_key}' could not be obtained. Please check.")
     file_name = f"{iban}_01-01-{year}_31-12-{year}.csv"
-    path = f"{root_dir}{file_name}"
+    path = os.path.join(root_dir, file_name)
     return path
 
 
@@ -66,15 +66,13 @@ def create_bedrag_column(in_def):
     # replace comma with period as decimal division symbol and change type to double
     df_1 = (in_def
             .withColumn('Bedrag (EUR)', regexp_replace('Bedrag (EUR)', ',', '.'))
-            .withColumn("Bedrag (EUR)", col("Bedrag (EUR)").cast("double")))
-
-    df_2 = (df_1
+            .withColumn("Bedrag (EUR)", col("Bedrag (EUR)").cast("double"))
             .withColumn('Bedrag', when(col('Af Bij') == 'Af', -1 * col('Bedrag (EUR)'))
                         .otherwise(col('Bedrag (EUR)')))
             .drop(col('Af Bij'))
-            .drop(col('Bedrag (EUR)')))
-
-    return df_2
+            .drop(col('Bedrag (EUR)'))
+    )
+    return df_1
 
 
 def sum_per_tegenrekening(in_df):

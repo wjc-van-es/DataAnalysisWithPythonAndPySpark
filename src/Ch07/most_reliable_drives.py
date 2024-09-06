@@ -20,7 +20,7 @@ import pprint
 import pyspark.sql.functions as F
 from pyspark.sql import SparkSession
 
-spark = SparkSession.builder.getOrCreate()
+spark = SparkSession.builder.master("local[*]").getOrCreate()
 
 data_dir = "../../data/Ch07/"
 

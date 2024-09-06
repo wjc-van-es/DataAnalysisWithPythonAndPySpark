@@ -27,6 +27,7 @@ ci.check_path()
 # the default of spark.sql.debug.maxToStringFields is 25
 spark = (SparkSession.builder
          .appName("Chapter 7 example")
+         .master("local[*]")
          .config('spark.sql.debug.maxToStringFields', '50')
          .getOrCreate())
 

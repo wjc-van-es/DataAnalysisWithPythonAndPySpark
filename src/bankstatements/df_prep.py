@@ -93,7 +93,7 @@ def sum_per_tegenrekening(in_df):
 def main(args):
     ci.print_environment()
     ci.check_path()
-    year = 2020
+    year = 2023
     if len(args) > 0:
         print(f"args = {args}")
         year = args[0]

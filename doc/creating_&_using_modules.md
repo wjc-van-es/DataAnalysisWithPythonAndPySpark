@@ -2,6 +2,7 @@
 body {
   font-family: "Gentium Basic", Cardo, "Linux Libertine o", "Palatino Linotype", Cambria, serif;
   font-size: 100% !important;
+  padding-right: 12%;
 }
 code {
 	padding: 0 .25em;

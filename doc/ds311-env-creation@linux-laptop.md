@@ -5,7 +5,7 @@ body {
   padding-right: 12%;
 }
 code {
-	padding: 0 .25em;
+	padding: 0.25em;
 	
 	white-space: pre;
 	font-family: "Tlwg mono", Consolas, "Liberation Mono", Menlo, Courier, monospace;

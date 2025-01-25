@@ -1,0 +1,1920 @@
+willem@mint-22:~/git/DataAnalysisWithPythonAndPySpark$ cd ../..
+willem@mint-22:~$ ls -la
+total 252
+drwxr-x--- 39 willem willem  4096 Jan 25 22:47 .
+drwxr-xr-x  3 root   root    4096 Dec 17 01:06 ..
+drwxrwxr-x  3 willem willem  4096 Dec 18 13:20 application-logs
+-rw-------  1 willem willem  6116 Jan 17 23:46 .bash_history
+-rw-r--r--  1 willem willem   220 Dec 17 01:06 .bash_logout
+-rw-r--r--  1 willem willem  3954 Dec 17 14:55 .bashrc
+drwx------ 25 willem willem  4096 Jan 17 23:43 .cache
+drwxr-xr-x 22 willem willem  4096 Jan 25 13:28 .config
+drwxr-xr-x  2 willem willem  4096 Dec 17 01:11 Desktop
+-rw-r--r--  1 willem willem    27 Dec 17 01:11 .dmrc
+drwxr-xr-x 25 willem willem  4096 Jan  4 15:45 Documents
+drwxr-xr-x  2 willem willem  4096 Dec 17 19:24 Downloads
+drwx------  9 willem willem  4096 Jan 25 13:29 .dropbox
+drwx------ 20 willem willem  4096 Jan 25 13:29 Dropbox
+drwxrwxr-x  3 willem willem  4096 Jan 21 00:30 .dropbox-dist
+drwxr-xr-x  4 willem willem  4096 Jan 17 20:08 .eclipse
+drwxrwxr-x 10 willem willem  4096 Jan 25 22:55 git
+-rw-rw-r--  1 willem willem    59 Dec 18 13:52 .gitconfig
+drwx------  2 willem willem  4096 Dec 17 19:37 .gnupg
+drwxrwxr-x  8 willem willem  4096 Jan 21 00:14 .gradle
+-rw-r--r--  1 willem willem   245 Jan  5 19:31 .gtkrc-2.0
+-rw-r--r--  1 willem willem   516 Dec 17 01:06 .gtkrc-xfce
+drwxrwxr-x  3 willem willem  4096 Dec 17 01:16 .icons
+drwxrwxr-x  2 willem willem  4096 Dec 17 01:27 installation-info
+drwxrwxr-x  4 willem willem  4096 Dec 17 19:31 .java
+-rw-------  1 willem willem    20 Jan 25 22:47 .lesshst
+drwxrwxr-x  3 willem willem  4096 Dec 17 01:17 .linuxmint
+drwxr-xr-x  4 willem willem  4096 Dec 17 01:11 .local
+drwxrwxr-x  4 willem willem  4096 Dec 17 19:36 .m2
+drwx------  3 willem willem  4096 Dec 22 00:20 .mongodb
+drwx------  4 willem willem  4096 Dec 17 01:45 .mozilla
+drwxr-xr-x  2 willem willem  4096 Dec 17 01:11 Music
+drwxr-xr-x 61 willem willem  4096 Jan  4 15:45 Pictures
+drwx------  3 willem willem  4096 Dec 17 01:45 .pki
+-rw-rw-r--  1 willem willem   905 Dec 17 19:31 .profile
+-rw-r--r--  1 willem willem   807 Dec 17 01:06 .profile.bak
+drwxr-xr-x  2 willem willem  4096 Dec 17 01:11 Public
+drwxrwxr-x  2 willem willem  4096 Dec 19 23:36 .redhat
+drwxrwxr-x  6 willem willem  4096 Dec 17 02:16 resources
+drwxrwxr-x 11 willem willem  4096 Dec 17 14:55 .sdkman
+drwxrwxr-x  8 willem willem  4096 Dec 17 02:22 shared_resources
+drwx------  2 willem willem  4096 Dec 17 16:11 .ssh
+drwxrwxr-x  5 willem willem  4096 Dec 23 21:10 .stellarium
+-rw-r--r--  1 willem willem     0 Dec 17 01:17 .sudo_as_admin_successful
+drwxr-xr-x  2 willem willem  4096 Dec 18 20:27 .swt
+drwxr-xr-x  2 willem willem  4096 Dec 17 01:11 Templates
+-rw-rw-r--  1 willem willem   180 Jan 18 22:37 .testcontainers.properties
+drwxrwxr-x  2 willem willem  4096 Dec 17 01:13 .themes
+drwx------  2 willem willem  4096 Jan 18 23:48 .unison
+drwxr-xr-x  3 willem willem  4096 Dec 17 13:45 .var
+drwxr-xr-x  2 willem willem  4096 Dec 17 01:11 Videos
+-rw-rw-r--  1 willem willem   164 Jan 25 22:28 .wget-hsts
+-rw-------  1 willem willem    52 Jan 25 13:28 .Xauthority
+-rw-rw-r--  1 willem willem   131 Dec 20 00:24 .xinputrc
+-rw-------  1 willem willem 15954 Jan 25 22:55 .xsession-errors
+-rw-------  1 willem willem 16248 Jan 21 20:25 .xsession-errors.old
+-rw-rw-r--  1 willem willem   183 Dec 17 14:55 .zshrc
+willem@mint-22:~$ cd resources
+willem@mint-22:~/resources$ ls -la
+total 24
+drwxrwxr-x  6 willem willem 4096 Dec 17 02:16 .
+drwxr-x--- 39 willem willem 4096 Jan 25 22:47 ..
+drwxr-xr-x  2 willem willem 4096 Dec 17 02:16 deACSM
+drwxr-xr-x  2 willem willem 4096 Dec 17 02:16 pw
+drwxr-xr-x 10 willem willem 4096 Dec 17 02:16 SoftwareInstall
+drwxr-xr-x 10 willem willem 4096 Dec 17 02:16 SonyXperiaCompact_F5321
+willem@mint-22:~/resources$ cd SoftwareInstall/
+willem@mint-22:~/resources/SoftwareInstall$ ls -la
+total 41116
+drwxr-xr-x 10 willem willem     4096 Dec 17 02:16 .
+drwxrwxr-x  6 willem willem     4096 Dec 17 02:16 ..
+drwxr-xr-x  2 willem willem     4096 Dec 17 02:16 anaconda
+-rwxr-xr-x  1 willem willem 42052121 Dec 17 02:16 apache-jena-fuseki-5.0.0.tar.gz
+-rwxr-xr-x  1 willem willem      324 Dec 17 02:16 apache-jena-fuseki-5.0.0.tar.gz.sha512.txt
+drwxr-xr-x  3 willem willem     4096 Dec 17 02:16 Citrix_Workspace_App
+drwxr-xr-x  3 willem willem     4096 Dec 17 02:16 Citrix_workspace_app_2207
+-rwxr-xr-x  1 willem willem       52 Dec 17 02:16 DropBox_Flatpak.txt
+drwxr-xr-x 11 willem willem     4096 Dec 17 21:36 fonts
+drwxr-xr-x  2 willem willem     4096 Dec 17 02:16 JetBrains_IntelliJ
+drwxr-xr-x  2 willem willem     4096 Dec 17 19:24 JetBrains_Toolbox
+drwxr-xr-x  3 willem willem     4096 Dec 17 02:16 Oxygen_20.1
+drwxr-xr-x  2 willem willem     4096 Dec 17 02:16 VSCode
+willem@mint-22:~/resources/SoftwareInstall$ cd anaconda
+willem@mint-22:~/resources/SoftwareInstall/anaconda$ ls -la
+total 1881792
+drwxr-xr-x  2 willem willem       4096 Dec 17 02:16 .
+drwxr-xr-x 10 willem willem       4096 Dec 17 02:16 ..
+-rwxr-xr-x  1 willem willem      93420 Dec 17 02:16 Anaconda3-2022.10_install_session.txt
+-rwxr-xr-x  1 willem willem  773428196 Dec 17 02:16 Anaconda3-2022.10-Linux-x86_64.sh
+-rwxr-xr-x  1 willem willem 1153404010 Dec 17 02:16 Anaconda3-2023.09-0-Linux-x86_64.sh
+-rwxr-xr-x  1 willem willem        408 Dec 17 02:16 Anaconda3-2023.09-0-Linux-x86_64.sh.hash.txt
+-rwxr-xr-x  1 willem willem        470 Dec 17 02:16 hashes.txt
+willem@mint-22:~/resources/SoftwareInstall/anaconda$ wget https://repo.anaconda.com/archive/Anaconda3-2024.10-1-Linux-x86_64.sh
+--2025-01-25 23:05:05--  https://repo.anaconda.com/archive/Anaconda3-2024.10-1-Linux-x86_64.sh
+Resolving repo.anaconda.com (repo.anaconda.com)... 2606:4700::6810:20f1, 2606:4700::6810:bf9e, 104.16.191.158, ...
+Connecting to repo.anaconda.com (repo.anaconda.com)|2606:4700::6810:20f1|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 1102495056 (1,0G) [application/octet-stream]
+Saving to: ‘Anaconda3-2024.10-1-Linux-x86_64.sh’
+
+Anaconda3-2024.10-1-Linux-x86_64.sh          100%[==============================================================================================>]   1,03G  14,2MB/s    in 76s
+
+2025-01-25 23:06:20 (13,9 MB/s) - ‘Anaconda3-2024.10-1-Linux-x86_64.sh’ saved [1102495056/1102495056]
+
+willem@mint-22:~/resources/SoftwareInstall/anaconda$ sha256sum Anaconda3-2024.10-1-Linux-x86_64.sh
+3ba0a298155c32fbfd80cbc238298560bf69a2df511783054adfc151b76d80d8  Anaconda3-2024.10-1-Linux-x86_64.sh
+willem@mint-22:~/resources/SoftwareInstall/anaconda$ ls -la
+total 2958452
+drwxr-xr-x  2 willem willem       4096 Jan 25 23:05 .
+drwxr-xr-x 10 willem willem       4096 Dec 17 02:16 ..
+-rwxr-xr-x  1 willem willem      93420 Dec 17 02:16 Anaconda3-2022.10_install_session.txt
+-rwxr-xr-x  1 willem willem  773428196 Dec 17 02:16 Anaconda3-2022.10-Linux-x86_64.sh
+-rwxr-xr-x  1 willem willem 1153404010 Dec 17 02:16 Anaconda3-2023.09-0-Linux-x86_64.sh
+-rwxr-xr-x  1 willem willem        408 Dec 17 02:16 Anaconda3-2023.09-0-Linux-x86_64.sh.hash.txt
+-rw-rw-r--  1 willem willem 1102495056 Oct 23 19:52 Anaconda3-2024.10-1-Linux-x86_64.sh
+-rwxr-xr-x  1 willem willem        470 Dec 17 02:16 hashes.txt
+willem@mint-22:~/resources/SoftwareInstall/anaconda$ chmod +x Anaconda3-2024.10-1-Linux-x86_64.sh
+willem@mint-22:~/resources/SoftwareInstall/anaconda$ ls -la
+total 2958452
+drwxr-xr-x  2 willem willem       4096 Jan 25 23:05 .
+drwxr-xr-x 10 willem willem       4096 Dec 17 02:16 ..
+-rwxr-xr-x  1 willem willem      93420 Dec 17 02:16 Anaconda3-2022.10_install_session.txt
+-rwxr-xr-x  1 willem willem  773428196 Dec 17 02:16 Anaconda3-2022.10-Linux-x86_64.sh
+-rwxr-xr-x  1 willem willem 1153404010 Dec 17 02:16 Anaconda3-2023.09-0-Linux-x86_64.sh
+-rwxr-xr-x  1 willem willem        408 Dec 17 02:16 Anaconda3-2023.09-0-Linux-x86_64.sh.hash.txt
+-rwxrwxr-x  1 willem willem 1102495056 Oct 23 19:52 Anaconda3-2024.10-1-Linux-x86_64.sh
+-rwxr-xr-x  1 willem willem        470 Dec 17 02:16 hashes.txt
+willem@mint-22:~/resources/SoftwareInstall/anaconda$ bash ./Anaconda3-2024.10-1-Linux-x86_64.sh
+
+Welcome to Anaconda3 2024.10-1
+
+In order to continue the installation process, please review the license
+agreement.
+Please, press ENTER to continue
+>>>
+ANACONDA TERMS OF SERVICE
+Please read these Terms of Service carefully before purchasing, using, accessing, or downloading any Anaconda Offerings (the "Offerings"). These Anaconda Terms of Service ("TOS") a
+re between Anaconda, Inc. ("Anaconda") and you ("You"), the individual or entity acquiring and/or providing access to the Offerings. These TOS govern Your access, download, install
+ation, or use of the Anaconda Offerings, which are provided to You in combination with the terms set forth in the applicable Offering Description, and are hereby incorporated into
+these TOS. Except where indicated otherwise, references to "You" shall include Your Users. You hereby acknowledge that these TOS are binding, and You affirm and signify your consen
+t to these TOS by registering to, using, installing, downloading, or accessing the Anaconda Offerings effective as of the date of first registration, use, install, download or acce
+ss, as applicable (the "Effective Date"). Capitalized definitions not otherwise defined herein are set forth in Section 15 (Definitions). If You do not agree to these Terms of Serv
+ice, You must not register, use, install, download, or access the Anaconda Offerings.
+1. ACCESS & USE
+1.1 General License Grant. Subject to compliance with these TOS and any applicable Offering Description, Anaconda grants You a personal, non-exclusive, non-transferable, non-sublic
+ensable, revocable, limited right to use the applicable Anaconda Offering strictly as detailed herein and as set forth in a relevant Offering Description. If You purchase a subscri
+ption to an Offering as set forth in a relevant Order, then the license grant(s) applicable to your access, download, installation, or use of a specific Anaconda Offering will be s
+et forth in the relevant Offering Description and any definitive agreement which may be executed by you in writing or electronic in connection with your Order ("Custom Agreement").
+ License grants for specific Anaconda Offerings are set forth in the relevant Offering Description, if applicable.
+1.2 License Restrictions. Unless expressly agreed by Anaconda, You may not:  (a) Make, sell, resell, license, sublicense, distribute, rent, or lease any Offerings available to anyo
+ne other than You or Your Users, unless expressly stated otherwise in an Order, Custom Agreement or the Documentation or as otherwise expressly permitted in writing by Anaconda; (b
+) Use the Offerings to store or transmit infringing, libelous, or otherwise unlawful or tortious material, or to store or transmit material in violation of third-party privacy righ
+ts; (c) Use the Offerings or Third Party Services to store or transmit Malicious Code, or attempt to gain unauthorized access to any Offerings or Third Party Services or their rela
+ted systems or networks; (d)Interfere with or disrupt the integrity or performance of any Offerings or Third Party Services, or third-party data contained therein; (e) Permit direc
+t or indirect access to or use of any Offerings or Third Party Services in a way that circumvents a contractual usage limit, or use any Offerings to access, copy or use any Anacond
+a intellectual property except as permitted under these TOS, a Custom Agreement, an Order or the Documentation; (f) Modify, copy or create derivative works of the Offerings or any
+part, feature, function or user interface thereof except, and then solely to the extent that, such activity is required to be permitted under applicable law; (g) Copy Content excep
+t as permitted herein or in an Order, a Custom Agreement or the Documentation or republish any material portion of any Offering in a manner competitive with the offering by Anacond
+a, including republication on another website or redistribute or embed any or all Offerings in a commercial product for redistribution or resale; (h) Frame or Mirror any part of an
+y Content or Offerings, except if and to the extent permitted in an applicable Custom Agreement or Order for your own Internal Use and as permitted in a Custom Agreement or Documen
+tation; (i) Except and then solely to the extent required to be permitted by applicable law, copy, disassemble, reverse engineer, or decompile an Offering, or access an Offering to
+ build a competitive  service by copying or using similar ideas, features, functions or graphics of the Offering. You may not use any "deep-link", "page-scrape", "robot", "spider"
+or other automatic device, program, algorithm or methodology, or any similar or equivalent manual process, to access, acquire, copy or monitor any portion of our Offerings or Conte
+nt. Anaconda reserves the right to end any such activity. If You would like to redistribute or embed any Offering in any product You are developing, please contact the Anaconda tea
+m for a third party redistribution commercial license.
+2. USERS & LICENSING
+2.1 Organizational Use.  Your registration, download, use, installation, access, or enjoyment of all Anaconda Offerings on behalf of an organization that has two hundred (200) or m
+ore employees or contractors ("Organizational Use") requires a paid license of Anaconda Business or Anaconda Enterprise. For sake of clarity, use by government entities and nonprof
+it entities with over 200 employees or contractors is considered Organizational Use.  Purchasing Starter tier license(s) does not satisfy the Organizational Use paid license requir
+ement set forth in this Section 2.1.  Educational Entities will be exempt from the paid license requirement, provided that the use of the Anaconda Offering(s) is solely limited to
+being used for a curriculum-based course. Anaconda reserves the right to monitor the registration, download, use, installation, access, or enjoyment of the Anaconda Offerings to en
+sure it is part of a curriculum.
+2.2 Use by Authorized Users. Your "Authorized Users" are your employees, agents, and independent contractors (including outsourcing service providers) who you authorize to use the
+Anaconda Offering(s) on Your behalf for Your Internal Use, provided that You are responsible for: (a) ensuring that such Authorized Users comply with these TOS or an applicable Cus
+tom Agreement; and  (b) any breach of these TOS by such Authorized Users.
+2.3 Use by Your Affiliates. Your Affiliates may use the Anaconda Offering(s) on Your behalf for Your Internal Use only with prior written approval from Anaconda. Such Affiliate usa
+ge is limited to those Affiliates who were defined as such upon the Effective Date of these TOS. Usage by organizations who become Your Affiliates after the Effective Date may requ
+ire a separate license, at Anaconda's discretion.
+2.4 Licenses for Systems. For each End User Computing Device ("EUCD") (i.e. laptops, desktop devices) one license covers one installation and a reasonable number of virtual install
+ations on the EUCD (e.g. Docker, VirtualBox, Parallels, etc.). Any other installations, usage, deployments, or access must have an individual license per each additional usage.
+2.5 Mirroring. You may only Mirror the Anaconda Offerings with the purchase of a Site License unless explicitly included in an Order Form or Custom Agreement.
+2.6 Beta Offerings. Anaconda provides Beta Offerings "AS-IS" without support or any express or implied warranty or indemnity for any problems or issue s, and Anaconda has no liabil
+ity relating to Your use of the Beta Offerings. Unless agreed in writing by Anaconda, You will not put Beta Offerings into production use. You may only use the Beta Offerings for t
+he period specified by Anaconda in writing; (b) Anaconda, in its discretion, may stop providing the Beta Offerings at any time, at which point You must immediately cease using the
+Beta Offering(s); and (c) Beta Offerings may contain bugs, errors, or other issues..
+2.7 Content. In consideration of Your payment of Subscription Fees, Anaconda hereby grants to You and Your Users a personal, non-exclusive, non-transferable, non-sublicensable, rev
+ocable, limited right and license during the Usage Term to access, input, use, transmit, copy, process, and measure the Content solely (1) within the Offerings and to the extent re
+quired to enable the ordinary and unmodified functionality of the Offerings as described in the Offering descriptions, and (2) for your Internal Use. Customer hereby acknowledge th
+at the grant hereunder is solely being provided for your Internal Use and not to modify or to create any derivatives based on the Content.
+3. ANACONDA OFFERINGS
+3.1 Upgrades or Additional Copies of Offerings. You may only use additional copies of the Offerings beyond Your Order if You have acquired such rights under an agreement with Anaco
+nda and you may only use Upgrades under Your Order to the extent you have discontinued use of prior versions of the Offerings.
+3.2 Changes to Offerings; Maintenance. Anaconda may: (a) enhance or refine an Offering, although in doing so, Anaconda will not materially reduce the core functionality of that Off
+ering, except as contemplated in Section 3.4 (End of Life); and (b) perform scheduled maintenance of the infrastructure and software used to provide an Offering, during which You m
+ay experience some disruption to that Offering.  Whenever reasonably practicable, Anaconda will provide You with advance notice of such maintenance. You acknowledge that occasional
+ly, Anaconda may need to perform emergency maintenance without providing You advance notice, during which Anaconda may temporarily suspend Your access to, and use of, the Offering.
+3.3 Use with Third Party Products. If You use the Anaconda Offering(s) with third party products, such use is at Your risk. Anaconda does not provide support or guarantee ongoing i
+ntegration support for products that are not a native part of the Anaconda Offering(s).
+3.4 End of Life. Anaconda reserves the right to discontinue the availability of an Anaconda Offering, including its component functionality, hereinafter referred to as "End of Life
+" or "EOL", by providing written notice through its official website, accessible at www.anaconda.com at least sixty (60) days prior to the EOL. In such instances, Anaconda is under
+ no obligation to provide support in the transition away from the EOL Offering or feature, You shall transition to the latest version of the Anaconda Offering, as soon as the newes
+t Version is released in order to maintain uninterrupted service. In the event that You or Your designated Anaconda Partner have previously remitted a prepaid fee for the utilizati
+on of Anaconda Offering, and if the said Offering becomes subject to End of Life (EOL) before the end of an existing Usage Term, Anaconda shall undertake commercially reasonable ef
+forts to provide the necessary information to facilitate a smooth transition to an alternative Anaconda Offering that bears substantial similarity in terms of functionality and cap
+abilities. Anaconda will not be held liable for any direct or indirect consequences arising from the EOL of an Offering or feature, including but not limited to data loss, service
+interruption, or any impact on business operations.
+4. OPEN SOURCE, CONTENT & APPLICATIONS
+4.1 Open-Source Software & Packages. Our Offerings include open-source libraries, components, utilities, and third-party software that is distributed or otherwise made available as
+ "free software," "open-source software," or under a similar licensing or distribution model ("Open-Source Software"), which may be subject to third party open-source license terms
+ (the "Open-Source Terms"). Certain Offerings are intended for use with open-source Python and R software packages and tools for statistical computing and graphical analysis ("Pack
+ages"), which are made available in source code form by third parties and Community Users. As such, certain Offerings interoperate with certain Open-Source Software components, inc
+luding without limitation Open Source Packages, as part of its basic functionality; and to use certain Offerings, You will need to separately license Open-Source Software and Packa
+ges from the licensor. Anaconda is not responsible for Open-Source Software or Packages and does not assume any obligations or liability with respect to You or Your Users' use of O
+pen-Source Software or Packages. Notwithstanding anything to the contrary, Anaconda makes no warranty or indemnity hereunder with respect to any Open-Source Software or Packages. S
+ome of such Open-Source Terms or other license agreements applicable to Packages determine that to the extent applicable to the respective Open-Source Software or Packages licensed
+ thereunder.  Any such terms prevail over any conflicting license terms, including these TOS. Anaconda will use best efforts to use only Open-Source Software and Packages that do n
+ot impose any obligation or affect the Customer Data (as defined hereinafter) or Intellectual Property Rights of Customer (beyond what is stated in the Open-Source Terms and herein
+), on an ordinary use of our Offerings that do not involve any modification, distribution, or independent use of such Open-Source Software.
+4.2 Open Source Project Affiliation. Anaconda's software packages are not affiliated with upstream open source projects. While Anaconda may distribute and adapt open source softwar
+e packages for user convenience, such distribution does not imply any endorsement, approval, or validation of the original software's quality, security, or suitability for specific
+ purposes.
+4.3 Third-Party Services and Content. You may access or use, at Your sole discretion, certain third-party products, services, and Content that interoperate with the Offerings inclu
+ding, but not limited to: (a) third party Packages, components, applications, services, data, content, or resources found in the Offerings, and (b) third-party service integrations
+ made available through the Offerings or APIs (collectively, "Third-Party Services"). Each Third-Party Service is governed by the applicable terms and policies of the third-party p
+rovider. The terms under which You access, use, or download Third-Party Services are solely between You and the applicable Third-Party Service provider. Anaconda does not make any
+representations, warranties, or guarantees regarding the Third-Party Services or the providers thereof, including, but not limited to, the Third-Party Services' continued availabil
+ity, security, and integrity. Third-Party Services are made available by Anaconda on an "AS IS" and "AS AVAILABLE" basis, and Anaconda may cease providing them in the Offerings at
+any time in its sole discretion and You shall not be entitled to any refund, credit, or other compensation.
+5. CUSTOMER CONTENT, APPLICATIONS & RESPONSIBILITIES
+5.1 Customer Content and Applications. Your content remains your own. We assume no liability for the content you publish through our services. However, you must adhere to our Accep
+table Use Policy while utilizing our platform. You can share your submitted Customer Content or Customer Applications with others using our Offerings. By sharing Your Content, you
+grant legal rights to those You give access to. Anaconda has no responsibility to enforce, police, or otherwise aid You in enforcing or policing the terms of the license(s) or perm
+ission(s) You have chosen to offer. Anaconda is not liable for third-party misuse of your submitted Customer Content or Customer Applications on our Offerings. Customer Application
+s does not include any derivative works that might be created out of open source where the license prohibits derivative works.
+5.2 Removal of Customer Content and Applications. If You received a removal notification regarding any Customer Content or a Customer Application due to legal reasons or policy vio
+lations, you promptly must do so. If You don't comply or the violation persists, Anaconda may disable the Content or your access to the Content. If required, You must confirm in wr
+iting that you've deleted or stopped using the Customer Content or Customer Applications. Anaconda might also remove Customer Content or Customer Applications if requested by a Thi
+rd-party rights holder whose rights have been violated. Anaconda isn't obliged to store or provide copies of Customer Content or Customer Applications that have been removed, is Yo
+ur responsibility to maintain a back-up of Your Content.
+5.3 Protecting Account Access. You will keep all account information up to date, use reasonable means to protect Your account information, passwords, and other login credentials, a
+nd promptly notify Anaconda of any known or suspected unauthorized use of or access to Your account.
+6. YOUR DATA, PRIVACY & SECURITY
+6.1 Your Data. Your Data, hereinafter "Customer Data", is any data, files, attachments, text, images, reports, personal information, or any other data that is, uploaded or submitte
+d, transmitted, or otherwise made available, to or through the Offerings, by You or any of your Authorized Users and is processed by Anaconda on your behalf. For the avoidance of d
+oubt, Anonymized Data is not regarded as Customer Data. You retain all right, title, interest, and control, in and to the Customer Data, in the form submitted to the Offerings. Sub
+ject to these TOS, You grant Anaconda a worldwide, royalty-free, non-exclusive license to store, access, use, process, copy, transmit, distribute, perform, export, and display the
+Customer Data, and solely to the extent that reformatting Customer Data for display in the Offerings constitutes a modification or derivative work, the foregoing license also inclu
+des the right to make modifications and derivative works. The aforementioned license is hereby granted solely: (i) to maintain, improve and provide You the Offerings; (ii) to preve
+nt or address technical or security issues and resolve support requests; (iii) to investigate when we have a good faith belief, or have received a complaint alleging, that such Cus
+tomer Data is in violation of these TOS; (iv) to comply with a valid legal subpoena, request, or other lawful process; (v) detect and avoid overage of use of our Offering and confi
+rm compliance by Customer with these TOS and other applicable agreements and policies;  (vi) to create Anonymized Data whether directly or through telemetry, and (vi) as expressly
+permitted in writing by You. Anaconda may use and retain your Account Information for business purposes related to these TOS and to the extent necessary to meet Anaconda's legal co
+mpliance obligations (including, for audit and anti-fraud purposes). We reserve the right to utilize aggregated data to enhance our Offerings functionality, ensure  compliance, avo
+id Offering overuse, and derive insights from customer behavior, in strict adherence to our Privacy Policy.
+6.2 Processing Customer Data. The ordinary operation of certain Offerings requires Customer Data to pass through Anaconda's network. To the extent that Anaconda processes Customer
+Data on your behalf that includes Personal Data, Anaconda will handle such Personal Data in compliance with our Data Processing Addendum.
+6.3 Privacy Policy.  If You obtained the Offering under these TOS, the conditions pertaining to the handling of your Personal Data, as described in our Privacy Policy, shall govern
+. However, in instances where your offering acquisition is executed through a Custom Agreement, the terms articulated within our Data Processing Agreement ("DPA") shall take preced
+ence over our Privacy Policy concerning data processing matters.
+6.4 Aggregated  Data. Anaconda retains all right, title, and interest in the models, observations, reports, analyses, statistics, databases, and other information created, compiled
+, analyzed, generated or derived by Anaconda from platform, network, or traffic data in the course of providing the Offerings ("Aggregated Data"). To the extent the Aggregated Data
+ includes any Personal Data, Anaconda will handle such Personal Data in compliance with applicable data protection laws and the Privacy Policy or DPA, as applicable.
+6.5 Offering Security. Anaconda will implement industry standard security safeguards for the protection of Customer Confidential Information, including any Customer Content origina
+ting or transmitted from or processed by the Offerings and/or cached on or within Anaconda's network and stored within the Offerings in accordance with its policies and procedures.
+ These safeguards include commercially reasonable administrative, technical, and organizational measures to protect Customer Content against destruction, loss, alteration, unauthor
+ized disclosure, or unauthorized access, including such things as information security policies and procedures, security awareness training, threat and vulnerability management, in
+cident response and breach notification, and vendor risk management procedures.
+7. SUPPORT
+7.1 Support Services. Anaconda offers Support Services that may be included with an Offering. Anaconda will provide the purchased level of Support Services in accordance with the t
+erms of the Support Policy as detailed in the applicable Order. Unless ordered, Anaconda shall have no responsibility to deliver Support Services to You. The Support Service Levels
+ and Tiers are described in the relevant Support Policy, found here.
+7.2 Information Backups. You are aware of the risk that Your Content may be lost or irreparably damaged due to faults, suspension, or termination. While we might back up data, we c
+annot guarantee these backups will occur to meet your frequency needs or ensure successful recovery of Your Content. It is your obligation to back up any Content you wish to preser
+ve. We bear no legal liability for the loss or damage of Your Content.
+8. OWNERSHIP & INTELLECTUAL PROPERTY
+8.1 General. Unless agreed in writing, nothing in these TOS transfers ownership in, or grants any license to, any Intellectual Property Rights.
+8.2 Feedback. Anaconda may use any feedback You provide in connection with Your use of the Anaconda Offering(s) as part of its business operations. You hereby agree that any feedba
+ck provided to Anaconda will be the intellectual property of Anaconda without compensation to the provider, author, creator, or inventor of providing the feedback.
+8.3 DMCA Compliance. You agree to adhere to our Digital Millennium Copyright Act (DMCA) policies established in our Acceptable Use Policy.
+9. CONFIDENTIAL INFORMATION
+9.1 Confidential Information. In connection with these TOS and the Offerings (including the evaluation thereof), each Party ("Discloser") may disclose to the other Party ("Recipien
+t"), non-public business, product, technology and marketing information, including without limitation, customers lists and information, know-how, software and any other non-public
+information that is either identified as such or should reasonably be understood to be confidential given the nature of the information and the circumstances of disclosure, whether
+ disclosed prior or after the Effective Date ("Confidential Information"). For the avoidance of doubt, (i) Customer Data is regarded as your Confidential Information, and (ii) our
+Offerings, including Beta Offerings, and inclusive of their underlying technology, and their respective performance information, as well as any data, reports, and materials we prov
+ided to You in connection with your evaluation or use of the Offerings, are regarded as our Confidential Information. Confidential Information does not include information that (a)
+ is or becomes generally available to the public without breach of any obligation owed to the Discloser; (b) was known to the Recipient prior to its disclosure by the Discloser wit
+hout breach of any obligation owed to the Discloser; (c) is received from a third party without breach of any obligation owed to the Discloser; or (d) was independently developed b
+y the Recipient without any use or reference to the Confidential Information.
+9.2 Confidentiality Obligations. The Recipient will (i) take at least reasonable measures to prevent the unauthorized disclosure or use of Confidential Information, and limit acces
+s to those employees, affiliates, service providers and agents, on a need to know basis and who are bound by confidentiality obligations at least as restrictive as those contained
+herein; and (ii) not use or disclose any Confidential Information to any third party, except as part of its performance under these TOS and to consultants and advisors to such part
+y, provided that any such disclosure shall be governed by confidentiality obligations at least as restrictive as those contained herein.
+9.3 Compelled Disclosure. Notwithstanding the above, Confidential Information may be disclosed pursuant to the order or requirement of a court, administrative agency, or other gove
+rnmental body; provided, however, that to the extent legally permissible, the Recipient shall make best efforts to provide prompt written notice of such court order or requirement
+to the Discloser to enable the Discloser to seek a protective order or otherwise prevent or restrict such disclosure.
+10. INDEMNIFICATION
+10.1 By Customer. Customer hereby agree to indemnify, defend and hold harmless Anaconda and our Affiliates and their respective officers, directors, employees and agents from and a
+gainst any and all claims, damages, obligations, liabilities, losses, reasonable expenses or costs incurred as a result of any third party claim arising from (i) You and/or any of
+your Authorized Users', violation of these TOS or applicable law; and/or (ii) Customer Data and/or Customer Content, including the use of Customer Data and/or Customer Content by A
+naconda and/or any of our subcontractors, which infringes or violates, any third party's rights, including, without limitation, Intellectual Property Rights.
+10.2 By Anaconda. Anaconda will defend any third party claim against You that Your valid use of Anaconda Offering(s) under Your Order infringes a third party's U.S. patent, copyrig
+ht or U.S. registered trademark (the "IP Claim"). Anaconda will indemnify You against the final judgment entered by a court of competent jurisdiction or any settlements arising out
+ of an IP Claim, provided that You:  (a) promptly notify Anaconda in writing of the IP Claim;  (b) fully cooperate with Anaconda in the defense of the IP Claim; and (c) grant Anaco
+nda the right to exclusively control the defense and settlement of the IP Claim, and any subsequent appeal. Anaconda will have no obligation to reimburse You for Your attorney fees
+ and costs in connection with any IP Claim for which Anaconda is providing defense and indemnification hereunder. You, at Your own expense, may retain Your own legal representation
+.
+10.3 Additional Remedies. If an IP Claim is made and prevents Your exercise of the Usage Rights, Anaconda will either procure for You the right to continue using the Anaconda Offer
+ing(s), or replace or modify the Anaconda Offering(s) with functionality that is non-infringing. Only if Anaconda determines that these alternatives are not reasonably available, A
+naconda may terminate Your Usage Rights granted under these TOS upon written notice to You and will refund You a prorated portion of the fee You paid for the Anaconda Offering(s) f
+or the remainder of the unexpired Usage Term.
+10.4 Exclusions.  Anaconda has no obligation regarding any IP Claim based on: (a) compliance with any designs, specifications, or requirements You provide or a third party provides
+; (b) Your modification of any Anaconda Offering(s) or modification by a third party; (c) the amount or duration of use made of the Anaconda Offering(s), revenue You earned, or ser
+vices You offered; (d) combination, operation, or use of the Anaconda Offering(s) with non-Anaconda products, software or business processes; (e) Your failure to modify or replace
+the Anaconda Offering(s) as required by Anaconda; or (f) any Anaconda Offering(s) provided on a no charge, beta or evaluation basis; or (g) your use of the Open Source Software and
+/or Third Party Services made available to You within the Anaconda Offerings.
+10.5 Exclusive Remedy. This Section 9 (Indemnification) states Anaconda's entire obligation and Your exclusive remedy regarding any IP Claim against You.
+11. LIMITATION OF LIABILITY
+11.1 Limitation of Liability. Neither Party will be liable for indirect, incidental, exemplary, punitive, special or consequential damages; loss or corruption of data or interrupti
+on or loss of business; or loss of revenues, profits, goodwill or anticipated sales or savings except as a result of violation of Anaconda's Intellectual Property Rights. Except as
+ a result of violation of Anaconda's Intellectual Property Rights, the maximum aggregate liability of each party under these TOS is limited to: (a) for claims solely arising from s
+oftware licensed on a perpetual basis, the fees received by Anaconda for that Offering; or (b) for all other claims, the fees received by Anaconda for the applicable Anaconda Offer
+ing and attributable to the 12 month period immediately preceding the first claim giving rise to such liability; provided if no fees have been received by Anaconda, the maximum agg
+regate liability shall be one hundred US dollars ($100). This limitation of liability applies whether the claims are in warranty, contract, tort (including negligence), infringemen
+t, or otherwise, even if either party has been advised of the possibility of such damages. Nothing in these TOS limits or excludes any liability that cannot be limited or excluded
+under applicable law. This limitation of liability is cumulative and not per incident.
+12. FEES & PAYMENT
+12.1 Fees. Orders for the Anaconda Offering(s) are non-cancellable. Fees for Your use of an Anaconda Offering are set out in Your Order or similar purchase terms with Your Approved
+ Source. If payment is not received within the specified payment terms, any overdue and unpaid balances will be charged interest at a rate of five percent (5%) per month, charged d
+aily until the balance is paid.
+12.2 Billing. You agree to provide us with updated, accurate, and complete billing information, and You hereby authorize Anaconda, either directly or through our payment processing
+ service or our Affiliates, to charge the applicable Fees set forth in Your Order via your selected payment method, upon the due date. Unless expressly set forth herein, the Fees a
+re non-cancelable and non-refundable. We reserve the right to change the Fees at any time, upon notice to You if such change may affect your existing Subscriptions or other renewab
+le services upon renewal. In the event of failure to collect the Fees You owe, we may, at our sole discretion (but shall not be obligated to), retry to collect at a later time, and
+/or suspend or cancel the Account, without notice. If You pay fees by credit card, Anaconda will charge the credit card in accordance with Your Subscription plan. You remain liable
+ for any fees which are rejected by the card issuer or charged back to Anaconda.
+12.3 Taxes. The Fees are exclusive of any and all taxes (including without limitation, value added tax, sales tax, use tax, excise, goods and services tax, etc.), levies, or duties
+, which may be imposed in respect of these TOS and the purchase or sale, of the Offerings or other services set forth in the Order (the "Taxes"), except for Taxes imposed on our in
+come.
+12.4 Payment Through Anaconda Partner. If You purchased an Offering from an Anaconda Partner or other Approved Source, then to the extent there is any conflict between these TOS an
+d any terms of service entered between You and the respective Partner, including any purchase order, then, as between You and Anaconda, these TOS shall prevail. Any rights granted
+to You and/or any of the other Users in a separate agreement with a Partner which are not contained in these TOS, apply only in connection vis a vis the Partner.
+13. TERM, TERMINATION & SUSPENSION
+13.1 Subscription Term. The Offerings are provided on a subscription basis for the term specified in your Order (the "Subscription Term"). The termination or suspension of an indiv
+idual Order will not terminate or suspend any other Order. If these TOS are terminated in whole, all outstanding Order(s) will terminate.
+13.2 Subscription Auto-Renewal. To prevent interruption or loss of service when using the Offerings or any Subscription and Support Services will renew automatically, unless You ca
+ncel your license to the Offering, Subscription or Support Services agreement prior to their expiration.
+13.3 Termination. If a party materially breaches these TOS and does not cure that breach within 30 days after receipt of written notice of the breach, the non-breaching party may t
+erminate these TOS for cause.  Anaconda may immediately terminate your Usage Rights if You breach Section 1 (Access & Use), Section 4 (Open Source, Content & Applications), Section
+ 8 (Ownership & Intellectual Property) or Section 16.10 (Export) or any of the Offering Descriptions.
+13.4 Survival. Section 8 (Ownership & Intellectual Property), Section 6.4 (Aggregated Data), Section 9 (Confidential Information), Section 9.3 (Warranty Disclaimer), Section 12 (Li
+mitation of Liability), Section 14 (Term, Termination & Suspension),  obligations to make payment under Section 13 which accrued prior to termination (Fees & Payment), Section 14.4
+ (Survival), Section 14.5 (Effect of Termination), Section 15 (Records, User Count) and Section 16 (General Provisions) survive termination or expiration of these TOS.
+13.5 Effect of Termination. Upon termination of the TOS, You must stop using the Anaconda Offering(s) and destroy any copies of Anaconda Proprietary Technology and Confidential Inf
+ormation within Your control. Upon Anaconda's termination of these TOS for Your material breach, You will pay Anaconda or the Approved Source any unpaid fees through to the end of
+the then-current Usage Term. If You continue to use or access any Anaconda Offering(s) after termination, Anaconda or the Approved Source may invoice You, and You agree to pay, for
+ such continued use. Anaconda may require evidence of compliance with this Section 13. Upon request, you agree to provide evidence of compliance to Anaconda demonstrating that all
+proprietary Anaconda Offering(s) or components thereof have been removed from your systems. Such evidence may be in the form of a system scan report or other similarly detailed met
+hod.
+13.6 Excessive Usage. We shall have the right to throttle or restrict Your access to the Offerings where we, at our sole discretion, believe that You and/or any of your Authorized
+Users, have misused the Offerings or otherwise use the Offerings in an excessive manner compared to the anticipated standard use (at our sole discretion) of the Offerings, includin
+g, without limitation, excessive network traffic and bandwidth, size and/or length of Content, quality and/or format of Content, sources of Content, volume of download time, etc.
+14. RECORDS, USER COUNT
+14.1 Verification Records. During the Usage Term and for a period of thirty six (36) months after its expiry or termination, You will take reasonable steps to maintain complete and
+ accurate records of Your use of the Anaconda Offering(s) sufficient to verify compliance with these TOS ("Verification Records"). Upon reasonable advance notice, and no more than
+once per 12 month period unless the prior review showed a breach by You, You will, within thirty (30) days from Anaconda's notice, allow Anaconda and/or its auditors access to the
+Verification Records and any applicable books, systems (including Anaconda product(s) or other equipment), and accounts during Your normal business hours.
+14.2 Quarterly User Count. In accordance with the pricing structure stipulated within the relevant Order Form and this Agreement, in instances where the pricing assessment is conti
+ngent upon the number of users, Anaconda will conduct a periodic true-up on  a quarterly basis to ascertain the alignment between the actual number of users utilizing the services
+and the initially reported user count, and to assess for any unauthorized or noncompliant usage.
+14.3 Penalties for Overage or Noncompliant Use.  Should the actual user count exceed the figure initially provided, or unauthorized usage is uncovered, the contracting party shall
+remunerate the difference to Anaconda, encompassing the additional users or noncompliant use in compliance with Anaconda's then-current pricing terms. The payment for such differen
+ce shall be due in accordance with the invoicing and payment provisions specified in these TOS and/or within the relevant Order and the Agreement. In the event there is no custom c
+ommercial agreement beyond these TOS between You and Anaconda at the time of a true-up pursuant to Section 13.2, and said true-up uncovers unauthorized or noncompliant usage, You w
+ill remunerate Anaconda via a back bill for any fees owed as a result of all unauthorized usage after April of 2020.  Fees may be waived by Anaconda at its discretion.
+15. GENERAL PROVISIONS
+15.1 Order of Precedence. If there is any conflict between these TOS and any Offering Description expressly referenced in these TOS, the order of precedence is: (a) such Offering D
+escription;  (b) these TOS (excluding the Offering Description and any Anaconda policies); then (c) any applicable Anaconda policy expressly referenced in these TOS and any agreeme
+nt expressly incorporated by reference.  If there is a Custom Agreement, the Custom Agreement shall control over these TOS.
+15.2 Entire Agreement. These TOS are the complete agreement between the parties regarding the subject matter of these TOS and supersedes all prior or contemporaneous communications
+, understandings or agreements (whether written or oral) unless a Custom Agreement has been executed where, in such case, the Custom Agreement shall continue in full force and effe
+ct and shall control.
+15.3 Modifications to the TOS. Anaconda may change these TOS or any of its components by updating these TOS on legal.anaconda.com/terms-of-service. Changes to the TOS apply to any
+Orders acquired or renewed after the date of modification.
+15.4 Third Party Beneficiaries. These TOS do not grant any right or cause of action to any third party.
+15.5 Assignment. Anaconda may assign this Agreement to (a) an Affiliate; or (b) a successor or acquirer pursuant to a merger or sale of all or substantially all of such party's ass
+ets at any time and without written notice. Subject to the foregoing, this Agreement will be binding upon and will inure to the benefit of Anaconda and their respective successors
+and permitted assigns.
+15.6 US Government End Users. The Offerings and Documentation are deemed to be "commercial computer software" and "commercial computer software documentation" pursuant to FAR 12.21
+2 and DFARS 227.7202. All US Government end users acquire the Offering(s) and Documentation with only those rights set forth in these TOS. Any provisions that are inconsistent with
+ federal procurement regulations are not enforceable against the US Government. In no event shall source code be provided or considered to be a deliverable or a software deliverabl
+e under these TOS.
+15.7 Anaconda Partner Transactions. If You purchase access to an Anaconda Offering from an Anaconda Partner, the terms of these TOS apply to Your use of that Anaconda Offering and
+prevail over any inconsistent provisions in Your agreement with the Anaconda Partner.
+15.8 Children and Minors. If You are under 18 years old, then by entering into these TOS You explicitly stipulate that (i) You have legal capacity to consent to these TOS or Your p
+arent or legal guardian has done so on Your behalf;  (ii) You understand the Anaconda Privacy Policy; and (iii) You understand that certain underage users are strictly prohibited f
+rom using certain features and functionalities provided by the Anaconda Offering(s). You may not enter into these TOS if You are under 13 years old.  Anaconda does not intentionall
+y seek to collect or solicit personal information from individuals under the age of 13. In the event we become aware that we have inadvertently obtained personal information from a
+ child under the age of 13 without appropriate parental consent, we shall expeditiously delete such information. If applicable law allows the utilization of an Offering with parent
+al consent, such consent shall be demonstrated in accordance with the prescribed process outlined by Anaconda's Privacy Policy for obtaining parental approval.
+15.9 Compliance with Laws.  Each party will comply with all laws and regulations applicable to their respective obligations under these TOS.
+15.10 Export. The Anaconda Offerings are subject to U.S. and local export control and sanctions laws. You acknowledge and agree to the applicability of and Your compliance with tho
+se laws, and You will not receive, use, transfer, export or re-export any Anaconda Offerings in a way that would cause Anaconda to violate those laws. You also agree to obtain any
+required licenses or authorizations.  Without limiting the foregoing, You may not acquire Offerings if: (1) you are in, under the control of, or a national or resident of Cuba, Ira
+n, North Korea, Sudan or Syria or if you are on the U.S. Treasury Department's Specially Designated Nationals List or the U.S. Commerce Department's Denied Persons List, Unverified
+ List or Entity List or (2) you intend to supply the acquired goods, services or software to Cuba, Iran, North Korea, Sudan or Syria (or a national or resident of one of these coun
+tries) or to a person on the Specially Designated Nationals List, Denied Persons List, Unverified List or Entity List.
+15.11 Governing Law and Venue. THESE TOS, AND ANY DISPUTES ARISING FROM THEM, WILL BE GOVERNED EXCLUSIVELY BY THE GOVERNING LAW OF DELAWARE AND WITHOUT REGARD TO CONFLICTS OF LAWS
+RULES OR THE UNITED NATIONS CONVENTION ON THE INTERNATIONAL SALE OF GOODS. EACH PARTY CONSENTS AND SUBMITS TO THE EXCLUSIVE JURISDICTION OF COURTS LOCATED WITHIN THE STATE OF DELAW
+ARE.  EACH PARTY DOES HEREBY WAIVE HIS/HER/ITS RIGHT TO A TRIAL BY JURY, TO PARTICIPATE AS THE MEMBER OF A CLASS IN ANY PURPORTED CLASS ACTION OR OTHER PROCEEDING OR TO NAME UNNAME
+D MEMBERS IN ANY PURPORTED CLASS ACTION OR OTHER PROCEEDINGS. You acknowledge that any violation of the requirements under Section 4 (Ownership & Intellectual Property) or Section
+7 (Confidential Information) may cause irreparable damage to Anaconda and that Anaconda will be entitled to seek injunctive and other equitable or legal relief to prevent or compen
+sate for such unauthorized use.
+15.12 California Residents. If you are a California resident, in accordance with Cal. Civ. Code subsection 1789.3, you may report complaints to the Complaint Assistance Unit of the
+ Division of Consumer Services of the California Department of Consumer Affairs by contacting them in writing at 1625 North Market Blvd., Suite N 112, Sacramento, CA 95834, or by t
+elephone at (800) 952-5210.
+15.13 Notices. Any notice delivered by Anaconda to You under these TOS will be delivered via email, regular mail or postings on www.anaconda.com. Notices to Anaconda should be sent
+ to Anaconda, Inc., Attn: Legal at 1108 Lavaca Street, Suite 110-645 Austin, TX 78701 and legal@anaconda.com.
+15.14 Publicity. Anaconda reserves the right to reference You as a customer and display your logo and name on our website and other promotional materials for marketing purposes. An
+y display of your logo and name shall be in compliance with Your branding guidelines, if provided  by notice pursuant to Section 14.12 by You. Except as provided in this Section 14
+.13 or by separate mutual written agreement, neither party will use the logo, name or trademarks of the other party or refer to the other party in any form of publicity or press re
+lease without such party's prior written approval.
+15.15 Force Majeure. Except for payment obligations, neither Party will be responsible for failure to perform its obligations due to an event or circumstances beyond its reasonable
+ control.
+15.16 No Waiver; Severability. Failure by either party to enforce any right under these TOS will not waive that right. If any portion of these TOS are not enforceable, it will not
+affect any other terms.
+15.17 Electronic Signatures.  IF YOUR ACCEPTANCE OF THESE TERMS FURTHER EVIDENCED BY YOUR AFFIRMATIVE ASSENT TO THE SAME (E.G., BY A "CHECK THE BOX" ACKNOWLEDGMENT PROCEDURE), THEN
+ THAT AFFIRMATIVE ASSENT IS THE EQUIVALENT OF YOUR ELECTRONIC SIGNATURE TO THESE TERMS.  HOWEVER, FOR THE AVOIDANCE OF DOUBT, YOUR ELECTRONIC SIGNATURE IS NOT REQUIRED TO EVIDENCE
+OR FACILITATE YOUR ACCEPTANCE AND AGREEMENT TO THESE TERMS, AS YOU AGREE THAT THE CONDUCT DESCRIBED IN THESE TOS AS RELATING TO YOUR ACCEPTANCE AND AGREEMENT TO THESE TERMS ALONE S
+UFFICES.
+16. DEFINITIONS
+"Affiliate" means any corporation or legal entity that directly or indirectly controls, or is controlled by, or is under common control with the relevant party, where "control" mea
+ns to: (a) own more than 50% of the relevant party; or (b) be able to direct the affairs of the relevant party through any lawful means (e.g., a contract that allows control).
+"Anaconda" "we" "our" or "us" means Anaconda, Inc. or its applicable Affiliate(s).
+"Anaconda Content" means any:  Anaconda Content includes geographic and domain information, rules, signatures, threat intelligence and data feeds and Anaconda's compilation of susp
+icious URLs.
+"Anaconda Partner" or "Partner" means an Anaconda authorized reseller, distributor or systems integrator authorized by Anaconda to sell Anaconda Offerings.
+"Anaconda Offering" or "Offering" means the Anaconda Services, Anaconda software, Documentation, software development kits ("SDKs"), application programming interfaces ("APIs"), an
+d any other items or services provided by Anaconda any Upgrades thereto under the terms of these TOS, the relevant Offering Descriptions, as identified in the relevant Order, and/o
+r any updates thereto.
+"Anaconda Proprietary Technology" means any software, code, tools, libraries, scripts, APIs, SDKs, templates, algorithms, data science recipes (including any source code for data s
+cience recipes and any modifications to such source code), data science workflows, user interfaces, links, proprietary methods and systems, know-how, trade secrets, techniques, des
+igns, inventions, and other tangible or intangible technical material, information and works of authorship underlying or otherwise used to make available the Anaconda Offerings inc
+luding, without limitation, all Intellectual Property Rights therein and thereto.
+"Anaconda Service" means Support Services and any other consultation or professional services provided by or on behalf of Anaconda under the terms of the Agreement, as identified i
+n the applicable Order and/or SOW.
+"Approved Source" means Anaconda or an Anaconda Partner.
+"Anonymized Data" means any Personal Data (including Customer Personal Data) and data regarding usage trends and behavior with respect to Offerings, that has been anonymized such t
+hat the Data Subject to whom it relates cannot be identified, directly or indirectly, by Anaconda or any other party reasonably likely to receive or access that anonymized Personal
+ Data or usage trends and behavior.
+"Authorized Users" means Your Users, Your Affiliates who have been identified to Anaconda and approved, Your third-party service providers, and each of their respective Users who a
+re permitted to access and use the Anaconda Offering(s) on Your behalf as part of Your Order.
+"Beta Offerings" Beta Offerings means any portion of the Offerings offered on a "beta" basis, as designated by Anaconda, including but not limited to, products, plans, services, an
+d platforms.
+"Content" means Packages, components, applications, services, data, content, or resources, which are available for download access or use through the Offerings, and owned by third-
+party providers, defined herein as Third Party Content, or Anaconda, defined herein as Anaconda Content.
+"Documentation" means the technical specifications and usage materials officially published by Anaconda specifying the functionalities and capabilities of the applicable Anaconda O
+fferings.
+"Educational Entities" means educational organizations, classroom learning environments, or academic instructional organizations.
+"Fees" mean the costs and fees for the Anaconda Offerings(s) set forth within the Order and/or SOW, or any fees due immediately when purchasing via the web-portal.
+"Government Entities" means any body, board, department, commission, court, tribunal, authority, agency or other instrumentality of any such government or otherwise exercising any
+executive, legislative, judicial, administrative or regulatory functions of any Federal, State, or local government (including multijurisdictional agencies, instrumentalities, and
+entities of such government)
+"Internal Use" means Customer's use of an Offering for Customer's own internal operations, to perform Python/R data science and machine learning on a single platform from Customer'
+s systems, networks, and devices. Such use does not include use on a service bureau basis or otherwise to provide services to, or process data for, any third party, or otherwise us
+e to monitor or service the systems, networks, and devices of third parties.
+"Intellectual Property Rights" means any and all now known or hereafter existing worldwide: (a) rights associated with works of authorship, including copyrights, mask work rights,
+and moral rights; (b) trademark or service mark rights; (c) Confidential Information, including trade secret rights; (d) patents, patent rights, and industrial property rights; (e)
+ layout design rights, design rights, and other proprietary rights of every kind and nature other than trade dress, and similar rights; and (f) all registrations, applications, ren
+ewals, extensions, or reissues of the foregoing.
+"Malicious Code" means code designed or intended to disable or impede the normal operation of, or provide unauthorized access to, networks, systems, Software or Cloud Services othe
+r than as intended by the Anaconda Offerings (for example, as part of some of Anaconda's Security Offering(s).
+"Mirror" or "Mirroring" means the unauthorized or authorized act of duplicating, copying, or replicating an Anaconda Offering,  (e.g. repository, including its contents, files, and
+ data),, from Anaconda's servers to another location. If Mirroring is not performed under a site license, or by written authorization by Anaconda, the Mirroring constitutes a viola
+tion of Anaconda's Terms of Service and licensing agreements.
+"Offering Description"' means a legally structured and detailed description outlining the features, specifications, terms, and conditions associated with a particular product, serv
+ice, or offering made available to customers or users. The Offering Description serves as a legally binding document that defines the scope of the offering, including pricing, lice
+nsing terms, usage restrictions, and any additional terms and conditions.
+"Order" or "Order Form"  means a legally binding document, website page, or electronic mail that outlines the specific details of Your purchase of Anaconda Offerings or Anaconda Se
+rvices, including but not limited to product specifications, pricing, quantities, and payment terms either issued by Anaconda or from an Approved Source.
+"Personal Data" Refers to information falling within the definition of 'personal data' and/or 'personal information' as outlined by Relevant Data Protection Regulations, such as a
+personal identifier (e.g., name, last name, and email), financial information (e.g., bank account numbers) and online identifiers (e.g., IP addresses, geolocation.
+"Relevant Data Protection Regulations" mean, as applicable, (a) Personal Information Protection and Electronic Documents Act (S.C. 2000, c. 5) along with any supplementary or repla
+cement bills enacted into law by the Government of Canada (collectively "PIPEDA"); (b) the General Data Protection Regulation (Regulation (EU) 2016/679) and applicable laws by EU m
+ember states which either supplement or are necessary to implement the GDPR (collectively "GDPR"); (c) the California Consumer Privacy Act of 2018 (Cal. Civ. Code subsection 1798.1
+98(a)), along with its various amendments (collectively "CCPA"); (d) the GDPR as applicable under section 3 of the European Union (Withdrawal) Act 2018 and as amended by the Data P
+rotection, Privacy and Electronic Communications (Amendments etc.) (EU Exit) Regulations 2019 (as amended) (collectively "UK GDPR"); (e) the Swiss Federal Act on Data Protection  o
+f June 19, 1992 and as it may be revised from time to time (the "FADP"); and (f) any other applicable law related to the protection of Personal Data.
+"Site License'' means a License that confers Customer the right to use Anaconda Offerings throughout an organization, encompassing authorized Users without requiring individual lic
+ensing arrangements. Site Licenses have limits based on company size as set forth in a relevant Order, and do not cover future assignment of Users through mergers and acquisitions
+unless otherwise specified in writing by Anaconda.
+"Software" means the Anaconda Offerings, including Upgrades, firmware, and applicable Documentation.
+"Subscription" means the payment of recurring Fees for accessing and using Anaconda's Software and/or an Anaconda Service over a specified period. Your subscription grants you the
+right to utilize our products, receive updates, and access support, all in accordance with our terms and conditions for such Offering.
+"Subscription Fees" means the costs and Fees associated with a Subscription.
+"Support Services" means the support and maintenance services provided by Anaconda to You in accordance with the relevant support and maintenance policy ("Support Policy") located
+at legal.anaconda.com/support-policy.
+"Third Party Services" means external products, applications, or services provided by entities other than Anaconda. These services may be integrated with or used in conjunction wit
+h Anaconda's offerings but are not directly provided or controlled by Anaconda.
+"Upgrades" means all updates, upgrades, bug fixes, error corrections, enhancements and other modifications to the Software.
+"Usage Term" means the period commencing on the date of delivery and continuing until expiration or termination of the Order, during which period You have the right to use the appl
+icable Anaconda Offering.
+"User"  means the individual, system (e.g. virtual machine, automated system, server-side container, etc.) or organization that (a) has visited, downloaded or used the Offerings(s)
+, (b) is using the Offering or any part of the Offerings(s), or (c) directs the use of the Offerings(s) in the performance of its functions.
+"Version" means the Offering configuration identified by a numeric representation, whether left or right of the decimal place.
+OFFERING DESCRIPTION: ANACONDA DISTRIBUTION INSTALLER
+
+
+This Offering Description describes Anaconda Distribution Installer (hereinafter the "Distribution"). Your use of the Distribution is governed by this Offering Description, and the
+ Anaconda Terms of Service (the "TOS", available at https://legal.anaconda.com/policies/en/?name=terms-of-service), collectively the "Agreement" between you ("You") and Anaconda, I
+nc. ("We" or "Anaconda"). In the event of a conflict, the order of precedence is as follows: 1) this Offering Description; 2) if applicable, a Custom Agreement; and 3) the TOS if n
+o Custom Agreement is in place. Capitalized terms used in this Offering Description and/or the Order not otherwise defined herein, including in Section 6 (Definitions), have the me
+aning given to them in the TOS or Custom Agreement, as applicable. Anaconda may, at any time, terminate this Agreement and the license granted hereunder if you fail to comply with
+any term of this Agreement. Anaconda reserves all rights not expressly granted to you in this Agreement.
+
+
+1. Anaconda Distribution License Grant. Subject to the terms of this Agreement, Anaconda hereby grants you a non-exclusive, non-transferable license to: (1) Install and use the Dis
+tribution on Your premises; (2) modify and create derivative works of sample source code delivered in the Distribution from the Anaconda Public Repository; and (3) redistribute cod
+e files in source (if provided to you by Anaconda as source) and binary forms, with or without modification subject to the requirements set forth below. Anaconda may, at any time,
+terminate this Agreement and the license granted hereunder if you fail to comply with any term of this Agreement.
+2. Redistribution. Redistribution and use in source and binary forms of the source code delivered in the Distribution from the Anaconda Public Repository, with or without modificat
+ion, are permitted provided that the following conditions are met: (1) Redistributions of source code must retain the copyright notice set forth in 2.2, this list of conditions and
+ the following disclaimer; (2) Redistributions in binary form must reproduce the following copyright notice set forth in 2.2, this list of conditions and the following disclaimer i
+n the documentation and/or other materials provided with the distribution; (3) Neither the name of Anaconda nor the names of its contributors may be used to endorse or promote prod
+ucts derived from this software without specific prior written permission.
+3. Updates. Anaconda may, at its option, make available patches, workarounds or other updates to the Distribution.
+4. Support. This Agreement does not entitle you to any support for the Distribution.
+5. Intel(R) Math Kernel Library. Distribution provides access to re-distributable, run-time, shared-library files from the Intel(R) Math Kernel Library ("MKL binaries"). Copyright
+(C) 2018 Intel Corporation. License available here (the "MKL License"). You may use and redistribute the MKL binaries, without modification, provided the following conditions are m
+et: (1) Redistributions must reproduce the above copyright notice and the following terms of use in the MKL binaries and in the documentation and/or other materials provided with t
+he distribution; (2) Neither the name of Intel nor the names of its suppliers may be used to endorse or promote products derived from the MKL binaries without specific prior writte
+n permission; (3) No reverse engineering, decompilation, or disassembly of the MKL binaries is permitted.You are specifically authorized to use and redistribute the MKL binaries wi
+th your installation of Anaconda(R) Distribution subject to the terms set forth in the MKL License. You are also authorized to redistribute the MKL binaries with Anaconda(R) Distri
+bution or in the Anaconda(R) package that contains the MKL binaries.
+6. cuDNN Binaries. Distribution also provides access to cuDNN(TM) software binaries ("cuDNN binaries") from NVIDIA(R) Corporation. You are specifically authorized to use the cuDNN
+binaries with your installation of Distribution subject to your compliance with the license agreement located at https://docs.nvidia.com/deeple.... You are also authorized to redis
+tribute the cuDNN binaries with an Anaconda(R) Distribution package that contains the cuDNN binaries. You can add or remove the cuDNN binaries utilizing the install and uninstall f
+eatures in Anaconda(R) Distribution. cuDNN binaries contain source code provided by NVIDIA Corporation.
+7. Arm Performance Libraries. Anaconda provides access to software and related documentation from the Arm Performance Libraries ("Arm PL") provided by Arm Limited. By installing or
+ otherwise accessing the Arm PL, you acknowledge and agree that use and distribution of the Arm PL is subject to your compliance with the Arm PL end user license agreement located
+here.
+8. Export; Cryptography Notice. You must comply with all domestic and international export laws and regulations that apply to the software, which include restrictions on destinatio
+ns, end users, and end use. Anaconda(R) Distribution includes cryptographic software. The country in which you currently reside may have restrictions on the import, possession, use
+, and/or re-export to another country, of encryption software. BEFORE using any encryption software, please check your country's laws, regulations and policies concerning the impor
+t, possession, or use, and re-export of encryption software, to see if this is permitted. See the Wassenaar Arrangement http://www.wassenaar.org/ for more information. No license i
+s required for export of this software to non-embargoed countries. The Intel(R) Math Kernel Library contained in Anaconda(R) Distribution is classified by Intel(R) as ECCN 5D992.c
+with no license required for export to non-embargoed countries.
+9. Cryptography Notice. The following packages are included in the Distribution that relate to cryptography:
+   1. OpenSSL. The OpenSSL Project is a collaborative effort to develop a robust, commercial-grade, full-featured and Open Source toolkit implementing the Transport Layer Security
+(TLS) and Secure Sockets Layer (SSL) protocols as well as a full strength general purpose cryptography library.
+   2. PyCrypto. A collection of both secure hash functions (such as SHA256 and RIPEMD160), and various encryption algorithms (AES, DES, RSA, ElGamal, etc.).
+   3. Pycryptodome. A fork of PyCrypto. It is a self-contained Python package of low-level cryptographic primitives.
+   4. Pycryptodomex. A stand-alone version of Pycryptodome.
+   5. PyOpenSSL. A thin Python wrapper around (a subset of) the OpenSSL library.
+   6. Kerberos (krb5, non-Windows platforms). A network authentication protocol designed to provide strong authentication for client/server applications by using secret-key cryptog
+raphy.
+   7. Libsodium. A software library for encryption, decryption, signatures, password hashing and more.
+   8. Pynacl. A Python binding to the Networking and Cryptography library, a crypto library with the stated goal of improving usability, security and speed.
+   9. Cryptography A Python library. This exposes cryptographic recipes and primitives.
+10. Definitions.
+   1. "Anaconda Distribution", shortened form "Distribution", is an open-source distribution of Python and R programming languages for scientific computing and data science. It aim
+s to simplify package management and deployment. Anaconda Distribution includes: (1) conda, a package and environment manager for your command line interface; (2) Anaconda Navigato
+r; (3) 250 automatically installed packages; (3) access to the Anaconda Public Repository.
+   2. "Anaconda Navigator" means a graphical interface for launching common Python programs without having to use command lines, to install packages and manage environments. It als
+o allows the user to launch applications and easily manage conda packages, environments, and channels without using command-line commands.
+   3. "Anaconda Public Repository", means the Anaconda packages repository of 8000 open-source data science and machine learning packages at repo.anaconda.com.
+
+
+Version 4.0 | Last Modified: March 31, 2024 | ANACONDA TOS
+
+
+Do you accept the license terms? [yes|no]
+>>>
+Please answer 'yes' or 'no':'
+>>>
+Please answer 'yes' or 'no':'
+>>>
+Please answer 'yes' or 'no':'
+>>>
+Please answer 'yes' or 'no':'
+>>>
+Please answer 'yes' or 'no':'
+>>>
+Please answer 'yes' or 'no':'
+>>>
+Please answer 'yes' or 'no':'
+>>>
+Please answer 'yes' or 'no':'
+>>>
+Please answer 'yes' or 'no':'
+>>>
+Please answer 'yes' or 'no':'
+>>> yes
+
+Anaconda3 will now be installed into this location:
+/home/willem/anaconda3
+
+  - Press ENTER to confirm the location
+  - Press CTRL-C to abort the installation
+  - Or specify a different location below
+
+[/home/willem/anaconda3] >>>
+PREFIX=/home/willem/anaconda3
+Unpacking payload ...
+
+Installing base environment...
+
+
+Downloading and Extracting Packages:
+
+
+## Package Plan ##
+
+  environment location: /home/willem/anaconda3
+
+  added / updated specs:
+    - defaults/linux-64::_anaconda_depends==2024.10=py312_mkl_0[md5=c9ba3a4910c6668be6c04058513aca5d]
+    - defaults/linux-64::_libgcc_mutex==0.1=main[md5=c3473ff8bdb3d124ed5ff11ec380d6f9]
+    - defaults/linux-64::_openmp_mutex==5.1=1_gnu[md5=71d281e9c2192cb3fa425655a8defb85]
+    - defaults/linux-64::aiobotocore==2.12.3=py312h06a4308_0[md5=b54b2fa16e83039c4398d0b1d16c8cd9]
+    - defaults/linux-64::aiohappyeyeballs==2.4.0=py312h06a4308_0[md5=305f03cf0cb08197bafad774073c8880]
+    - defaults/linux-64::aiohttp==3.10.5=py312h5eee18b_0[md5=442b1f6b84684ca9bc6fdcd2d5ed7d40]
+    - defaults/linux-64::alabaster==0.7.16=py312h06a4308_0[md5=67972d62839c54349ef3e627be0ddaba]
+    - defaults/linux-64::altair==5.0.1=py312h06a4308_0[md5=b81495a45521633a7c586b60bf76985a]
+    - defaults/linux-64::anaconda-anon-usage==0.4.4=py312hfc0e8ea_100[md5=97f7e102a7075404bbcb7e801b260e3a]
+    - defaults/linux-64::anaconda-catalogs==0.2.0=py312h06a4308_1[md5=6f635d270eb79272321cd7c2e704c0fc]
+    - defaults/linux-64::anaconda-client==1.12.3=py312h06a4308_0[md5=d33315f185d898f6dee5ecbe651294b7]
+    - defaults/linux-64::anaconda-cloud-auth==0.5.1=py312h06a4308_0[md5=c7d897f4b80489abaee430204e58d969]
+    - defaults/linux-64::anaconda-navigator==2.6.3=py312h06a4308_0[md5=63f436a1925ec31b8d4c7ca25ecfd271]
+    - defaults/linux-64::anaconda-project==0.11.1=py312h06a4308_0[md5=16520b6f4180b86470df45d25ca453e2]
+    - defaults/linux-64::annotated-types==0.6.0=py312h06a4308_0[md5=03aa1a636640f8f94febe4779e5d37a7]
+    - defaults/linux-64::anyio==4.2.0=py312h06a4308_0[md5=d992c4775da6f3ccb1223d71abe67de9]
+    - defaults/linux-64::aom==3.6.0=h6a678d5_0[md5=bcd807dd3ca7678f34512989418743f6]
+    - defaults/linux-64::argon2-cffi-bindings==21.2.0=py312h5eee18b_0[md5=ed4180dcd3e7c19a9c06a86510ad1ae7]
+    - defaults/linux-64::arrow-cpp==16.1.0=hc1eb8f0_0[md5=65fc05a323fc93a126839877625146df]
+    - defaults/linux-64::arrow==1.2.3=py312h06a4308_1[md5=cc339dab259fe195a1442bead73f5578]
+    - defaults/linux-64::astroid==2.14.2=py312h06a4308_0[md5=41806e85b22a7edcd25b4af6c23d5a28]
+    - defaults/linux-64::astropy-iers-data==0.2024.9.2.0.33.23=py312h06a4308_0[md5=f07094cf7edc056a49837b5a2fb387b7]
+    - defaults/linux-64::astropy==6.1.3=py312h5eee18b_0[md5=dffb7f6929dacc2cd80cfce33a377a90]
+    - defaults/linux-64::async-lru==2.0.4=py312h06a4308_0[md5=2806b5842bb2478e127c99feb82a6a88]
+    - defaults/linux-64::attrs==23.1.0=py312h06a4308_0[md5=e8016c6839c63842d4a32bace7359ad8]
+    - defaults/linux-64::aws-c-auth==0.6.19=h5eee18b_0[md5=e558e799fcfdfa2c44325bcde949932d]
+    - defaults/linux-64::aws-c-cal==0.5.20=hdbd6064_0[md5=cbcad5001ff28fff2b49f91c51ffc0b7]
+    - defaults/linux-64::aws-c-common==0.8.5=h5eee18b_0[md5=8e31ed151251a4d5b1d77b4bc2c65cd6]
+    - defaults/linux-64::aws-c-compression==0.2.16=h5eee18b_0[md5=d8a70cf9a9fd4f59dd9736fe4f279a7c]
+    - defaults/linux-64::aws-c-event-stream==0.2.15=h6a678d5_0[md5=8caf0b9770f50dec5cf68ad4abb1e6b9]
+    - defaults/linux-64::aws-c-http==0.6.25=h5eee18b_0[md5=57decdb6d2bc3b8c8f34895859b5ffd4]
+    - defaults/linux-64::aws-c-io==0.13.10=h5eee18b_0[md5=36783443ab146fc7dc741d881d77a735]
+    - defaults/linux-64::aws-c-mqtt==0.7.13=h5eee18b_0[md5=98e29a670bd12028f2a7878a96622f13]
+    - defaults/linux-64::aws-c-s3==0.1.51=hdbd6064_0[md5=e469699e8963dab2300d1e120f17a9fb]
+    - defaults/linux-64::aws-c-sdkutils==0.1.6=h5eee18b_0[md5=552feafbf27138bcc06580e515ee50e4]
+    - defaults/linux-64::aws-checksums==0.1.13=h5eee18b_0[md5=45ce250b72f32dd596edfb08642d3e9a]
+    - defaults/linux-64::aws-crt-cpp==0.18.16=h6a678d5_0[md5=75eee556aaa512255d61e9b2e8b28464]
+    - defaults/linux-64::aws-sdk-cpp==1.10.55=h721c034_0[md5=870b29570ef0585da73ea6a2487da414]
+    - defaults/linux-64::babel==2.11.0=py312h06a4308_0[md5=677b01819ada8c2e555e55342b1d5433]
+    - defaults/linux-64::bcrypt==3.2.0=py312h5eee18b_1[md5=556acaef7d2feadd4d01b0b3e66cbfa8]
+    - defaults/linux-64::beautifulsoup4==4.12.3=py312h06a4308_0[md5=79afccbd2199c75b590ecac6228716f2]
+    - defaults/linux-64::black==24.8.0=py312h06a4308_0[md5=45db94c5c4cc7ec895f3620198365987]
+    - defaults/linux-64::blas==1.0=mkl[md5=9a7a051e9bd41da46523acb017d8a517]
+    - defaults/linux-64::blinker==1.6.2=py312h06a4308_0[md5=a308ff4a4e682fe7375bea66fec0f818]
+    - defaults/linux-64::blosc==1.21.3=h6a678d5_0[md5=4a82e776d992a517ada3bdcede331ae8]
+    - defaults/linux-64::bokeh==3.6.0=py312h06a4308_0[md5=b2344bce475b9bb706c2a887ff0b56f4]
+    - defaults/linux-64::boltons==23.0.0=py312h06a4308_0[md5=36d464442713fc92897b7da029a08fb6]
+    - defaults/linux-64::boost-cpp==1.82.0=hdb19cb5_2[md5=126e68decc2907288d2787529a945570]
+    - defaults/linux-64::botocore==1.34.69=py312h06a4308_0[md5=f92db3e81737983870ac87942319844a]
+    - defaults/linux-64::bottleneck==1.3.7=py312ha883a20_0[md5=51bb23c66f00f6cc89dd0dee32815e67]
+    - defaults/linux-64::brotli-bin==1.0.9=h5eee18b_8[md5=9820670bfb9cae1e93a2646676bc1b7b]
+    - defaults/linux-64::brotli-python==1.0.9=py312h6a678d5_8[md5=e6bdf1f9e8e1ad3543aaec7e9ecea7e7]
+    - defaults/linux-64::brotli==1.0.9=h5eee18b_8[md5=b5d5a0d366e8dc1b21c75b8703aaa96a]
+    - defaults/linux-64::brunsli==0.1=h2531618_0[md5=6777d1b10f8e02143f9708699f7ab354]
+    - defaults/linux-64::bzip2==1.0.8=h5eee18b_6[md5=f21a3ff51c1b271977f53ce956a69297]
+    - defaults/linux-64::c-ares==1.19.1=h5eee18b_0[md5=6cfbce52273a1cb888821f18ceaa83c4]
+    - defaults/linux-64::c-blosc2==2.12.0=h80c7b02_0[md5=a99d0fcf5918fc2cacf0b7bb865087f9]
+    - defaults/linux-64::ca-certificates==2024.9.24=h06a4308_0[md5=e4369d7b4b0707ee0765794d14710e2e]
+    - defaults/linux-64::cachetools==5.3.3=py312h06a4308_0[md5=5ef3f4e0b9bea1464c2872c8bb47886b]
+    - defaults/linux-64::certifi==2024.8.30=py312h06a4308_0[md5=42ef53b6872f15913c0d7d702ec7475e]
+    - defaults/linux-64::cffi==1.17.1=py312h1fdaa30_0[md5=8472aea146fecf25898d67adea2ddbf8]
+    - defaults/linux-64::cfitsio==3.470=h5893167_7[md5=a4d4f7d9d9ee35e6abdd4acb1c14afea]
+    - defaults/linux-64::chardet==4.0.0=py312h06a4308_1003[md5=7dd0b18381d4e95f723afbde9171b3cf]
+    - defaults/linux-64::charls==2.2.0=h2531618_0[md5=abcace262ab5673ba2b89c658b7bc846]
+    - defaults/linux-64::click==8.1.7=py312h06a4308_0[md5=a0d97fc547780b4ddefc91139e633e02]
+    - defaults/linux-64::cloudpickle==3.0.0=py312h06a4308_0[md5=3f45dcde74f21f86ab0edc5d8dd1dfab]
+    - defaults/linux-64::colorama==0.4.6=py312h06a4308_0[md5=6175699c700cc4e4bf18ffc86778e488]
+    - defaults/linux-64::colorcet==3.1.0=py312h06a4308_0[md5=0aa6e68c007c1cba090c89b086d49a08]
+    - defaults/linux-64::comm==0.2.1=py312h06a4308_0[md5=7d7b827eee78fd7b62292dc6a44314f2]
+    - defaults/linux-64::conda-build==24.9.0=py312h06a4308_0[md5=53b5437f63ec6e3280cf0818951924b3]
+    - defaults/linux-64::conda-content-trust==0.2.0=py312h06a4308_1[md5=fdcf7a04d9cc833ea3f397a414010206]
+    - defaults/linux-64::conda-index==0.5.0=py312h06a4308_0[md5=1d75f558480909da0ba8114a60a4a5df]
+    - defaults/linux-64::conda-pack==0.7.1=py312h06a4308_0[md5=b7ca0af40f8bfb9dbb171dc734b5cd30]
+    - defaults/linux-64::conda-package-handling==2.3.0=py312h06a4308_0[md5=230372bd2a09fbe75dc99c655f671e04]
+    - defaults/linux-64::conda-package-streaming==0.10.0=py312h06a4308_0[md5=4801fce7f441672d195966cf23a12186]
+    - defaults/linux-64::conda-repo-cli==1.0.114=py312h06a4308_0[md5=486ca8ed267a9b693ffeb855e396362a]
+    - defaults/linux-64::conda==24.9.2=py312h06a4308_0[md5=4c35348e64d09d83ce731fbbe9018b26]
+    - defaults/linux-64::constantly==23.10.4=py312h06a4308_0[md5=b84e14c021e378e0ff045e0f4b714345]
+    - defaults/linux-64::contourpy==1.2.0=py312hdb19cb5_0[md5=45c70b5ee7202df3c86a586c2736bce7]
+    - defaults/linux-64::cookiecutter==2.6.0=py312h06a4308_0[md5=da8267e86033d982dbbe9ec14286dc50]
+    - defaults/linux-64::cryptography==43.0.0=py312hdda0065_0[md5=76ab63809027e6311b6aa8b4f922ddcf]
+    - defaults/linux-64::cssselect==1.2.0=py312h06a4308_0[md5=24c2b17ff843a532442d55a22490124e]
+    - defaults/linux-64::curl==8.9.1=hdbd6064_0[md5=52ef43af44b3c55a6cc3cd7e5adfb0eb]
+    - defaults/linux-64::cyrus-sasl==2.1.28=h52b45da_1[md5=d634af1577e4008f9228ae96ce671c44]
+    - defaults/linux-64::cytoolz==0.12.2=py312h5eee18b_0[md5=576084e1306a7cd21043c6ea5cb38fa2]
+    - defaults/linux-64::dask-core==2024.8.2=py312h06a4308_0[md5=f3590b44c5964fabec4e2018d6cb4723]
+    - defaults/linux-64::dask-expr==1.1.13=py312h06a4308_0[md5=0345f633104769b756576c85513f7bb7]
+    - defaults/linux-64::dask==2024.8.2=py312h06a4308_0[md5=e18842ad484cce4eac772384e72d0553]
+    - defaults/linux-64::datashader==0.16.3=py312h06a4308_0[md5=082a991576edf5579d41d8647ddf8da0]
+    - defaults/linux-64::dav1d==1.2.1=h5eee18b_0[md5=616c9f26cd289f10a79f3d166b338804]
+    - defaults/linux-64::dbus==1.13.18=hb2f20db_0[md5=6a6a6f1391f807847404344489ef6cf4]
+    - defaults/linux-64::debugpy==1.6.7=py312h6a678d5_0[md5=e2d2e050b9401c68cfc979753f250616]
+    - defaults/linux-64::dill==0.3.8=py312h06a4308_0[md5=f55011f25e86927bea73438c228631af]
+    - defaults/linux-64::distributed==2024.8.2=py312h06a4308_0[md5=294b88cabc2a0d03e4e27597fea9248d]
+    - defaults/linux-64::distro==1.9.0=py312h06a4308_0[md5=71b90a563af005b336c976cc9466221c]
+    - defaults/linux-64::docstring-to-markdown==0.11=py312h06a4308_0[md5=81a1a698300865f094e8d2f650a8c672]
+    - defaults/linux-64::docutils==0.18.1=py312h06a4308_3[md5=de1cf0208a060d67bf6597c5a33cb111]
+    - defaults/linux-64::et_xmlfile==1.1.0=py312h06a4308_1[md5=c9f51f719d877e8f6f8be7c9629d5791]
+    - defaults/linux-64::expat==2.6.3=h6a678d5_0[md5=5e184279ccb8b85331093305cb548f5c]
+    - defaults/linux-64::filelock==3.13.1=py312h06a4308_0[md5=6a0b440821945eda176c2bd78fd64a56]
+    - defaults/linux-64::flake8==7.0.0=py312h06a4308_0[md5=fc66967179829a7e82738ce307dc57ef]
+    - defaults/linux-64::flask==3.0.3=py312h06a4308_0[md5=bdacbbe275f928ae50fdc09ddb0f6203]
+    - defaults/linux-64::fmt==9.1.0=hdb19cb5_1[md5=4f12930203ff2d84df5d287af9b29858]
+    - defaults/linux-64::fontconfig==2.14.1=h4c34cd2_2[md5=f0b472f5b544f8d57beb09ed4a2932e1]
+    - defaults/linux-64::fonttools==4.51.0=py312h5eee18b_0[md5=592d996d4b654ac2d0b071461f5165d4]
+    - defaults/linux-64::freetype==2.12.1=h4a9f257_0[md5=bdc7b5952e9c5dca01bc2f4ccef2f974]
+    - defaults/linux-64::frozendict==2.4.2=py312h06a4308_0[md5=76ae0259102a2156cc0e1ff9ada0f2c6]
+    - defaults/linux-64::frozenlist==1.4.0=py312h5eee18b_0[md5=f5ff0dfe84b03771bd6fcec01d3272f4]
+    - defaults/linux-64::fsspec==2024.6.1=py312h06a4308_0[md5=b6063312ad55fa5e6840f194801b2a89]
+    - defaults/linux-64::gensim==4.3.3=py312h526ad5a_0[md5=f0c713939aa64b81bc25d61e70b4ebe3]
+    - defaults/linux-64::gflags==2.2.2=h6a678d5_1[md5=934362bfb503ed169413b0a209959fe7]
+    - defaults/linux-64::giflib==5.2.1=h5eee18b_3[md5=aa7d64adb3cd8a75d398167f8c29afc3]
+    - defaults/linux-64::gitpython==3.1.43=py312h06a4308_0[md5=a5bb051e5739c6701297408439f7b1fc]
+    - defaults/linux-64::glib-tools==2.78.4=h6a678d5_0[md5=3dbe6227cd59818dca9afb75ccb70708]
+    - defaults/linux-64::glib==2.78.4=h6a678d5_0[md5=045ff487547f7b2b7ff01648681b8ebe]
+    - defaults/linux-64::glog==0.5.0=h6a678d5_1[md5=4cc83b6e8045c98f80bb74eb5a331e5b]
+    - defaults/linux-64::greenlet==3.0.1=py312h6a678d5_0[md5=e44111a5dbcd2dabbc678ab4c5ec19f1]
+    - defaults/linux-64::gst-plugins-base==1.14.1=h6a678d5_1[md5=afd9cbe949d670d24cc0a007aaec1fe1]
+    - defaults/linux-64::gstreamer==1.14.1=h5eee18b_1[md5=f2f26e6f869b5d87f41bd059fae47c3e]
+    - defaults/linux-64::h11==0.14.0=py312h06a4308_0[md5=6e32d4e1d4c9409293e63ecf19755482]
+    - defaults/linux-64::h5py==3.11.0=py312h34c39bb_0[md5=b15decee21975b4b043998385317b13e]
+    - defaults/linux-64::hdf5==1.12.1=h2b7332f_3[md5=fd13a779c6309d80f943429effe46f21]
+    - defaults/linux-64::holoviews==1.19.1=py312h06a4308_0[md5=e269003b4ddf08e32ea2238ffeb908c7]
+    - defaults/linux-64::httpcore==1.0.2=py312h06a4308_0[md5=a4e4dd3bd4cec11e72ffb690bafcce90]
+    - defaults/linux-64::httpx==0.27.0=py312h06a4308_0[md5=2364f07b85b5cc9f4a62106c823f10c8]
+    - defaults/linux-64::hvplot==0.11.0=py312h06a4308_0[md5=41369623b4c61fc88139c6813f53abda]
+    - defaults/linux-64::icu==73.1=h6a678d5_0[md5=6d09df641fc23f7d277a04dc7ea32dd4]
+    - defaults/linux-64::idna==3.7=py312h06a4308_0[md5=03cc59cdabff44c47be0fadffcef003c]
+    - defaults/linux-64::imagecodecs==2023.1.23=py312h81b8100_1[md5=0caf7855e4b3b8cd3185038df2ab3051]
+    - defaults/linux-64::imageio==2.33.1=py312h06a4308_0[md5=8971e0f0ea6256b1c5f90e0a82c51586]
+    - defaults/linux-64::imagesize==1.4.1=py312h06a4308_0[md5=988aa1d281a4ecadadc74d2e5593913f]
+    - defaults/linux-64::imbalanced-learn==0.12.3=py312h06a4308_1[md5=29d63661ac2e121a27c5efbc67d40f4a]
+    - defaults/linux-64::importlib-metadata==7.0.1=py312h06a4308_0[md5=3882ea712f9fe00625fa0420016dad18]
+    - defaults/linux-64::inflection==0.5.1=py312h06a4308_1[md5=67e114605923bbecac3d53ee797a384e]
+    - defaults/linux-64::intake==2.0.7=py312h06a4308_0[md5=f2fb3e5e040253a70e730b9278db819e]
+    - defaults/linux-64::intel-openmp==2023.1.0=hdb19cb5_46306[md5=8c3c1916f770196bf998c8310178ae55]
+    - defaults/linux-64::ipykernel==6.28.0=py312h06a4308_0[md5=b488eb4fadcff89d5a2cf097a5c7a91b]
+    - defaults/linux-64::ipython==8.27.0=py312h06a4308_0[md5=e0e30c0612115959ce5a6633e577bc41]
+    - defaults/linux-64::ipywidgets==7.8.1=py312h06a4308_0[md5=c74f35657fed48b17542297cf1ea32f4]
+    - defaults/linux-64::isort==5.13.2=py312h06a4308_0[md5=d58259ad7b833d0cf198b9a883406ce3]
+    - defaults/linux-64::itemloaders==1.1.0=py312h06a4308_0[md5=dad30c71257b98882c2ed1404605647d]
+    - defaults/linux-64::itsdangerous==2.2.0=py312h06a4308_0[md5=b968363412bbfbea5bcb7634c3c95884]
+    - defaults/linux-64::jedi==0.19.1=py312h06a4308_0[md5=67391f5ec297fe536b30d2c450ae4b15]
+    - defaults/linux-64::jellyfish==1.0.1=py312hb02cf49_0[md5=790ecec7deb5695fb2163b284fe4e6b1]
+    - defaults/linux-64::jinja2==3.1.4=py312h06a4308_0[md5=aee50a77b632c39ab72bffc8017d19be]
+    - defaults/linux-64::jmespath==1.0.1=py312h06a4308_0[md5=d5e70badfd5b436c8620db7dda0bde71]
+    - defaults/linux-64::joblib==1.4.2=py312h06a4308_0[md5=c191ecf27647a0faee7bcb0b5f0aed71]
+    - defaults/linux-64::jpeg==9e=h5eee18b_3[md5=7c070fc8280710bdbef12813039058f8]
+    - defaults/linux-64::jq==1.6=h27cfd23_1000[md5=e3959b747ad5c51cbb8e0c2b0374e9d1]
+    - defaults/linux-64::jsonpatch==1.33=py312h06a4308_1[md5=c3de52aaf670064f85106ddb32d720d9]
+    - defaults/linux-64::jsonschema-specifications==2023.7.1=py312h06a4308_0[md5=4a3e8dd4b08a13007db2038e6d0ee144]
+    - defaults/linux-64::jsonschema==4.23.0=py312h06a4308_0[md5=db19980afd8da4e8269d4374c2b86e31]
+    - defaults/linux-64::jupyter-lsp==2.2.0=py312h06a4308_0[md5=5ec44afafeffea8c68eb56af4da94dc5]
+    - defaults/linux-64::jupyter==1.0.0=py312h06a4308_9[md5=9dcba45c16979cd345f042f56b6ed9c7]
+    - defaults/linux-64::jupyter_client==8.6.0=py312h06a4308_0[md5=fa5c4806fb8923dd99bd6e4117394681]
+    - defaults/linux-64::jupyter_console==6.6.3=py312h06a4308_1[md5=02607d9c1ab4d665b9f94ee78d8b5bf5]
+    - defaults/linux-64::jupyter_core==5.7.2=py312h06a4308_0[md5=f74ba359b10915d569269b982b942455]
+    - defaults/linux-64::jupyter_events==0.10.0=py312h06a4308_0[md5=e9def891af369b1d816e08345a42838a]
+    - defaults/linux-64::jupyter_server==2.14.1=py312h06a4308_0[md5=6ee18118c92c40b045ae6a99d5025da4]
+    - defaults/linux-64::jupyter_server_terminals==0.4.4=py312h06a4308_1[md5=38397ad2c8ba35b0c34082d230f49bd8]
+    - defaults/linux-64::jupyterlab-variableinspector==3.1.0=py312h06a4308_0[md5=cf521461fc77fba6bd5664147926873d]
+    - defaults/linux-64::jupyterlab==4.2.5=py312h06a4308_0[md5=6bf95090db403e5ea2d18a7007b55153]
+    - defaults/linux-64::jupyterlab_server==2.27.3=py312h06a4308_0[md5=f57cfbe699a06e2e2e0dc55fa92c6a87]
+    - defaults/linux-64::jxrlib==1.1=h7b6447c_2[md5=3cc305f3788177c8ea28088590ab75a1]
+    - defaults/linux-64::keyring==24.3.1=py312h06a4308_0[md5=fff26aca6afa1adcb1cd61d8763639e3]
+    - defaults/linux-64::kiwisolver==1.4.4=py312h6a678d5_0[md5=47e12eaa774b108e6e17011b1d727650]
+    - defaults/linux-64::krb5==1.20.1=h143b758_1[md5=cf1accc86321fa25d6b978cc748039ae]
+    - defaults/linux-64::lazy-object-proxy==1.10.0=py312h5eee18b_0[md5=68bc2faf5a037401c7d1eb46acaf3f0e]
+    - defaults/linux-64::lazy_loader==0.4=py312h06a4308_0[md5=6eec321fa4f6db3720d90667853f7ddc]
+    - defaults/linux-64::lcms2==2.12=h3be6417_0[md5=719db47afba9f6586eecb5eacac70bff]
+    - defaults/linux-64::ld_impl_linux-64==2.40=h12ee557_0[md5=ee672b5f635340734f58d618b7bca024]
+    - defaults/linux-64::lerc==3.0=h295c915_0[md5=b97309770412f10bed8d9448f6f98f87]
+    - defaults/linux-64::libabseil==20240116.2=cxx17_h6a678d5_0[md5=7abc574a536f223fe96be4fb7f4207bf]
+    - defaults/linux-64::libaec==1.0.4=he6710b0_1[md5=95e3b23fe7c0108bce3b6826749bb94d]
+    - defaults/linux-64::libarchive==3.6.2=h6ac8c49_3[md5=2501766e63d235170c00d670c76510cb]
+    - defaults/linux-64::libavif==0.11.1=h5eee18b_0[md5=6fbaf4cb35c7df1b1e08e2096e84c71b]
+    - defaults/linux-64::libboost==1.82.0=h109eef0_2[md5=cc971e806cb403c65290ab161bed239a]
+    - defaults/linux-64::libbrotlicommon==1.0.9=h5eee18b_8[md5=1e9edf233add622312356a40a7d0f8de]
+    - defaults/linux-64::libbrotlidec==1.0.9=h5eee18b_8[md5=2595e6d66d6b9254e18d63458dc27486]
+    - defaults/linux-64::libbrotlienc==1.0.9=h5eee18b_8[md5=d9ee310f619a8dc00178fd2ae1667c88]
+    - defaults/linux-64::libclang13==14.0.6=default_he11475f_1[md5=44890feda1cf51639d9c94afbacce011]
+    - defaults/linux-64::libclang==14.0.6=default_hc6dbbc7_1[md5=8f12583c4027b2861cff470f6b8837c4]
+    - defaults/linux-64::libcups==2.4.2=h2d74bed_1[md5=3f265c2172a9e8c90a74037b6fa13685]
+    - defaults/linux-64::libcurl==8.9.1=h251f7ec_0[md5=8133d8f19e8136a10f9f81180026c859]
+    - defaults/linux-64::libdeflate==1.17=h5eee18b_1[md5=82831ef0b6c9595382d74e0c281f6742]
+    - defaults/linux-64::libedit==3.1.20230828=h5eee18b_0[md5=850eb5a9d2d7d3c66cce12e84406ca08]
+    - defaults/linux-64::libev==4.33=h7f8727e_1[md5=5065620db4393fb549f30114a33897d1]
+    - defaults/linux-64::libevent==2.1.12=hdbd6064_1[md5=99312bf9d90f1ea14534b40afb61ce63]
+    - defaults/linux-64::libffi==3.4.4=h6a678d5_1[md5=70646cc713f0c43926cfdcfe9b695fe0]
+    - defaults/linux-64::libgcc-ng==11.2.0=h1234567_1[md5=a87728dabf3151fb9cfa990bd2eb0464]
+    - defaults/linux-64::libgfortran-ng==11.2.0=h00389a5_1[md5=7429b67ab7b1d7cb99b9d1f3ddaec6e3]
+    - defaults/linux-64::libgfortran5==11.2.0=h1234567_1[md5=36a01a8c30e0cadf0d3e842c50b73f3b]
+    - defaults/linux-64::libglib==2.78.4=hdc74915_0[md5=2f6d27741e931d5b6ba56e1a1312aaf0]
+    - defaults/linux-64::libgomp==11.2.0=h1234567_1[md5=b372c0eea9b60732fdae4b817a63c8cd]
+    - defaults/linux-64::libgrpc==1.62.2=h2d74bed_0[md5=b295eb977660493754dbb9ac7210c250]
+    - defaults/linux-64::libiconv==1.16=h5eee18b_3[md5=197b1a0886a31fccab2167340528eebc]
+    - defaults/linux-64::liblief==0.12.3=h6a678d5_0[md5=9996383fc2561614e4d54490aea33f8e]
+    - defaults/linux-64::libllvm14==14.0.6=hecde1de_4[md5=6632d0fded357829c566744d2d8ab20c]
+    - defaults/linux-64::libmamba==1.5.8=hfe524e5_2[md5=296ffa72be5a84823751e437b6e8445d]
+    - defaults/linux-64::libmambapy==1.5.8=py312h2dafd23_2[md5=f1e589b235fb9922930f2762c6fa8cd2]
+    - defaults/linux-64::libnghttp2==1.57.0=h2d74bed_0[md5=674871621300f54e7ffcf93e6e341638]
+    - defaults/linux-64::libpng==1.6.39=h5eee18b_0[md5=f6aee38184512eb05b06c2e94d39ab22]
+    - defaults/linux-64::libpq==12.17=hdbd6064_0[md5=6bed363e25859faff66bf546a11c10e8]
+    - defaults/linux-64::libprotobuf==4.25.3=he621ea3_0[md5=b5bac9ee75a731feb80bfc8c40d1958f]
+    - defaults/linux-64::libsodium==1.0.18=h7b6447c_0[md5=c8783b20f0e14bc1d701352c26c264d5]
+    - defaults/linux-64::libsolv==0.7.24=he621ea3_1[md5=c22067963515e7a8d27a5a222a48d870]
+    - defaults/linux-64::libspatialindex==1.9.3=h2531618_0[md5=2944eeda0125389c979af67e4460a510]
+    - defaults/linux-64::libssh2==1.11.0=h251f7ec_0[md5=ce46cf257d73fe85c18c78597196f0d8]
+    - defaults/linux-64::libstdcxx-ng==11.2.0=h1234567_1[md5=57623d10a70e09e1d048c2b2b6f4e2dd]
+    - defaults/linux-64::libthrift==0.15.0=h1795dd8_2[md5=ec4c17f00b24cc0b9dfd5e0e0a857bce]
+    - defaults/linux-64::libtiff==4.5.1=h6a678d5_0[md5=235a671f74f0c4ecad9f9b3b107e3566]
+    - defaults/linux-64::libuuid==1.41.5=h5eee18b_0[md5=4a6a2354414c9080327274aa514e5299]
+    - defaults/linux-64::libwebp-base==1.3.2=h5eee18b_0[md5=9179fc7baefa1e027f572edbc519d805]
+    - defaults/linux-64::libxcb==1.15=h7f8727e_0[md5=ada518dcadd6aaee9aae47ba9a671553]
+    - defaults/linux-64::libxkbcommon==1.0.1=h5eee18b_1[md5=888b2e8f1bbf21017c503826e2d24b50]
+    - defaults/linux-64::libxml2==2.10.4=hfdd30dd_2[md5=ff7a0e3b92afb3c99b82c9f0ba8b5670]
+    - defaults/linux-64::libxslt==1.1.37=h5eee18b_1[md5=6f02fe89170c00b93ca5a3b81da6d9e0]
+    - defaults/linux-64::libzopfli==1.0.3=he6710b0_0[md5=8671895f71c9046f38b814f8662226f5]
+    - defaults/linux-64::linkify-it-py==2.0.0=py312h06a4308_0[md5=68b194a12b09ab4aca3fc89da29c7f6a]
+    - defaults/linux-64::llvmlite==0.43.0=py312h6a678d5_0[md5=5ca38d7d7746a4109bf92c25dbf5d498]
+    - defaults/linux-64::locket==1.0.0=py312h06a4308_0[md5=94707c858e3cdfce236776a6e9fb76fc]
+    - defaults/linux-64::lxml==5.2.1=py312hdbbb534_0[md5=402f05b5838a8b825e387890632fd63b]
+    - defaults/linux-64::lz4-c==1.9.4=h6a678d5_1[md5=2ee58861f2b92b868ce761abb831819d]
+    - defaults/linux-64::lz4==4.3.2=py312h5eee18b_0[md5=e6b445720047b4edad5c819a1052eefd]
+    - defaults/linux-64::lzo==2.10=h7b6447c_2[md5=65722a7644f424de73fea6e87edd7653]
+    - defaults/linux-64::markdown-it-py==2.2.0=py312h06a4308_1[md5=ec0d596109762df09a6ee70dd3327847]
+    - defaults/linux-64::markdown==3.4.1=py312h06a4308_0[md5=edda682f22d7b98570fc5527f6412ce5]
+    - defaults/linux-64::markupsafe==2.1.3=py312h5eee18b_0[md5=b5d2615c33773326f8207f7b58df1e2b]
+    - defaults/linux-64::matplotlib-base==3.9.2=py312h66fe004_0[md5=7ac7bc9b4133c69c8b30c6b40a176e5a]
+    - defaults/linux-64::matplotlib-inline==0.1.6=py312h06a4308_0[md5=a8e99eeb494e5945aa7e60a660670643]
+    - defaults/linux-64::matplotlib==3.9.2=py312h06a4308_0[md5=c7d85b61abc647aaf06af2609aec451f]
+    - defaults/linux-64::mdit-py-plugins==0.3.0=py312h06a4308_0[md5=eab2b27cc60996a7ebf3eeeeb82674cc]
+    - defaults/linux-64::mdurl==0.1.0=py312h06a4308_0[md5=6bea6d09fe58ac995a64ab45e75cb5e9]
+    - defaults/linux-64::menuinst==2.1.2=py312h06a4308_0[md5=dea01dc88eee0a74dc9d982144b93371]
+    - defaults/linux-64::mistune==2.0.4=py312h06a4308_0[md5=ebad83b0f2acc0defac5485ea5e71994]
+    - defaults/linux-64::mkl-service==2.4.0=py312h5eee18b_1[md5=cbcf902f69dde50490e8e7254070fbc6]
+    - defaults/linux-64::mkl==2023.1.0=h213fc3f_46344[md5=83e5adf5b75242d8d7634615fed37c72]
+    - defaults/linux-64::mkl_fft==1.3.10=py312h5eee18b_0[md5=ade5f6c857bf8abeef97634c4c79b0cd]
+    - defaults/linux-64::mkl_random==1.2.7=py312h526ad5a_0[md5=c26d1de1162018bdef3e8a5bc6c1bf81]
+    - defaults/linux-64::more-itertools==10.3.0=py312h06a4308_0[md5=f4a4ebde3790bc626937717119a99a73]
+    - defaults/linux-64::mpmath==1.3.0=py312h06a4308_0[md5=5b9f0f54bc7edc658fbc97bf293c6795]
+    - defaults/linux-64::msgpack-python==1.0.3=py312hdb19cb5_0[md5=9f2369ceffa6420742a233390d2fc295]
+    - defaults/linux-64::multidict==6.0.4=py312h5eee18b_0[md5=86141a351bb729f0423e2fb863b9563e]
+    - defaults/linux-64::multipledispatch==0.6.0=py312h06a4308_0[md5=c25db55c3cac0a8831eb157744260c37]
+    - defaults/linux-64::mypy==1.11.2=py312h5eee18b_0[md5=97acc8b5794e6f2a9a743e8763d26a5d]
+    - defaults/linux-64::mypy_extensions==1.0.0=py312h06a4308_0[md5=79bbb864c9fffd761fbc7f5bc149dcef]
+    - defaults/linux-64::mysql==5.7.24=h721c034_2[md5=dfc19ca2466d275c4c1f73b62c57f37b]
+    - defaults/linux-64::navigator-updater==0.5.1=py312h06a4308_0[md5=349713151b31a425189385286233bf9c]
+    - defaults/linux-64::nbclient==0.8.0=py312h06a4308_0[md5=27e95ee551e2a710fe0d96da0ca141fe]
+    - defaults/linux-64::nbconvert==7.16.4=py312h06a4308_0[md5=60d5960c90b74939984493f38531ddba]
+    - defaults/linux-64::nbformat==5.10.4=py312h06a4308_0[md5=81e80731bf530c45c7013d76e9ed45e3]
+    - defaults/linux-64::ncurses==6.4=h6a678d5_0[md5=5558eec6e2191741a92f832ea826251c]
+    - defaults/linux-64::nest-asyncio==1.6.0=py312h06a4308_0[md5=54db123c667472579092ce402f242702]
+    - defaults/linux-64::networkx==3.3=py312h06a4308_0[md5=3d6fe63c7b13df13c529e2aace012d80]
+    - defaults/linux-64::nltk==3.9.1=py312h06a4308_0[md5=6d2d729bdcbc7d3e9b13385c3cd28962]
+    - defaults/linux-64::notebook-shim==0.2.3=py312h06a4308_0[md5=1f00239d617e3f323f35899f6254b39c]
+    - defaults/linux-64::notebook==7.2.2=py312h06a4308_1[md5=7a8951b6a9d1537ed7090ad7a9823732]
+    - defaults/linux-64::nspr==4.35=h6a678d5_0[md5=208fff5d60133bcff6998a70c9f5203b]
+    - defaults/linux-64::nss==3.89.1=h6a678d5_0[md5=4d9d28fc3a0ca4916f281d2f5429ac50]
+    - defaults/linux-64::numba==0.60.0=py312h526ad5a_0[md5=729e4d66cf5c974d29d387ef643aa017]
+    - defaults/linux-64::numexpr==2.8.7=py312hf827012_0[md5=3f03dbfc3a58d62893415149697dba3c]
+    - defaults/linux-64::numpy-base==1.26.4=py312h0da6c21_0[md5=888045b50966bd832bd93204480f222a]
+    - defaults/linux-64::numpy==1.26.4=py312hc5e2394_0[md5=8ac8a89fbffe69a59f2d22ef58a81b0b]
+    - defaults/linux-64::numpydoc==1.7.0=py312h06a4308_0[md5=af18243afec3c13f43155144730903fd]
+    - defaults/linux-64::oniguruma==6.9.7.1=h27cfd23_0[md5=3415c8dd052c9032955fa24b870725ea]
+    - defaults/linux-64::openjpeg==2.5.2=he7f1fd0_0[md5=a399fe14e40b0ed66a2b1b6c1da4eae1]
+    - defaults/linux-64::openpyxl==3.1.5=py312h5eee18b_0[md5=e6be29538cd413bd4fa55311b7ba1daf]
+    - defaults/linux-64::openssl==3.0.15=h5eee18b_0[md5=019e501b69841c6d4aeaef3b8619a678]
+    - defaults/linux-64::orc==2.0.1=h2d29ad5_0[md5=b4ba21ab452ffd7d1706fcb161c6fe4f]
+    - defaults/linux-64::overrides==7.4.0=py312h06a4308_0[md5=b294a9b6e5b7654cc7012f3690a7c57f]
+    - defaults/linux-64::packaging==24.1=py312h06a4308_0[md5=756ec42d4f934b642b8476689af2781f]
+    - defaults/linux-64::pandas==2.2.2=py312h526ad5a_0[md5=931585545b1801a72013bf30186fb51a]
+    - defaults/linux-64::panel==1.5.2=py312h06a4308_0[md5=7bec4368aefd57b26f3563956c607b13]
+    - defaults/linux-64::param==2.1.1=py312h06a4308_0[md5=97f6dfd63177c0ed9c15bcb00f310f80]
+    - defaults/linux-64::parsel==1.8.1=py312h06a4308_0[md5=b5af8bdc6ae20dc42ab67cdc768f24af]
+    - defaults/linux-64::partd==1.4.1=py312h06a4308_0[md5=35ea3b7ff96731a7a98f9711111cc58f]
+    - defaults/linux-64::patch==2.7.6=h7b6447c_1001[md5=5a47ace7ef08447fe6a602ff16129393]
+    - defaults/linux-64::patchelf==0.17.2=h6a678d5_0[md5=63ad6ea1e47f568a1bdb5edb66734026]
+    - defaults/linux-64::pathspec==0.10.3=py312h06a4308_0[md5=adca67c357ada01d137d476d8c2d7f41]
+    - defaults/linux-64::patsy==0.5.6=py312h06a4308_0[md5=6f57356208264ad6be02f2838085ed49]
+    - defaults/linux-64::pcre2==10.42=hebb0a14_1[md5=727e15c3cfa02b032da4eb0c1123e977]
+    - defaults/linux-64::pillow==10.4.0=py312h5eee18b_0[md5=5887e3148dad7f9e68c38d20071899ca]
+    - defaults/linux-64::pip==24.2=py312h06a4308_0[md5=798cbea8112672434d0cd7551f8fc4b9]
+    - defaults/linux-64::pkce==1.0.3=py312h06a4308_0[md5=f265ff999a05aa966bcef3ae359cc64b]
+    - defaults/linux-64::pkginfo==1.10.0=py312h06a4308_0[md5=2a32de7c1bccd483668b26d4cf589488]
+    - defaults/linux-64::platformdirs==3.10.0=py312h06a4308_0[md5=39dc9eb538e73250dadcdec7a8ed6595]
+    - defaults/linux-64::plotly==5.24.1=py312he106c6f_0[md5=c049e795808913b838736849545a7478]
+    - defaults/linux-64::pluggy==1.0.0=py312h06a4308_1[md5=65e3925b7c284b6a111d8971cac0d0c7]
+    - defaults/linux-64::ply==3.11=py312h06a4308_1[md5=e65cbfb390d1fc5bbd53328cff8a21dc]
+    - defaults/linux-64::prometheus_client==0.14.1=py312h06a4308_0[md5=14e1666713d1d750c7294d167e263170]
+    - defaults/linux-64::prompt-toolkit==3.0.43=py312h06a4308_0[md5=1ccee6d6456c5a4c71d52a97e8292432]
+    - defaults/linux-64::protobuf==4.25.3=py312h12ddb61_0[md5=3d46156a04ec6efd65eafe9869b1c4c0]
+    - defaults/linux-64::psutil==5.9.0=py312h5eee18b_0[md5=44fe0043384455631a86c8ff948432df]
+    - defaults/linux-64::py-cpuinfo==9.0.0=py312h06a4308_0[md5=14f99995c332bf440246f35da4e6582c]
+    - defaults/linux-64::py-lief==0.12.3=py312h6a678d5_0[md5=d19a33a58bdf68d7487a4104d917a2af]
+    - defaults/linux-64::pyarrow==16.1.0=py312h526ad5a_0[md5=3637f62347b5731c200f60d31d1854b6]
+    - defaults/linux-64::pycodestyle==2.11.1=py312h06a4308_0[md5=fdaa4abbcbd5cfffdf8d70a40b85dcde]
+    - defaults/linux-64::pycosat==0.6.6=py312h5eee18b_1[md5=4ccf6371e1ccb1ccbecac26ab4fd1607]
+    - defaults/linux-64::pyct==0.5.0=py312h06a4308_0[md5=9363328477b368cc49fb0ebd7556924b]
+    - defaults/linux-64::pycurl==7.45.3=py312hdbd6064_0[md5=208c894a0919d2c70119dfa11d4e6a74]
+    - defaults/linux-64::pydantic-core==2.20.1=py312hb02cf49_0[md5=8879e1838f0fce5900cb23db1aa5e68d]
+    - defaults/linux-64::pydantic==2.8.2=py312h06a4308_0[md5=ed17e2e2ab47f308aaf95ef56da439cd]
+    - defaults/linux-64::pydeck==0.8.0=py312h06a4308_2[md5=2b0bf5ce850ddef5efb5b8e033c1d112]
+    - defaults/linux-64::pydispatcher==2.0.5=py312h06a4308_3[md5=ad20bdfd6d5783252a2026d2ed2b9756]
+    - defaults/linux-64::pydocstyle==6.3.0=py312h06a4308_0[md5=fcb2df64e0aa5408a69e7ffac35a105c]
+    - defaults/linux-64::pyerfa==2.0.1.4=py312ha883a20_0[md5=51d8aee3a18db47edbc36746286ffe0c]
+    - defaults/linux-64::pyflakes==3.2.0=py312h06a4308_0[md5=11b673ca76ce8ec97d3f78660e028ed9]
+    - defaults/linux-64::pygments==2.15.1=py312h06a4308_1[md5=0cbad1773807f46b928491e0b8606e7f]
+    - defaults/linux-64::pyjwt==2.8.0=py312h06a4308_0[md5=d7241f586d81ecfd3b019bb490e4b292]
+    - defaults/linux-64::pylint-venv==3.0.3=py312h06a4308_0[md5=4afc92540fee37f7832c49f6a0a38170]
+    - defaults/linux-64::pylint==2.16.2=py312h06a4308_0[md5=a923b6e59db57a2996848f460bb37560]
+    - defaults/linux-64::pyodbc==5.1.0=py312h6a678d5_0[md5=64de57a5d4d49aac0d0da25a9162354f]
+    - defaults/linux-64::pyopenssl==24.2.1=py312h06a4308_0[md5=2fc7519121e3f24552cc9b0547c332ad]
+    - defaults/linux-64::pyparsing==3.1.2=py312h06a4308_0[md5=18be1ebb7e660fe091c05caab324100b]
+    - defaults/linux-64::pyqt5-sip==12.13.0=py312h5eee18b_0[md5=c4ff954954a2cf3a6e5b8b87e07addeb]
+    - defaults/linux-64::pyqt==5.15.10=py312h6a678d5_0[md5=d0202d00cd2b878bcc74a9573c5a468b]
+    - defaults/linux-64::pyqtwebengine==5.15.10=py312h6a678d5_0[md5=37ca2cb5bc1048b90c1155e392912159]
+    - defaults/linux-64::pysocks==1.7.1=py312h06a4308_0[md5=8efb8494277b7f0faedf9d437b23cbe1]
+    - defaults/linux-64::pytables==3.10.1=py312h387d6ec_0[md5=92fddcaf528be9839bf465f8bdc59fc7]
+    - defaults/linux-64::pytest==7.4.4=py312h06a4308_0[md5=297cebe31aed2b64f54ea716a61733c0]
+    - defaults/linux-64::python-dateutil==2.9.0post0=py312h06a4308_2[md5=06c8706a892aaaae74325c0b46c86d01]
+    - defaults/linux-64::python-dotenv==0.21.0=py312h06a4308_0[md5=f983f4d6278453e00f637442967b29fa]
+    - defaults/linux-64::python-fastjsonschema==2.16.2=py312h06a4308_0[md5=56f31b415091b046a5e6766911600d12]
+    - defaults/linux-64::python-json-logger==2.0.7=py312h06a4308_0[md5=41478dbbaca2f053f312811678c84cbb]
+    - defaults/linux-64::python-lmdb==1.4.1=py312h6a678d5_0[md5=6c3be23ca6c56dd7adc44c95008ff1ca]
+    - defaults/linux-64::python-lsp-black==2.0.0=py312h06a4308_0[md5=55e3128ae8684f7d5aefd075a437f5eb]
+    - defaults/linux-64::python-lsp-server==1.10.0=py312h06a4308_0[md5=125239335d1e692fd7d85daa4d6b8ba7]
+    - defaults/linux-64::python==3.12.7=h5148396_0[md5=268d2cb6563a9bcb77afd31721d330c2]
+    - defaults/linux-64::pytoolconfig==1.2.6=py312h06a4308_0[md5=b7afdf369facff5aa5d7f1aa5490ba32]
+    - defaults/linux-64::pytz==2024.1=py312h06a4308_0[md5=f8a72213ea02624e802216fedff222e1]
+    - defaults/linux-64::pyviz_comms==3.0.2=py312h06a4308_0[md5=73594db5fb20185ea573b151327c39e1]
+    - defaults/linux-64::pywavelets==1.7.0=py312h5eee18b_0[md5=cdf01c070e6cbb04c3a5492fbd3121b3]
+    - defaults/linux-64::pyyaml==6.0.1=py312h5eee18b_0[md5=c4dd039d43f1b841661db23e084b5e04]
+    - defaults/linux-64::pyzmq==25.1.2=py312h6a678d5_0[md5=e222e50ccfb73d90805aac55b527b6f4]
+    - defaults/linux-64::qstylizer==0.2.2=py312h06a4308_0[md5=7a368792c63fcf0985c3944fbab52d00]
+    - defaults/linux-64::qt-main==5.15.2=h53bd1ea_10[md5=bd0c79e82df6323f638bdcb871891b61]
+    - defaults/linux-64::qt-webengine==5.15.9=h9ab4d14_7[md5=907aa480f11eabd16bd6c72c81720ef2]
+    - defaults/linux-64::qtawesome==1.3.1=py312h06a4308_0[md5=668335526e7987928505fd46dc80d8b0]
+    - defaults/linux-64::qtconsole==5.5.1=py312h06a4308_0[md5=e67d46996debc3c685d7c5a32f00a1e2]
+    - defaults/linux-64::qtpy==2.4.1=py312h06a4308_0[md5=936588dbcc13129f900873fe447f72dd]
+    - defaults/linux-64::queuelib==1.6.2=py312h06a4308_0[md5=4e61d2d19b8a073c877576bc1ebae5dd]
+    - defaults/linux-64::re2==2022.04.01=h295c915_0[md5=6f53e88722a9419d9dcf43b18eab57b2]
+    - defaults/linux-64::readline==8.2=h5eee18b_0[md5=be42180685cce6e6b0329201d9f48efb]
+    - defaults/linux-64::referencing==0.30.2=py312h06a4308_0[md5=3113fb44293d20eaae1e67a4876751c9]
+    - defaults/linux-64::regex==2024.9.11=py312h5eee18b_0[md5=f7baaf6ea3c0b2774742e7bb4f068828]
+    - defaults/linux-64::reproc-cpp==14.2.4=h6a678d5_2[md5=b03aa4903158279f003e7032ab9f5601]
+    - defaults/linux-64::reproc==14.2.4=h6a678d5_2[md5=3c6dbc6c60b3897222d79359343e90fa]
+    - defaults/linux-64::requests-toolbelt==1.0.0=py312h06a4308_0[md5=7aa77208d296f2bb73e3e71f5614e170]
+    - defaults/linux-64::requests==2.32.3=py312h06a4308_0[md5=a321cefcf9b6681a45418d5adf647d80]
+    - defaults/linux-64::rfc3339-validator==0.1.4=py312h06a4308_0[md5=2b1db8c436c99c6856a78dad8f2278a1]
+    - defaults/linux-64::rfc3986-validator==0.1.1=py312h06a4308_0[md5=f9800ce161ed779b8cf7a1cd6d7ae0f5]
+    - defaults/linux-64::rich==13.7.1=py312h06a4308_0[md5=d0f04d8a8f409d70fd0cf7ba3724301a]
+    - defaults/linux-64::rope==1.12.0=py312h06a4308_0[md5=a49d5a7f2130f02dbee2b5f8d4c98ed7]
+    - defaults/linux-64::rpds-py==0.10.6=py312hb02cf49_0[md5=f014511c9cf2b20297e4cba31fa9a47d]
+    - defaults/linux-64::rtree==1.0.1=py312h06a4308_0[md5=58c4db6c2dca8e026a9c14f85444a006]
+    - defaults/linux-64::ruamel.yaml.clib==0.2.8=py312h5eee18b_0[md5=4e151915d3acb78754b5cd1be029fcd2]
+    - defaults/linux-64::ruamel.yaml==0.18.6=py312h5eee18b_0[md5=b4817fd05fdab4ce718bf1e7aab55f75]
+    - defaults/linux-64::ruamel_yaml==0.17.21=py312h5eee18b_0[md5=6c6ec3dead6944d2a4b177112a09594e]
+    - defaults/linux-64::s2n==1.3.27=hdbd6064_0[md5=0224b27f3419e746be5a809cc3cd2172]
+    - defaults/linux-64::s3fs==2024.6.1=py312h06a4308_0[md5=9c1545d5efb856b75bd85d77236142af]
+    - defaults/linux-64::scikit-image==0.24.0=py312h526ad5a_0[md5=86c31d431a0f182a19938928b4ace93e]
+    - defaults/linux-64::scikit-learn==1.5.1=py312h526ad5a_0[md5=a6942bc5ab992ab2bb65ec33d2a18e10]
+    - defaults/linux-64::scipy==1.13.1=py312hc5e2394_0[md5=c31e251373a2464be83fa7e8c3dcf5b3]
+    - defaults/linux-64::scrapy==2.11.1=py312h06a4308_0[md5=d7b5e37d2ddd7b90b0f11852bf7a6ad1]
+    - defaults/linux-64::seaborn==0.13.2=py312h06a4308_0[md5=97cfe0352ea1e29561dd5056abe31137]
+    - defaults/linux-64::secretstorage==3.3.1=py312h06a4308_1[md5=790c1839ee84767859d244875a26ad97]
+    - defaults/linux-64::semver==3.0.2=py312h06a4308_0[md5=72d732a11f95d45a18c77335bffce9e1]
+    - defaults/linux-64::send2trash==1.8.2=py312h06a4308_0[md5=6de7b7d88a0ad8549d30cb9bf1676c7e]
+    - defaults/linux-64::setuptools==75.1.0=py312h06a4308_0[md5=c96d08a405d335f2b0200c0f281b1fdc]
+    - defaults/linux-64::sip==6.7.12=py312h6a678d5_0[md5=9477aa5f0331734ee6a04b0d74ae9988]
+    - defaults/linux-64::smart_open==5.2.1=py312h06a4308_0[md5=99103787cd4e4cc1226a653984c1543b]
+    - defaults/linux-64::snappy==1.2.1=h6a678d5_0[md5=e8c664fa38ba48b095d8c7bb1d755c10]
+    - defaults/linux-64::sniffio==1.3.0=py312h06a4308_0[md5=895787f939a4b06e04de62aa5ccd36d3]
+    - defaults/linux-64::soupsieve==2.5=py312h06a4308_0[md5=102a7777bdfa79ba339be7bed43f8c7d]
+    - defaults/linux-64::sphinx==7.3.7=py312h5eee18b_0[md5=1a861b7a333c374799a07a5c083c364f]
+    - defaults/linux-64::sphinxcontrib-serializinghtml==1.1.10=py312h06a4308_0[md5=2298d2f2ad781879dd0725fb0adf3edd]
+    - defaults/linux-64::spyder-kernels==2.5.0=py312h06a4308_0[md5=985a2631d7a58fcc1269f6ad5e0a5bc6]
+    - defaults/linux-64::spyder==5.5.1=py312h06a4308_4[md5=30f987bb437b4ad544f43bdfd0c07a28]
+    - defaults/linux-64::sqlalchemy==2.0.34=py312h00e1ef3_0[md5=59fb139e00d31be24ef8ffe77fb319fc]
+    - defaults/linux-64::sqlite==3.45.3=h5eee18b_0[md5=acf93d6aceb74d6110e20b44cc45939e]
+    - defaults/linux-64::statsmodels==0.14.2=py312ha883a20_0[md5=d241aaa862bb09749f70a8e419d68569]
+    - defaults/linux-64::streamlit==1.37.1=py312h06a4308_0[md5=511db40b184f1439cfc7093373f4c34d]
+    - defaults/linux-64::sympy==1.13.2=py312h06a4308_0[md5=426c35657f3dc330a2bc5c11d6f94ace]
+    - defaults/linux-64::tabulate==0.9.0=py312h06a4308_0[md5=42a5c8370e1cf09011d5045fb7c7c0e5]
+    - defaults/linux-64::tbb==2021.8.0=hdb19cb5_0[md5=869373905a6bfacbb967abc98516dd85]
+    - defaults/linux-64::tenacity==8.2.3=py312h06a4308_0[md5=9c17b4cfd5ce6d2e5f8f8af8bada598b]
+    - defaults/linux-64::terminado==0.17.1=py312h06a4308_0[md5=4bc05c7f0c2e64b82882f774752a0263]
+    - defaults/linux-64::threadpoolctl==3.5.0=py312he106c6f_0[md5=3ca7192420724484fa1429dd686c91ad]
+    - defaults/linux-64::tifffile==2023.4.12=py312h06a4308_0[md5=7d62753c5401d7d6168e03de71c4c980]
+    - defaults/linux-64::tinycss2==1.2.1=py312h06a4308_0[md5=53422e62ac2d242aa12575ba12c2d430]
+    - defaults/linux-64::tk==8.6.14=h39e8969_0[md5=78dbc5e3c69143ebc037fc5d5b22e597]
+    - defaults/linux-64::tldextract==5.1.2=py312h06a4308_0[md5=57d7cdb878186d67a2ab5e0db324964c]
+    - defaults/linux-64::tomli==2.0.1=py312h06a4308_1[md5=8770c279821e6ba382d5fa7562a8391b]
+    - defaults/linux-64::tomlkit==0.11.1=py312h06a4308_0[md5=b2061d65b70adf68a4f96dc4fb4ec939]
+    - defaults/linux-64::toolz==0.12.0=py312h06a4308_0[md5=8340b47fa0f92e87a9416929dd52a102]
+    - defaults/linux-64::tornado==6.4.1=py312h5eee18b_0[md5=f4e2217ac077eff9684df8162125acc0]
+    - defaults/linux-64::tqdm==4.66.5=py312he106c6f_0[md5=099959333950bef1a3d7d12133cbfafc]
+    - defaults/linux-64::traitlets==5.14.3=py312h06a4308_0[md5=e597b4bbf8d30abd7ae5ac5d4a436176]
+    - defaults/linux-64::truststore==0.8.0=py312h06a4308_0[md5=ad93bd626fc17c1606394fe258b4ed18]
+    - defaults/linux-64::twisted==23.10.0=py312h06a4308_0[md5=e0a055382d5e1ab88440570885366def]
+    - defaults/linux-64::typing-extensions==4.11.0=py312h06a4308_0[md5=181af932ad0824456dc3e6173c38b5c6]
+    - defaults/linux-64::typing_extensions==4.11.0=py312h06a4308_0[md5=3045aa097a86bc6a13702fc3c287b5a4]
+    - defaults/linux-64::uc-micro-py==1.0.1=py312h06a4308_0[md5=3d8e7d6a99dad7ed2d84624b23b014c5]
+    - defaults/linux-64::ujson==5.10.0=py312h6a678d5_0[md5=b49a25a1cbc9081fbde13a5173b15859]
+    - defaults/linux-64::unicodedata2==15.1.0=py312h5eee18b_0[md5=b4759c926ac7543d4c845d7f984250e3]
+    - defaults/linux-64::unidecode==1.3.8=py312h06a4308_0[md5=0f3721438ef2de28e3ac03722c4ac217]
+    - defaults/linux-64::unixodbc==2.3.11=h5eee18b_0[md5=e9778769e924f6964b892ad07abbabb6]
+    - defaults/linux-64::urllib3==2.2.3=py312h06a4308_0[md5=08b5f80f188ed801e9f463124a481289]
+    - defaults/linux-64::utf8proc==2.6.1=h5eee18b_1[md5=70584a9ac726e2f362e229edb7375da4]
+    - defaults/linux-64::watchdog==4.0.1=py312h06a4308_0[md5=7cd659167e2c8149985b2d6b14479b11]
+    - defaults/linux-64::webencodings==0.5.1=py312h06a4308_2[md5=b93cb387bcd155121150257dbcf8eb28]
+    - defaults/linux-64::websocket-client==1.8.0=py312h06a4308_0[md5=3c9d8408c05942366b679ff8b439179c]
+    - defaults/linux-64::werkzeug==3.0.3=py312h06a4308_0[md5=eb09edb14764727576cbb980faeca003]
+    - defaults/linux-64::whatthepatch==1.0.2=py312h06a4308_0[md5=1c672308e76b20591c39c867c15cfb71]
+    - defaults/linux-64::wheel==0.44.0=py312h06a4308_0[md5=6d495438dd44e8f16b1a05d0a8648644]
+    - defaults/linux-64::widgetsnbextension==3.6.6=py312h06a4308_0[md5=9ef174a78b562586e20f1cf6a9e04ba3]
+    - defaults/linux-64::wrapt==1.14.1=py312h5eee18b_0[md5=1bf44b72940e1476bc3d239e0a2d1df1]
+    - defaults/linux-64::wurlitzer==3.0.2=py312h06a4308_0[md5=86483c025d4d944c3586e6ca728017c1]
+    - defaults/linux-64::xarray==2023.6.0=py312h06a4308_0[md5=b43bba50ad0baabcb3cb1b70d3e6916a]
+    - defaults/linux-64::xyzservices==2022.9.0=py312h06a4308_1[md5=3ef654e64fb10094442be905975e83a4]
+    - defaults/linux-64::xz==5.4.6=h5eee18b_1[md5=1562802f843297ee776a50b9329597ed]
+    - defaults/linux-64::yaml-cpp==0.8.0=h6a678d5_1[md5=015d2d74ad3c8e53eec3358637433718]
+    - defaults/linux-64::yaml==0.2.5=h7b6447c_0[md5=39fdbf4db769e494ffb06d95680c83d8]
+    - defaults/linux-64::yapf==0.40.2=py312h06a4308_0[md5=c148f8a71907fd348c0e8862b4be32d8]
+    - defaults/linux-64::yarl==1.11.0=py312h5eee18b_0[md5=a534512cde13175343ef56c879c3e059]
+    - defaults/linux-64::zeromq==4.3.5=h6a678d5_0[md5=354c934a4a5500f4c455c630f2702dbc]
+    - defaults/linux-64::zfp==1.0.0=h6a678d5_0[md5=0a3efe1ecf9929d1bb80f071b2908f2e]
+    - defaults/linux-64::zict==3.0.0=py312h06a4308_0[md5=7ccb0f2ef13fa70400b3c556f8111f74]
+    - defaults/linux-64::zipp==3.17.0=py312h06a4308_0[md5=0b4e62af7ada176ce15a5551e124225c]
+    - defaults/linux-64::zlib-ng==2.0.7=h5eee18b_0[md5=77bf8a639a547b2a2b566a5631dc8c7d]
+    - defaults/linux-64::zlib==1.2.13=h5eee18b_1[md5=92e42d8310108b0a440fb2e60b2b2a25]
+    - defaults/linux-64::zope.interface==5.4.0=py312h5eee18b_0[md5=20b2e89d4c59c0855e8c19d238a75b92]
+    - defaults/linux-64::zope==1.0=py312h06a4308_1[md5=b3c8f4f4521c7456c07e00dd048f0ec5]
+    - defaults/linux-64::zstandard==0.23.0=py312h2c38b39_0[md5=6128bfbcbc551afe6cad2af1c8493a1c]
+    - defaults/linux-64::zstd==1.5.6=hc292b87_0[md5=78ae7abd3020b41f827b35085845e1b8]
+    - defaults/noarch::aioitertools==0.7.1=pyhd3eb1b0_0[md5=4f67000d720557e75fffdea752e7244f]
+    - defaults/noarch::aiosignal==1.2.0=pyhd3eb1b0_0[md5=b06b2926e101269f76c8131873483edc]
+    - defaults/noarch::appdirs==1.4.4=pyhd3eb1b0_0[md5=5673d98d06171cb6eed03a6736845c4d]
+    - defaults/noarch::archspec==0.2.3=pyhd3eb1b0_0[md5=13d01ee2d343d8539bb47055a6c0b5b2]
+    - defaults/noarch::argon2-cffi==21.3.0=pyhd3eb1b0_0[md5=f00b851bc61b4c313903d31c7daecb09]
+    - defaults/noarch::asttokens==2.0.5=pyhd3eb1b0_0[md5=140486e2ce4f3931b44aa5f7ff8d88da]
+    - defaults/noarch::atomicwrites==1.4.0=py_0[md5=7035266b832ca44ca8655ced0a397eaa]
+    - defaults/noarch::automat==20.2.0=py_0[md5=d7473c2f9d0dd6d090c8c3e78aaa69b4]
+    - defaults/noarch::autopep8==2.0.4=pyhd3eb1b0_0[md5=83d827c891de466d378575ede743394c]
+    - defaults/noarch::binaryornot==0.4.4=pyhd3eb1b0_1[md5=986537735cddee7238d27507dd913e08]
+    - defaults/noarch::bleach==4.1.0=pyhd3eb1b0_0[md5=256eb7e384e35f993ef8ccd6c4f45e58]
+    - defaults/noarch::charset-normalizer==3.3.2=pyhd3eb1b0_0[md5=c6fea3691e85cf7f568b0618ec29fc4f]
+    - defaults/noarch::conda-libmamba-solver==24.9.0=pyhd3eb1b0_0[md5=251a69a5bf578ef59fdf8255c7c25c5d]
+    - defaults/noarch::conda-token==0.5.0=pyhd3eb1b0_0[md5=862db92647734f12a24ba9f30f99dc91]
+    - defaults/noarch::cycler==0.11.0=pyhd3eb1b0_0[md5=f5e365d2cdb66d547eb8c3ab93843aab]
+    - defaults/noarch::decorator==5.1.1=pyhd3eb1b0_0[md5=4d969aac32a0faf84af90c797bfc7fec]
+    - defaults/noarch::defusedxml==0.7.1=pyhd3eb1b0_0[md5=d912068b0729930972adcaac338882c0]
+    - defaults/noarch::diff-match-patch==20200713=pyhd3eb1b0_0[md5=8b12a79884f20d2d13a8a3877e8d0d3e]
+    - defaults/noarch::executing==0.8.3=pyhd3eb1b0_0[md5=7be61d1c3c555fb37682b28d7a53d622]
+    - defaults/noarch::gitdb==4.0.7=pyhd3eb1b0_0[md5=bdd15a7149734880c003d98110c56b5b]
+    - defaults/noarch::heapdict==1.0.1=pyhd3eb1b0_0[md5=15616615a6c63c0aa7a17ff2e4caea04]
+    - defaults/noarch::hyperlink==21.0.0=pyhd3eb1b0_0[md5=8b1ba827e0fecc1c857577a3d51aa653]
+    - defaults/noarch::incremental==22.10.0=pyhd3eb1b0_0[md5=d25406dae82e99bafac84168aba8bd9b]
+    - defaults/noarch::iniconfig==1.1.1=pyhd3eb1b0_0[md5=e40edff2c5708f342cef43c7f280c507]
+    - defaults/noarch::intervaltree==3.1.0=pyhd3eb1b0_0[md5=9bf92b7e66bde3d696b51b0bc117c471]
+    - defaults/noarch::ipython_genutils==0.2.0=pyhd3eb1b0_1[md5=553832c0b872a28088a0001fa2ba3822]
+    - defaults/noarch::itemadapter==0.3.0=pyhd3eb1b0_0[md5=603357585dbfc7eebc83717303f19a67]
+    - defaults/noarch::jaraco.classes==3.2.1=pyhd3eb1b0_0[md5=7f47c66b55e92b2724174847703df72f]
+    - defaults/noarch::jeepney==0.7.1=pyhd3eb1b0_0[md5=f115ef0af90b59f35ef56743955979a4]
+    - defaults/noarch::json5==0.9.6=pyhd3eb1b0_0[md5=4e721ee2dbfa20069719d2ee19185031]
+    - defaults/noarch::jsonpointer==2.1=pyhd3eb1b0_0[md5=298ff809e733cb04366e4e629c65aa8d]
+    - defaults/noarch::jupyterlab_pygments==0.1.2=py_0[md5=af46aff4922ca45df6ba19b313df6070]
+    - defaults/noarch::jupyterlab_widgets==1.0.0=pyhd3eb1b0_1[md5=9b1fcf8e060e6f4b05dce4b172259168]
+    - defaults/noarch::mccabe==0.7.0=pyhd3eb1b0_0[md5=ca1f9fc150b211c60e802ed1b12ed43c]
+    - defaults/noarch::pandocfilters==1.5.0=pyhd3eb1b0_0[md5=5547ced9e3bb4c513405998957b52c7b]
+    - defaults/noarch::parso==0.8.3=pyhd3eb1b0_0[md5=c6f0f6219bf5ce2b510ef4b75cbc3e01]
+    - defaults/noarch::pexpect==4.8.0=pyhd3eb1b0_3[md5=765b2562d6cdd14bb6d44fc170a04331]
+    - defaults/noarch::pickleshare==0.7.5=pyhd3eb1b0_1003[md5=4a6363fd8dda664b95f99f7c5aa95abc]
+    - defaults/noarch::prompt_toolkit==3.0.43=hd3eb1b0_0[md5=244c80adf85e37e2a4158d0f0c199566]
+    - defaults/noarch::protego==0.1.16=py_0[md5=3a7af48c4b26dfd015c277fc68251f81]
+    - defaults/noarch::ptyprocess==0.7.0=pyhd3eb1b0_2[md5=7441d2827d4bfbcc1fa308875a146246]
+    - defaults/noarch::pure_eval==0.2.2=pyhd3eb1b0_0[md5=a87d6d9827e5dff68d34d69971f8a9b1]
+    - defaults/noarch::pyasn1-modules==0.2.8=py_0[md5=9f3232c42eed255f0877d3f7c955e237]
+    - defaults/noarch::pyasn1==0.4.8=pyhd3eb1b0_0[md5=4e3f334c35c33118cbb0f7b546f9fc2f]
+    - defaults/noarch::pybind11-abi==5=hd3eb1b0_0[md5=7f0df6639fdf60ccd3045ee6faedd32f]
+    - defaults/noarch::pycparser==2.21=pyhd3eb1b0_0[md5=135a72ff2a31150a3a3ff0b1edd41ca9]
+    - defaults/noarch::pyls-spyder==0.4.0=pyhd3eb1b0_0[md5=23df66456bc25e608ea377fb20d6008c]
+    - defaults/noarch::python-libarchive-c==5.1=pyhd3eb1b0_0[md5=7952606fde014b712cc9ff33622921bf]
+    - defaults/noarch::python-lsp-jsonrpc==1.1.2=pyhd3eb1b0_0[md5=7bf8923b0a4c929bf15bd93a8246e191]
+    - defaults/noarch::python-slugify==5.0.2=pyhd3eb1b0_0[md5=b2725de307e073b9344af3f2dde66f41]
+    - defaults/noarch::python-tzdata==2023.3=pyhd3eb1b0_0[md5=479c037de0186d114b9911158427624e]
+    - defaults/noarch::pyxdg==0.27=pyhd3eb1b0_0[md5=f0cfd9d548fcfae369342424bc3ea381]
+    - defaults/noarch::qdarkstyle==3.2.3=pyhd3eb1b0_0[md5=b92affb6332947449d0a43eeb162700c]
+    - defaults/noarch::requests-file==1.5.1=pyhd3eb1b0_0[md5=d4b63137b07532b614896d2e9490bdbd]
+    - defaults/noarch::service_identity==18.1.0=pyhd3eb1b0_1[md5=08b5dfc97dca0eb418067dcba0a295ce]
+    - defaults/noarch::six==1.16.0=pyhd3eb1b0_1[md5=34586824d411d36af2fa40e799c172d0]
+    - defaults/noarch::smmap==4.0.0=pyhd3eb1b0_0[md5=ea22ec22100b09799aa81f3e3ef9fa87]
+    - defaults/noarch::snowballstemmer==2.2.0=pyhd3eb1b0_0[md5=c8c10f2cd854c0a27630760958bba60c]
+    - defaults/noarch::sortedcontainers==2.4.0=pyhd3eb1b0_0[md5=e829a94a9bc0b44c8951a56ec6d0be44]
+    - defaults/noarch::sphinxcontrib-applehelp==1.0.2=pyhd3eb1b0_0[md5=ac923499f97b9a9ab7c672b27cb2a1a8]
+    - defaults/noarch::sphinxcontrib-devhelp==1.0.2=pyhd3eb1b0_0[md5=bc39c2b70430734b5879d6b504e3311f]
+    - defaults/noarch::sphinxcontrib-htmlhelp==2.0.0=pyhd3eb1b0_0[md5=2af558ca8b56151110c7a3639a1ea348]
+    - defaults/noarch::sphinxcontrib-jsmath==1.0.1=pyhd3eb1b0_0[md5=e43f8de7d6a717935ab220a0c957771d]
+    - defaults/noarch::sphinxcontrib-qthelp==1.0.3=pyhd3eb1b0_0[md5=08d67f73f640b4d1e5e8890a324b60e3]
+    - defaults/noarch::stack_data==0.2.0=pyhd3eb1b0_0[md5=6212968e73726f6da42e5ffcd2bea92d]
+    - defaults/noarch::tblib==1.7.0=pyhd3eb1b0_0[md5=6af496367894a19ed9f0115bef20fd7d]
+    - defaults/noarch::text-unidecode==1.3=pyhd3eb1b0_0[md5=001a50a0503bd64a26513d2855faacb0]
+    - defaults/noarch::textdistance==4.2.1=pyhd3eb1b0_0[md5=81c3231172ab31bf12c7da03258f5b94]
+    - defaults/noarch::three-merge==0.1.1=pyhd3eb1b0_0[md5=5ae0f5c203a35f7138e0199df9c7d5bc]
+    - defaults/noarch::toml==0.10.2=pyhd3eb1b0_0[md5=cda05f5f6d8509529d1a2743288d197a]
+    - defaults/noarch::tzdata==2024b=h04d1e81_0[md5=9be694715c6a65f9631bb1b242125e9d]
+    - defaults/noarch::w3lib==1.21.0=pyhd3eb1b0_0[md5=87c0d13ba63eecf6f4b22a2f965daeb3]
+    - defaults/noarch::wcwidth==0.2.5=pyhd3eb1b0_0[md5=ffa649340272c3f6466ba01da254c3b0]
+
+
+The following NEW packages will be INSTALLED:
+
+  _anaconda_depends  pkgs/main/linux-64::_anaconda_depends-2024.10-py312_mkl_0
+  _libgcc_mutex      pkgs/main/linux-64::_libgcc_mutex-0.1-main
+  _openmp_mutex      pkgs/main/linux-64::_openmp_mutex-5.1-1_gnu
+  aiobotocore        pkgs/main/linux-64::aiobotocore-2.12.3-py312h06a4308_0
+  aiohappyeyeballs   pkgs/main/linux-64::aiohappyeyeballs-2.4.0-py312h06a4308_0
+  aiohttp            pkgs/main/linux-64::aiohttp-3.10.5-py312h5eee18b_0
+  aioitertools       pkgs/main/noarch::aioitertools-0.7.1-pyhd3eb1b0_0
+  aiosignal          pkgs/main/noarch::aiosignal-1.2.0-pyhd3eb1b0_0
+  alabaster          pkgs/main/linux-64::alabaster-0.7.16-py312h06a4308_0
+  altair             pkgs/main/linux-64::altair-5.0.1-py312h06a4308_0
+  anaconda-anon-usa~ pkgs/main/linux-64::anaconda-anon-usage-0.4.4-py312hfc0e8ea_100
+  anaconda-catalogs  pkgs/main/linux-64::anaconda-catalogs-0.2.0-py312h06a4308_1
+  anaconda-client    pkgs/main/linux-64::anaconda-client-1.12.3-py312h06a4308_0
+  anaconda-cloud-au~ pkgs/main/linux-64::anaconda-cloud-auth-0.5.1-py312h06a4308_0
+  anaconda-navigator pkgs/main/linux-64::anaconda-navigator-2.6.3-py312h06a4308_0
+  anaconda-project   pkgs/main/linux-64::anaconda-project-0.11.1-py312h06a4308_0
+  annotated-types    pkgs/main/linux-64::annotated-types-0.6.0-py312h06a4308_0
+  anyio              pkgs/main/linux-64::anyio-4.2.0-py312h06a4308_0
+  aom                pkgs/main/linux-64::aom-3.6.0-h6a678d5_0
+  appdirs            pkgs/main/noarch::appdirs-1.4.4-pyhd3eb1b0_0
+  archspec           pkgs/main/noarch::archspec-0.2.3-pyhd3eb1b0_0
+  argon2-cffi        pkgs/main/noarch::argon2-cffi-21.3.0-pyhd3eb1b0_0
+  argon2-cffi-bindi~ pkgs/main/linux-64::argon2-cffi-bindings-21.2.0-py312h5eee18b_0
+  arrow              pkgs/main/linux-64::arrow-1.2.3-py312h06a4308_1
+  arrow-cpp          pkgs/main/linux-64::arrow-cpp-16.1.0-hc1eb8f0_0
+  astroid            pkgs/main/linux-64::astroid-2.14.2-py312h06a4308_0
+  astropy            pkgs/main/linux-64::astropy-6.1.3-py312h5eee18b_0
+  astropy-iers-data  pkgs/main/linux-64::astropy-iers-data-0.2024.9.2.0.33.23-py312h06a4308_0
+  asttokens          pkgs/main/noarch::asttokens-2.0.5-pyhd3eb1b0_0
+  async-lru          pkgs/main/linux-64::async-lru-2.0.4-py312h06a4308_0
+  atomicwrites       pkgs/main/noarch::atomicwrites-1.4.0-py_0
+  attrs              pkgs/main/linux-64::attrs-23.1.0-py312h06a4308_0
+  automat            pkgs/main/noarch::automat-20.2.0-py_0
+  autopep8           pkgs/main/noarch::autopep8-2.0.4-pyhd3eb1b0_0
+  aws-c-auth         pkgs/main/linux-64::aws-c-auth-0.6.19-h5eee18b_0
+  aws-c-cal          pkgs/main/linux-64::aws-c-cal-0.5.20-hdbd6064_0
+  aws-c-common       pkgs/main/linux-64::aws-c-common-0.8.5-h5eee18b_0
+  aws-c-compression  pkgs/main/linux-64::aws-c-compression-0.2.16-h5eee18b_0
+  aws-c-event-stream pkgs/main/linux-64::aws-c-event-stream-0.2.15-h6a678d5_0
+  aws-c-http         pkgs/main/linux-64::aws-c-http-0.6.25-h5eee18b_0
+  aws-c-io           pkgs/main/linux-64::aws-c-io-0.13.10-h5eee18b_0
+  aws-c-mqtt         pkgs/main/linux-64::aws-c-mqtt-0.7.13-h5eee18b_0
+  aws-c-s3           pkgs/main/linux-64::aws-c-s3-0.1.51-hdbd6064_0
+  aws-c-sdkutils     pkgs/main/linux-64::aws-c-sdkutils-0.1.6-h5eee18b_0
+  aws-checksums      pkgs/main/linux-64::aws-checksums-0.1.13-h5eee18b_0
+  aws-crt-cpp        pkgs/main/linux-64::aws-crt-cpp-0.18.16-h6a678d5_0
+  aws-sdk-cpp        pkgs/main/linux-64::aws-sdk-cpp-1.10.55-h721c034_0
+  babel              pkgs/main/linux-64::babel-2.11.0-py312h06a4308_0
+  bcrypt             pkgs/main/linux-64::bcrypt-3.2.0-py312h5eee18b_1
+  beautifulsoup4     pkgs/main/linux-64::beautifulsoup4-4.12.3-py312h06a4308_0
+  binaryornot        pkgs/main/noarch::binaryornot-0.4.4-pyhd3eb1b0_1
+  black              pkgs/main/linux-64::black-24.8.0-py312h06a4308_0
+  blas               pkgs/main/linux-64::blas-1.0-mkl
+  bleach             pkgs/main/noarch::bleach-4.1.0-pyhd3eb1b0_0
+  blinker            pkgs/main/linux-64::blinker-1.6.2-py312h06a4308_0
+  blosc              pkgs/main/linux-64::blosc-1.21.3-h6a678d5_0
+  bokeh              pkgs/main/linux-64::bokeh-3.6.0-py312h06a4308_0
+  boltons            pkgs/main/linux-64::boltons-23.0.0-py312h06a4308_0
+  boost-cpp          pkgs/main/linux-64::boost-cpp-1.82.0-hdb19cb5_2
+  botocore           pkgs/main/linux-64::botocore-1.34.69-py312h06a4308_0
+  bottleneck         pkgs/main/linux-64::bottleneck-1.3.7-py312ha883a20_0
+  brotli             pkgs/main/linux-64::brotli-1.0.9-h5eee18b_8
+  brotli-bin         pkgs/main/linux-64::brotli-bin-1.0.9-h5eee18b_8
+  brotli-python      pkgs/main/linux-64::brotli-python-1.0.9-py312h6a678d5_8
+  brunsli            pkgs/main/linux-64::brunsli-0.1-h2531618_0
+  bzip2              pkgs/main/linux-64::bzip2-1.0.8-h5eee18b_6
+  c-ares             pkgs/main/linux-64::c-ares-1.19.1-h5eee18b_0
+  c-blosc2           pkgs/main/linux-64::c-blosc2-2.12.0-h80c7b02_0
+  ca-certificates    pkgs/main/linux-64::ca-certificates-2024.9.24-h06a4308_0
+  cachetools         pkgs/main/linux-64::cachetools-5.3.3-py312h06a4308_0
+  certifi            pkgs/main/linux-64::certifi-2024.8.30-py312h06a4308_0
+  cffi               pkgs/main/linux-64::cffi-1.17.1-py312h1fdaa30_0
+  cfitsio            pkgs/main/linux-64::cfitsio-3.470-h5893167_7
+  chardet            pkgs/main/linux-64::chardet-4.0.0-py312h06a4308_1003
+  charls             pkgs/main/linux-64::charls-2.2.0-h2531618_0
+  charset-normalizer pkgs/main/noarch::charset-normalizer-3.3.2-pyhd3eb1b0_0
+  click              pkgs/main/linux-64::click-8.1.7-py312h06a4308_0
+  cloudpickle        pkgs/main/linux-64::cloudpickle-3.0.0-py312h06a4308_0
+  colorama           pkgs/main/linux-64::colorama-0.4.6-py312h06a4308_0
+  colorcet           pkgs/main/linux-64::colorcet-3.1.0-py312h06a4308_0
+  comm               pkgs/main/linux-64::comm-0.2.1-py312h06a4308_0
+  conda              pkgs/main/linux-64::conda-24.9.2-py312h06a4308_0
+  conda-build        pkgs/main/linux-64::conda-build-24.9.0-py312h06a4308_0
+  conda-content-tru~ pkgs/main/linux-64::conda-content-trust-0.2.0-py312h06a4308_1
+  conda-index        pkgs/main/linux-64::conda-index-0.5.0-py312h06a4308_0
+  conda-libmamba-so~ pkgs/main/noarch::conda-libmamba-solver-24.9.0-pyhd3eb1b0_0
+  conda-pack         pkgs/main/linux-64::conda-pack-0.7.1-py312h06a4308_0
+  conda-package-han~ pkgs/main/linux-64::conda-package-handling-2.3.0-py312h06a4308_0
+  conda-package-str~ pkgs/main/linux-64::conda-package-streaming-0.10.0-py312h06a4308_0
+  conda-repo-cli     pkgs/main/linux-64::conda-repo-cli-1.0.114-py312h06a4308_0
+  conda-token        pkgs/main/noarch::conda-token-0.5.0-pyhd3eb1b0_0
+  constantly         pkgs/main/linux-64::constantly-23.10.4-py312h06a4308_0
+  contourpy          pkgs/main/linux-64::contourpy-1.2.0-py312hdb19cb5_0
+  cookiecutter       pkgs/main/linux-64::cookiecutter-2.6.0-py312h06a4308_0
+  cryptography       pkgs/main/linux-64::cryptography-43.0.0-py312hdda0065_0
+  cssselect          pkgs/main/linux-64::cssselect-1.2.0-py312h06a4308_0
+  curl               pkgs/main/linux-64::curl-8.9.1-hdbd6064_0
+  cycler             pkgs/main/noarch::cycler-0.11.0-pyhd3eb1b0_0
+  cyrus-sasl         pkgs/main/linux-64::cyrus-sasl-2.1.28-h52b45da_1
+  cytoolz            pkgs/main/linux-64::cytoolz-0.12.2-py312h5eee18b_0
+  dask               pkgs/main/linux-64::dask-2024.8.2-py312h06a4308_0
+  dask-core          pkgs/main/linux-64::dask-core-2024.8.2-py312h06a4308_0
+  dask-expr          pkgs/main/linux-64::dask-expr-1.1.13-py312h06a4308_0
+  datashader         pkgs/main/linux-64::datashader-0.16.3-py312h06a4308_0
+  dav1d              pkgs/main/linux-64::dav1d-1.2.1-h5eee18b_0
+  dbus               pkgs/main/linux-64::dbus-1.13.18-hb2f20db_0
+  debugpy            pkgs/main/linux-64::debugpy-1.6.7-py312h6a678d5_0
+  decorator          pkgs/main/noarch::decorator-5.1.1-pyhd3eb1b0_0
+  defusedxml         pkgs/main/noarch::defusedxml-0.7.1-pyhd3eb1b0_0
+  diff-match-patch   pkgs/main/noarch::diff-match-patch-20200713-pyhd3eb1b0_0
+  dill               pkgs/main/linux-64::dill-0.3.8-py312h06a4308_0
+  distributed        pkgs/main/linux-64::distributed-2024.8.2-py312h06a4308_0
+  distro             pkgs/main/linux-64::distro-1.9.0-py312h06a4308_0
+  docstring-to-mark~ pkgs/main/linux-64::docstring-to-markdown-0.11-py312h06a4308_0
+  docutils           pkgs/main/linux-64::docutils-0.18.1-py312h06a4308_3
+  et_xmlfile         pkgs/main/linux-64::et_xmlfile-1.1.0-py312h06a4308_1
+  executing          pkgs/main/noarch::executing-0.8.3-pyhd3eb1b0_0
+  expat              pkgs/main/linux-64::expat-2.6.3-h6a678d5_0
+  filelock           pkgs/main/linux-64::filelock-3.13.1-py312h06a4308_0
+  flake8             pkgs/main/linux-64::flake8-7.0.0-py312h06a4308_0
+  flask              pkgs/main/linux-64::flask-3.0.3-py312h06a4308_0
+  fmt                pkgs/main/linux-64::fmt-9.1.0-hdb19cb5_1
+  fontconfig         pkgs/main/linux-64::fontconfig-2.14.1-h4c34cd2_2
+  fonttools          pkgs/main/linux-64::fonttools-4.51.0-py312h5eee18b_0
+  freetype           pkgs/main/linux-64::freetype-2.12.1-h4a9f257_0
+  frozendict         pkgs/main/linux-64::frozendict-2.4.2-py312h06a4308_0
+  frozenlist         pkgs/main/linux-64::frozenlist-1.4.0-py312h5eee18b_0
+  fsspec             pkgs/main/linux-64::fsspec-2024.6.1-py312h06a4308_0
+  gensim             pkgs/main/linux-64::gensim-4.3.3-py312h526ad5a_0
+  gflags             pkgs/main/linux-64::gflags-2.2.2-h6a678d5_1
+  giflib             pkgs/main/linux-64::giflib-5.2.1-h5eee18b_3
+  gitdb              pkgs/main/noarch::gitdb-4.0.7-pyhd3eb1b0_0
+  gitpython          pkgs/main/linux-64::gitpython-3.1.43-py312h06a4308_0
+  glib               pkgs/main/linux-64::glib-2.78.4-h6a678d5_0
+  glib-tools         pkgs/main/linux-64::glib-tools-2.78.4-h6a678d5_0
+  glog               pkgs/main/linux-64::glog-0.5.0-h6a678d5_1
+  greenlet           pkgs/main/linux-64::greenlet-3.0.1-py312h6a678d5_0
+  gst-plugins-base   pkgs/main/linux-64::gst-plugins-base-1.14.1-h6a678d5_1
+  gstreamer          pkgs/main/linux-64::gstreamer-1.14.1-h5eee18b_1
+  h11                pkgs/main/linux-64::h11-0.14.0-py312h06a4308_0
+  h5py               pkgs/main/linux-64::h5py-3.11.0-py312h34c39bb_0
+  hdf5               pkgs/main/linux-64::hdf5-1.12.1-h2b7332f_3
+  heapdict           pkgs/main/noarch::heapdict-1.0.1-pyhd3eb1b0_0
+  holoviews          pkgs/main/linux-64::holoviews-1.19.1-py312h06a4308_0
+  httpcore           pkgs/main/linux-64::httpcore-1.0.2-py312h06a4308_0
+  httpx              pkgs/main/linux-64::httpx-0.27.0-py312h06a4308_0
+  hvplot             pkgs/main/linux-64::hvplot-0.11.0-py312h06a4308_0
+  hyperlink          pkgs/main/noarch::hyperlink-21.0.0-pyhd3eb1b0_0
+  icu                pkgs/main/linux-64::icu-73.1-h6a678d5_0
+  idna               pkgs/main/linux-64::idna-3.7-py312h06a4308_0
+  imagecodecs        pkgs/main/linux-64::imagecodecs-2023.1.23-py312h81b8100_1
+  imageio            pkgs/main/linux-64::imageio-2.33.1-py312h06a4308_0
+  imagesize          pkgs/main/linux-64::imagesize-1.4.1-py312h06a4308_0
+  imbalanced-learn   pkgs/main/linux-64::imbalanced-learn-0.12.3-py312h06a4308_1
+  importlib-metadata pkgs/main/linux-64::importlib-metadata-7.0.1-py312h06a4308_0
+  incremental        pkgs/main/noarch::incremental-22.10.0-pyhd3eb1b0_0
+  inflection         pkgs/main/linux-64::inflection-0.5.1-py312h06a4308_1
+  iniconfig          pkgs/main/noarch::iniconfig-1.1.1-pyhd3eb1b0_0
+  intake             pkgs/main/linux-64::intake-2.0.7-py312h06a4308_0
+  intel-openmp       pkgs/main/linux-64::intel-openmp-2023.1.0-hdb19cb5_46306
+  intervaltree       pkgs/main/noarch::intervaltree-3.1.0-pyhd3eb1b0_0
+  ipykernel          pkgs/main/linux-64::ipykernel-6.28.0-py312h06a4308_0
+  ipython            pkgs/main/linux-64::ipython-8.27.0-py312h06a4308_0
+  ipython_genutils   pkgs/main/noarch::ipython_genutils-0.2.0-pyhd3eb1b0_1
+  ipywidgets         pkgs/main/linux-64::ipywidgets-7.8.1-py312h06a4308_0
+  isort              pkgs/main/linux-64::isort-5.13.2-py312h06a4308_0
+  itemadapter        pkgs/main/noarch::itemadapter-0.3.0-pyhd3eb1b0_0
+  itemloaders        pkgs/main/linux-64::itemloaders-1.1.0-py312h06a4308_0
+  itsdangerous       pkgs/main/linux-64::itsdangerous-2.2.0-py312h06a4308_0
+  jaraco.classes     pkgs/main/noarch::jaraco.classes-3.2.1-pyhd3eb1b0_0
+  jedi               pkgs/main/linux-64::jedi-0.19.1-py312h06a4308_0
+  jeepney            pkgs/main/noarch::jeepney-0.7.1-pyhd3eb1b0_0
+  jellyfish          pkgs/main/linux-64::jellyfish-1.0.1-py312hb02cf49_0
+  jinja2             pkgs/main/linux-64::jinja2-3.1.4-py312h06a4308_0
+  jmespath           pkgs/main/linux-64::jmespath-1.0.1-py312h06a4308_0
+  joblib             pkgs/main/linux-64::joblib-1.4.2-py312h06a4308_0
+  jpeg               pkgs/main/linux-64::jpeg-9e-h5eee18b_3
+  jq                 pkgs/main/linux-64::jq-1.6-h27cfd23_1000
+  json5              pkgs/main/noarch::json5-0.9.6-pyhd3eb1b0_0
+  jsonpatch          pkgs/main/linux-64::jsonpatch-1.33-py312h06a4308_1
+  jsonpointer        pkgs/main/noarch::jsonpointer-2.1-pyhd3eb1b0_0
+  jsonschema         pkgs/main/linux-64::jsonschema-4.23.0-py312h06a4308_0
+  jsonschema-specif~ pkgs/main/linux-64::jsonschema-specifications-2023.7.1-py312h06a4308_0
+  jupyter            pkgs/main/linux-64::jupyter-1.0.0-py312h06a4308_9
+  jupyter-lsp        pkgs/main/linux-64::jupyter-lsp-2.2.0-py312h06a4308_0
+  jupyter_client     pkgs/main/linux-64::jupyter_client-8.6.0-py312h06a4308_0
+  jupyter_console    pkgs/main/linux-64::jupyter_console-6.6.3-py312h06a4308_1
+  jupyter_core       pkgs/main/linux-64::jupyter_core-5.7.2-py312h06a4308_0
+  jupyter_events     pkgs/main/linux-64::jupyter_events-0.10.0-py312h06a4308_0
+  jupyter_server     pkgs/main/linux-64::jupyter_server-2.14.1-py312h06a4308_0
+  jupyter_server_te~ pkgs/main/linux-64::jupyter_server_terminals-0.4.4-py312h06a4308_1
+  jupyterlab         pkgs/main/linux-64::jupyterlab-4.2.5-py312h06a4308_0
+  jupyterlab-variab~ pkgs/main/linux-64::jupyterlab-variableinspector-3.1.0-py312h06a4308_0
+  jupyterlab_pygmen~ pkgs/main/noarch::jupyterlab_pygments-0.1.2-py_0
+  jupyterlab_server  pkgs/main/linux-64::jupyterlab_server-2.27.3-py312h06a4308_0
+  jupyterlab_widgets pkgs/main/noarch::jupyterlab_widgets-1.0.0-pyhd3eb1b0_1
+  jxrlib             pkgs/main/linux-64::jxrlib-1.1-h7b6447c_2
+  keyring            pkgs/main/linux-64::keyring-24.3.1-py312h06a4308_0
+  kiwisolver         pkgs/main/linux-64::kiwisolver-1.4.4-py312h6a678d5_0
+  krb5               pkgs/main/linux-64::krb5-1.20.1-h143b758_1
+  lazy-object-proxy  pkgs/main/linux-64::lazy-object-proxy-1.10.0-py312h5eee18b_0
+  lazy_loader        pkgs/main/linux-64::lazy_loader-0.4-py312h06a4308_0
+  lcms2              pkgs/main/linux-64::lcms2-2.12-h3be6417_0
+  ld_impl_linux-64   pkgs/main/linux-64::ld_impl_linux-64-2.40-h12ee557_0
+  lerc               pkgs/main/linux-64::lerc-3.0-h295c915_0
+  libabseil          pkgs/main/linux-64::libabseil-20240116.2-cxx17_h6a678d5_0
+  libaec             pkgs/main/linux-64::libaec-1.0.4-he6710b0_1
+  libarchive         pkgs/main/linux-64::libarchive-3.6.2-h6ac8c49_3
+  libavif            pkgs/main/linux-64::libavif-0.11.1-h5eee18b_0
+  libboost           pkgs/main/linux-64::libboost-1.82.0-h109eef0_2
+  libbrotlicommon    pkgs/main/linux-64::libbrotlicommon-1.0.9-h5eee18b_8
+  libbrotlidec       pkgs/main/linux-64::libbrotlidec-1.0.9-h5eee18b_8
+  libbrotlienc       pkgs/main/linux-64::libbrotlienc-1.0.9-h5eee18b_8
+  libclang           pkgs/main/linux-64::libclang-14.0.6-default_hc6dbbc7_1
+  libclang13         pkgs/main/linux-64::libclang13-14.0.6-default_he11475f_1
+  libcups            pkgs/main/linux-64::libcups-2.4.2-h2d74bed_1
+  libcurl            pkgs/main/linux-64::libcurl-8.9.1-h251f7ec_0
+  libdeflate         pkgs/main/linux-64::libdeflate-1.17-h5eee18b_1
+  libedit            pkgs/main/linux-64::libedit-3.1.20230828-h5eee18b_0
+  libev              pkgs/main/linux-64::libev-4.33-h7f8727e_1
+  libevent           pkgs/main/linux-64::libevent-2.1.12-hdbd6064_1
+  libffi             pkgs/main/linux-64::libffi-3.4.4-h6a678d5_1
+  libgcc-ng          pkgs/main/linux-64::libgcc-ng-11.2.0-h1234567_1
+  libgfortran-ng     pkgs/main/linux-64::libgfortran-ng-11.2.0-h00389a5_1
+  libgfortran5       pkgs/main/linux-64::libgfortran5-11.2.0-h1234567_1
+  libglib            pkgs/main/linux-64::libglib-2.78.4-hdc74915_0
+  libgomp            pkgs/main/linux-64::libgomp-11.2.0-h1234567_1
+  libgrpc            pkgs/main/linux-64::libgrpc-1.62.2-h2d74bed_0
+  libiconv           pkgs/main/linux-64::libiconv-1.16-h5eee18b_3
+  liblief            pkgs/main/linux-64::liblief-0.12.3-h6a678d5_0
+  libllvm14          pkgs/main/linux-64::libllvm14-14.0.6-hecde1de_4
+  libmamba           pkgs/main/linux-64::libmamba-1.5.8-hfe524e5_2
+  libmambapy         pkgs/main/linux-64::libmambapy-1.5.8-py312h2dafd23_2
+  libnghttp2         pkgs/main/linux-64::libnghttp2-1.57.0-h2d74bed_0
+  libpng             pkgs/main/linux-64::libpng-1.6.39-h5eee18b_0
+  libpq              pkgs/main/linux-64::libpq-12.17-hdbd6064_0
+  libprotobuf        pkgs/main/linux-64::libprotobuf-4.25.3-he621ea3_0
+  libsodium          pkgs/main/linux-64::libsodium-1.0.18-h7b6447c_0
+  libsolv            pkgs/main/linux-64::libsolv-0.7.24-he621ea3_1
+  libspatialindex    pkgs/main/linux-64::libspatialindex-1.9.3-h2531618_0
+  libssh2            pkgs/main/linux-64::libssh2-1.11.0-h251f7ec_0
+  libstdcxx-ng       pkgs/main/linux-64::libstdcxx-ng-11.2.0-h1234567_1
+  libthrift          pkgs/main/linux-64::libthrift-0.15.0-h1795dd8_2
+  libtiff            pkgs/main/linux-64::libtiff-4.5.1-h6a678d5_0
+  libuuid            pkgs/main/linux-64::libuuid-1.41.5-h5eee18b_0
+  libwebp-base       pkgs/main/linux-64::libwebp-base-1.3.2-h5eee18b_0
+  libxcb             pkgs/main/linux-64::libxcb-1.15-h7f8727e_0
+  libxkbcommon       pkgs/main/linux-64::libxkbcommon-1.0.1-h5eee18b_1
+  libxml2            pkgs/main/linux-64::libxml2-2.10.4-hfdd30dd_2
+  libxslt            pkgs/main/linux-64::libxslt-1.1.37-h5eee18b_1
+  libzopfli          pkgs/main/linux-64::libzopfli-1.0.3-he6710b0_0
+  linkify-it-py      pkgs/main/linux-64::linkify-it-py-2.0.0-py312h06a4308_0
+  llvmlite           pkgs/main/linux-64::llvmlite-0.43.0-py312h6a678d5_0
+  locket             pkgs/main/linux-64::locket-1.0.0-py312h06a4308_0
+  lxml               pkgs/main/linux-64::lxml-5.2.1-py312hdbbb534_0
+  lz4                pkgs/main/linux-64::lz4-4.3.2-py312h5eee18b_0
+  lz4-c              pkgs/main/linux-64::lz4-c-1.9.4-h6a678d5_1
+  lzo                pkgs/main/linux-64::lzo-2.10-h7b6447c_2
+  markdown           pkgs/main/linux-64::markdown-3.4.1-py312h06a4308_0
+  markdown-it-py     pkgs/main/linux-64::markdown-it-py-2.2.0-py312h06a4308_1
+  markupsafe         pkgs/main/linux-64::markupsafe-2.1.3-py312h5eee18b_0
+  matplotlib         pkgs/main/linux-64::matplotlib-3.9.2-py312h06a4308_0
+  matplotlib-base    pkgs/main/linux-64::matplotlib-base-3.9.2-py312h66fe004_0
+  matplotlib-inline  pkgs/main/linux-64::matplotlib-inline-0.1.6-py312h06a4308_0
+  mccabe             pkgs/main/noarch::mccabe-0.7.0-pyhd3eb1b0_0
+  mdit-py-plugins    pkgs/main/linux-64::mdit-py-plugins-0.3.0-py312h06a4308_0
+  mdurl              pkgs/main/linux-64::mdurl-0.1.0-py312h06a4308_0
+  menuinst           pkgs/main/linux-64::menuinst-2.1.2-py312h06a4308_0
+  mistune            pkgs/main/linux-64::mistune-2.0.4-py312h06a4308_0
+  mkl                pkgs/main/linux-64::mkl-2023.1.0-h213fc3f_46344
+  mkl-service        pkgs/main/linux-64::mkl-service-2.4.0-py312h5eee18b_1
+  mkl_fft            pkgs/main/linux-64::mkl_fft-1.3.10-py312h5eee18b_0
+  mkl_random         pkgs/main/linux-64::mkl_random-1.2.7-py312h526ad5a_0
+  more-itertools     pkgs/main/linux-64::more-itertools-10.3.0-py312h06a4308_0
+  mpmath             pkgs/main/linux-64::mpmath-1.3.0-py312h06a4308_0
+  msgpack-python     pkgs/main/linux-64::msgpack-python-1.0.3-py312hdb19cb5_0
+  multidict          pkgs/main/linux-64::multidict-6.0.4-py312h5eee18b_0
+  multipledispatch   pkgs/main/linux-64::multipledispatch-0.6.0-py312h06a4308_0
+  mypy               pkgs/main/linux-64::mypy-1.11.2-py312h5eee18b_0
+  mypy_extensions    pkgs/main/linux-64::mypy_extensions-1.0.0-py312h06a4308_0
+  mysql              pkgs/main/linux-64::mysql-5.7.24-h721c034_2
+  navigator-updater  pkgs/main/linux-64::navigator-updater-0.5.1-py312h06a4308_0
+  nbclient           pkgs/main/linux-64::nbclient-0.8.0-py312h06a4308_0
+  nbconvert          pkgs/main/linux-64::nbconvert-7.16.4-py312h06a4308_0
+  nbformat           pkgs/main/linux-64::nbformat-5.10.4-py312h06a4308_0
+  ncurses            pkgs/main/linux-64::ncurses-6.4-h6a678d5_0
+  nest-asyncio       pkgs/main/linux-64::nest-asyncio-1.6.0-py312h06a4308_0
+  networkx           pkgs/main/linux-64::networkx-3.3-py312h06a4308_0
+  nltk               pkgs/main/linux-64::nltk-3.9.1-py312h06a4308_0
+  notebook           pkgs/main/linux-64::notebook-7.2.2-py312h06a4308_1
+  notebook-shim      pkgs/main/linux-64::notebook-shim-0.2.3-py312h06a4308_0
+  nspr               pkgs/main/linux-64::nspr-4.35-h6a678d5_0
+  nss                pkgs/main/linux-64::nss-3.89.1-h6a678d5_0
+  numba              pkgs/main/linux-64::numba-0.60.0-py312h526ad5a_0
+  numexpr            pkgs/main/linux-64::numexpr-2.8.7-py312hf827012_0
+  numpy              pkgs/main/linux-64::numpy-1.26.4-py312hc5e2394_0
+  numpy-base         pkgs/main/linux-64::numpy-base-1.26.4-py312h0da6c21_0
+  numpydoc           pkgs/main/linux-64::numpydoc-1.7.0-py312h06a4308_0
+  oniguruma          pkgs/main/linux-64::oniguruma-6.9.7.1-h27cfd23_0
+  openjpeg           pkgs/main/linux-64::openjpeg-2.5.2-he7f1fd0_0
+  openpyxl           pkgs/main/linux-64::openpyxl-3.1.5-py312h5eee18b_0
+  openssl            pkgs/main/linux-64::openssl-3.0.15-h5eee18b_0
+  orc                pkgs/main/linux-64::orc-2.0.1-h2d29ad5_0
+  overrides          pkgs/main/linux-64::overrides-7.4.0-py312h06a4308_0
+  packaging          pkgs/main/linux-64::packaging-24.1-py312h06a4308_0
+  pandas             pkgs/main/linux-64::pandas-2.2.2-py312h526ad5a_0
+  pandocfilters      pkgs/main/noarch::pandocfilters-1.5.0-pyhd3eb1b0_0
+  panel              pkgs/main/linux-64::panel-1.5.2-py312h06a4308_0
+  param              pkgs/main/linux-64::param-2.1.1-py312h06a4308_0
+  parsel             pkgs/main/linux-64::parsel-1.8.1-py312h06a4308_0
+  parso              pkgs/main/noarch::parso-0.8.3-pyhd3eb1b0_0
+  partd              pkgs/main/linux-64::partd-1.4.1-py312h06a4308_0
+  patch              pkgs/main/linux-64::patch-2.7.6-h7b6447c_1001
+  patchelf           pkgs/main/linux-64::patchelf-0.17.2-h6a678d5_0
+  pathspec           pkgs/main/linux-64::pathspec-0.10.3-py312h06a4308_0
+  patsy              pkgs/main/linux-64::patsy-0.5.6-py312h06a4308_0
+  pcre2              pkgs/main/linux-64::pcre2-10.42-hebb0a14_1
+  pexpect            pkgs/main/noarch::pexpect-4.8.0-pyhd3eb1b0_3
+  pickleshare        pkgs/main/noarch::pickleshare-0.7.5-pyhd3eb1b0_1003
+  pillow             pkgs/main/linux-64::pillow-10.4.0-py312h5eee18b_0
+  pip                pkgs/main/linux-64::pip-24.2-py312h06a4308_0
+  pkce               pkgs/main/linux-64::pkce-1.0.3-py312h06a4308_0
+  pkginfo            pkgs/main/linux-64::pkginfo-1.10.0-py312h06a4308_0
+  platformdirs       pkgs/main/linux-64::platformdirs-3.10.0-py312h06a4308_0
+  plotly             pkgs/main/linux-64::plotly-5.24.1-py312he106c6f_0
+  pluggy             pkgs/main/linux-64::pluggy-1.0.0-py312h06a4308_1
+  ply                pkgs/main/linux-64::ply-3.11-py312h06a4308_1
+  prometheus_client  pkgs/main/linux-64::prometheus_client-0.14.1-py312h06a4308_0
+  prompt-toolkit     pkgs/main/linux-64::prompt-toolkit-3.0.43-py312h06a4308_0
+  prompt_toolkit     pkgs/main/noarch::prompt_toolkit-3.0.43-hd3eb1b0_0
+  protego            pkgs/main/noarch::protego-0.1.16-py_0
+  protobuf           pkgs/main/linux-64::protobuf-4.25.3-py312h12ddb61_0
+  psutil             pkgs/main/linux-64::psutil-5.9.0-py312h5eee18b_0
+  ptyprocess         pkgs/main/noarch::ptyprocess-0.7.0-pyhd3eb1b0_2
+  pure_eval          pkgs/main/noarch::pure_eval-0.2.2-pyhd3eb1b0_0
+  py-cpuinfo         pkgs/main/linux-64::py-cpuinfo-9.0.0-py312h06a4308_0
+  py-lief            pkgs/main/linux-64::py-lief-0.12.3-py312h6a678d5_0
+  pyarrow            pkgs/main/linux-64::pyarrow-16.1.0-py312h526ad5a_0
+  pyasn1             pkgs/main/noarch::pyasn1-0.4.8-pyhd3eb1b0_0
+  pyasn1-modules     pkgs/main/noarch::pyasn1-modules-0.2.8-py_0
+  pybind11-abi       pkgs/main/noarch::pybind11-abi-5-hd3eb1b0_0
+  pycodestyle        pkgs/main/linux-64::pycodestyle-2.11.1-py312h06a4308_0
+  pycosat            pkgs/main/linux-64::pycosat-0.6.6-py312h5eee18b_1
+  pycparser          pkgs/main/noarch::pycparser-2.21-pyhd3eb1b0_0
+  pyct               pkgs/main/linux-64::pyct-0.5.0-py312h06a4308_0
+  pycurl             pkgs/main/linux-64::pycurl-7.45.3-py312hdbd6064_0
+  pydantic           pkgs/main/linux-64::pydantic-2.8.2-py312h06a4308_0
+  pydantic-core      pkgs/main/linux-64::pydantic-core-2.20.1-py312hb02cf49_0
+  pydeck             pkgs/main/linux-64::pydeck-0.8.0-py312h06a4308_2
+  pydispatcher       pkgs/main/linux-64::pydispatcher-2.0.5-py312h06a4308_3
+  pydocstyle         pkgs/main/linux-64::pydocstyle-6.3.0-py312h06a4308_0
+  pyerfa             pkgs/main/linux-64::pyerfa-2.0.1.4-py312ha883a20_0
+  pyflakes           pkgs/main/linux-64::pyflakes-3.2.0-py312h06a4308_0
+  pygments           pkgs/main/linux-64::pygments-2.15.1-py312h06a4308_1
+  pyjwt              pkgs/main/linux-64::pyjwt-2.8.0-py312h06a4308_0
+  pylint             pkgs/main/linux-64::pylint-2.16.2-py312h06a4308_0
+  pylint-venv        pkgs/main/linux-64::pylint-venv-3.0.3-py312h06a4308_0
+  pyls-spyder        pkgs/main/noarch::pyls-spyder-0.4.0-pyhd3eb1b0_0
+  pyodbc             pkgs/main/linux-64::pyodbc-5.1.0-py312h6a678d5_0
+  pyopenssl          pkgs/main/linux-64::pyopenssl-24.2.1-py312h06a4308_0
+  pyparsing          pkgs/main/linux-64::pyparsing-3.1.2-py312h06a4308_0
+  pyqt               pkgs/main/linux-64::pyqt-5.15.10-py312h6a678d5_0
+  pyqt5-sip          pkgs/main/linux-64::pyqt5-sip-12.13.0-py312h5eee18b_0
+  pyqtwebengine      pkgs/main/linux-64::pyqtwebengine-5.15.10-py312h6a678d5_0
+  pysocks            pkgs/main/linux-64::pysocks-1.7.1-py312h06a4308_0
+  pytables           pkgs/main/linux-64::pytables-3.10.1-py312h387d6ec_0
+  pytest             pkgs/main/linux-64::pytest-7.4.4-py312h06a4308_0
+  python             pkgs/main/linux-64::python-3.12.7-h5148396_0
+  python-dateutil    pkgs/main/linux-64::python-dateutil-2.9.0post0-py312h06a4308_2
+  python-dotenv      pkgs/main/linux-64::python-dotenv-0.21.0-py312h06a4308_0
+  python-fastjsonsc~ pkgs/main/linux-64::python-fastjsonschema-2.16.2-py312h06a4308_0
+  python-json-logger pkgs/main/linux-64::python-json-logger-2.0.7-py312h06a4308_0
+  python-libarchive~ pkgs/main/noarch::python-libarchive-c-5.1-pyhd3eb1b0_0
+  python-lmdb        pkgs/main/linux-64::python-lmdb-1.4.1-py312h6a678d5_0
+  python-lsp-black   pkgs/main/linux-64::python-lsp-black-2.0.0-py312h06a4308_0
+  python-lsp-jsonrpc pkgs/main/noarch::python-lsp-jsonrpc-1.1.2-pyhd3eb1b0_0
+  python-lsp-server  pkgs/main/linux-64::python-lsp-server-1.10.0-py312h06a4308_0
+  python-slugify     pkgs/main/noarch::python-slugify-5.0.2-pyhd3eb1b0_0
+  python-tzdata      pkgs/main/noarch::python-tzdata-2023.3-pyhd3eb1b0_0
+  pytoolconfig       pkgs/main/linux-64::pytoolconfig-1.2.6-py312h06a4308_0
+  pytz               pkgs/main/linux-64::pytz-2024.1-py312h06a4308_0
+  pyviz_comms        pkgs/main/linux-64::pyviz_comms-3.0.2-py312h06a4308_0
+  pywavelets         pkgs/main/linux-64::pywavelets-1.7.0-py312h5eee18b_0
+  pyxdg              pkgs/main/noarch::pyxdg-0.27-pyhd3eb1b0_0
+  pyyaml             pkgs/main/linux-64::pyyaml-6.0.1-py312h5eee18b_0
+  pyzmq              pkgs/main/linux-64::pyzmq-25.1.2-py312h6a678d5_0
+  qdarkstyle         pkgs/main/noarch::qdarkstyle-3.2.3-pyhd3eb1b0_0
+  qstylizer          pkgs/main/linux-64::qstylizer-0.2.2-py312h06a4308_0
+  qt-main            pkgs/main/linux-64::qt-main-5.15.2-h53bd1ea_10
+  qt-webengine       pkgs/main/linux-64::qt-webengine-5.15.9-h9ab4d14_7
+  qtawesome          pkgs/main/linux-64::qtawesome-1.3.1-py312h06a4308_0
+  qtconsole          pkgs/main/linux-64::qtconsole-5.5.1-py312h06a4308_0
+  qtpy               pkgs/main/linux-64::qtpy-2.4.1-py312h06a4308_0
+  queuelib           pkgs/main/linux-64::queuelib-1.6.2-py312h06a4308_0
+  re2                pkgs/main/linux-64::re2-2022.04.01-h295c915_0
+  readline           pkgs/main/linux-64::readline-8.2-h5eee18b_0
+  referencing        pkgs/main/linux-64::referencing-0.30.2-py312h06a4308_0
+  regex              pkgs/main/linux-64::regex-2024.9.11-py312h5eee18b_0
+  reproc             pkgs/main/linux-64::reproc-14.2.4-h6a678d5_2
+  reproc-cpp         pkgs/main/linux-64::reproc-cpp-14.2.4-h6a678d5_2
+  requests           pkgs/main/linux-64::requests-2.32.3-py312h06a4308_0
+  requests-file      pkgs/main/noarch::requests-file-1.5.1-pyhd3eb1b0_0
+  requests-toolbelt  pkgs/main/linux-64::requests-toolbelt-1.0.0-py312h06a4308_0
+  rfc3339-validator  pkgs/main/linux-64::rfc3339-validator-0.1.4-py312h06a4308_0
+  rfc3986-validator  pkgs/main/linux-64::rfc3986-validator-0.1.1-py312h06a4308_0
+  rich               pkgs/main/linux-64::rich-13.7.1-py312h06a4308_0
+  rope               pkgs/main/linux-64::rope-1.12.0-py312h06a4308_0
+  rpds-py            pkgs/main/linux-64::rpds-py-0.10.6-py312hb02cf49_0
+  rtree              pkgs/main/linux-64::rtree-1.0.1-py312h06a4308_0
+  ruamel.yaml        pkgs/main/linux-64::ruamel.yaml-0.18.6-py312h5eee18b_0
+  ruamel.yaml.clib   pkgs/main/linux-64::ruamel.yaml.clib-0.2.8-py312h5eee18b_0
+  ruamel_yaml        pkgs/main/linux-64::ruamel_yaml-0.17.21-py312h5eee18b_0
+  s2n                pkgs/main/linux-64::s2n-1.3.27-hdbd6064_0
+  s3fs               pkgs/main/linux-64::s3fs-2024.6.1-py312h06a4308_0
+  scikit-image       pkgs/main/linux-64::scikit-image-0.24.0-py312h526ad5a_0
+  scikit-learn       pkgs/main/linux-64::scikit-learn-1.5.1-py312h526ad5a_0
+  scipy              pkgs/main/linux-64::scipy-1.13.1-py312hc5e2394_0
+  scrapy             pkgs/main/linux-64::scrapy-2.11.1-py312h06a4308_0
+  seaborn            pkgs/main/linux-64::seaborn-0.13.2-py312h06a4308_0
+  secretstorage      pkgs/main/linux-64::secretstorage-3.3.1-py312h06a4308_1
+  semver             pkgs/main/linux-64::semver-3.0.2-py312h06a4308_0
+  send2trash         pkgs/main/linux-64::send2trash-1.8.2-py312h06a4308_0
+  service_identity   pkgs/main/noarch::service_identity-18.1.0-pyhd3eb1b0_1
+  setuptools         pkgs/main/linux-64::setuptools-75.1.0-py312h06a4308_0
+  sip                pkgs/main/linux-64::sip-6.7.12-py312h6a678d5_0
+  six                pkgs/main/noarch::six-1.16.0-pyhd3eb1b0_1
+  smart_open         pkgs/main/linux-64::smart_open-5.2.1-py312h06a4308_0
+  smmap              pkgs/main/noarch::smmap-4.0.0-pyhd3eb1b0_0
+  snappy             pkgs/main/linux-64::snappy-1.2.1-h6a678d5_0
+  sniffio            pkgs/main/linux-64::sniffio-1.3.0-py312h06a4308_0
+  snowballstemmer    pkgs/main/noarch::snowballstemmer-2.2.0-pyhd3eb1b0_0
+  sortedcontainers   pkgs/main/noarch::sortedcontainers-2.4.0-pyhd3eb1b0_0
+  soupsieve          pkgs/main/linux-64::soupsieve-2.5-py312h06a4308_0
+  sphinx             pkgs/main/linux-64::sphinx-7.3.7-py312h5eee18b_0
+  sphinxcontrib-app~ pkgs/main/noarch::sphinxcontrib-applehelp-1.0.2-pyhd3eb1b0_0
+  sphinxcontrib-dev~ pkgs/main/noarch::sphinxcontrib-devhelp-1.0.2-pyhd3eb1b0_0
+  sphinxcontrib-htm~ pkgs/main/noarch::sphinxcontrib-htmlhelp-2.0.0-pyhd3eb1b0_0
+  sphinxcontrib-jsm~ pkgs/main/noarch::sphinxcontrib-jsmath-1.0.1-pyhd3eb1b0_0
+  sphinxcontrib-qth~ pkgs/main/noarch::sphinxcontrib-qthelp-1.0.3-pyhd3eb1b0_0
+  sphinxcontrib-ser~ pkgs/main/linux-64::sphinxcontrib-serializinghtml-1.1.10-py312h06a4308_0
+  spyder             pkgs/main/linux-64::spyder-5.5.1-py312h06a4308_4
+  spyder-kernels     pkgs/main/linux-64::spyder-kernels-2.5.0-py312h06a4308_0
+  sqlalchemy         pkgs/main/linux-64::sqlalchemy-2.0.34-py312h00e1ef3_0
+  sqlite             pkgs/main/linux-64::sqlite-3.45.3-h5eee18b_0
+  stack_data         pkgs/main/noarch::stack_data-0.2.0-pyhd3eb1b0_0
+  statsmodels        pkgs/main/linux-64::statsmodels-0.14.2-py312ha883a20_0
+  streamlit          pkgs/main/linux-64::streamlit-1.37.1-py312h06a4308_0
+  sympy              pkgs/main/linux-64::sympy-1.13.2-py312h06a4308_0
+  tabulate           pkgs/main/linux-64::tabulate-0.9.0-py312h06a4308_0
+  tbb                pkgs/main/linux-64::tbb-2021.8.0-hdb19cb5_0
+  tblib              pkgs/main/noarch::tblib-1.7.0-pyhd3eb1b0_0
+  tenacity           pkgs/main/linux-64::tenacity-8.2.3-py312h06a4308_0
+  terminado          pkgs/main/linux-64::terminado-0.17.1-py312h06a4308_0
+  text-unidecode     pkgs/main/noarch::text-unidecode-1.3-pyhd3eb1b0_0
+  textdistance       pkgs/main/noarch::textdistance-4.2.1-pyhd3eb1b0_0
+  threadpoolctl      pkgs/main/linux-64::threadpoolctl-3.5.0-py312he106c6f_0
+  three-merge        pkgs/main/noarch::three-merge-0.1.1-pyhd3eb1b0_0
+  tifffile           pkgs/main/linux-64::tifffile-2023.4.12-py312h06a4308_0
+  tinycss2           pkgs/main/linux-64::tinycss2-1.2.1-py312h06a4308_0
+  tk                 pkgs/main/linux-64::tk-8.6.14-h39e8969_0
+  tldextract         pkgs/main/linux-64::tldextract-5.1.2-py312h06a4308_0
+  toml               pkgs/main/noarch::toml-0.10.2-pyhd3eb1b0_0
+  tomli              pkgs/main/linux-64::tomli-2.0.1-py312h06a4308_1
+  tomlkit            pkgs/main/linux-64::tomlkit-0.11.1-py312h06a4308_0
+  toolz              pkgs/main/linux-64::toolz-0.12.0-py312h06a4308_0
+  tornado            pkgs/main/linux-64::tornado-6.4.1-py312h5eee18b_0
+  tqdm               pkgs/main/linux-64::tqdm-4.66.5-py312he106c6f_0
+  traitlets          pkgs/main/linux-64::traitlets-5.14.3-py312h06a4308_0
+  truststore         pkgs/main/linux-64::truststore-0.8.0-py312h06a4308_0
+  twisted            pkgs/main/linux-64::twisted-23.10.0-py312h06a4308_0
+  typing-extensions  pkgs/main/linux-64::typing-extensions-4.11.0-py312h06a4308_0
+  typing_extensions  pkgs/main/linux-64::typing_extensions-4.11.0-py312h06a4308_0
+  tzdata             pkgs/main/noarch::tzdata-2024b-h04d1e81_0
+  uc-micro-py        pkgs/main/linux-64::uc-micro-py-1.0.1-py312h06a4308_0
+  ujson              pkgs/main/linux-64::ujson-5.10.0-py312h6a678d5_0
+  unicodedata2       pkgs/main/linux-64::unicodedata2-15.1.0-py312h5eee18b_0
+  unidecode          pkgs/main/linux-64::unidecode-1.3.8-py312h06a4308_0
+  unixodbc           pkgs/main/linux-64::unixodbc-2.3.11-h5eee18b_0
+  urllib3            pkgs/main/linux-64::urllib3-2.2.3-py312h06a4308_0
+  utf8proc           pkgs/main/linux-64::utf8proc-2.6.1-h5eee18b_1
+  w3lib              pkgs/main/noarch::w3lib-1.21.0-pyhd3eb1b0_0
+  watchdog           pkgs/main/linux-64::watchdog-4.0.1-py312h06a4308_0
+  wcwidth            pkgs/main/noarch::wcwidth-0.2.5-pyhd3eb1b0_0
+  webencodings       pkgs/main/linux-64::webencodings-0.5.1-py312h06a4308_2
+  websocket-client   pkgs/main/linux-64::websocket-client-1.8.0-py312h06a4308_0
+  werkzeug           pkgs/main/linux-64::werkzeug-3.0.3-py312h06a4308_0
+  whatthepatch       pkgs/main/linux-64::whatthepatch-1.0.2-py312h06a4308_0
+  wheel              pkgs/main/linux-64::wheel-0.44.0-py312h06a4308_0
+  widgetsnbextension pkgs/main/linux-64::widgetsnbextension-3.6.6-py312h06a4308_0
+  wrapt              pkgs/main/linux-64::wrapt-1.14.1-py312h5eee18b_0
+  wurlitzer          pkgs/main/linux-64::wurlitzer-3.0.2-py312h06a4308_0
+  xarray             pkgs/main/linux-64::xarray-2023.6.0-py312h06a4308_0
+  xyzservices        pkgs/main/linux-64::xyzservices-2022.9.0-py312h06a4308_1
+  xz                 pkgs/main/linux-64::xz-5.4.6-h5eee18b_1
+  yaml               pkgs/main/linux-64::yaml-0.2.5-h7b6447c_0
+  yaml-cpp           pkgs/main/linux-64::yaml-cpp-0.8.0-h6a678d5_1
+  yapf               pkgs/main/linux-64::yapf-0.40.2-py312h06a4308_0
+  yarl               pkgs/main/linux-64::yarl-1.11.0-py312h5eee18b_0
+  zeromq             pkgs/main/linux-64::zeromq-4.3.5-h6a678d5_0
+  zfp                pkgs/main/linux-64::zfp-1.0.0-h6a678d5_0
+  zict               pkgs/main/linux-64::zict-3.0.0-py312h06a4308_0
+  zipp               pkgs/main/linux-64::zipp-3.17.0-py312h06a4308_0
+  zlib               pkgs/main/linux-64::zlib-1.2.13-h5eee18b_1
+  zlib-ng            pkgs/main/linux-64::zlib-ng-2.0.7-h5eee18b_0
+  zope               pkgs/main/linux-64::zope-1.0-py312h06a4308_1
+  zope.interface     pkgs/main/linux-64::zope.interface-5.4.0-py312h5eee18b_0
+  zstandard          pkgs/main/linux-64::zstandard-0.23.0-py312h2c38b39_0
+  zstd               pkgs/main/linux-64::zstd-1.5.6-hc292b87_0
+
+
+
+Downloading and Extracting Packages:
+
+Preparing transaction: done
+Executing transaction: done
+installation finished.
+Do you wish to update your shell profile to automatically initialize conda?
+This will activate conda on startup and change the command prompt when activated.
+If you'd prefer that conda's base environment not be activated on startup,
+   run the following command when conda is activated:
+
+conda config --set auto_activate_base false
+
+You can undo this by running `conda init --reverse $SHELL`? [yes|no]
+[no] >>>
+
+You have chosen to not have conda modify your shell scripts at all.
+To activate conda's base environment in your current shell session:
+
+eval "$(/home/willem/anaconda3/bin/conda shell.YOUR_SHELL_NAME hook)"
+
+To install conda's shell functions for easier access, first activate, then:
+
+conda init
+
+Thank you for installing Anaconda3!
+willem@mint-22:~/resources/SoftwareInstall/anaconda$ eval "$(/home/willem/anaconda3/bin/conda shell.bash hook)"
+(base) willem@mint-22:~/resources/SoftwareInstall/anaconda$ conda init
+no change     /home/willem/anaconda3/condabin/conda
+no change     /home/willem/anaconda3/bin/conda
+no change     /home/willem/anaconda3/bin/conda-env
+no change     /home/willem/anaconda3/bin/activate
+no change     /home/willem/anaconda3/bin/deactivate
+no change     /home/willem/anaconda3/etc/profile.d/conda.sh
+no change     /home/willem/anaconda3/etc/fish/conf.d/conda.fish
+no change     /home/willem/anaconda3/shell/condabin/Conda.psm1
+no change     /home/willem/anaconda3/shell/condabin/conda-hook.ps1
+no change     /home/willem/anaconda3/lib/python3.12/site-packages/xontrib/conda.xsh
+no change     /home/willem/anaconda3/etc/profile.d/conda.csh
+modified      /home/willem/.bashrc
+
+==> For changes to take effect, close and re-open your current shell. <==
+
+(base) willem@mint-22:~/resources/SoftwareInstall/anaconda$ source ~/.bashrc
+(base) willem@mint-22:~/resources/SoftwareInstall/anaconda$ which python
+/home/willem/anaconda3/bin/python
+(base) willem@mint-22:~/resources/SoftwareInstall/anaconda$ python --version
+Python 3.12.7
+(base) willem@mint-22:~/resources/SoftwareInstall/anaconda$ printenv PATH
+/home/willem/anaconda3/bin:/home/willem/anaconda3/condabin:/home/willem/.sdkman/candidates/quarkus/current/bin:/home/willem/.sdkman/candidates/maven/current/bin:/home/willem/.sdkman/candidates/java/current/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/willem/.local/share/JetBrains/Toolbox/scripts
+(base) willem@mint-22:~/resources/SoftwareInstall/anaconda$ conda config --json
+{
+  "get": {},
+  "rc_path": "/home/willem/.condarc",
+  "success": true,
+  "warnings": []
+}
+(base) willem@mint-22:~/resources/SoftwareInstall/anaconda$ conda config -v --json
+{
+  "get": {},
+  "rc_path": "/home/willem/.condarc",
+  "success": true,
+  "warnings": []
+}
+(base) willem@mint-22:~/resources/SoftwareInstall/anaconda$ conda config --show --json
+{
+  "add_anaconda_token": true,
+  "add_pip_as_python_dependency": true,
+  "aggressive_update_packages": [
+    "ca-certificates",
+    "certifi",
+    "openssl"
+  ],
+  "allow_conda_downgrades": false,
+  "allow_cycles": true,
+  "allow_non_channel_urls": false,
+  "allow_softlinks": false,
+  "allowlist_channels": [],
+  "always_copy": false,
+  "always_softlink": false,
+  "always_yes": null,
+  "anaconda_anon_usage": true,
+  "anaconda_upload": null,
+  "auto_activate_base": true,
+  "auto_stack": 0,
+  "auto_update_conda": true,
+  "bld_path": "",
+  "changeps1": true,
+  "channel_alias": {
+    "auth": null,
+    "location": "conda.anaconda.org",
+    "name": "",
+    "package_filename": null,
+    "platform": null,
+    "scheme": "https",
+    "token": null
+  },
+  "channel_priority": "flexible",
+  "channel_settings": [],
+  "channels": [
+    "https://repo.anaconda.com/pkgs/main",
+    "https://repo.anaconda.com/pkgs/r"
+  ],
+  "client_ssl_cert": null,
+  "client_ssl_cert_key": null,
+  "clobber": false,
+  "conda_build": {},
+  "create_default_packages": [],
+  "croot": "/home/willem/anaconda3/conda-bld",
+  "custom_channels": {
+    "pkgs/main": {
+      "auth": null,
+      "location": "repo.anaconda.com",
+      "name": "pkgs/main",
+      "package_filename": null,
+      "platform": null,
+      "scheme": "https",
+      "token": null
+    },
+    "pkgs/pro": {
+      "auth": null,
+      "location": "repo.anaconda.com",
+      "name": "pkgs/pro",
+      "package_filename": null,
+      "platform": null,
+      "scheme": "https",
+      "token": null
+    },
+    "pkgs/r": {
+      "auth": null,
+      "location": "repo.anaconda.com",
+      "name": "pkgs/r",
+      "package_filename": null,
+      "platform": null,
+      "scheme": "https",
+      "token": null
+    }
+  },
+  "custom_multichannels": {
+    "defaults": [
+      {
+        "auth": null,
+        "location": "repo.anaconda.com",
+        "name": "pkgs/main",
+        "package_filename": null,
+        "platform": null,
+        "scheme": "https",
+        "token": null
+      },
+      {
+        "auth": null,
+        "location": "repo.anaconda.com",
+        "name": "pkgs/r",
+        "package_filename": null,
+        "platform": null,
+        "scheme": "https",
+        "token": null
+      }
+    ],
+    "local": []
+  },
+  "debug": false,
+  "default_channels": [
+    {
+      "auth": null,
+      "location": "repo.anaconda.com",
+      "name": "pkgs/main",
+      "package_filename": null,
+      "platform": null,
+      "scheme": "https",
+      "token": null
+    },
+    {
+      "auth": null,
+      "location": "repo.anaconda.com",
+      "name": "pkgs/r",
+      "package_filename": null,
+      "platform": null,
+      "scheme": "https",
+      "token": null
+    }
+  ],
+  "default_python": "3.12",
+  "default_threads": null,
+  "denylist_channels": [],
+  "deps_modifier": "not_set",
+  "dev": false,
+  "disallowed_packages": [],
+  "download_only": false,
+  "dry_run": false,
+  "enable_private_envs": false,
+  "env_prompt": "({default_env}) ",
+  "envs_dirs": [
+    "/home/willem/anaconda3/envs",
+    "/home/willem/.conda/envs"
+  ],
+  "envvars_force_uppercase": true,
+  "error_upload_url": "https://conda.io/conda-post/unexpected-error",
+  "execute_threads": 1,
+  "experimental": [],
+  "extra_safety_checks": false,
+  "fetch_threads": 5,
+  "force": false,
+  "force_32bit": false,
+  "force_reinstall": false,
+  "force_remove": false,
+  "ignore_pinned": false,
+  "json": true,
+  "local_repodata_ttl": 1,
+  "migrated_channel_aliases": [],
+  "migrated_custom_channels": {},
+  "no_lock": false,
+  "no_plugins": false,
+  "non_admin_enabled": true,
+  "notify_outdated_conda": true,
+  "number_channel_notices": 5,
+  "offline": false,
+  "override_channels_enabled": true,
+  "path_conflict": "clobber",
+  "pinned_packages": [],
+  "pip_interop_enabled": false,
+  "pkgs_dirs": [
+    "/home/willem/anaconda3/pkgs",
+    "/home/willem/.conda/pkgs"
+  ],
+  "proxy_servers": {},
+  "quiet": false,
+  "register_envs": true,
+  "remote_backoff_factor": 1,
+  "remote_connect_timeout_secs": 9.15,
+  "remote_max_retries": 3,
+  "remote_read_timeout_secs": 60.0,
+  "repodata_fns": [
+    "current_repodata.json",
+    "repodata.json"
+  ],
+  "repodata_threads": null,
+  "repodata_use_zst": true,
+  "report_errors": null,
+  "reporters": [
+    {
+      "backend": "json",
+      "output": "stdout",
+      "quiet": false,
+      "verbosity": 0
+    }
+  ],
+  "restore_free_channel": false,
+  "rollback_enabled": true,
+  "root_prefix": "/home/willem/anaconda3",
+  "safety_checks": "warn",
+  "sat_solver": "pycosat",
+  "separate_format_cache": false,
+  "shortcuts": true,
+  "shortcuts_only": [],
+  "show_channel_urls": null,
+  "signing_metadata_url_base": null,
+  "solver": "libmamba",
+  "solver_ignore_timestamps": false,
+  "ssl_verify": true,
+  "subdir": "linux-64",
+  "subdirs": [
+    "linux-64",
+    "noarch"
+  ],
+  "target_prefix_override": "",
+  "trace": false,
+  "track_features": [],
+  "unsatisfiable_hints": true,
+  "unsatisfiable_hints_check_depth": 2,
+  "update_modifier": "update_specs",
+  "use_index_cache": false,
+  "use_local": false,
+  "use_only_tar_bz2": null,
+  "verbosity": 0,
+  "verify_threads": 1
+}
+(base) willem@mint-22:~/resources/SoftwareInstall/anaconda$
+

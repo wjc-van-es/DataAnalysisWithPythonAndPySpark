@@ -92,7 +92,7 @@ We need to test if this is enough for the `man-py-htm` and `DataAnalysisWithPyth
   ```
   - This opens the browser and any notebook can be opened and rerun.
 
-### `DataAnalysisWithPythonAndPySpark` try out _PySpark_ and _matplotlib_
+### `DataAnalysisWithPythonAndPySpark` try out _PySpark_
 - We think that a Java and a Spark installation from SDKMan! are necessary as well for successfully using PySpark,
   but we start out trying without.
 - First we need to make the PyCharm project using the conda ds312 environment with
@@ -150,7 +150,11 @@ We need to test if this is enough for the `man-py-htm` and `DataAnalysisWithPyth
     load_dotenv('../../project.env')
     print(f"JAVA_HOME={os.getenv('JAVA_HOME')}")
     ```
-    
+
+## Establishing the packages installed on `ds312` conda environment
+- with `(ds312) willem@mint-22:~/git/DataAnalysisWithPythonAndPySpark$ conda env export --no-builds > ds312_mint-22_--no-builds-20250127.yml`
+- see [`../ds312_mint-22_--no-builds-20250127.yml`](../ds312_mint-22_--no-builds-20250127.yml)
+
 ### ToDo
 - test matplotlib (from jupyter notebooks)
 - test the bank statements analysis

@@ -4,6 +4,9 @@
 # ignore PyCharm
 .idea/
 
+# ignore .env files
+*.env
+
 # Mac-specific useless files
 .DS_Store
 

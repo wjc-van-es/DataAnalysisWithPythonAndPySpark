@@ -44,7 +44,10 @@ h1,h2,h3,h4,h5 {
 - We have a module directory `~/git/DataAnalysisWithPythonAndPySpark/src/project_utils` that contains
   - an empty `__init__.py` file to mark it as a module directory
   - a file named `config_info.py` that contains two function definitions `print_environment` and `check_path`
-- To be able to run everything inside PyCharm `~/git/DataAnalysisWithPythonAndPySpark/src` is marked as _Sources Root_
+- To be able to run everything inside PyCharm, make sure `~/git/DataAnalysisWithPythonAndPySpark/src` is marked as
+  _Sources Root_
+  -  Assign [../src](../src) as sources root within the PyCharm project by using the _Mark Directory as_
+    from the _Right Mouse Context Menu_ and choose _Sources Root_
 
 ## Importing the `project_utils.config_info` module in another python script file
 - add at the top of the python script file either 

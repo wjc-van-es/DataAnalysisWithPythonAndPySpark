@@ -1,0 +1,477 @@
+(base) willem@mint-22:~/git/DataAnalysisWithPythonAndPySpark$ conda deactivate
+willem@mint-22:~/git/DataAnalysisWithPythonAndPySpark$ conda create -n ds312
+Channels:
+ - defaults
+Platform: linux-64
+Collecting package metadata (repodata.json): done
+Solving environment: done
+
+## Package Plan ##
+
+  environment location: /home/willem/anaconda3/envs/ds312
+
+
+
+Proceed ([y]/n)?
+
+Preparing transaction: done
+Verifying transaction: done
+Executing transaction: done
+#
+# To activate this environment, use
+#
+#     $ conda activate ds312
+#
+# To deactivate an active environment, use
+#
+#     $ conda deactivate
+
+willem@mint-22:~/git/DataAnalysisWithPythonAndPySpark$ conda activate ds312
+(ds312) willem@mint-22:~/git/DataAnalysisWithPythonAndPySpark$ python --version
+Command 'python' not found, did you mean:
+  command 'python3' from deb python3
+  command 'python' from deb python-is-python3
+(ds312) willem@mint-22:~/git/DataAnalysisWithPythonAndPySpark$ conda install -n ds312 python=3.12
+Channels:
+ - defaults
+Platform: linux-64
+Collecting package metadata (repodata.json): done
+Solving environment: done
+
+## Package Plan ##
+
+  environment location: /home/willem/anaconda3/envs/ds312
+
+  added / updated specs:
+    - python=3.12
+
+
+The following packages will be downloaded:
+
+    package                    |            build
+    ---------------------------|-----------------
+    ca-certificates-2024.12.31 |       h06a4308_0         128 KB
+    expat-2.6.4                |       h6a678d5_0         180 KB
+    python-3.12.8              |       h5148396_0        34.7 MB
+    tzdata-2025a               |       h04d1e81_0         117 KB
+    ------------------------------------------------------------
+                                           Total:        35.1 MB
+
+The following NEW packages will be INSTALLED:
+
+  _libgcc_mutex      pkgs/main/linux-64::_libgcc_mutex-0.1-main
+  _openmp_mutex      pkgs/main/linux-64::_openmp_mutex-5.1-1_gnu
+  bzip2              pkgs/main/linux-64::bzip2-1.0.8-h5eee18b_6
+  ca-certificates    pkgs/main/linux-64::ca-certificates-2024.12.31-h06a4308_0
+  expat              pkgs/main/linux-64::expat-2.6.4-h6a678d5_0
+  ld_impl_linux-64   pkgs/main/linux-64::ld_impl_linux-64-2.40-h12ee557_0
+  libffi             pkgs/main/linux-64::libffi-3.4.4-h6a678d5_1
+  libgcc-ng          pkgs/main/linux-64::libgcc-ng-11.2.0-h1234567_1
+  libgomp            pkgs/main/linux-64::libgomp-11.2.0-h1234567_1
+  libstdcxx-ng       pkgs/main/linux-64::libstdcxx-ng-11.2.0-h1234567_1
+  libuuid            pkgs/main/linux-64::libuuid-1.41.5-h5eee18b_0
+  ncurses            pkgs/main/linux-64::ncurses-6.4-h6a678d5_0
+  openssl            pkgs/main/linux-64::openssl-3.0.15-h5eee18b_0
+  pip                pkgs/main/linux-64::pip-24.2-py312h06a4308_0
+  python             pkgs/main/linux-64::python-3.12.8-h5148396_0
+  readline           pkgs/main/linux-64::readline-8.2-h5eee18b_0
+  setuptools         pkgs/main/linux-64::setuptools-75.1.0-py312h06a4308_0
+  sqlite             pkgs/main/linux-64::sqlite-3.45.3-h5eee18b_0
+  tk                 pkgs/main/linux-64::tk-8.6.14-h39e8969_0
+  tzdata             pkgs/main/noarch::tzdata-2025a-h04d1e81_0
+  wheel              pkgs/main/linux-64::wheel-0.44.0-py312h06a4308_0
+  xz                 pkgs/main/linux-64::xz-5.4.6-h5eee18b_1
+  zlib               pkgs/main/linux-64::zlib-1.2.13-h5eee18b_1
+
+
+Proceed ([y]/n)?
+
+
+Downloading and Extracting Packages:
+
+Preparing transaction: done
+Verifying transaction: done
+Executing transaction: done
+(ds312) willem@mint-22:~/git/DataAnalysisWithPythonAndPySpark$ which python
+/home/willem/anaconda3/envs/ds312/bin/python
+(ds312) willem@mint-22:~/git/DataAnalysisWithPythonAndPySpark$ python --version
+Python 3.12.8
+(ds312) willem@mint-22:~/git/DataAnalysisWithPythonAndPySpark$ conda install -n ds312 pyspark
+Channels:
+ - defaults
+Platform: linux-64
+Collecting package metadata (repodata.json): done
+Solving environment: done
+
+## Package Plan ##
+
+  environment location: /home/willem/anaconda3/envs/ds312
+
+  added / updated specs:
+    - pyspark
+
+
+The following packages will be downloaded:
+
+    package                    |            build
+    ---------------------------|-----------------
+    arrow-cpp-17.0.0           |       h865e1df_1        12.2 MB
+    aws-sdk-cpp-1.11.212       |       hecad206_0         3.8 MB
+    bottleneck-1.4.2           |  py312ha883a20_0         142 KB
+    libbrotlicommon-1.0.9      |       h5eee18b_9          69 KB
+    libbrotlidec-1.0.9         |       h5eee18b_9          31 KB
+    libbrotlienc-1.0.9         |       h5eee18b_9         286 KB
+    libcurl-8.11.1             |       hc9e6f67_0         454 KB
+    libssh2-1.11.1             |       h251f7ec_0         308 KB
+    mkl-service-2.4.0          |  py312h5eee18b_2          67 KB
+    mkl_fft-1.3.11             |  py312h5eee18b_0         205 KB
+    mkl_random-1.2.8           |  py312h526ad5a_0         324 KB
+    numexpr-2.10.1             |  py312h3c60e43_0         195 KB
+    pandas-2.2.3               |  py312h6a678d5_0        15.3 MB
+    py4j-0.10.9.7              |  py312h06a4308_0         288 KB
+    pyarrow-17.0.0             |  py312h526ad5a_0         4.9 MB
+    pyspark-3.5.3              |  py312h06a4308_0       299.7 MB
+    ------------------------------------------------------------
+                                           Total:       338.1 MB
+
+The following NEW packages will be INSTALLED:
+
+  arrow-cpp          pkgs/main/linux-64::arrow-cpp-17.0.0-h865e1df_1
+  aws-c-auth         pkgs/main/linux-64::aws-c-auth-0.6.19-h5eee18b_0
+  aws-c-cal          pkgs/main/linux-64::aws-c-cal-0.5.20-hdbd6064_0
+  aws-c-common       pkgs/main/linux-64::aws-c-common-0.8.5-h5eee18b_0
+  aws-c-compression  pkgs/main/linux-64::aws-c-compression-0.2.16-h5eee18b_0
+  aws-c-event-stream pkgs/main/linux-64::aws-c-event-stream-0.2.15-h6a678d5_0
+  aws-c-http         pkgs/main/linux-64::aws-c-http-0.6.25-h5eee18b_0
+  aws-c-io           pkgs/main/linux-64::aws-c-io-0.13.10-h5eee18b_0
+  aws-c-mqtt         pkgs/main/linux-64::aws-c-mqtt-0.7.13-h5eee18b_0
+  aws-c-s3           pkgs/main/linux-64::aws-c-s3-0.1.51-hdbd6064_0
+  aws-c-sdkutils     pkgs/main/linux-64::aws-c-sdkutils-0.1.6-h5eee18b_0
+  aws-checksums      pkgs/main/linux-64::aws-checksums-0.1.13-h5eee18b_0
+  aws-crt-cpp        pkgs/main/linux-64::aws-crt-cpp-0.18.16-h6a678d5_0
+  aws-sdk-cpp        pkgs/main/linux-64::aws-sdk-cpp-1.11.212-hecad206_0
+  blas               pkgs/main/linux-64::blas-1.0-mkl
+  boost-cpp          pkgs/main/linux-64::boost-cpp-1.82.0-hdb19cb5_2
+  bottleneck         pkgs/main/linux-64::bottleneck-1.4.2-py312ha883a20_0
+  c-ares             pkgs/main/linux-64::c-ares-1.19.1-h5eee18b_0
+  gflags             pkgs/main/linux-64::gflags-2.2.2-h6a678d5_1
+  glog               pkgs/main/linux-64::glog-0.5.0-h6a678d5_1
+  icu                pkgs/main/linux-64::icu-73.1-h6a678d5_0
+  intel-openmp       pkgs/main/linux-64::intel-openmp-2023.1.0-hdb19cb5_46306
+  krb5               pkgs/main/linux-64::krb5-1.20.1-h143b758_1
+  libabseil          pkgs/main/linux-64::libabseil-20240116.2-cxx17_h6a678d5_0
+  libboost           pkgs/main/linux-64::libboost-1.82.0-h109eef0_2
+  libbrotlicommon    pkgs/main/linux-64::libbrotlicommon-1.0.9-h5eee18b_9
+  libbrotlidec       pkgs/main/linux-64::libbrotlidec-1.0.9-h5eee18b_9
+  libbrotlienc       pkgs/main/linux-64::libbrotlienc-1.0.9-h5eee18b_9
+  libcurl            pkgs/main/linux-64::libcurl-8.11.1-hc9e6f67_0
+  libedit            pkgs/main/linux-64::libedit-3.1.20230828-h5eee18b_0
+  libev              pkgs/main/linux-64::libev-4.33-h7f8727e_1
+  libevent           pkgs/main/linux-64::libevent-2.1.12-hdbd6064_1
+  libgrpc            pkgs/main/linux-64::libgrpc-1.62.2-h2d74bed_0
+  libnghttp2         pkgs/main/linux-64::libnghttp2-1.57.0-h2d74bed_0
+  libprotobuf        pkgs/main/linux-64::libprotobuf-4.25.3-he621ea3_0
+  libssh2            pkgs/main/linux-64::libssh2-1.11.1-h251f7ec_0
+  libthrift          pkgs/main/linux-64::libthrift-0.15.0-h1795dd8_2
+  lz4-c              pkgs/main/linux-64::lz4-c-1.9.4-h6a678d5_1
+  mkl                pkgs/main/linux-64::mkl-2023.1.0-h213fc3f_46344
+  mkl-service        pkgs/main/linux-64::mkl-service-2.4.0-py312h5eee18b_2
+  mkl_fft            pkgs/main/linux-64::mkl_fft-1.3.11-py312h5eee18b_0
+  mkl_random         pkgs/main/linux-64::mkl_random-1.2.8-py312h526ad5a_0
+  numexpr            pkgs/main/linux-64::numexpr-2.10.1-py312h3c60e43_0
+  numpy              pkgs/main/linux-64::numpy-1.26.4-py312hc5e2394_0
+  numpy-base         pkgs/main/linux-64::numpy-base-1.26.4-py312h0da6c21_0
+  orc                pkgs/main/linux-64::orc-2.0.1-h2d29ad5_0
+  pandas             pkgs/main/linux-64::pandas-2.2.3-py312h6a678d5_0
+  py4j               pkgs/main/linux-64::py4j-0.10.9.7-py312h06a4308_0
+  pyarrow            pkgs/main/linux-64::pyarrow-17.0.0-py312h526ad5a_0
+  pyspark            pkgs/main/linux-64::pyspark-3.5.3-py312h06a4308_0
+  python-dateutil    pkgs/main/linux-64::python-dateutil-2.9.0post0-py312h06a4308_2
+  python-tzdata      pkgs/main/noarch::python-tzdata-2023.3-pyhd3eb1b0_0
+  pytz               pkgs/main/linux-64::pytz-2024.1-py312h06a4308_0
+  re2                pkgs/main/linux-64::re2-2022.04.01-h295c915_0
+  s2n                pkgs/main/linux-64::s2n-1.3.27-hdbd6064_0
+  six                pkgs/main/noarch::six-1.16.0-pyhd3eb1b0_1
+  snappy             pkgs/main/linux-64::snappy-1.2.1-h6a678d5_0
+  tbb                pkgs/main/linux-64::tbb-2021.8.0-hdb19cb5_0
+  utf8proc           pkgs/main/linux-64::utf8proc-2.6.1-h5eee18b_1
+  zstd               pkgs/main/linux-64::zstd-1.5.6-hc292b87_0
+
+
+Proceed ([y]/n)?
+
+
+Downloading and Extracting Packages:
+
+Preparing transaction: done
+Verifying transaction: done
+Executing transaction: done
+(ds312) willem@mint-22:~/git/DataAnalysisWithPythonAndPySpark$ conda activate ds312
+(ds312) willem@mint-22:~/git/DataAnalysisWithPythonAndPySpark$ conda install -n ds312 notebook
+Channels:
+ - defaults
+Platform: linux-64
+Collecting package metadata (repodata.json): done
+Solving environment: done
+
+## Package Plan ##
+
+  environment location: /home/willem/anaconda3/envs/ds312
+
+  added / updated specs:
+    - notebook
+
+
+The following packages will be downloaded:
+
+    package                    |            build
+    ---------------------------|-----------------
+    anyio-4.6.2                |  py312h06a4308_0         257 KB
+    argon2-cffi-bindings-21.2.0|  py312h5eee18b_1          33 KB
+    attrs-24.3.0               |  py312h06a4308_0         172 KB
+    babel-2.16.0               |  py312h06a4308_0         6.9 MB
+    bleach-6.2.0               |  py312h06a4308_0         362 KB
+    brotli-python-1.0.9        |  py312h6a678d5_9         356 KB
+    certifi-2024.12.14         |  py312h06a4308_0         161 KB
+    cffi-1.17.1                |  py312h1fdaa30_1         304 KB
+    debugpy-1.8.11             |  py312h6a678d5_0         2.7 MB
+    ipykernel-6.29.5           |  py312h06a4308_1         252 KB
+    ipython-8.30.0             |  py312h06a4308_0         1.4 MB
+    jedi-0.19.2                |  py312h06a4308_0         1.2 MB
+    jinja2-3.1.5               |  py312h06a4308_0         352 KB
+    json5-0.9.25               |  py312h06a4308_0          53 KB
+    jupyter_client-8.6.3       |  py312h06a4308_0         231 KB
+    markupsafe-2.1.3           |  py312h5eee18b_1          25 KB
+    packaging-24.2             |  py312h06a4308_0         195 KB
+    parso-0.8.4                |  py312h06a4308_0         233 KB
+    prometheus_client-0.21.0   |  py312h06a4308_0         124 KB
+    psutil-5.9.0               |  py312h5eee18b_1         482 KB
+    python-fastjsonschema-2.20.0|  py312h06a4308_0         260 KB
+    python-json-logger-3.2.1   |  py312h06a4308_0          27 KB
+    pyyaml-6.0.2               |  py312h5eee18b_0         217 KB
+    pyzmq-26.2.0               |  py312h6a678d5_0         387 KB
+    requests-2.32.3            |  py312h06a4308_1         123 KB
+    rpds-py-0.22.3             |  py312h4aa5aa6_0         371 KB
+    send2trash-1.8.2           |  py312h06a4308_1          31 KB
+    tornado-6.4.2              |  py312h5eee18b_0         848 KB
+    typing-extensions-4.12.2   |  py312h06a4308_0           9 KB
+    typing_extensions-4.12.2   |  py312h06a4308_0          79 KB
+    urllib3-2.3.0              |  py312h06a4308_0         237 KB
+    ------------------------------------------------------------
+                                           Total:        18.3 MB
+
+The following NEW packages will be INSTALLED:
+
+  anyio              pkgs/main/linux-64::anyio-4.6.2-py312h06a4308_0
+  argon2-cffi        pkgs/main/noarch::argon2-cffi-21.3.0-pyhd3eb1b0_0
+  argon2-cffi-bindi~ pkgs/main/linux-64::argon2-cffi-bindings-21.2.0-py312h5eee18b_1
+  asttokens          pkgs/main/noarch::asttokens-2.0.5-pyhd3eb1b0_0
+  async-lru          pkgs/main/linux-64::async-lru-2.0.4-py312h06a4308_0
+  attrs              pkgs/main/linux-64::attrs-24.3.0-py312h06a4308_0
+  babel              pkgs/main/linux-64::babel-2.16.0-py312h06a4308_0
+  beautifulsoup4     pkgs/main/linux-64::beautifulsoup4-4.12.3-py312h06a4308_0
+  bleach             pkgs/main/linux-64::bleach-6.2.0-py312h06a4308_0
+  brotli-python      pkgs/main/linux-64::brotli-python-1.0.9-py312h6a678d5_9
+  certifi            pkgs/main/linux-64::certifi-2024.12.14-py312h06a4308_0
+  cffi               pkgs/main/linux-64::cffi-1.17.1-py312h1fdaa30_1
+  charset-normalizer pkgs/main/noarch::charset-normalizer-3.3.2-pyhd3eb1b0_0
+  comm               pkgs/main/linux-64::comm-0.2.1-py312h06a4308_0
+  debugpy            pkgs/main/linux-64::debugpy-1.8.11-py312h6a678d5_0
+  decorator          pkgs/main/noarch::decorator-5.1.1-pyhd3eb1b0_0
+  defusedxml         pkgs/main/noarch::defusedxml-0.7.1-pyhd3eb1b0_0
+  executing          pkgs/main/noarch::executing-0.8.3-pyhd3eb1b0_0
+  h11                pkgs/main/linux-64::h11-0.14.0-py312h06a4308_0
+  httpcore           pkgs/main/linux-64::httpcore-1.0.2-py312h06a4308_0
+  httpx              pkgs/main/linux-64::httpx-0.27.0-py312h06a4308_0
+  idna               pkgs/main/linux-64::idna-3.7-py312h06a4308_0
+  ipykernel          pkgs/main/linux-64::ipykernel-6.29.5-py312h06a4308_1
+  ipython            pkgs/main/linux-64::ipython-8.30.0-py312h06a4308_0
+  jedi               pkgs/main/linux-64::jedi-0.19.2-py312h06a4308_0
+  jinja2             pkgs/main/linux-64::jinja2-3.1.5-py312h06a4308_0
+  json5              pkgs/main/linux-64::json5-0.9.25-py312h06a4308_0
+  jsonschema         pkgs/main/linux-64::jsonschema-4.23.0-py312h06a4308_0
+  jsonschema-specif~ pkgs/main/linux-64::jsonschema-specifications-2023.7.1-py312h06a4308_0
+  jupyter-lsp        pkgs/main/linux-64::jupyter-lsp-2.2.0-py312h06a4308_0
+  jupyter_client     pkgs/main/linux-64::jupyter_client-8.6.3-py312h06a4308_0
+  jupyter_core       pkgs/main/linux-64::jupyter_core-5.7.2-py312h06a4308_0
+  jupyter_events     pkgs/main/linux-64::jupyter_events-0.10.0-py312h06a4308_0
+  jupyter_server     pkgs/main/linux-64::jupyter_server-2.14.1-py312h06a4308_0
+  jupyter_server_te~ pkgs/main/linux-64::jupyter_server_terminals-0.4.4-py312h06a4308_1
+  jupyterlab         pkgs/main/linux-64::jupyterlab-4.2.5-py312h06a4308_0
+  jupyterlab_pygmen~ pkgs/main/noarch::jupyterlab_pygments-0.1.2-py_0
+  jupyterlab_server  pkgs/main/linux-64::jupyterlab_server-2.27.3-py312h06a4308_0
+  libsodium          pkgs/main/linux-64::libsodium-1.0.18-h7b6447c_0
+  markupsafe         pkgs/main/linux-64::markupsafe-2.1.3-py312h5eee18b_1
+  matplotlib-inline  pkgs/main/linux-64::matplotlib-inline-0.1.6-py312h06a4308_0
+  mistune            pkgs/main/linux-64::mistune-2.0.4-py312h06a4308_0
+  nbclient           pkgs/main/linux-64::nbclient-0.8.0-py312h06a4308_0
+  nbconvert          pkgs/main/linux-64::nbconvert-7.16.4-py312h06a4308_0
+  nbformat           pkgs/main/linux-64::nbformat-5.10.4-py312h06a4308_0
+  nest-asyncio       pkgs/main/linux-64::nest-asyncio-1.6.0-py312h06a4308_0
+  notebook           pkgs/main/linux-64::notebook-7.2.2-py312h06a4308_1
+  notebook-shim      pkgs/main/linux-64::notebook-shim-0.2.3-py312h06a4308_0
+  overrides          pkgs/main/linux-64::overrides-7.4.0-py312h06a4308_0
+  packaging          pkgs/main/linux-64::packaging-24.2-py312h06a4308_0
+  pandocfilters      pkgs/main/noarch::pandocfilters-1.5.0-pyhd3eb1b0_0
+  parso              pkgs/main/linux-64::parso-0.8.4-py312h06a4308_0
+  pexpect            pkgs/main/noarch::pexpect-4.8.0-pyhd3eb1b0_3
+  platformdirs       pkgs/main/linux-64::platformdirs-3.10.0-py312h06a4308_0
+  prometheus_client  pkgs/main/linux-64::prometheus_client-0.21.0-py312h06a4308_0
+  prompt-toolkit     pkgs/main/linux-64::prompt-toolkit-3.0.43-py312h06a4308_0
+  prompt_toolkit     pkgs/main/noarch::prompt_toolkit-3.0.43-hd3eb1b0_0
+  psutil             pkgs/main/linux-64::psutil-5.9.0-py312h5eee18b_1
+  ptyprocess         pkgs/main/noarch::ptyprocess-0.7.0-pyhd3eb1b0_2
+  pure_eval          pkgs/main/noarch::pure_eval-0.2.2-pyhd3eb1b0_0
+  pycparser          pkgs/main/noarch::pycparser-2.21-pyhd3eb1b0_0
+  pygments           pkgs/main/linux-64::pygments-2.15.1-py312h06a4308_1
+  pysocks            pkgs/main/linux-64::pysocks-1.7.1-py312h06a4308_0
+  python-fastjsonsc~ pkgs/main/linux-64::python-fastjsonschema-2.20.0-py312h06a4308_0
+  python-json-logger pkgs/main/linux-64::python-json-logger-3.2.1-py312h06a4308_0
+  pyyaml             pkgs/main/linux-64::pyyaml-6.0.2-py312h5eee18b_0
+  pyzmq              pkgs/main/linux-64::pyzmq-26.2.0-py312h6a678d5_0
+  referencing        pkgs/main/linux-64::referencing-0.30.2-py312h06a4308_0
+  requests           pkgs/main/linux-64::requests-2.32.3-py312h06a4308_1
+  rfc3339-validator  pkgs/main/linux-64::rfc3339-validator-0.1.4-py312h06a4308_0
+  rfc3986-validator  pkgs/main/linux-64::rfc3986-validator-0.1.1-py312h06a4308_0
+  rpds-py            pkgs/main/linux-64::rpds-py-0.22.3-py312h4aa5aa6_0
+  send2trash         pkgs/main/linux-64::send2trash-1.8.2-py312h06a4308_1
+  sniffio            pkgs/main/linux-64::sniffio-1.3.0-py312h06a4308_0
+  soupsieve          pkgs/main/linux-64::soupsieve-2.5-py312h06a4308_0
+  stack_data         pkgs/main/noarch::stack_data-0.2.0-pyhd3eb1b0_0
+  terminado          pkgs/main/linux-64::terminado-0.17.1-py312h06a4308_0
+  tinycss2           pkgs/main/linux-64::tinycss2-1.2.1-py312h06a4308_0
+  tornado            pkgs/main/linux-64::tornado-6.4.2-py312h5eee18b_0
+  traitlets          pkgs/main/linux-64::traitlets-5.14.3-py312h06a4308_0
+  typing-extensions  pkgs/main/linux-64::typing-extensions-4.12.2-py312h06a4308_0
+  typing_extensions  pkgs/main/linux-64::typing_extensions-4.12.2-py312h06a4308_0
+  urllib3            pkgs/main/linux-64::urllib3-2.3.0-py312h06a4308_0
+  wcwidth            pkgs/main/noarch::wcwidth-0.2.5-pyhd3eb1b0_0
+  webencodings       pkgs/main/linux-64::webencodings-0.5.1-py312h06a4308_2
+  websocket-client   pkgs/main/linux-64::websocket-client-1.8.0-py312h06a4308_0
+  yaml               pkgs/main/linux-64::yaml-0.2.5-h7b6447c_0
+  zeromq             pkgs/main/linux-64::zeromq-4.3.5-h6a678d5_0
+
+
+Proceed ([y]/n)?
+
+
+Downloading and Extracting Packages:
+
+Preparing transaction: done
+Verifying transaction: done
+Executing transaction: done
+(ds312) willem@mint-22:~/git/DataAnalysisWithPythonAndPySpark$ conda activate ds312
+(ds312) willem@mint-22:~/git/DataAnalysisWithPythonAndPySpark$ conda install -n ds312 matplotlib
+Channels:
+ - defaults
+Platform: linux-64
+Collecting package metadata (repodata.json): done
+Solving environment: done
+
+## Package Plan ##
+
+  environment location: /home/willem/anaconda3/envs/ds312
+
+  added / updated specs:
+    - matplotlib
+
+
+The following packages will be downloaded:
+
+    package                    |            build
+    ---------------------------|-----------------
+    contourpy-1.3.1            |  py312hdb19cb5_0         276 KB
+    fontconfig-2.14.1          |       h55d465d_3         281 KB
+    fonttools-4.55.3           |  py312h5eee18b_0         2.9 MB
+    kiwisolver-1.4.8           |  py312h6a678d5_0          69 KB
+    lcms2-2.16                 |       hb9589c4_0         269 KB
+    lerc-4.0.0                 |       h6a678d5_0         261 KB
+    libclang-14.0.6            |default_hc6dbbc7_2         137 KB
+    libclang13-14.0.6          |default_he11475f_2         9.7 MB
+    libdeflate-1.22            |       h5eee18b_0          68 KB
+    libpq-17.2                 |       hdbd6064_0         2.8 MB
+    libtiff-4.5.1              |       hffd6297_1         534 KB
+    libwebp-base-1.3.2         |       h5eee18b_1         425 KB
+    libxkbcommon-1.0.1         |       h097e994_2         590 KB
+    libxml2-2.13.5             |       hfdd30dd_0         738 KB
+    matplotlib-3.10.0          |  py312h06a4308_0           7 KB
+    matplotlib-base-3.10.0     |  py312hbfdbfaf_0         8.2 MB
+    mysql-8.4.0                |       h29a9f33_1        56.6 MB
+    openldap-2.6.4             |       h42fbc30_0         804 KB
+    pillow-11.0.0              |  py312hcea889d_1         957 KB
+    pyparsing-3.2.0            |  py312h06a4308_0         471 KB
+    pyqt-5.15.10               |  py312h6a678d5_1         5.7 MB
+    pyqt5-sip-12.13.0          |  py312h5eee18b_1          96 KB
+    qt-main-5.15.2             |      hb6262e9_11        53.7 MB
+    sip-6.7.12                 |  py312h6a678d5_1         598 KB
+    unicodedata2-15.1.0        |  py312h5eee18b_1         524 KB
+    ------------------------------------------------------------
+                                           Total:       146.6 MB
+
+The following NEW packages will be INSTALLED:
+
+  contourpy          pkgs/main/linux-64::contourpy-1.3.1-py312hdb19cb5_0
+  cycler             pkgs/main/noarch::cycler-0.11.0-pyhd3eb1b0_0
+  cyrus-sasl         pkgs/main/linux-64::cyrus-sasl-2.1.28-h52b45da_1
+  dbus               pkgs/main/linux-64::dbus-1.13.18-hb2f20db_0
+  fontconfig         pkgs/main/linux-64::fontconfig-2.14.1-h55d465d_3
+  fonttools          pkgs/main/linux-64::fonttools-4.55.3-py312h5eee18b_0
+  freetype           pkgs/main/linux-64::freetype-2.12.1-h4a9f257_0
+  glib               pkgs/main/linux-64::glib-2.78.4-h6a678d5_0
+  glib-tools         pkgs/main/linux-64::glib-tools-2.78.4-h6a678d5_0
+  gst-plugins-base   pkgs/main/linux-64::gst-plugins-base-1.14.1-h6a678d5_1
+  gstreamer          pkgs/main/linux-64::gstreamer-1.14.1-h5eee18b_1
+  jpeg               pkgs/main/linux-64::jpeg-9e-h5eee18b_3
+  kiwisolver         pkgs/main/linux-64::kiwisolver-1.4.8-py312h6a678d5_0
+  lcms2              pkgs/main/linux-64::lcms2-2.16-hb9589c4_0
+  lerc               pkgs/main/linux-64::lerc-4.0.0-h6a678d5_0
+  libclang           pkgs/main/linux-64::libclang-14.0.6-default_hc6dbbc7_2
+  libclang13         pkgs/main/linux-64::libclang13-14.0.6-default_he11475f_2
+  libcups            pkgs/main/linux-64::libcups-2.4.2-h2d74bed_1
+  libdeflate         pkgs/main/linux-64::libdeflate-1.22-h5eee18b_0
+  libglib            pkgs/main/linux-64::libglib-2.78.4-hdc74915_0
+  libiconv           pkgs/main/linux-64::libiconv-1.16-h5eee18b_3
+  libllvm14          pkgs/main/linux-64::libllvm14-14.0.6-hecde1de_4
+  libpng             pkgs/main/linux-64::libpng-1.6.39-h5eee18b_0
+  libpq              pkgs/main/linux-64::libpq-17.2-hdbd6064_0
+  libtiff            pkgs/main/linux-64::libtiff-4.5.1-hffd6297_1
+  libwebp-base       pkgs/main/linux-64::libwebp-base-1.3.2-h5eee18b_1
+  libxcb             pkgs/main/linux-64::libxcb-1.15-h7f8727e_0
+  libxkbcommon       pkgs/main/linux-64::libxkbcommon-1.0.1-h097e994_2
+  libxml2            pkgs/main/linux-64::libxml2-2.13.5-hfdd30dd_0
+  matplotlib         pkgs/main/linux-64::matplotlib-3.10.0-py312h06a4308_0
+  matplotlib-base    pkgs/main/linux-64::matplotlib-base-3.10.0-py312hbfdbfaf_0
+  mysql              pkgs/main/linux-64::mysql-8.4.0-h29a9f33_1
+  openjpeg           pkgs/main/linux-64::openjpeg-2.5.2-he7f1fd0_0
+  openldap           pkgs/main/linux-64::openldap-2.6.4-h42fbc30_0
+  pcre2              pkgs/main/linux-64::pcre2-10.42-hebb0a14_1
+  pillow             pkgs/main/linux-64::pillow-11.0.0-py312hcea889d_1
+  ply                pkgs/main/linux-64::ply-3.11-py312h06a4308_1
+  pyparsing          pkgs/main/linux-64::pyparsing-3.2.0-py312h06a4308_0
+  pyqt               pkgs/main/linux-64::pyqt-5.15.10-py312h6a678d5_1
+  pyqt5-sip          pkgs/main/linux-64::pyqt5-sip-12.13.0-py312h5eee18b_1
+  qt-main            pkgs/main/linux-64::qt-main-5.15.2-hb6262e9_11
+  sip                pkgs/main/linux-64::sip-6.7.12-py312h6a678d5_1
+  unicodedata2       pkgs/main/linux-64::unicodedata2-15.1.0-py312h5eee18b_1
+
+
+Proceed ([y]/n)?
+
+
+Downloading and Extracting Packages:
+
+Preparing transaction: done
+Verifying transaction: done
+Executing transaction: done
+(ds312) willem@mint-22:~/git/DataAnalysisWithPythonAndPySpark$ conda activate ds312
+(ds312) willem@mint-22:~/git/DataAnalysisWithPythonAndPySpark$ conda update -n ds312 --all --no-pin
+Channels:
+ - defaults
+Platform: linux-64
+Collecting package metadata (repodata.json): done
+Solving environment: done
+
+# All requested packages already installed.
+
+(ds312) willem@mint-22:~/git/DataAnalysisWithPythonAndPySpark$
+

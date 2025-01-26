@@ -1,6 +1,12 @@
 import os
 from pyspark.sql import SparkSession
 import pyspark.sql.functions as F
+from dotenv import load_dotenv
+
+print(os.path.abspath('.'))
+load_dotenv('../../project.env')
+
+print(f"JAVA_HOME={os.getenv('JAVA_HOME')}")
 
 spark = SparkSession.builder.appName("Chapter 6 example").getOrCreate()
 
@@ -63,3 +69,6 @@ print(f"total number of records in tabular_episodes data frame is  {tabular_epis
 tabular_episodes.show(truncate=False)
 (tabular_episodes.coalesce(1).write.mode('overwrite')
     .csv("./493-ds9-episodes.csv", sep='|', header=True, quote=None))
+
+if __name__ == "__main__":
+    pass

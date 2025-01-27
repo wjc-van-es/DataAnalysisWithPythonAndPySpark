@@ -7,7 +7,7 @@ from project_utils import config_info as ci
 
 """
 This script is to check whether pyspark is available.
-We should be able to launch it when the conda ds311 environment is activated
+We should be able to launch it when the conda ds311 or ds312 environment is activated
 Also $MY_IBAN and $BANK_ROOT_DIR should be set as environment variables
 This can be done in ~/.bashrc with
 ~$ gedit .bashrc
@@ -65,4 +65,5 @@ def main(args):
 
 if __name__ == '__main__':
     print(f"__name__=={__name__}")
+    print(f"sys.argv={sys.argv}")
     main(sys.argv[1:])

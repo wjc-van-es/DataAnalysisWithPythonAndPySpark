@@ -7,9 +7,20 @@ from pyspark.sql.functions import regexp_replace
 from pyspark.sql.functions import col
 from pyspark.sql.functions import when
 from pyspark.sql.functions import round as ps_round
+from dotenv import load_dotenv
 
 import project_utils.config_info as ci
 
+"""
+This script is to check whether pyspark is available.
+We should be able to launch it when the conda ds311 or ds312 environment is activated
+Also $MY_IBAN and $BANK_ROOT_DIR should be set as environment variables
+This can be done in the local ~/git/DataAnalysisWithPythonAndPySpark/project.env (that is excluded from git)
+If you run this from the commandline set PYTHONPATH to the src/ dir to be able to find the module
+project_utils.config_info that you can find direct under the src/ dir
+(ds312) willem@mint-22:~/git/DataAnalysisWithPythonAndPySpark/src/bankstatements$ PYTHONPATH=../ python df_prep.py 2024
+
+"""
 
 def produce_df_for_year(year):
     """
@@ -91,9 +102,11 @@ def sum_per_tegenrekening(in_df):
 
 
 def main(args):
+    print(f"os.path.abspath('.')={os.path.abspath('.')}")
+    load_dotenv('../../project.env')
     ci.print_environment()
     ci.check_path()
-    year = 2023
+    year = 2022
     if len(args) > 0:
         print(f"args = {args}")
         year = args[0]
@@ -112,4 +125,5 @@ def main(args):
 
 if __name__ == '__main__':
     print(f"__name__=={__name__}")
+    print(f"sys.argv={sys.argv}")
     main(sys.argv[1:])

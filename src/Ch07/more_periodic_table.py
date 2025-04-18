@@ -12,9 +12,8 @@ import project_utils.config_info as ci
 from pathlib import Path
 src_dir = Path(__file__).parents[1]
 print(src_dir)
-# sys.path.append(src_dir)
-# sys.path.append(src_dir / 'project_utils')
 
+ci.load_env_file_when_present('project.env')
 ci.print_environment()
 ci.check_path()
 

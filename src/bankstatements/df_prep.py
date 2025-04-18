@@ -7,7 +7,6 @@ from pyspark.sql.functions import regexp_replace
 from pyspark.sql.functions import col
 from pyspark.sql.functions import when
 from pyspark.sql.functions import round as ps_round
-from dotenv import load_dotenv
 
 import project_utils.config_info as ci
 
@@ -103,7 +102,7 @@ def sum_per_tegenrekening(in_df):
 
 def main(args):
     print(f"os.path.abspath('.')={os.path.abspath('.')}")
-    load_dotenv('../../project.env')
+    ci.load_env_file_when_present('project.env')
     ci.print_environment()
     ci.check_path()
     year = 2022

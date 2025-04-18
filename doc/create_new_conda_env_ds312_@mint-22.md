@@ -150,12 +150,21 @@ We need to test if this is enough for the `man-py-htm` and `DataAnalysisWithPyth
     load_dotenv('../../project.env')
     print(f"JAVA_HOME={os.getenv('JAVA_HOME')}")
     ```
+  - Further, standardizing this solution we extended
+    [../src/project_utils/config_info.py](../src/project_utils/config_info.py) with the `load_env_file_when_present`
+    function.
+  - This can be used like
+    ```python
+    import project_utils.config_info as ci
+    
+    ci.load_env_file_when_present('project.env')
+    ```
 
 ## Establishing the packages installed on `ds312` conda environment
 - with `(ds312) willem@mint-22:~/git/DataAnalysisWithPythonAndPySpark$ conda env export --no-builds > ds312_mint-22_--no-builds-20250127.yml`
 - see [`../ds312_mint-22_--no-builds-20250127.yml`](../ds312_mint-22_--no-builds-20250127.yml)
 
 ### ToDo
-- test matplotlib (from jupyter notebooks)
-- test the bank statements analysis
-- 
+- [x] test matplotlib (from jupyter notebooks)
+- [x] test the bank statements analysis with [../src/bankstatements/df_prep.py](../src/bankstatements/df_prep.py)
+- [x] test the bank statements analysis with the jupyter notebook at `BANK_ROOT_DIR` 

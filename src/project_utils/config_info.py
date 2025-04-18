@@ -1,7 +1,22 @@
 #!/usr/bin/env python
 import os
 import sys
-# from pprint import pprint
+from pathlib import Path
+from dotenv import find_dotenv, load_dotenv
+
+
+def load_env_file_when_present(file_name: str):
+    print(f"file_name = {file_name}")
+
+    # tries to find the .env file with the file_name starting in the same directory
+    # as the source file and moving up from there to subsequent parent dirs
+    env_file = find_dotenv(file_name)
+    print(f"env_file = {env_file}, type(env_file) = {type(env_file)}")
+    print(f"Path(env_file).is_file(): {Path(env_file).is_file()}")
+    if Path(env_file).is_file():
+        load_dotenv(env_file)
+    else:
+        print(f"env_file = {env_file}, does not exist and therefore could not be loaded")
 
 
 def print_environment():
@@ -28,16 +43,4 @@ def check_path():
     print("sys.path: ")
     for path in sys.path:
         print(path)
-
-
-# def main(args):
-#     if len(args) > 0:
-#         print(f"args = {args}")
-#     print_environment()
-#     check_path()
-#
-#
-# if __name__ == '__main__':
-#     print(f"__name__=={__name__}")
-#     main(sys.argv[1:])
 

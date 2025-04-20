@@ -1,10 +1,11 @@
 import os
 from pyspark.sql import SparkSession
 import pyspark.sql.functions as F
-from dotenv import load_dotenv
+import project_utils.config_info as ci
+
+ci.load_env_file_when_present('project.env')
 
 print(os.path.abspath('.'))
-load_dotenv('../../project.env')
 
 print(f"JAVA_HOME={os.getenv('JAVA_HOME')}")
 
@@ -66,9 +67,16 @@ tabular_episodes = (episodes
                     )
 tabular_episodes.printSchema()
 print(f"total number of records in tabular_episodes data frame is  {tabular_episodes.count()}")
-tabular_episodes.show(truncate=False)
+
 (tabular_episodes.coalesce(1).write.mode('overwrite')
     .csv("./493-ds9-episodes.csv", sep='|', header=True, quote=None))
+
+tabular_episodes_with_garak = tabular_episodes.where(F.col("summary").contains('Garak')).selectExpr('*')
+print(f"total number of records in tabular_episodes_with_garak data frame is  {tabular_episodes_with_garak.count()}")
+tabular_episodes_with_garak.show(truncate=False)
+
+(tabular_episodes_with_garak.coalesce(1).write.mode('overwrite')
+    .csv("./493-ds9-episodes-with-garak.csv", sep='|', header=True, quote=None))
 
 if __name__ == "__main__":
     pass

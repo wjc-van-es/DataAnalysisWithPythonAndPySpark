@@ -1,6 +1,8 @@
 import os
 from pyspark.sql import SparkSession
+import project_utils.config_info as ci
 
+ci.load_env_file_when_present('project.env')
 spark = SparkSession.builder.appName("Chapter 6 example").getOrCreate()
 
 spark.sparkContext.setLogLevel("WARN")
@@ -42,8 +44,8 @@ df_sil_val.show()
 # "One JSON document, one file, one (df) record" rule.
 # Beware, this will only work as long as all JSON document follow the same schema (as they are being retrieved from
 # the same REST API, with a GET request query of the same format
-df_three_shows = spark.read.json(os.path.join(data_dir, '*.json'), multiLine=True)
+df_four_shows = spark.read.json(os.path.join(data_dir, '*.json'), multiLine=True)
 
-print(f"total number of records in df_three_shows data frame is  {df_three_shows.count()}")
-df_three_shows.printSchema()
-df_three_shows.show()
+print(f"total number of records in df_four_shows data frame is  {df_four_shows.count()}")
+df_four_shows.printSchema()
+df_four_shows.show()

@@ -66,7 +66,7 @@ datatypes are usually simple scalars, like an integer, float, calendar date, tex
 - each JSON file contains one object called the root object delimited with a starting `{` and closing `}` curly brace.
 - its attributes, separated by a comma, have a name or key that must be of type string and a value, which gives it a 
   structure not unlike a python dictionary (or map)
-  - the value of a JSON object can represent a view types
+  - the value of a JSON object can represent a few types
     - a simple scalar type,
       - Strings, which use double-quotes
       - Numbers
@@ -146,7 +146,7 @@ datatypes are usually simple scalars, like an integer, float, calendar date, tex
   - as they both are _sequences_, they contain their elements in a deliberate order
 - The main difference is that in PySpark arrays are always containers of values _of the same type_
   - although it is good practice to keep Python lists homogeneous as well (and use tuples to store heterogeneous elements)
-    Python does not enforce this homogeneousness
+    Python does not enforce this homogeneousness.
   - PySpark will not raise an error if you try to read an array-type column with multiple types. Instead, it will 
     simply default to the lowest common denominator, usually the string. This way, you don’t lose any data, but you
     will get a surprise later if your code expects an array of another type.

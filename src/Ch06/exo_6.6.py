@@ -2,6 +2,9 @@ import os
 from pyspark.sql import SparkSession
 import pyspark.sql.types as T
 import pyspark.sql.functions as F
+import project_utils.config_info as ci
+
+ci.load_env_file_when_present('project.env')
 
 spark = SparkSession.builder.appName("Chapter 6 example").getOrCreate()
 

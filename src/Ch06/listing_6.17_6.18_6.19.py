@@ -2,6 +2,9 @@ import pyspark.sql.types as T
 import pyspark.sql.functions as F
 import os
 from pyspark.sql import SparkSession
+import project_utils.config_info as ci
+
+ci.load_env_file_when_present('project.env')
 
 # Setting up a schema definition for shows data
 # where we build up from discrete StructType elements assigned to variables.
@@ -27,12 +30,12 @@ episode_schema = T.StructType(
         T.StructField("airdate", T.DateType()), # The ingested data conforms ISO-8601
         T.StructField("airstamp", T.TimestampType()), # The ingested data conforms ISO-8601
         T.StructField("airtime", T.StringType()),
-        T.StructField("id", T.StringType()),
+        T.StructField("id", T.StringType(), nullable=False),
         T.StructField("image", episode_image_schema),
-        T.StructField("name", T.StringType()),
-        T.StructField("number", T.LongType()),
+        T.StructField("name", T.StringType(), nullable=False),
+        T.StructField("number", T.LongType(), nullable=False),
         T.StructField("runtime", T.LongType()),
-        T.StructField("season", T.LongType()),
+        T.StructField("season", T.LongType(), nullable=False),
         T.StructField("summary", T.StringType()),
         T.StructField("url", T.StringType()),
     ]
@@ -82,10 +85,19 @@ df_sil_val = spark.read.json(os.path.join(data_dir, 'shows-silicon-valley.json')
 print(f"total number of records in df_sil_val data frame is  {df_sil_val.count()}")
 
 df_sil_val.printSchema()
-# df_sil_val.show()
+df_sil_val.show()
+
+def new_df_from(df_in, column):
+    return df_in.select(f"_embedded.episodes.{column}").select(
+        F.explode(column).alias(f"column {column}"))
+
 
 # Testing ISO-8601 compliance of both columns
 for column in ["airdate", "airstamp"]:
-    df_sil_val.select(f"_embedded.episodes.{column}").select(
-        F.explode(column).alias(f"column {column}")
-    ).show(5)
+    new_df_from(df_sil_val, column).show(5)
+
+# try to use a columns map:
+# https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.withColumns.html#pyspark.sql.DataFrame.withColumns
+
+if __name__ == "__main__":
+    pass

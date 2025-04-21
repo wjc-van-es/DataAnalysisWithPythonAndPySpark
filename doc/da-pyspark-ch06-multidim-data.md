@@ -67,8 +67,9 @@ datatypes are usually simple scalars, like an integer, float, calendar date, tex
       - when you read a json file into a dataframe it won't yield columns of type map, therefore it is only used very 
         deliberate with schemas, which isn't that often.
     - **struct** - is like a JSON object: keys are of string type and values can be of any type
-      - when a column is of type struct, you can think of that column is being divided into more columns
-      - when a column is of type array of struct, you can think of that column containing its own dataframe
+      - when a column is of type struct, you can think of that column as containing its own data frame with top level 
+        columns that possibly contain their own data frame if they are themselves of type struct
+      - when a column is of type array of struct, you can think of as (?)
   - When ingesting JSON file with a complex data structure the schema reader functionality works very well in 
     representing that data in a schema that uses the container structures mentioned above to translate to a dataframe
     with complex hierarchical column types
@@ -253,7 +254,7 @@ There are two syntaxes to create a schema in Spark:
 You often would provide a **reduced schema**, which means you only define a subset of all the available fields. 
 PySpark will only read the fields you have defines, which means
 - a further reduction of processing time
-- usually a much simpler subset of the entire datastructure, making the resulting data frame easier to manipulate.
+- usually a much simpler subset of the entire data structure, making the resulting data frame easier to manipulate.
 
 ### 6.4.1 Using Spark types as the base blocks of a schema
 - all types derive from the `pyspark.sql.types` module, which can be imported as `import pyspark.sql.types as T` where
@@ -287,10 +288,10 @@ import pyspark.sql.types as T
 episode_schema = T.StructType(
     [
         T.StructField("airdate", T.DateType()),
-        T.StructField("id", T.StringType()),
-        T.StructField("name", T.StringType()),
-        T.StructField("number", T.LongType()),
-        T.StructField("season", T.LongType()),
+        T.StructField("id", T.StringType(), nullable=False),
+        T.StructField("name", T.StringType(), nullable=False),
+        T.StructField("number", T.LongType(), nullable=False),
+        T.StructField("season", T.LongType(), nullable=False),
     ]
 )
 
@@ -299,15 +300,15 @@ episode_schema = T.StructType(
 # only containing the fields (columns) we are interested in
 reduced_show_schema = T.StructType(
     [
-        T.StructField("id", T.StringType()),
-        T.StructField("name", T.StringType()),
+        T.StructField("id", T.StringType(), nullable=False),
+        T.StructField("name", T.StringType(), nullable=False),
         T.StructField(
             "_embedded",
             T.StructType(
                 [
                     T.StructField(
-                        # here we apply the StructType defined earlier and assigned to episode_schema variable to become
-                        # the type of the elements of the array
+                        # here we apply the StructType defined earlier and assigned to episode_schema
+                        # variable to become the type of the elements of the array
                         "episodes", T.ArrayType(episode_schema) 
                     )
                 ]
@@ -315,8 +316,8 @@ reduced_show_schema = T.StructType(
         )
     ]
 )
-
 ```
+
 ### 6.4.2 Reading a JSON document with a strict schema in place
 - With the `pyspark.sql.DataFrameReader.json` function available from the `DataFrameReader` attribute in 
   `pyspark.sql.SparkSession.read` we can read a json document

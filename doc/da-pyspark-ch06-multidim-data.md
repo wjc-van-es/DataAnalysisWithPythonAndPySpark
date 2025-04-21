@@ -36,23 +36,39 @@ h1,h2,h3,h4,h5 {
 </style>
 ### JONATHAN RIOUX, ©2022 by Manning Publications Co. All rights reserved.
 ## Data Analysis with Python & PySpark
+
+### Common resources
+- [https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/index.html](https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/index.html)
+
 # Chapter 6: Multidimensional data frames: Using PySpark with JSON data
 ## Two-dimensional tabular data
 Ingesting a csv file or a relational database view or table and representing it in a data frame is easy as they have the
-same two-dimensional structure of rows or records with their attributes divided into separate columns. The column's
+same two-dimensional structure of _rows of records with their attributes divided into separate columns_. The column's
 datatypes are usually simple scalars, like an integer, float, calendar date, text or boolean
 
 ## How to store complex hierarchical datastructures into a data frame?
-- JSON (JavaScript Object Notation) can, in principle, contain layer upon layer of nested hierarchical data
-  - e.g. a variable pointing to a list of objects containing a map of objects, containing (among many other attributes)
-    a list of dates
+- JSON (JavaScript Object Notation) can be thought of as a Python dictionary, where values can contain 
+  - simple scalar datatypes,
+  - but also more complex objects (or lists of objects) and
+    - these objects could have attributes, that are more complex objects themselves, hence creating a hierarchy of 
+      nested objects.
 - The key of transforming this complex hierarchy of data into a (PySpark) data frame is creating complex types for its
   columns.
 - PySpark is already very helpful with this
   - It has three container structures available:
-    - array
-    - map
-    - struct
+    - **array** - ordered list of objects _of the same type_
+      - when you read a json file without imposing your own schema definition, _Spark will automatically revert the
+        type of the array's elements to their lowest common denominator, which will usually be a string_.
+        - This prevents loss of data, but
+        - _could be confusing_.
+    - **map** - like a python dictionary, but 
+      - _all keys need to be of the same type_ and
+      - _all values need to be of the same type_
+      - when you read a json file into a dataframe it won't yield columns of type map, therefore it is only used very 
+        deliberate with schemas, which isn't that often.
+    - **struct** - is like a JSON object: keys are of string type and values can be of any type
+      - when a column is of type struct, you can think of that column is being divided into more columns
+      - when a column is of type array of struct, you can think of that column containing its own dataframe
   - When ingesting JSON file with a complex data structure the schema reader functionality works very well in 
     representing that data in a schema that uses the container structures mentioned above to translate to a dataframe
     with complex hierarchical column types
@@ -120,15 +136,16 @@ datatypes are usually simple scalars, like an integer, float, calendar date, tex
     - This will change the rule to *one JSON document, one file, one record*
     - With the `multiLine=True` argument you can also use the glob pattern (using a * to refer to multiple files), 
       give the path to a directory and specify multiple JSON files in the path with `*.json` to ingest them as
-      separate records into a singe data frame. Take care, however, that these multiple JSON files adhere to the same
-      structure (the same schema can be inferred)
+      separate records into a singe data frame. _Take care, however, that these multiple JSON files adhere to the same
+      structure_ (the same schema can be inferred)
 - See [https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrameReader.json.html#pyspark.sql.DataFrameReader.json](https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrameReader.json.html#pyspark.sql.DataFrameReader.json)
 - For all optional parameters see
   [https://spark.apache.org/docs/latest/sql-data-sources-json.html#data-source-option](https://spark.apache.org/docs/latest/sql-data-sources-json.html#data-source-option)
 - For an example see [../src/Ch06/listing_6.3_6.4.py](../src/Ch06/listing_6.3_6.4.py)
 
 ## 6.2 Breaking the second dimension with complex data types
-
+- In Python _complex types_ refer to images or video files
+- In PySpark it refers to types that contain other types a.k.a. _container type_ or _compound type_.
 - The hierarchical structure of a JSON document can be squeezed into the two-dimensional, tabular structure of a Spark
   data frame by letting the cells contain more than a single, scalar value.
 - Instead, a cell may have a complex type that may contain a lot of other types.
@@ -154,6 +171,8 @@ datatypes are usually simple scalars, like an integer, float, calendar date, tex
 #### Extracting elements from an array
 - The data frame `df` has a column named `'genres'` of type array, and we wish to select only its first element
   assume this import statement: `import pyspark.sql.functions as F`
+- In general for a description of all `pyspark.sql.functions` that operate on collection types:
+  [https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/functions.html#collection-functions](https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/functions.html#collection-functions)
   
   | name           | code of `df.select()` parameters |
   |----------------|----------------------------------|
@@ -184,7 +203,7 @@ datatypes are usually simple scalars, like an integer, float, calendar date, tex
   its cells.
 - Structs can contain fields that are of different type including `array` and `struct` type. Also, arrays can contain
   elements of type `struct`. 
-  - Hence, nesting `struct` type fields and array elements we can create a deep hierarchy of data
+  - Hence, using `struct` type fields within structs and as array elements we can create a deep hierarchy of nested data
 
 ### 6.3.1 Navigating structs as if they were nested columns
 - we can refer to fields within a struct, the same way we can refer to columns of a data frame with dot notation
@@ -197,7 +216,7 @@ datatypes are usually simple scalars, like an integer, float, calendar date, tex
      "episodes", F.col("_embedded.episodes")
   ).drop("_embedded")
   ```
-- We can select a single string field from a `array[struct]` type column (an array of struct type elements) to create a
+- We can select a single string field from an `array[struct]` type column (an array of struct type elements) to create a
   column from this that will be of type `array[string]`.
 - In our example we have a column named 'episodes' of type `array[struct]` and one string typed field is named 'name'
   ```python

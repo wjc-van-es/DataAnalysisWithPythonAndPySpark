@@ -52,8 +52,22 @@ shows_clean.printSchema()
 # array are now separate rows of the new data frame
 episodes = shows_clean.select(F.explode(F.col('episodes')).alias('episodes'))
 episodes.printSchema()
-
+episodes.show(truncate=False)
 print(f"total number of records in episodes data frame is  {episodes.count()}")
+
+episodes_with_garak = episodes.where(F.col("episodes.summary").contains('Garak')).select("*")
+episodes_with_garak.show(truncate=False)
+
+# In current state the episodes_with_garak the episodes column contain multiple struct type objects
+# when we would write them to a json file each line would be a valid json object, but the file a whole would not
+# To fix this we have to reverse the F.explode() with either F.collect_list() or F.array_agg().
+# The latter is newer and subtly different:
+# https://www.perplexity.ai/search/pyspark-how-to-change-the-colu-yP33WRPdRKe47FdAqmJDew
+# https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.functions.array_agg.html#pyspark.sql.functions.array_agg
+# https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.functions.collect_list.html#pyspark.sql.functions.collect_list
+
+# episodes_with_garak.select(F.collect_list('episodes')).write.mode('overwrite').json('./493-ds9-episodes_with_garak.json')
+episodes_with_garak.select(F.array_agg('episodes').alias('episodes_with_garak')).write.mode('overwrite').json('./493-ds9-episodes_with_garak.json')
 
 # Now take all attributes of interest from the episodes column struct and put them in separate columns, then drop the
 # episodes column
@@ -73,10 +87,12 @@ print(f"total number of records in tabular_episodes data frame is  {tabular_epis
 
 tabular_episodes_with_garak = tabular_episodes.where(F.col("summary").contains('Garak')).selectExpr('*')
 print(f"total number of records in tabular_episodes_with_garak data frame is  {tabular_episodes_with_garak.count()}")
+print(f"total number of records in episodes_with_garak data frame is  {episodes_with_garak.count()}")
 tabular_episodes_with_garak.show(truncate=False)
 
-(tabular_episodes_with_garak.coalesce(1).write.mode('overwrite')
-    .csv("./493-ds9-episodes-with-garak.csv", sep='|', header=True, quote=None))
+(tabular_episodes_with_garak.coalesce(1)
+ .write.mode('overwrite')
+ .csv("./493-ds9-episodes-with-garak.csv", sep='|', header=True, quote=None))
 
 if __name__ == "__main__":
     pass

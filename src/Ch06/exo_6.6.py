@@ -83,4 +83,5 @@ sol6_6 = df_three_shows.select(
 ).select("name", (F.col("last") - F.col("first")).alias("tenure")).orderBy('tenure', ascending=False)
 sol6_6.show(truncate=50)
 
-
+if __name__ == "__main__":
+    pass

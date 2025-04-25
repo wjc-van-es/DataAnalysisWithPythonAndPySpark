@@ -2,6 +2,9 @@ import os
 from pyspark.sql import SparkSession
 import pyspark.sql.types as T
 import pyspark.sql.functions as F
+import project_utils.config_info as ci
+
+ci.load_env_file_when_present('project.env')
 
 spark = SparkSession.builder.appName("Chapter 6 example").getOrCreate()
 
@@ -43,7 +46,9 @@ summary_schema = T.StructType(
 # "One JSON document, one file, one (df) record" rule.
 # Beware, this will only work as long as all JSON document follow the same schema (as they are being retrieved from
 # the same REST API, with a GET request query of the same format
-df_three_shows = spark.read.json(os.path.join(data_dir, '*.json'), multiLine=True, schema=summary_schema,
+df_three_shows = spark.read.json(os.path.join(data_dir, '*.json'),
+                                 multiLine=True,
+                                 schema=summary_schema,
                                  mode='FAILFAST')
 
 print(f"total number of records in df_three_shows data frame is  {df_three_shows.count()}")
@@ -59,3 +64,6 @@ df_sol_6_7 = df_three_shows.select(F.col('id'),
 
 df_sol_6_7.printSchema()
 df_sol_6_7.show(truncate=False)
+
+if __name__ == "__main__":
+    pass

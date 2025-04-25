@@ -240,7 +240,7 @@ datatypes are usually simple scalars, like an integer, float, calendar date, tex
 ## 6.4 Building and using the data frame schema
 Up until this point we have used the schema that Spark infers for us from the data it has ingested into a data frame.
 It is also possible, however, to define a schema that our ingested data should adhere to. 
-One advantage over Spark inferred schemas is performance: as Spark needs to read the data twice to infer its schema
+One advantage over Spark inferred schemas is _performance_ as Spark needs to read the data _twice_ to infer its schema
 - once to infer the schema and
 - once more to read the data itself
 
@@ -252,8 +252,8 @@ There are two syntaxes to create a schema in Spark:
 - a DDL-style schema covered in chapter 7.
 
 You often would provide a **reduced schema**, which means you only define a subset of all the available fields. 
-PySpark will only read the fields you have defines, which means
-- a further reduction of processing time
+PySpark will only read the fields you have defines, which means:
+- a further reduction of processing time,
 - usually a much simpler subset of the entire data structure, making the resulting data frame easier to manipulate.
 
 ### 6.4.1 Using Spark types as the base blocks of a schema
@@ -275,7 +275,7 @@ PySpark will only read the fields you have defines, which means
       - This constructor takes a list of `T.StructFields()`, whose constructor in turn takes
         - a name and type argument
         - an optional nullable key parameter, which defaults to `True`
-        - an optional `metadata` key parameter of type `dict`
+        - an optional `metadata` key parameter of type `dict` (relevant for ML pipelines, see chapter 13)
 
 #### A summary example of the definition of a reduced schema
 To see all this in a code example of the definition of a reduced schema of show data ingested from the _TVMaze REST API_
@@ -323,7 +323,7 @@ reduced_show_schema = T.StructType(
   `pyspark.sql.SparkSession.read` we can read a json document
 - See [https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrameReader.json.html#pyspark.sql.DataFrameReader.json](https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrameReader.json.html#pyspark.sql.DataFrameReader.json)
   - With the optional keyword parameter `schema` we can specify the schema we defined ourselves
-  - With the keyword parameter `mode='FAILFAST'` set the `SateFrameReader` will throw an Exception as soon as it 
+  - With the keyword parameter `mode='FAILFAST'` set the `DataFrameReader` will throw an Exception as soon as it 
     encounters a part of the document that is incompatible with the schema we declared.
   - We also set the optional keyword parameter `multiline=True`
 - For all optional parameters see
@@ -335,8 +335,10 @@ from pyspark.sql import SparkSession
 spark = SparkSession.builder.appName("Chapter 6 example").getOrCreate()
 spark.sparkContext.setLogLevel("WARN")
 data_dir = "../../data/shows"
-df_sil_val = spark.read.json(os.path.join(data_dir, 'shows-silicon-valley.json'), multiLine=True,
-                             schema=reduced_show_schema, mode='FAILFAST')
+df_sil_val = spark.read.json(os.path.join(data_dir, 'shows-silicon-valley.json'), 
+                             multiLine=True,
+                             schema=reduced_show_schema, 
+                             mode='FAILFAST')
 ```
 See for a complete example [../src/Ch06/listing_6.17_6.18_6.19.py](../src/Ch06/listing_6.17_6.18_6.19.py)
 here we have defined a whole schema to use for the show data, and we use `pyspark.sql.types.DateType` and

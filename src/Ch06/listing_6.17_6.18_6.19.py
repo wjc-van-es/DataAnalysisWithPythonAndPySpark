@@ -75,8 +75,10 @@ data_dir = "../../data/shows"
 # However, if we set the optional multiline parameter to True it will be able to load the multiline document, which now
 # follow the adapted PySpark rule of
 # "one JSON document, one file, one (df) record"
-df_sil_val = spark.read.json(os.path.join(data_dir, 'shows-silicon-valley.json'), multiLine=True,
-                             schema=embedded_schema, mode='FAILFAST')
+df_sil_val = spark.read.json(os.path.join(data_dir, 'shows-silicon-valley.json'),
+                             multiLine=True,
+                             schema=embedded_schema,
+                             mode='FAILFAST')
 
 # you have one record, where each column is a field on the highest level under the document root
 # hence these columns can have simple values when the corresponding field is a simple scalar type or

@@ -3,7 +3,8 @@ from pyspark.sql import SparkSession
 import pyspark.sql.functions as F
 import project_utils.config_info as ci
 
-
+# code that should be called before any PySpark dependencies
+ci.load_env_file_when_present('project.env')
 ci.print_environment()
 ci.check_path()
 
@@ -70,3 +71,5 @@ df_collected.printSchema()
 print("records of df_collected:")
 df_collected.show(truncate=False, n=5)
 
+if __name__ == "__main__":
+    pass

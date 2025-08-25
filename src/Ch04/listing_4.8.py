@@ -2,6 +2,10 @@ from pyspark.sql import SparkSession
 import pyspark.sql.functions as F
 import numpy as np
 import os
+import project_utils.config_info as ci
+
+# code that should be called before any PySpark dependencies
+ci.load_env_file_when_present('project.env')
 
 # relative to ~/git/DataAnalysisWithPythonAndPySpark/src/Ch04 as we will execute from this location when running
 # directly in PyCharm IDE.
@@ -29,3 +33,6 @@ for columns in column_split:
     logs_df.select(*columns).show(5, truncate=False)
 
 # For our purposes programClassID and Duration seem interesting
+
+if __name__ == "__main__":
+    pass

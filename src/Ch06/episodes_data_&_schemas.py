@@ -3,6 +3,10 @@ import json
 from pyspark.sql import SparkSession
 import pyspark.sql.types as T
 import pprint
+import project_utils.config_info as ci
+
+# code that should be called before any PySpark dependencies
+ci.load_env_file_when_present('project.env')
 
 
 spark = SparkSession.builder.appName("Chapter 6 example").getOrCreate()
@@ -82,4 +86,6 @@ assert df_sv_episodes_validated.schema == episodes_schema
 # Rereading the original sv_episodes.json into a dataframe checking with our derived schema
 pprint.pprint(episodes_schema_json)
 
+if __name__ == "__main__":
+    pass
 

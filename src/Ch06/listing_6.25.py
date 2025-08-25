@@ -3,7 +3,8 @@ from pyspark.sql import SparkSession
 import pyspark.sql.functions as F
 import project_utils.config_info as ci
 
-
+# code that should be called before any PySpark dependencies
+ci.load_env_file_when_present('project.env')
 ci.print_environment()
 ci.check_path()
 
@@ -54,3 +55,6 @@ df_expl_episode_ids_names = df_episode_ids_names.select(
 
 df_expl_episode_ids_names.printSchema()
 df_expl_episode_ids_names.show(truncate=False)
+
+if __name__ == "__main__":
+    pass

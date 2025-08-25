@@ -54,6 +54,10 @@ def check_pyspark(year):
 
 
 def main(args):
+    print(f"os.path.abspath('.')={os.path.abspath('.')}")
+    ci.load_env_file_when_present('project.env')
+    ci.print_environment()
+    ci.check_path()
     year = 2021
     if len(args) > 0:
         print(f"args = {args}")

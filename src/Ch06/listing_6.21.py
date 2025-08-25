@@ -2,7 +2,10 @@ import os
 from pyspark.sql import SparkSession
 import pyspark.sql.functions as F
 import pprint
+import project_utils.config_info as ci
 
+# code that should be called before any PySpark dependencies
+ci.load_env_file_when_present('project.env')
 spark = SparkSession.builder.appName("Chapter 6 example").getOrCreate()
 
 spark.sparkContext.setLogLevel("WARN")
@@ -46,3 +49,7 @@ pprint.pprint(df_episodes.schema.json())
 
 pprint.pprint(df_episodes.select(F.col('episodes.summary')).alias('summary').schema.jsonValue())
 pprint.pprint(df_episodes.select(F.col('episodes.summary')).alias('summary').schema.json())
+
+
+if __name__ == "__main__":
+    pass

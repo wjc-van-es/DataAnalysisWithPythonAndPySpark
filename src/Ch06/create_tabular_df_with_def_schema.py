@@ -91,3 +91,5 @@ print(f"total number of records in tabular_episodes data frame is  {tabular_epis
 tabular_episodes.show(truncate=False)
 tabular_episodes.coalesce(1).write.mode('overwrite').csv("./episodes.csv", sep='|', quote=None)
 
+if __name__ == "__main__":
+    pass

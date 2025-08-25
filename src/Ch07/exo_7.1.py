@@ -4,6 +4,8 @@ from pyspark.sql import SparkSession
 from pyspark.sql.utils import AnalysisException
 import project_utils.config_info as ci
 
+# code that should be called before any PySpark dependencies
+ci.load_env_file_when_present('project.env')
 ci.print_environment()
 ci.check_path()
 
@@ -80,3 +82,6 @@ except AnalysisException as e:
 spark.catalog.dropTempView(table_name)
 print(f"List tables in catalog after calling spark.catalog.dropTempView(table_name): "
       f"{spark.catalog.listTables('default')}")
+
+if __name__ == "__main__":
+    pass

@@ -1,6 +1,9 @@
 from pyspark.sql import SparkSession
 import pyspark.sql.functions as F
+import project_utils.config_info as ci
 
+# code that should be called before any PySpark dependencies
+ci.load_env_file_when_present('project.env')
 euro_sign = '\u20AC' # hex unicode codepoint literal for a euro
 banknote_sign = '\u1f4b6'
 frown = '\u1f612'
@@ -26,4 +29,7 @@ df_grocery_list.show(truncate=False)
 
 df_total = df_grocery_list.agg(F.sum("Price").alias("total"))
 df_total.show()
-print(f"Our groceries have set us back {euro_sign} {df_total.first()['total']:,.2f}.")
+print(f"Our groceries have set us back {euro_sign} {df_total.first()['total']:,.2f}. {frown}")
+
+if __name__ == "__main__":
+    pass

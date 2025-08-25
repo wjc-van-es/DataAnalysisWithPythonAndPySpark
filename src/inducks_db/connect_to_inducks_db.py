@@ -7,20 +7,24 @@ from pyspark.sql import SparkSession
 
 import project_utils.config_info as ci
 
+# code that should be called before any PySpark dependencies
+ci.load_env_file_when_present('project.env')
 ci.print_environment()
 ci.check_path()
 
+# IMPORTANT: To start the database before running this code, execute in a terminal:
+# ~/git/qus-vea-inducks$ docker compose up -d
+
 # Beware that these code examples will only work when these two environment variables are properly set
 # we have set these within the Run / Debug configurations of the PyCharm IDE
-postgres_password = os.environ['POSTGRES_PW']
 inducks_app_password = os.environ['INDUCKS_APP_PW']
-print(f"\npostgres_password: {postgres_password} and inducks_app_password={inducks_app_password}\n")
+print(f"\ninducks_app_password={inducks_app_password}\n")
 
 # Ingesting data from tables or views from our local postgreSQL database server
 # see https://mmuratarat.github.io/2020-06-18/pyspark-postgresql-locally
 
 # We use the jdbc driver location of our local maven repository
-jdbc_driver_location = '/home/willem/.m2/repository/org/postgresql/postgresql/42.7.3/postgresql-42.7.3.jar'
+jdbc_driver_location = '/home/willem/.m2/repository/org/postgresql/postgresql/42.7.7/postgresql-42.7.7.jar'
 
 spark = (SparkSession.builder
          .appName("PostgreSQL Connection with PySpark")
@@ -43,8 +47,8 @@ try:
     df_table_names = (spark.read.format('jdbc')
                       .option('url', url)  # the same url
                       .option('driver', properties['driver'])  # the same driver
-                      .option('user', 'postgres')  # we need to login as the superuser to see the table info
-                      .option('password', postgres_password)
+                      .option('user', properties['user'])
+                      .option('password', inducks_app_password)
                       .option('dbtable', 'information_schema.tables')
                       .load()
                       .where(F.col('table_schema') == 'inducks_schema')

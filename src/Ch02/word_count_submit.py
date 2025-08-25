@@ -1,6 +1,10 @@
 from pyspark.sql import SparkSession
 import pyspark.sql.functions as F
 from pyspark.sql.window import Window
+import project_utils.config_info as ci
+
+# code that should be called before any PySpark dependencies
+ci.load_env_file_when_present('project.env')
 
 spark = SparkSession.builder.appName(
     "Counting word occurrences from a book."
@@ -39,3 +43,6 @@ results.coalesce(1) \
     .option('header', True) \
     .mode('overwrite') \
     .csv("./results_single_partition.csv")
+
+if __name__ == "__main__":
+    pass

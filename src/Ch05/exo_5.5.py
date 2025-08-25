@@ -3,7 +3,10 @@
 import os
 from pyspark.sql import SparkSession
 import pyspark.sql.functions as F
+import project_utils.config_info as ci
 
+# code that should be called before any PySpark dependencies
+ci.load_env_file_when_present('project.env')
 spark = SparkSession.builder.getOrCreate()
 
 spark.sparkContext.setLogLevel("WARN")
@@ -123,3 +126,6 @@ answer_plus = (answer.join(call_signs, on='LogIdentifierID', how='left_outer')
 answer_plus.printSchema()
 print(f"total number of records in answer_plus data frame is  {answer_plus.count()}")
 answer_plus.show(1000, truncate=False)
+
+if __name__ == "__main__":
+    pass

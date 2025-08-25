@@ -29,6 +29,7 @@ df_sil_val = spark.read.json(os.path.join(data_dir, 'shows-silicon-valley.json')
 # a hierarchy of nested dataframes when the corresponding field is an object or array (which may in turn contain
 # objects or arrays)
 print(f"total number of records in df_sil_val data frame is  {df_sil_val.count()}")
+assert(df_sil_val.count() == 1)
 
 df_sil_val.printSchema()
 print(f"all column names derived from the top level attributes of the JSON file df_sil_val.columns:\n"
@@ -47,5 +48,10 @@ df_sil_val.show()
 df_four_shows = spark.read.json(os.path.join(data_dir, '*.json'), multiLine=True)
 
 print(f"total number of records in df_four_shows data frame is  {df_four_shows.count()}")
+assert(df_four_shows.count() == 4)
+
 df_four_shows.printSchema()
 df_four_shows.show()
+
+if __name__ == "__main__":
+    pass

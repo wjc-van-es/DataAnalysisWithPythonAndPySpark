@@ -150,8 +150,6 @@ datatypes are usually simple scalars, like an integer, float, calendar date, tex
 - The hierarchical structure of a JSON document can be squeezed into the two-dimensional, tabular structure of a Spark
   data frame by letting the cells contain more than a single, scalar value.
 - Instead, a cell may have a complex type that may contain a lot of other types.
-  - these types are not complex in the Python sense of holding images, video or audio footage,
-  - rather in Spark complex type is a synonym for container or compound type.
 - The Spark complex types are
   - array
   - map

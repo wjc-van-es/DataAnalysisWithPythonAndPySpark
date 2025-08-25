@@ -6,12 +6,16 @@ from pyspark.sql.functions import (
     regexp_extract,
     split,
 )
+import project_utils.config_info as ci
+
+# code that should be called before any PySpark dependencies
+ci.load_env_file_when_present('project.env')
 
 spark = SparkSession.builder.appName(
     "Analyzing the vocabulary of Pride and Prejudice."
 ).getOrCreate()
 
-book = spark.read.text("./data/gutenberg_books/1342-0.txt")
+book = spark.read.text("../../data/gutenberg_books/1342-0.txt")
 
 lines = book.select(split(book.value, " ").alias("line"))
 
@@ -30,3 +34,6 @@ results = words_nonull.groupby(col("word")).count()
 results.orderBy("count", ascending=False).show(10)
 
 results.coalesce(1).write.csv("./simple_count_single_partition.csv")
+
+if __name__ == "__main__":
+    pass

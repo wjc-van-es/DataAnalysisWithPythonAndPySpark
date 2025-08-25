@@ -1,6 +1,10 @@
 from pyspark.sql import SparkSession
 import pyspark.sql.functions as F
 import os
+import project_utils.config_info as ci
+
+# code that should be called before any PySpark dependencies
+ci.load_env_file_when_present('project.env')
 
 # relative to ~/git/DataAnalysisWithPythonAndPySpark/src/Ch04 as we will execute from this location when running
 # directly in PyCharm IDE.
@@ -23,3 +27,6 @@ logs_df = spark.read.csv(
 logs_df.printSchema()
 logs_df.sample(fraction=0.0001).show(50, truncate=False)
 # logs_df.summary()
+
+if __name__ == "__main__":
+    pass

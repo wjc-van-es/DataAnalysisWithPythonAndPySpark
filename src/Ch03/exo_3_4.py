@@ -1,5 +1,9 @@
 from pyspark.sql import SparkSession
 import pyspark.sql.functions as F
+import project_utils.config_info as ci
+
+# code that should be called before any PySpark dependencies
+ci.load_env_file_when_present('project.env')
 
 
 spark = SparkSession.builder.appName(
@@ -29,3 +33,6 @@ results = (
 print(f"The number of distinct words used only once, is the total number of rows in the data frame: {results.count()}")
 results.orderBy("count", ascending=False).show(10)
 # results.coalesce(1).write.mode('overwrite').csv("./results_single_partition.csv")
+
+if __name__ == "__main__":
+    pass

@@ -54,3 +54,6 @@ if __name__ == "__main__":
     for dataset in datasets:
         print("\n", dataset.split("/")[-1])
         wget.download(dataset, out="../../data/Ch07/")
+
+if __name__ == "__main__":
+    pass

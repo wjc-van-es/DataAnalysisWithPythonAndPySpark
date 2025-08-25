@@ -1,6 +1,10 @@
 from pyspark.sql import SparkSession
 import pyspark.sql.functions as F
 import os
+import project_utils.config_info as ci
+
+# code that should be called before any PySpark dependencies
+ci.load_env_file_when_present('project.env')
 
 # relative to ~/git/DataAnalysisWithPythonAndPySpark/src/Ch04 as we will execute from this location when running
 # directly in PyCharm IDE.
@@ -26,3 +30,6 @@ logs_df.printSchema()
 logs_no_id = logs_df.select(*(col for col in logs_df.columns if not col.endswith('ID') ))
 
 logs_no_id.printSchema()
+
+if __name__ == "__main__":
+    pass

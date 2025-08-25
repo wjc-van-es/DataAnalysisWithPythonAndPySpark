@@ -23,3 +23,6 @@ document = json.loads(sample_json)
 print(document)
 print(type(document))
 assert (type(document) is dict)
+
+if __name__ == "__main__":
+    pass

@@ -36,6 +36,7 @@ df_shows = spark.read.json(os.path.join(data_dir, '493-ds9.json'), multiLine=Tru
 # a hierarchy of nested dataframes when the corresponding field is an object or array (which may in turn contain
 # objects or arrays)
 print(f"total number of records in df_shows data frame is  {df_shows.count()}")
+assert(df_shows.count() == 1)
 df_shows.printSchema()
 df_shows.show()
 

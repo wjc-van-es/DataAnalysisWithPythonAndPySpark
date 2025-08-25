@@ -2,6 +2,10 @@ import pyspark.sql.functions as F
 import os
 from pyspark.sql import SparkSession
 from pyspark.sql.utils import AnalysisException
+import project_utils.config_info as ci
+
+# code that should be called before any PySpark dependencies
+ci.load_env_file_when_present('project.env')
 
 spark = SparkSession.builder.appName("Chapter 6 example").getOrCreate()
 
@@ -35,3 +39,6 @@ except AnalysisException as e:
 # See the next listing_7.3_7.4.py to solve the problem:
 # create a temporary view "elements" from the data frame elements
 # elements.createOrReplaceTempView("elements")
+
+if __name__ == "__main__":
+    pass

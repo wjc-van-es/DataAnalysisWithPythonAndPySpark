@@ -1,6 +1,10 @@
 from pyspark.sql import SparkSession
 import pyspark.sql.functions as F
 from pyspark.sql.window import Window
+import project_utils.config_info as ci
+
+# code that should be called before any PySpark dependencies
+ci.load_env_file_when_present('project.env')
 
 spark = SparkSession.builder.appName(
     "Counting word occurences from a book."
@@ -48,3 +52,5 @@ df_filter_out_words = results.filter(~ F.col("word").isin(["is", "not", "the", "
 # we see the 1rst, 13th, 23th and 62th record are skipped.
 df_filter_out_words.show(65, truncate=False)
 
+if __name__ == "__main__":
+    pass

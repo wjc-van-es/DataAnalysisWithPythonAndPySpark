@@ -1,7 +1,10 @@
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import col, greatest
 from pyspark.sql.utils import AnalysisException
-import numbers
+import project_utils.config_info as ci
+
+# code that should be called before any PySpark dependencies
+ci.load_env_file_when_present('project.env')
 
 spark = SparkSession.builder.appName("exercise 2.4").getOrCreate()
 exo2_4_df = spark.createDataFrame(
@@ -31,3 +34,6 @@ except AnalysisException as err:
 df_with_max = exo2_4_df.withColumn("max_value", greatest(col("value1"), col("value2")))
 df_with_max.printSchema()
 df_with_max.show(truncate=False)
+
+if __name__ == "__main__":
+    pass

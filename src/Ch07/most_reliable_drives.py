@@ -19,6 +19,10 @@ import os
 import pprint
 import pyspark.sql.functions as F
 from pyspark.sql import SparkSession
+import project_utils.config_info as ci
+
+# code that should be called before any PySpark dependencies
+ci.load_env_file_when_present('project.env')
 
 spark = SparkSession.builder.master("local[*]").getOrCreate()
 
@@ -137,7 +141,6 @@ def most_reliable_drive_for_capacity(data, capacity_GB=2048, precision=0.25, top
 # most_reliable_drive_for_capacity(full_data)
 results = most_reliable_drive_for_capacity(summarized_data, capacity_GB=11176.0, top_n=25)
 results.show(truncate=False)
-
 
 if __name__ == "__main__":
     pass

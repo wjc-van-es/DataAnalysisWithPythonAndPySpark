@@ -1,6 +1,9 @@
 from pyspark.sql import SparkSession
 import pyspark.sql.functions as F
+import project_utils.config_info as ci
 
+# code that should be called before any PySpark dependencies
+ci.load_env_file_when_present('project.env')
 
 spark = SparkSession.builder.appName(
     "Counting word occurrences from a book."
@@ -45,3 +48,6 @@ words_starting_consonant = (results
                         .select(F.sum(F.col('count')).alias(total_header)))
 print(words_starting_consonant.show())
 print(f"Number of words starting with a consonant: {words_starting_consonant.first()[total_header]}")
+
+if __name__ == "__main__":
+    pass

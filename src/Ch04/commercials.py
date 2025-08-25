@@ -9,6 +9,10 @@ import os
 
 import pyspark.sql.functions as F
 from pyspark.sql import SparkSession
+import project_utils.config_info as ci
+
+# code that should be called before any PySpark dependencies
+ci.load_env_file_when_present('project.env')
 
 spark = SparkSession.builder.appName(
     "Getting the Canadian TV channels with the highest/lowest proportion of commercials."
@@ -100,3 +104,6 @@ answer = full_log.groupby("LogIdentifierID").agg(
 answer.printSchema()
 print(f"total number of records in answer data frame is  {answer.count()}")
 answer.show(1000, truncate=False)
+
+if __name__ == "__main__":
+    pass

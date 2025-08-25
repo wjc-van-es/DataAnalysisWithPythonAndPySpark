@@ -10,6 +10,10 @@
 
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import col, split, explode, lower, regexp_extract
+import project_utils.config_info as ci
+
+# code that should be called before any PySpark dependencies
+ci.load_env_file_when_present('project.env')
 
 spark = SparkSession.builder.appName("Chapter 2 example").getOrCreate()
 
@@ -32,3 +36,6 @@ words_nonull = words_clean.where(col("word") != "")
 print(f"words_nonull.count(): {words_nonull.count()}")
 
 words_nonull.show(15)
+
+if __name__ == "__main__":
+    pass

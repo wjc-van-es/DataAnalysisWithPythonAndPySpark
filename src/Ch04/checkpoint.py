@@ -3,7 +3,10 @@
 import os
 from pyspark.sql import SparkSession
 import pyspark.sql.functions as F
+import project_utils.config_info as ci
 
+# code that should be called before any PySpark dependencies
+ci.load_env_file_when_present('project.env')
 spark = SparkSession.builder.getOrCreate()
 
 spark.sparkContext.setLogLevel("WARN")
@@ -29,3 +32,6 @@ logs = (
 )
 
 logs.select('duration_seconds').summary().show()
+
+if __name__ == "__main__":
+    pass

@@ -1,4 +1,8 @@
 from pyspark.sql import SparkSession
+import project_utils.config_info as ci
+
+# code that should be called before any PySpark dependencies
+ci.load_env_file_when_present('project.env')
 
 spark = SparkSession.builder.getOrCreate()
 

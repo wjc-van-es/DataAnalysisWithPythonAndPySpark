@@ -69,7 +69,8 @@ datatypes are usually simple scalars, like an integer, float, calendar date, tex
     - **struct** - is like a JSON object: keys are of string type and values can be of any type
       - when a column is of type struct, you can think of that column as containing its own data frame with top level 
         columns that possibly contain their own data frame if they are themselves of type struct
-      - when a column is of type array of struct, you can think of as (?)
+      - when a column is of type array of struct, you can think of a nested data frame structure inside each of that 
+        column's cells.
   - When ingesting JSON file with a complex data structure the schema reader functionality works very well in 
     representing that data in a schema that uses the container structures mentioned above to translate to a dataframe
     with complex hierarchical column types
@@ -131,7 +132,7 @@ datatypes are usually simple scalars, like an integer, float, calendar date, tex
   - The only mandatory argument will be a str, list of RDD representing the path, list of paths or RDD of strings storing
     JSON content.
   - The default rule is *one JSON document, one line, one record*
-    - a JSON file may contain only one record, stored in a single line.
+    - a JSON file may contain multiple lines where each line represents a single record that may not contain any line breaks.
   - When we want to read JSON files with a more easy to read multiline representation of a single record (which implies
     the JSON file will only hold a single record) we can use the `multiLine=True` argument.
     - This will change the rule to *one JSON document, one file, one record*
@@ -198,14 +199,14 @@ datatypes are usually simple scalars, like an integer, float, calendar date, tex
   - the value of each pair can be of a different type.
 - The number of fields and their names are fixed (i.e. known ahead of {run}time),
   - unlike arrays and maps, which have a free, variable size of elements (albeit of the same type)
-- Conceptually it is convenient to think of a struct column type as a column that contains a data frame within each of
-  its cells.
+- _Conceptually it is convenient to think of a struct column type as a column that contains a data frame within each of
+  its cells._
 - Structs can contain fields that are of different type including `array` and `struct` type. Also, arrays can contain
   elements of type `struct`. 
   - Hence, using `struct` type fields within structs and as array elements we can create a deep hierarchy of nested data
 
 ### 6.3.1 Navigating structs as if they were nested columns
-- we can refer to fields within a struct, the same way we can refer to columns of a data frame with dot notation
+- we can _refer to fields within a struct_, the same way we can refer to columns of a data frame _with dot notation_
 - so promoting the episodes `array[struct]` field within the `_embedded` `struct` column as new separate column whilst
   discarding the `_embedded` column goes as follows:
   ```python
@@ -215,8 +216,8 @@ datatypes are usually simple scalars, like an integer, float, calendar date, tex
      "episodes", F.col("_embedded.episodes")
   ).drop("_embedded")
   ```
-- We can select a single string field from an `array[struct]` type column (an array of struct type elements) to create a
-  column from this that will be of type `array[string]`.
+- We can _select a single string field from an `array[struct]` type column_ (an array of struct type elements) to create
+  a column from this that will be of type `array[string]`.
 - In our example we have a column named 'episodes' of type `array[struct]` and one string typed field is named 'name'
   ```python
   episodes_name = shows_clean.select(F.col("episodes.name"))
@@ -226,8 +227,8 @@ datatypes are usually simple scalars, like an integer, float, calendar date, tex
   # |-- name: array (nullable = true)
   # |    | -- element: string (containsNull = true)
   ```
-- we could go on exploding this resulting column to go from a data frame with a single record holding an `array[string]`
-  type column to a multi-record data frame with `string` type column, which has a record for each element in the
+- we could go on _exploding this resulting column_ to go from a data frame with a single record holding an `array[string]`
+  type column _to a multi-record data frame with `string` type column_, which has a record for each element in the
   previous array, in a single nested statement this would become:
   ```python
   episode_names = shows_clean.select(F.explode(F.col('episodes.name')).alias('name'))
@@ -355,6 +356,7 @@ the value <p>...</p> of the JSON token type VALUE_STRING to target Spark data ty
 [../src/Ch06/exo_6.7.py](../src/Ch06/exo_6.7.py)
 
 ### 6.4.3 Going full circle: Specifying your schemas in JSON
+
 
 ## 6.5 Putting it all together: Reducing duplicate data with complex data types
 

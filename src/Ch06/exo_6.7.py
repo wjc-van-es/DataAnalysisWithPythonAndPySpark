@@ -65,5 +65,13 @@ df_sol_6_7 = df_three_shows.select(F.col('id'),
 df_sol_6_7.printSchema()
 df_sol_6_7.show(truncate=False)
 
+# replace the two columns 'episode name' & 'episode airdate' with a single map column 'episodes' linking each episode
+# name to its airdate
+df_episodes = (df_sol_6_7
+               .withColumn('episodes', F.map_from_arrays(F.col('episode name'), F.col('episode airdate')))
+               .drop(F.col('episode name'), F.col('episode airdate')))
+df_episodes.printSchema()
+df_episodes.show(truncate=False)
+
 if __name__ == "__main__":
     pass

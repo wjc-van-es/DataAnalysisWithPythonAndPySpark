@@ -1,1 +1,127 @@
-{"fields":[{"metadata":{},"name":"episodes","nullable":true,"type":{"containsNull":true,"elementType":{"fields":[{"metadata":{},"name":"_links","nullable":true,"type":{"fields":[{"metadata":{},"name":"self","nullable":true,"type":{"fields":[{"metadata":{},"name":"href","nullable":true,"type":"string"}],"type":"struct"}}],"type":"struct"}},{"metadata":{},"name":"airdate","nullable":true,"type":"string"},{"metadata":{},"name":"airstamp","nullable":true,"type":"string"},{"metadata":{},"name":"airtime","nullable":true,"type":"string"},{"metadata":{},"name":"id","nullable":true,"type":"long"},{"metadata":{},"name":"image","nullable":true,"type":{"fields":[{"metadata":{},"name":"medium","nullable":true,"type":"string"},{"metadata":{},"name":"original","nullable":true,"type":"string"}],"type":"struct"}},{"metadata":{},"name":"name","nullable":true,"type":"string"},{"metadata":{},"name":"number","nullable":true,"type":"long"},{"metadata":{},"name":"runtime","nullable":true,"type":"long"},{"metadata":{},"name":"season","nullable":true,"type":"long"},{"metadata":{},"name":"summary","nullable":true,"type":"string"},{"metadata":{},"name":"url","nullable":true,"type":"string"}],"type":"struct"},"type":"array"}}],"type":"struct"}
+{
+  "fields": [
+    {
+      "metadata": {},
+      "name": "episodes",
+      "nullable": true,
+      "type": {
+        "containsNull": true,
+        "elementType": {
+          "fields": [
+            {
+              "metadata": {},
+              "name": "_links",
+              "nullable": true,
+              "type": {
+                "fields": [
+                  {
+                    "metadata": {},
+                    "name": "self",
+                    "nullable": true,
+                    "type": {
+                      "fields": [
+                        {
+                          "metadata": {},
+                          "name": "href",
+                          "nullable": true,
+                          "type": "string"
+                        }
+                      ],
+                      "type": "struct"
+                    }
+                  }
+                ],
+                "type": "struct"
+              }
+            },
+            {
+              "metadata": {},
+              "name": "airdate",
+              "nullable": true,
+              "type": "string"
+            },
+            {
+              "metadata": {},
+              "name": "airstamp",
+              "nullable": true,
+              "type": "string"
+            },
+            {
+              "metadata": {},
+              "name": "airtime",
+              "nullable": true,
+              "type": "string"
+            },
+            {
+              "metadata": {},
+              "name": "id",
+              "nullable": true,
+              "type": "long"
+            },
+            {
+              "metadata": {},
+              "name": "image",
+              "nullable": true,
+              "type": {
+                "fields": [
+                  {
+                    "metadata": {},
+                    "name": "medium",
+                    "nullable": true,
+                    "type": "string"
+                  },
+                  {
+                    "metadata": {},
+                    "name": "original",
+                    "nullable": true,
+                    "type": "string"
+                  }
+                ],
+                "type": "struct"
+              }
+            },
+            {
+              "metadata": {},
+              "name": "name",
+              "nullable": true,
+              "type": "string"
+            },
+            {
+              "metadata": {},
+              "name": "number",
+              "nullable": true,
+              "type": "long"
+            },
+            {
+              "metadata": {},
+              "name": "runtime",
+              "nullable": true,
+              "type": "long"
+            },
+            {
+              "metadata": {},
+              "name": "season",
+              "nullable": true,
+              "type": "long"
+            },
+            {
+              "metadata": {},
+              "name": "summary",
+              "nullable": true,
+              "type": "string"
+            },
+            {
+              "metadata": {},
+              "name": "url",
+              "nullable": true,
+              "type": "string"
+            }
+          ],
+          "type": "struct"
+        },
+        "type": "array"
+      }
+    }
+  ],
+  "type": "struct"
+}

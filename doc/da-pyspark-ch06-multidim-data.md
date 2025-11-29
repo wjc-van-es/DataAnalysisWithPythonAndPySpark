@@ -279,6 +279,8 @@ PySpark will only read the fields you have defines, which means:
 #### A summary example of the definition of a reduced schema
 To see all this in a code example of the definition of a reduced schema of show data ingested from the _TVMaze REST API_
 e.g. [https://api.tvmaze.com/singlesearch/shows?q=%22Star%20Trek:%20Deep%20Space%20Nine%22&embed=episodes](https://api.tvmaze.com/singlesearch/shows?q=%22Star%20Trek:%20Deep%20Space%20Nine%22&embed=episodes)
+or when you already know the shows id:
+[https://api.tvmaze.com/shows/493?embed=episodes](https://api.tvmaze.com/shows/493?embed=episodes)
 ```python
 import pyspark.sql.types as T
 

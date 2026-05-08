@@ -105,7 +105,7 @@ def main(args):
     ci.load_env_file_when_present('project.env')
     ci.print_environment()
     ci.check_path()
-    year = 2022
+    year = 2025
     if len(args) > 0:
         print(f"args = {args}")
         year = args[0]

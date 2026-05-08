@@ -45,6 +45,7 @@ h1,h2,h3,h4,h5 {
 - [https://www.tvmaze.com/shows/665/mash](https://www.tvmaze.com/shows/665/mash)
 - [https://www.tvmaze.com/shows/290/adventure-time](https://www.tvmaze.com/shows/290/adventure-time)
 - [https://www.tvmaze.com/shows/492/star-trek-voyager](https://www.tvmaze.com/shows/492/star-trek-voyager)
+- [https://www.tvmaze.com/shows/39323/star-trek-lower-decks/episodes](https://www.tvmaze.com/shows/39323/star-trek-lower-decks/episodes)
 - [https://www.tvmaze.com/shows/1600/have-i-got-news-for-you](https://www.tvmaze.com/shows/1600/have-i-got-news-for-you)
 - [https://www.tvmaze.com/shows/162/carnivale](https://www.tvmaze.com/shows/162/carnivale)
 - [https://www.tvmaze.com/shows/30770/chernobyl](https://www.tvmaze.com/shows/30770/chernobyl)
@@ -148,10 +149,7 @@ h1,h2,h3,h4,h5 {
 - [https://www.tvmaze.com/shows/54538/den-uyl-en-de-affaire-lockheed](https://www.tvmaze.com/shows/54538/den-uyl-en-de-affaire-lockheed)
 - [https://www.tvmaze.com/shows/60492/de-verschrikkelijke-jaren-tachtig](https://www.tvmaze.com/shows/60492/de-verschrikkelijke-jaren-tachtig)
 - [https://www.tvmaze.com/shows/35073/the-owl-house](https://www.tvmaze.com/shows/35073/the-owl-house)
-
 - [https://www.tvmaze.com/shows?page=250](https://www.tvmaze.com/shows?page=250)
-
-
 - [https://www.tvmaze.com/shows/563/star-wars-the-clone-wars](https://www.tvmaze.com/shows/563/star-wars-the-clone-wars)
 - [https://api.tvmaze.com/shows/563?embed=episodes](https://api.tvmaze.com/shows/563?embed=episodes)
 - [https://api.tvmaze.com/singlesearch/shows?q=%22Star%20Trek:%20Deep%20Space%20Nine%22&embed=episodes](https://api.tvmaze.com/singlesearch/shows?q=%22Star%20Trek:%20Deep%20Space%20Nine%22&embed=episodes)

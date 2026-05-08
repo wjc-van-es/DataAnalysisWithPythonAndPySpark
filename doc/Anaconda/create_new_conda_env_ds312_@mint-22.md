@@ -98,11 +98,11 @@ We need to test if this is enough for the `man-py-htm` and `DataAnalysisWithPyth
 - First we need to make the PyCharm project using the conda ds312 environment with
   File > Settings... > Project:DataAnalysisWith... > Python Interpreter > Add Interpreter
   - Select existing conda environment and _ds312_ should be selectable:
-    ![](images/select_existing_ds312_env.png)
-- Now we can test [`../src/Ch07/more_periodic_table.py`](../src/Ch07/more_periodic_table.py)
+    ![](../images/select_existing_ds312_env.png)
+- Now we can test [`../src/Ch07/more_periodic_table.py`](../../src/Ch07/more_periodic_table.py)
   - With the import statements we can see that the PySpark package modules are importable, but our local 
-    [`../src/project_utils`](../src/project_utils) module is _not_.
-  - We need to assign [`../src`](../src) as sources root within the PyCharm project by using the _Mark Directory as_
+    [`../src/project_utils`](../../src/project_utils) module is _not_.
+  - We need to assign [`../src`](../../src) as sources root within the PyCharm project by using the _Mark Directory as_
     from the _Right Mouse Context Menu_ and choose _Sources Root_
   - See also [creating_&_using_modules.md#configuration](creating_&_using_modules.md#configuration)
   - We see the error log: `JAVA_HOME is not set`

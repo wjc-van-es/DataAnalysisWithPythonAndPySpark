@@ -80,7 +80,7 @@ try:
     # stories published in the 'Donald Duck' Weekly in 1977
     df_dd1977 = df.drop('series_code', 'series_title').where(F.col("pub_code").substr(4, 6) == "DD1977")
     print(df_dd1977.count())
-    df_dd1977.show(48, truncate=False)
+    df_dd1977.show(52, truncate=False)
 
 except Py4JJavaError as e:
     print(f"problem connecting to {url} as {properties['user']} because of {e!r}")

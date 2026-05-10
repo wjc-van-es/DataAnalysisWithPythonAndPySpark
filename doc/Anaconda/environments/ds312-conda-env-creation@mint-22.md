@@ -43,9 +43,9 @@ h1,h2,h3,h4,h5 {
 - As it will be based on Python 3.12, we will name it `ds312`
 
 ## Workflow
-1. We installed Anaconda as described at [Anaconda_installation@mint-22.md](Anaconda_installation@mint-22.md)
+1. We installed Anaconda as described at [Anaconda_installation@mint-22.md](../Anaconda_installation@mint-22.md)
 2. We now will create a conda environment named `ds312` based on `ds311`, but with Python 3.12 as basis
-   1. We use [ds311-env-creation@linux-laptop.md#steps](ds311-env-creation@linux-laptop.md#steps) as reference
+   1. We use [ds311-env-creation@linux-laptop.md#steps](ds311-conda-env-creation@linux-laptop.md#steps) as reference
 
 ## Conda Installation Steps
 1. Create the new `ds312` conda environment
@@ -98,11 +98,11 @@ We need to test if this is enough for the `man-py-htm` and `DataAnalysisWithPyth
 - First we need to make the PyCharm project using the conda ds312 environment with
   File > Settings... > Project:DataAnalysisWith... > Python Interpreter > Add Interpreter
   - Select existing conda environment and _ds312_ should be selectable:
-    ![](../images/select_existing_ds312_env.png)
-- Now we can test [`../src/Ch07/more_periodic_table.py`](../../src/Ch07/more_periodic_table.py)
+    ![](../../images/select_existing_ds312_env.png)
+- Now we can test [`../src/Ch07/more_periodic_table.py`](../../../src/Ch07/more_periodic_table.py)
   - With the import statements we can see that the PySpark package modules are importable, but our local 
-    [`../src/project_utils`](../../src/project_utils) module is _not_.
-  - We need to assign [`../src`](../../src) as sources root within the PyCharm project by using the _Mark Directory as_
+    [`../src/project_utils`](../../../src/project_utils) module is _not_.
+  - We need to assign [`../src`](../../../src) as sources root within the PyCharm project by using the _Mark Directory as_
     from the _Right Mouse Context Menu_ and choose _Sources Root_
   - See also [creating_&_using_modules.md#configuration](creating_&_using_modules.md#configuration)
   - We see the error log: `JAVA_HOME is not set`
@@ -146,7 +146,7 @@ We need to test if this is enough for the `man-py-htm` and `DataAnalysisWithPyth
     import os
     from dotenv import load_dotenv
     
-    print(os.path.abspath('.'))
+    print(os.path.abspath('..'))
     load_dotenv('../../project.env')
     print(f"JAVA_HOME={os.getenv('JAVA_HOME')}")
     ```

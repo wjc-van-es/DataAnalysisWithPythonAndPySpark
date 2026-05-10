@@ -61,6 +61,11 @@ Every once in a while we would like to upgrade or system to keep everything up t
       - `311` and `312` stands for _python 3.11_ and _python 3.12_ respectively.
 - If all projects have migrated from a previous environment you can remove the old one.
 
+### Special considerations for (Py)Spark
+- Spark also needs a JDK that should be compatible with the current version of PySpark you want to use.
+- For details on updating the Java Spark configuration see
+  [https://github.com/wjc-van-es/spark-labs/blob/master/doc/project-config-spark-update-history.md](https://github.com/wjc-van-es/spark-labs/blob/master/doc/project-config-spark-update-history.md)
+
 ## Useful commands per use case
 
 ### Updating anaconda
@@ -80,6 +85,13 @@ Every once in a while we would like to upgrade or system to keep everything up t
 3. `conda update -n base --all`
    1. Using `--all` to update all base packages and resolve conflicts that otherwise may prevent conda from updating
 4. `conda --version` to check it succeeded in updating its version (e.g. to `conda 26.3.2`)
+
+### Creating a new _data science_ environment based on a new python version
+- On 10-05-2026 we will create a new _data science_ environment based on python 3.14, see
+  - [ds314-conda-env-creation@mint-22.md](environments/ds314-conda-env-creation@mint-22.md)
+- Previous _data science_ environments
+  - [ds312-conda-env-creation@mint-22.md](environments/ds312-conda-env-creation@mint-22.md)
+  - [ds311-conda-env-creation@linux-laptop.md](environments/ds311-conda-env-creation@linux-laptop.md)
 
 ## Resources
 - [https://www.perplexity.ai/search/i-want-to-update-my-conda-envi-w5ntvRByRRa31PO9eimjCA](https://www.perplexity.ai/search/i-want-to-update-my-conda-envi-w5ntvRByRRa31PO9eimjCA)

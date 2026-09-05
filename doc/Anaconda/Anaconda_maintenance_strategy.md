@@ -39,13 +39,13 @@ h1,h2,h3,h4,h5 {
 # Anaconda maintenance strategy
 
 ## Context
-Every once in a while we would like to upgrade or system to keep everything up to date in this way discern three layers:
+Every once in a while we would like to upgrade our system to keep everything up to date in this way discern three layers:
 1. The version of conda itself, to keep the management of all environments reliable and stable
-2. The version of python itself, which it at the core of all code execution and where all other packages relate to
+2. The version of python itself, which is at the core of all code execution and where all other packages relate to
 3. The specific packages our project code depends on.
 
 ## Principles
-- We keep (Ana)conda iteself up to date on a regular basis, this only is concerned with the default base environment.
+- We keep (Ana)conda itself up to date on a regular basis, this only is concerned with the default base environment.
 - We keep the base environment as bare as possible as its main purpose is to do the management of all other environments:
   - Only updates of conda itself are done on the base environment.
   - No specific extra packages are installed in base.
